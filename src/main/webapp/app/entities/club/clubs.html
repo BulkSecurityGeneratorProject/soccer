@@ -1,0 +1,64 @@
+<div>
+    <h2>Clubs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="club.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Club
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Create At</span></th>
+                    <th><span>Name</span></th>
+                    <th><span>Short Name</span></th>
+                    <th><span>Association</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="club in vm.clubs track by club.id">
+                    <td><a ui-sref="club-detail({id:club.id})">{{club.id}}</a></td>
+                        <td>{{club.createAt | date:'mediumDate'}}</td>
+                    <td>{{club.name}}</td>
+                    <td>{{club.shortName}}</td>
+                    <td>
+                        <a ui-sref="association-detail({id:club.association.id})">{{club.association.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="club-detail({id:club.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="club.edit({id:club.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="club.delete({id:club.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

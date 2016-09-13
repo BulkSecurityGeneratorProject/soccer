@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><uml:Model xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:version="2.1" xmi:id="_wiJJkHmPEeaM2ZvYMHHF_Q" name="soccer">
+  <eAnnotations xmi:id="_wiJJkXmPEeaM2ZvYMHHF_Q" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_wiJJknmPEeaM2ZvYMHHF_Q" name="exporterVersion">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_wiJJk3mPEeaM2ZvYMHHF_Q" value="3.0.0"/>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wiJJlHmPEeaM2ZvYMHHF_Q" name="Player">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJlXmPEeaM2ZvYMHHF_Q" name="team" visibility="public" type="_wiJJnXmPEeaM2ZvYMHHF_Q" aggregation="shared" association="_wiJJmXmPEeaM2ZvYMHHF_Q"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJlnmPEeaM2ZvYMHHF_Q" name="id" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJl3mPEeaM2ZvYMHHF_Q" name="name" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJmHmPEeaM2ZvYMHHF_Q" name="birth" visibility="private" type="_wiJJtHmPEeaM2ZvYMHHF_Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_wiJJmXmPEeaM2ZvYMHHF_Q" memberEnd="_wiJJlXmPEeaM2ZvYMHHF_Q _wiJJmnmPEeaM2ZvYMHHF_Q">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wiJJmnmPEeaM2ZvYMHHF_Q" visibility="public" type="_wiJJlHmPEeaM2ZvYMHHF_Q" association="_wiJJmXmPEeaM2ZvYMHHF_Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wiJJm3mPEeaM2ZvYMHHF_Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wiJJnHmPEeaM2ZvYMHHF_Q"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wiJJnXmPEeaM2ZvYMHHF_Q" name="Team">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJnnmPEeaM2ZvYMHHF_Q" name="club" visibility="public" type="_wiJJpnmPEeaM2ZvYMHHF_Q" aggregation="shared" association="_wiJJonmPEeaM2ZvYMHHF_Q"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJn3mPEeaM2ZvYMHHF_Q" name="id" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJoHmPEeaM2ZvYMHHF_Q" name="type" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJoXmPEeaM2ZvYMHHF_Q" name="name" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_wiJJonmPEeaM2ZvYMHHF_Q" memberEnd="_wiJJnnmPEeaM2ZvYMHHF_Q _wiJJo3mPEeaM2ZvYMHHF_Q">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wiJJo3mPEeaM2ZvYMHHF_Q" visibility="public" type="_wiJJnXmPEeaM2ZvYMHHF_Q" association="_wiJJonmPEeaM2ZvYMHHF_Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wiJJpHmPEeaM2ZvYMHHF_Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wiJJpXmPEeaM2ZvYMHHF_Q"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wiJJpnmPEeaM2ZvYMHHF_Q" name="Club">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJp3mPEeaM2ZvYMHHF_Q" name="association" visibility="public" type="_wiJJsHmPEeaM2ZvYMHHF_Q" aggregation="shared" association="_wiJJrHmPEeaM2ZvYMHHF_Q"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJqHmPEeaM2ZvYMHHF_Q" name="id" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJqXmPEeaM2ZvYMHHF_Q" name="createAt" visibility="private" type="_wiJJtHmPEeaM2ZvYMHHF_Q" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJqnmPEeaM2ZvYMHHF_Q" name="name" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJq3mPEeaM2ZvYMHHF_Q" name="shortName" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_wiJJrHmPEeaM2ZvYMHHF_Q" memberEnd="_wiJJp3mPEeaM2ZvYMHHF_Q _wiJJrXmPEeaM2ZvYMHHF_Q">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wiJJrXmPEeaM2ZvYMHHF_Q" visibility="public" type="_wiJJpnmPEeaM2ZvYMHHF_Q" association="_wiJJrHmPEeaM2ZvYMHHF_Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wiJJrnmPEeaM2ZvYMHHF_Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wiJJr3mPEeaM2ZvYMHHF_Q"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wiJJsHmPEeaM2ZvYMHHF_Q" name="Association">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJsXmPEeaM2ZvYMHHF_Q" name="id" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJsnmPEeaM2ZvYMHHF_Q" name="name" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wiJJs3mPEeaM2ZvYMHHF_Q" name="createAt" visibility="private" type="_wiJJtHmPEeaM2ZvYMHHF_Q" isUnique="false"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_wiJJtHmPEeaM2ZvYMHHF_Q" name="LocalDate"/>
+</uml:Model>

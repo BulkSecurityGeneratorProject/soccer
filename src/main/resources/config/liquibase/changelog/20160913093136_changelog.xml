@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="linpeng (generated)" id="1473759103207-1">
+        <addColumn tableName="club">
+            <column name="association_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1473759103207-2">
+        <addColumn tableName="team">
+            <column name="club_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1473759103207-3">
+        <addColumn tableName="player">
+            <column name="team_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1473759103207-4">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="player" constraintName="FK_5q11flfd61t4n9eepixi8ltup" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1473759103207-5">
+        <addForeignKeyConstraint baseColumnNames="club_id" baseTableName="team" constraintName="FK_8jnj6pdcbhxkay3twre48p2fo" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="club"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1473759103207-6">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="club" constraintName="FK_lksuditej44rp3dc99p39397k" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1473759103207-7">
+        <dropDefaultValue columnDataType="timestamp" columnName="created_date" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1473759103207-8">
+        <dropDefaultValue columnDataType="timestamp" columnName="last_modified_date" tableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>
