@@ -34,6 +34,9 @@ public class Division implements Serializable {
     @ManyToOne
     private Association association;
 
+    @ManyToOne
+    private RankingRule rankingRule;
+
     public Long getId() {
         return id;
     }
@@ -72,6 +75,14 @@ public class Division implements Serializable {
 
     public void setAssociation(Association association) {
         this.association = association;
+    }
+
+    public RankingRule getRankingRule() {
+        return rankingRule;
+    }
+
+    public void setRankingRule(RankingRule rankingRule) {
+        this.rankingRule = rankingRule;
     }
 
     @Override

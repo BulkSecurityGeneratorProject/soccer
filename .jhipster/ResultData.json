@@ -1,0 +1,37 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "game",
+      "otherEntityName": "game",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "player",
+      "otherEntityName": "player",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "many-to-one",
+      "relationshipName": "resultField",
+      "otherEntityName": "resultField",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "value",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20160914061541",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "result_data"
+}

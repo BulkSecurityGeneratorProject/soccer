@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myRankingRuleLabel">Create or edit a Ranking Rule</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.rankingRule.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.rankingRule.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_win">Win</label>
+            <input type="number" class="form-control" name="win" id="field_win"
+                    ng-model="vm.rankingRule.win"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_loss">Loss</label>
+            <input type="number" class="form-control" name="loss" id="field_loss"
+                    ng-model="vm.rankingRule.loss"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_draw">Draw</label>
+            <input type="number" class="form-control" name="draw" id="field_draw"
+                    ng-model="vm.rankingRule.draw"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_scoreFor">Score For</label>
+            <input type="number" class="form-control" name="scoreFor" id="field_scoreFor"
+                    ng-model="vm.rankingRule.scoreFor"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_scoreAgain">Score Again</label>
+            <input type="number" class="form-control" name="scoreAgain" id="field_scoreAgain"
+                    ng-model="vm.rankingRule.scoreAgain"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_rankedOn">Ranked On</label>
+            <select class="form-control" id="field_rankedOn" name="rankedOn" ng-model="vm.rankingRule.rankedOn" ng-options="dict as dict.id for dict in vm.dicts track by dict.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity ResultData.
+    -->
+    <changeSet id="20160914061541-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="game_id"
+                                 baseTableName="result_data"
+                                 constraintName="fk_result_data_game_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="game"/>
+
+        <addForeignKeyConstraint baseColumnNames="player_id"
+                                 baseTableName="result_data"
+                                 constraintName="fk_result_data_player_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="player"/>
+
+        <addForeignKeyConstraint baseColumnNames="result_field_id"
+                                 baseTableName="result_data"
+                                 constraintName="fk_result_data_result_field_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="result_field"/>
+
+    </changeSet>
+</databaseChangeLog>

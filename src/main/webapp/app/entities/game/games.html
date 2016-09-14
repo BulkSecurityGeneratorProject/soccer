@@ -43,19 +43,19 @@
                     <td>{{game.homeScoreHalf}}</td>
                     <td>{{game.roadScoreHalf}}</td>
                     <td>
-                        <a ui-sref="timeslot-detail({id:game.timeslot.id})">{{game.timeslot.id}}</a>
+                        <a ui-sref="timeslot-detail({id:game.timeslot.id})">{{game.timeslot.name}}</a>
                     </td>
                     <td>
-                        <a ui-sref="venue-detail({id:game.venue.id})">{{game.venue.id}}</a>
+                        <a ui-sref="venue-detail({id:game.venue.id})">{{game.venue.name}}</a>
                     </td>
                     <td>
                         <a ui-sref="dict-detail({id:game.status.id})">{{game.status.id}}</a>
                     </td>
                     <td>
-                        <a ui-sref="team-detail({id:game.homeTeam.id})">{{game.homeTeam.id}}</a>
+                        <a ui-sref="team-detail({id:game.homeTeam.id})">{{game.homeTeam.name}}</a>
                     </td>
                     <td>
-                        <a ui-sref="team-detail({id:game.roadTeam.id})">{{game.roadTeam.id}}</a>
+                        <a ui-sref="team-detail({id:game.roadTeam.id})">{{game.roadTeam.name}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

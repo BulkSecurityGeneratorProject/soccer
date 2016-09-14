@@ -1,0 +1,68 @@
+<div>
+    <h2>Ranking Rules</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="ranking-rule.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Ranking Rule
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Win</span></th>
+                    <th><span>Loss</span></th>
+                    <th><span>Draw</span></th>
+                    <th><span>Score For</span></th>
+                    <th><span>Score Again</span></th>
+                    <th><span>Ranked On</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="rankingRule in vm.rankingRules track by rankingRule.id">
+                    <td><a ui-sref="ranking-rule-detail({id:rankingRule.id})">{{rankingRule.id}}</a></td>
+                    <td>{{rankingRule.win}}</td>
+                    <td>{{rankingRule.loss}}</td>
+                    <td>{{rankingRule.draw}}</td>
+                    <td>{{rankingRule.scoreFor}}</td>
+                    <td>{{rankingRule.scoreAgain}}</td>
+                    <td>
+                        <a ui-sref="dict-detail({id:rankingRule.rankedOn.id})">{{rankingRule.rankedOn.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="ranking-rule-detail({id:rankingRule.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ranking-rule.edit({id:rankingRule.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ranking-rule.delete({id:rankingRule.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

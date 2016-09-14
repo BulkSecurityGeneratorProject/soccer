@@ -17,6 +17,9 @@
     <include file="classpath:config/liquibase/changelog/20160914031740_added_entity_DivisionEvent.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160914031741_added_entity_Timeslot.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160914033137_added_entity_Game.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160914061540_added_entity_RankingRule.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160914061542_added_entity_ResultField.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160914061541_added_entity_ResultData.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20160913082458_added_entity_constraints_Club.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160913082457_added_entity_constraints_Team.xml" relativeToChangelogFile="false"/>
@@ -26,5 +29,7 @@
     <include file="classpath:config/liquibase/changelog/20160914031740_added_entity_constraints_DivisionEvent.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160914031741_added_entity_constraints_Timeslot.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160914033137_added_entity_constraints_Game.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160914061540_added_entity_constraints_RankingRule.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160914061541_added_entity_constraints_ResultData.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

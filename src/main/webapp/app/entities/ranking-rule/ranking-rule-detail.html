@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span>Ranking Rule</span> {{vm.rankingRule.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Win</span></dt>
+        <dd>
+            <span>{{vm.rankingRule.win}}</span>
+        </dd>
+        <dt><span>Loss</span></dt>
+        <dd>
+            <span>{{vm.rankingRule.loss}}</span>
+        </dd>
+        <dt><span>Draw</span></dt>
+        <dd>
+            <span>{{vm.rankingRule.draw}}</span>
+        </dd>
+        <dt><span>Score For</span></dt>
+        <dd>
+            <span>{{vm.rankingRule.scoreFor}}</span>
+        </dd>
+        <dt><span>Score Again</span></dt>
+        <dd>
+            <span>{{vm.rankingRule.scoreAgain}}</span>
+        </dd>
+        <dt><span>Ranked On</span></dt>
+        <dd>
+            <a ui-sref="dict-detail({id:vm.rankingRule.rankedOn.id})">{{vm.rankingRule.rankedOn.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="ranking-rule-detail.edit({id:vm.rankingRule.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('DivisionDialogController', DivisionDialogController);
 
-    DivisionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Division', 'Dict', 'Association'];
+    DivisionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Division', 'Dict', 'Association', 'RankingRule'];
 
-    function DivisionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Division, Dict, Association) {
+    function DivisionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Division, Dict, Association, RankingRule) {
         var vm = this;
 
         vm.division = entity;
@@ -17,6 +17,7 @@
         vm.save = save;
         vm.dicts = Dict.query();
         vm.associations = Association.query();
+        vm.rankingrules = RankingRule.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

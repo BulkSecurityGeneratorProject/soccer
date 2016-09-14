@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="association"/>
 
+        <addForeignKeyConstraint baseColumnNames="ranking_rule_id"
+                                 baseTableName="division"
+                                 constraintName="fk_division_ranking_rule_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ranking_rule"/>
+
     </changeSet>
 </databaseChangeLog>

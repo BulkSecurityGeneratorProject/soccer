@@ -1,0 +1,50 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myResultDataLabel">Create or edit a Result Data</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.resultData.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.resultData.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_value">Value</label>
+            <input type="number" class="form-control" name="value" id="field_value"
+                    ng-model="vm.resultData.value"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_game">Game</label>
+            <select class="form-control" id="field_game" name="game" ng-model="vm.resultData.game" ng-options="game as game.id for game in vm.games track by game.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_player">Player</label>
+            <select class="form-control" id="field_player" name="player" ng-model="vm.resultData.player" ng-options="player as player.id for player in vm.players track by player.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_resultField">Result Field</label>
+            <select class="form-control" id="field_resultField" name="resultField" ng-model="vm.resultData.resultField" ng-options="resultField as resultField.id for resultField in vm.resultfields track by resultField.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
