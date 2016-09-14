@@ -14,10 +14,10 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Team.
+        Added the entity Dict.
     -->
-    <changeSet id="20160913082457-1" author="jhipster">
-        <createTable tableName="team">
+    <changeSet id="20160914014546-1" author="jhipster">
+        <createTable tableName="dict">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -25,11 +25,11 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="club_id" type="bigint">
+            <column name="code" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
-            <column name="type_id" type="bigint">
+            
+            <column name="dict_kind_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

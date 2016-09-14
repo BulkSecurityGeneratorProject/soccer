@@ -38,7 +38,7 @@
 
         <div class="form-group">
             <label for="field_association">Association</label>
-            <select class="form-control" id="field_association" name="association" ng-model="vm.club.association" ng-options="association as association.name for association in vm.associations track by association.id">
+            <select class="form-control" id="field_association" name="association" ng-model="vm.club.association" ng-options="association as association.id for association in vm.associations track by association.id">
                 <option value=""></option>
             </select>
         </div>

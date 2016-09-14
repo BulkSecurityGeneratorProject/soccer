@@ -1,0 +1,28 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "dictKind",
+      "otherEntityName": "dictKind",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "code",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160914014546",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "dict"
+}

@@ -1,0 +1,15 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20160914014545",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "dict_kind"
+}

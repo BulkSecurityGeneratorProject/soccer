@@ -39,8 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SoccerApp.class)
 
 public class TeamResourceIntTest {
-    private static final String DEFAULT_TYPE = "AAAAA";
-    private static final String UPDATED_TYPE = "BBBBB";
     private static final String DEFAULT_NAME = "AAAAA";
     private static final String UPDATED_NAME = "BBBBB";
 
@@ -78,7 +76,6 @@ public class TeamResourceIntTest {
      */
     public static Team createEntity(EntityManager em) {
         Team team = new Team();
-        team.setType(DEFAULT_TYPE);
         team.setName(DEFAULT_NAME);
         return team;
     }
@@ -104,7 +101,6 @@ public class TeamResourceIntTest {
         List<Team> teams = teamRepository.findAll();
         assertThat(teams).hasSize(databaseSizeBeforeCreate + 1);
         Team testTeam = teams.get(teams.size() - 1);
-        assertThat(testTeam.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testTeam.getName()).isEqualTo(DEFAULT_NAME);
     }
 
@@ -119,7 +115,6 @@ public class TeamResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(team.getId().intValue())))
-                .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
@@ -134,7 +129,6 @@ public class TeamResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(team.getId().intValue()))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
 
@@ -155,7 +149,6 @@ public class TeamResourceIntTest {
 
         // Update the team
         Team updatedTeam = teamRepository.findOne(team.getId());
-        updatedTeam.setType(UPDATED_TYPE);
         updatedTeam.setName(UPDATED_NAME);
 
         restTeamMockMvc.perform(put("/api/teams")
@@ -167,7 +160,6 @@ public class TeamResourceIntTest {
         List<Team> teams = teamRepository.findAll();
         assertThat(teams).hasSize(databaseSizeBeforeUpdate);
         Team testTeam = teams.get(teams.size() - 1);
-        assertThat(testTeam.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testTeam.getName()).isEqualTo(UPDATED_NAME);
     }
 

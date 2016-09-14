@@ -1,20 +1,20 @@
 
 <div>
-    <h2><span>Team</span> {{vm.team.id}}</h2>
+    <h2><span>Dict</span> {{vm.dict.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
         <dt><span>Name</span></dt>
         <dd>
-            <span>{{vm.team.name}}</span>
+            <span>{{vm.dict.name}}</span>
         </dd>
-        <dt><span>Club</span></dt>
+        <dt><span>Code</span></dt>
         <dd>
-            <a ui-sref="club-detail({id:vm.team.club.id})">{{vm.team.club.id}}</a>
+            <span>{{vm.dict.code}}</span>
         </dd>
-        <dt><span>Type</span></dt>
+        <dt><span>Dict Kind</span></dt>
         <dd>
-            <a ui-sref="dict-detail({id:vm.team.type.id})">{{vm.team.type.id}}</a>
+            <a ui-sref="dict-kind-detail({id:vm.dict.dictKind.id})">{{vm.dict.dictKind.id}}</a>
         </dd>
     </dl>
 
@@ -24,7 +24,7 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button" ui-sref="team-detail.edit({id:vm.team.id})" class="btn btn-primary">
+    <button type="button" ui-sref="dict-detail.edit({id:vm.dict.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-xs hidden-sm"> Edit</span>
     </button>

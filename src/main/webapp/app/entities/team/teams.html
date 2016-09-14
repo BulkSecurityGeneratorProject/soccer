@@ -19,19 +19,21 @@
             <thead>
                 <tr>
                     <th><span>ID</span></th>
-                    <th><span>Type</span></th>
                     <th><span>Name</span></th>
                     <th><span>Club</span></th>
+                    <th><span>Type</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="team in vm.teams track by team.id">
                     <td><a ui-sref="team-detail({id:team.id})">{{team.id}}</a></td>
-                    <td>{{team.type}}</td>
                     <td>{{team.name}}</td>
                     <td>
                         <a ui-sref="club-detail({id:team.club.id})">{{team.club.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dict-detail({id:team.type.id})">{{team.type.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

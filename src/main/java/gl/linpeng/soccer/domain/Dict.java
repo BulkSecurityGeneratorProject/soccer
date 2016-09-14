@@ -8,12 +8,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Team.
+ * A Dict.
  */
 @Entity
-@Table(name = "team")
+@Table(name = "dict")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Team implements Serializable {
+public class Dict implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,11 +24,11 @@ public class Team implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    private Club club;
+    @Column(name = "code")
+    private String code;
 
     @ManyToOne
-    private Dict type;
+    private DictKind dictKind;
 
     public Long getId() {
         return id;
@@ -46,20 +46,20 @@ public class Team implements Serializable {
         this.name = name;
     }
 
-    public Club getClub() {
-        return club;
+    public String getCode() {
+        return code;
     }
 
-    public void setClub(Club club) {
-        this.club = club;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public Dict getType() {
-        return type;
+    public DictKind getDictKind() {
+        return dictKind;
     }
 
-    public void setType(Dict dict) {
-        this.type = dict;
+    public void setDictKind(DictKind dictKind) {
+        this.dictKind = dictKind;
     }
 
     @Override
@@ -70,11 +70,11 @@ public class Team implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Team team = (Team) o;
-        if(team.id == null || id == null) {
+        Dict dict = (Dict) o;
+        if(dict.id == null || id == null) {
             return false;
         }
-        return Objects.equals(id, team.id);
+        return Objects.equals(id, dict.id);
     }
 
     @Override
@@ -84,9 +84,10 @@ public class Team implements Serializable {
 
     @Override
     public String toString() {
-        return "Team{" +
+        return "Dict{" +
             "id=" + id +
             ", name='" + name + "'" +
+            ", code='" + code + "'" +
             '}';
     }
 }

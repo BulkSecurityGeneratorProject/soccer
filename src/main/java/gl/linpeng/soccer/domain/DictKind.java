@@ -8,12 +8,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Team.
+ * A DictKind.
  */
 @Entity
-@Table(name = "team")
+@Table(name = "dict_kind")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Team implements Serializable {
+public class DictKind implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,12 +23,6 @@ public class Team implements Serializable {
 
     @Column(name = "name")
     private String name;
-
-    @ManyToOne
-    private Club club;
-
-    @ManyToOne
-    private Dict type;
 
     public Long getId() {
         return id;
@@ -46,22 +40,6 @@ public class Team implements Serializable {
         this.name = name;
     }
 
-    public Club getClub() {
-        return club;
-    }
-
-    public void setClub(Club club) {
-        this.club = club;
-    }
-
-    public Dict getType() {
-        return type;
-    }
-
-    public void setType(Dict dict) {
-        this.type = dict;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -70,11 +48,11 @@ public class Team implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Team team = (Team) o;
-        if(team.id == null || id == null) {
+        DictKind dictKind = (DictKind) o;
+        if(dictKind.id == null || id == null) {
             return false;
         }
-        return Objects.equals(id, team.id);
+        return Objects.equals(id, dictKind.id);
     }
 
     @Override
@@ -84,7 +62,7 @@ public class Team implements Serializable {
 
     @Override
     public String toString() {
-        return "Team{" +
+        return "DictKind{" +
             "id=" + id +
             ", name='" + name + "'" +
             '}';

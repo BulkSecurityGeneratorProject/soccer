@@ -4,31 +4,31 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myTeamLabel">Create or edit a Team</h4>
+        <h4 class="modal-title" id="myDictLabel">Create or edit a Dict</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.team.id">
+        <div class="form-group" ng-show="vm.dict.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.team.id" readonly />
+                    ng-model="vm.dict.id" readonly />
         </div>
         <div class="form-group">
             <label class="control-label" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="vm.team.name"
+                    ng-model="vm.dict.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                    ng-model="vm.dict.code"
                      />
         </div>
 
         <div class="form-group">
-            <label for="field_club">Club</label>
-            <select class="form-control" id="field_club" name="club" ng-model="vm.team.club" ng-options="club as club.id for club in vm.clubs track by club.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="field_type">Type</label>
-            <select class="form-control" id="field_type" name="type" ng-model="vm.team.type" ng-options="dict as dict.id for dict in vm.dicts track by dict.id">
+            <label for="field_dictKind">Dict Kind</label>
+            <select class="form-control" id="field_dictKind" name="dictKind" ng-model="vm.dict.dictKind" ng-options="dictKind as dictKind.id for dictKind in vm.dictkinds track by dictKind.id">
                 <option value=""></option>
             </select>
         </div>

@@ -9,44 +9,44 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('team', {
+        .state('dict', {
             parent: 'entity',
-            url: '/team',
+            url: '/dict',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Teams'
+                pageTitle: 'Dicts'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/team/teams.html',
-                    controller: 'TeamController',
+                    templateUrl: 'app/entities/dict/dicts.html',
+                    controller: 'DictController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
             }
         })
-        .state('team-detail', {
+        .state('dict-detail', {
             parent: 'entity',
-            url: '/team/{id}',
+            url: '/dict/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Team'
+                pageTitle: 'Dict'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/team/team-detail.html',
-                    controller: 'TeamDetailController',
+                    templateUrl: 'app/entities/dict/dict-detail.html',
+                    controller: 'DictDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Team', function($stateParams, Team) {
-                    return Team.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Dict', function($stateParams, Dict) {
+                    return Dict.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'team',
+                        name: $state.current.name || 'dict',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -54,22 +54,22 @@
                 }]
             }
         })
-        .state('team-detail.edit', {
-            parent: 'team-detail',
+        .state('dict-detail.edit', {
+            parent: 'dict-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/team/team-dialog.html',
-                    controller: 'TeamDialogController',
+                    templateUrl: 'app/entities/dict/dict-dialog.html',
+                    controller: 'DictDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Team', function(Team) {
-                            return Team.get({id : $stateParams.id}).$promise;
+                        entity: ['Dict', function(Dict) {
+                            return Dict.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -79,16 +79,16 @@
                 });
             }]
         })
-        .state('team.new', {
-            parent: 'team',
+        .state('dict.new', {
+            parent: 'dict',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/team/team-dialog.html',
-                    controller: 'TeamDialogController',
+                    templateUrl: 'app/entities/dict/dict-dialog.html',
+                    controller: 'DictDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -96,61 +96,62 @@
                         entity: function () {
                             return {
                                 name: null,
+                                code: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('team', null, { reload: 'team' });
+                    $state.go('dict', null, { reload: 'dict' });
                 }, function() {
-                    $state.go('team');
+                    $state.go('dict');
                 });
             }]
         })
-        .state('team.edit', {
-            parent: 'team',
+        .state('dict.edit', {
+            parent: 'dict',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/team/team-dialog.html',
-                    controller: 'TeamDialogController',
+                    templateUrl: 'app/entities/dict/dict-dialog.html',
+                    controller: 'DictDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Team', function(Team) {
-                            return Team.get({id : $stateParams.id}).$promise;
+                        entity: ['Dict', function(Dict) {
+                            return Dict.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('team', null, { reload: 'team' });
+                    $state.go('dict', null, { reload: 'dict' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('team.delete', {
-            parent: 'team',
+        .state('dict.delete', {
+            parent: 'dict',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/team/team-delete-dialog.html',
-                    controller: 'TeamDeleteController',
+                    templateUrl: 'app/entities/dict/dict-delete-dialog.html',
+                    controller: 'DictDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Team', function(Team) {
-                            return Team.get({id : $stateParams.id}).$promise;
+                        entity: ['Dict', function(Dict) {
+                            return Dict.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('team', null, { reload: 'team' });
+                    $state.go('dict', null, { reload: 'dict' });
                 }, function() {
                     $state.go('^');
                 });

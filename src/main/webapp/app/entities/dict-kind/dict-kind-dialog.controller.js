@@ -3,18 +3,16 @@
 
     angular
         .module('soccerApp')
-        .controller('TeamDialogController', TeamDialogController);
+        .controller('DictKindDialogController', DictKindDialogController);
 
-    TeamDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Team', 'Club', 'Dict'];
+    DictKindDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'DictKind'];
 
-    function TeamDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Team, Club, Dict) {
+    function DictKindDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, DictKind) {
         var vm = this;
 
-        vm.team = entity;
+        vm.dictKind = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.clubs = Club.query();
-        vm.dicts = Dict.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -26,15 +24,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.team.id !== null) {
-                Team.update(vm.team, onSaveSuccess, onSaveError);
+            if (vm.dictKind.id !== null) {
+                DictKind.update(vm.dictKind, onSaveSuccess, onSaveError);
             } else {
-                Team.save(vm.team, onSaveSuccess, onSaveError);
+                DictKind.save(vm.dictKind, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('soccerApp:teamUpdate', result);
+            $scope.$emit('soccerApp:dictKindUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

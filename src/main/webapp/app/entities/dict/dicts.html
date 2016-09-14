@@ -1,13 +1,13 @@
 <div>
-    <h2>Clubs</h2>
+    <h2>Dicts</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="club.new" >
+                <button class="btn btn-primary" ui-sref="dict.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Club
+                        Create new Dict
                     </span>
                 </button>
             </div>
@@ -19,38 +19,36 @@
             <thead>
                 <tr>
                     <th><span>ID</span></th>
-                    <th><span>Create At</span></th>
                     <th><span>Name</span></th>
-                    <th><span>Short Name</span></th>
-                    <th><span>Association</span></th>
+                    <th><span>Code</span></th>
+                    <th><span>Dict Kind</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="club in vm.clubs track by club.id">
-                    <td><a ui-sref="club-detail({id:club.id})">{{club.id}}</a></td>
-                        <td>{{club.createAt | date:'mediumDate'}}</td>
-                    <td>{{club.name}}</td>
-                    <td>{{club.shortName}}</td>
+                <tr ng-repeat="dict in vm.dicts track by dict.id">
+                    <td><a ui-sref="dict-detail({id:dict.id})">{{dict.id}}</a></td>
+                    <td>{{dict.name}}</td>
+                    <td>{{dict.code}}</td>
                     <td>
-                        <a ui-sref="association-detail({id:club.association.id})">{{club.association.id}}</a>
+                        <a ui-sref="dict-kind-detail({id:dict.dictKind.id})">{{dict.dictKind.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="club-detail({id:club.id})"
+                                    ui-sref="dict-detail({id:dict.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="club.edit({id:club.id})"
+                                    ui-sref="dict.edit({id:dict.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="club.delete({id:club.id})"
+                                    ui-sref="dict.delete({id:dict.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm"></span>
