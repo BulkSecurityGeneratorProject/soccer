@@ -1,0 +1,35 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "type",
+      "otherEntityName": "dict",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "association",
+      "otherEntityName": "association",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "createAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "changelogDate": "20160914031739",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "division"
+}

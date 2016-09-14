@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="association"/>
 
+        <addForeignKeyConstraint baseColumnNames="venue_id"
+                                 baseTableName="club"
+                                 constraintName="fk_club_venue_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="venue"/>
+
     </changeSet>
 </databaseChangeLog>

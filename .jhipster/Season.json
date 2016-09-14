@@ -1,0 +1,25 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "startAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "endAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "changelogDate": "20160914031737",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "season"
+}

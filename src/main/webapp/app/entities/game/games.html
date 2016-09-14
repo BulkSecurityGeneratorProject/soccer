@@ -1,0 +1,86 @@
+<div>
+    <h2>Games</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="game.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Game
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Start At</span></th>
+                    <th><span>Home Score</span></th>
+                    <th><span>Road Score</span></th>
+                    <th><span>Note</span></th>
+                    <th><span>Home Score Half</span></th>
+                    <th><span>Road Score Half</span></th>
+                    <th><span>Timeslot</span></th>
+                    <th><span>Venue</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>Home Team</span></th>
+                    <th><span>Road Team</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="game in vm.games track by game.id">
+                    <td><a ui-sref="game-detail({id:game.id})">{{game.id}}</a></td>
+                        <td>{{game.startAt | date:'mediumDate'}}</td>
+                    <td>{{game.homeScore}}</td>
+                    <td>{{game.roadScore}}</td>
+                    <td>{{game.note}}</td>
+                    <td>{{game.homeScoreHalf}}</td>
+                    <td>{{game.roadScoreHalf}}</td>
+                    <td>
+                        <a ui-sref="timeslot-detail({id:game.timeslot.id})">{{game.timeslot.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="venue-detail({id:game.venue.id})">{{game.venue.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dict-detail({id:game.status.id})">{{game.status.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="team-detail({id:game.homeTeam.id})">{{game.homeTeam.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="team-detail({id:game.roadTeam.id})">{{game.roadTeam.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="game-detail({id:game.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game.edit({id:game.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game.delete({id:game.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

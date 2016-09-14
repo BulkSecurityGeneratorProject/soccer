@@ -1,0 +1,63 @@
+
+<div>
+    <h2><span>Game</span> {{vm.game.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Start At</span></dt>
+        <dd>
+            <span>{{vm.game.startAt | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Home Score</span></dt>
+        <dd>
+            <span>{{vm.game.homeScore}}</span>
+        </dd>
+        <dt><span>Road Score</span></dt>
+        <dd>
+            <span>{{vm.game.roadScore}}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+            <span>{{vm.game.note}}</span>
+        </dd>
+        <dt><span>Home Score Half</span></dt>
+        <dd>
+            <span>{{vm.game.homeScoreHalf}}</span>
+        </dd>
+        <dt><span>Road Score Half</span></dt>
+        <dd>
+            <span>{{vm.game.roadScoreHalf}}</span>
+        </dd>
+        <dt><span>Timeslot</span></dt>
+        <dd>
+            <a ui-sref="timeslot-detail({id:vm.game.timeslot.id})">{{vm.game.timeslot.id}}</a>
+        </dd>
+        <dt><span>Venue</span></dt>
+        <dd>
+            <a ui-sref="venue-detail({id:vm.game.venue.id})">{{vm.game.venue.id}}</a>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <a ui-sref="dict-detail({id:vm.game.status.id})">{{vm.game.status.id}}</a>
+        </dd>
+        <dt><span>Home Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.game.homeTeam.id})">{{vm.game.homeTeam.id}}</a>
+        </dd>
+        <dt><span>Road Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.game.roadTeam.id})">{{vm.game.roadTeam.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="game-detail.edit({id:vm.game.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

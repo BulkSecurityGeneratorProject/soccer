@@ -1,0 +1,96 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myGameLabel">Create or edit a Game</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.game.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.game.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_startAt">Start At</label>
+                <div class="input-group">
+                    <input id="field_startAt" type="text" class="form-control" name="startAt" uib-datepicker-popup="{{dateformat}}" ng-model="vm.game.startAt" is-open="vm.datePickerOpenStatus.startAt"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_homeScore">Home Score</label>
+            <input type="number" class="form-control" name="homeScore" id="field_homeScore"
+                    ng-model="vm.game.homeScore"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_roadScore">Road Score</label>
+            <input type="number" class="form-control" name="roadScore" id="field_roadScore"
+                    ng-model="vm.game.roadScore"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_note">Note</label>
+            <input type="text" class="form-control" name="note" id="field_note"
+                    ng-model="vm.game.note"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_homeScoreHalf">Home Score Half</label>
+            <input type="number" class="form-control" name="homeScoreHalf" id="field_homeScoreHalf"
+                    ng-model="vm.game.homeScoreHalf"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_roadScoreHalf">Road Score Half</label>
+            <input type="number" class="form-control" name="roadScoreHalf" id="field_roadScoreHalf"
+                    ng-model="vm.game.roadScoreHalf"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_timeslot">Timeslot</label>
+            <select class="form-control" id="field_timeslot" name="timeslot" ng-model="vm.game.timeslot" ng-options="timeslot as timeslot.id for timeslot in vm.timeslots track by timeslot.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_venue">Venue</label>
+            <select class="form-control" id="field_venue" name="venue" ng-model="vm.game.venue" ng-options="venue as venue.id for venue in vm.venues track by venue.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_status">Status</label>
+            <select class="form-control" id="field_status" name="status" ng-model="vm.game.status" ng-options="dict as dict.id for dict in vm.dicts track by dict.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_homeTeam">Home Team</label>
+            <select class="form-control" id="field_homeTeam" name="homeTeam" ng-model="vm.game.homeTeam" ng-options="team as team.id for team in vm.teams track by team.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_roadTeam">Road Team</label>
+            <select class="form-control" id="field_roadTeam" name="roadTeam" ng-model="vm.game.roadTeam" ng-options="team as team.id for team in vm.teams track by team.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

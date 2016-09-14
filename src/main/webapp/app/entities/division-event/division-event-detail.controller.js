@@ -1,0 +1,21 @@
+(function() {
+    'use strict';
+
+    angular
+        .module('soccerApp')
+        .controller('DivisionEventDetailController', DivisionEventDetailController);
+
+    DivisionEventDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'DivisionEvent', 'Season', 'Division'];
+
+    function DivisionEventDetailController($scope, $rootScope, $stateParams, previousState, entity, DivisionEvent, Season, Division) {
+        var vm = this;
+
+        vm.divisionEvent = entity;
+        vm.previousState = previousState.name;
+
+        var unsubscribe = $rootScope.$on('soccerApp:divisionEventUpdate', function(event, result) {
+            vm.divisionEvent = result;
+        });
+        $scope.$on('$destroy', unsubscribe);
+    }
+})();

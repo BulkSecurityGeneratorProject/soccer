@@ -34,6 +34,9 @@ public class Club implements Serializable {
     @ManyToOne
     private Association association;
 
+    @ManyToOne
+    private Venue venue;
+
     public Long getId() {
         return id;
     }
@@ -72,6 +75,14 @@ public class Club implements Serializable {
 
     public void setAssociation(Association association) {
         this.association = association;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     @Override

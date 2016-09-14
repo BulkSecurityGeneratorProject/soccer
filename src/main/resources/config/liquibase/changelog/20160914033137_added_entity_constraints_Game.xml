@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Game.
+    -->
+    <changeSet id="20160914033137-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="timeslot_id"
+                                 baseTableName="game"
+                                 constraintName="fk_game_timeslot_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="timeslot"/>
+
+        <addForeignKeyConstraint baseColumnNames="venue_id"
+                                 baseTableName="game"
+                                 constraintName="fk_game_venue_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="venue"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="game"
+                                 constraintName="fk_game_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dict"/>
+
+        <addForeignKeyConstraint baseColumnNames="home_team_id"
+                                 baseTableName="game"
+                                 constraintName="fk_game_home_team_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="team"/>
+
+        <addForeignKeyConstraint baseColumnNames="road_team_id"
+                                 baseTableName="game"
+                                 constraintName="fk_game_road_team_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="team"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -42,6 +42,12 @@
                 <option value=""></option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="field_venue">Venue</label>
+            <select class="form-control" id="field_venue" name="venue" ng-model="vm.club.venue" ng-options="venue as venue.id for venue in vm.venues track by venue.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

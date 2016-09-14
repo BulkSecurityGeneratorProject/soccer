@@ -1,0 +1,76 @@
+<div>
+    <h2>Venues</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="venue.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Venue
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Name</span></th>
+                    <th><span>Short Name</span></th>
+                    <th><span>Create At</span></th>
+                    <th><span>Address</span></th>
+                    <th><span>City</span></th>
+                    <th><span>Province</span></th>
+                    <th><span>Town</span></th>
+                    <th><span>Country</span></th>
+                    <th><span>Zip</span></th>
+                    <th><span>Telephone</span></th>
+                    <th><span>Latlng</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="venue in vm.venues track by venue.id">
+                    <td><a ui-sref="venue-detail({id:venue.id})">{{venue.id}}</a></td>
+                    <td>{{venue.name}}</td>
+                    <td>{{venue.shortName}}</td>
+                        <td>{{venue.createAt | date:'mediumDate'}}</td>
+                    <td>{{venue.address}}</td>
+                    <td>{{venue.city}}</td>
+                    <td>{{venue.province}}</td>
+                    <td>{{venue.town}}</td>
+                    <td>{{venue.country}}</td>
+                    <td>{{venue.zip}}</td>
+                    <td>{{venue.telephone}}</td>
+                    <td>{{venue.latlng}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="venue-detail({id:venue.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="venue.edit({id:venue.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="venue.delete({id:venue.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

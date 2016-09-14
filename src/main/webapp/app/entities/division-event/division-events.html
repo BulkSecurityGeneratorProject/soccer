@@ -1,0 +1,62 @@
+<div>
+    <h2>Division Events</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="division-event.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Division Event
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Season</span></th>
+                    <th><span>Division</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="divisionEvent in vm.divisionEvents track by divisionEvent.id">
+                    <td><a ui-sref="division-event-detail({id:divisionEvent.id})">{{divisionEvent.id}}</a></td>
+                    <td>
+                        <a ui-sref="season-detail({id:divisionEvent.season.id})">{{divisionEvent.season.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="division-detail({id:divisionEvent.division.id})">{{divisionEvent.division.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="division-event-detail({id:divisionEvent.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="division-event.edit({id:divisionEvent.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="division-event.delete({id:divisionEvent.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

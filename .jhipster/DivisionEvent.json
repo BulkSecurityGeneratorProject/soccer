@@ -1,0 +1,24 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "season",
+      "otherEntityName": "season",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "division",
+      "otherEntityName": "division",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [],
+  "changelogDate": "20160914031740",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "division_event"
+}

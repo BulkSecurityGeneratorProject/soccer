@@ -6,6 +6,13 @@
       "relationshipName": "association",
       "otherEntityName": "association",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "venue",
+      "otherEntityName": "venue",
+      "otherEntityField": "id"
     }
   ],
   "fields": [

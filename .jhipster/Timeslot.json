@@ -1,0 +1,23 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "type",
+      "otherEntityName": "dict",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "round",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20160914031741",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "timeslot"
+}

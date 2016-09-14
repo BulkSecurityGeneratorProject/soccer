@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('ClubDialogController', ClubDialogController);
 
-    ClubDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Club', 'Association'];
+    ClubDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Club', 'Association', 'Venue'];
 
-    function ClubDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Club, Association) {
+    function ClubDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Club, Association, Venue) {
         var vm = this;
 
         vm.club = entity;
@@ -16,6 +16,7 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.associations = Association.query();
+        vm.venues = Venue.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
