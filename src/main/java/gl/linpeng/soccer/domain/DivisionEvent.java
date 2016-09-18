@@ -1,10 +1,13 @@
 package gl.linpeng.soccer.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -26,6 +29,11 @@ public class DivisionEvent implements Serializable {
 
     @ManyToOne
     private Division division;
+
+    @OneToMany(mappedBy = "divisionEvent")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Team> teams = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -49,6 +57,14 @@ public class DivisionEvent implements Serializable {
 
     public void setDivision(Division division) {
         this.division = division;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
     }
 
     @Override

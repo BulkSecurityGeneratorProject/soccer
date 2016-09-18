@@ -13,6 +13,13 @@
       "relationshipName": "type",
       "otherEntityName": "dict",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipName": "divisionEvent",
+      "otherEntityName": "divisionEvent",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
     }
   ],
   "fields": [

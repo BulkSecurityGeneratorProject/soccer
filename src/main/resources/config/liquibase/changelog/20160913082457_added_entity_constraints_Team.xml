@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="dict"/>
 
+        <addForeignKeyConstraint baseColumnNames="division_event_id"
+                                 baseTableName="team"
+                                 constraintName="fk_team_division_event_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="division_event"/>
+
     </changeSet>
 </databaseChangeLog>

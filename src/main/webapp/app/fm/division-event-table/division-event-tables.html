@@ -1,0 +1,68 @@
+<div>
+    <h2>Division Table</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+            Division Information
+                <!-- <button class="btn btn-primary" ui-sref="division-event.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Division Event 222
+                    </span>
+                </button> -->
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <!-- <th><span>ID</span></th> -->
+                    <th><span>Name</span></th>
+                    <th><span>GP</span></th>
+                    <th><span>W</span></th>
+                    <th><span>L</span></th>
+                    <th><span>D</span></th>
+                    <th><span>GS</span></th>
+                    <th><span>GA</span></th>
+                    <th><span>GD</span></th>
+                    <th><span>PTS</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="divisionEvent in vm.divisionEvents track by divisionEvent[0]">
+                    <!-- <td>{{divisionEvent[0]}}</td> -->
+                    <td>
+                       <a ui-sref="team-detail({id:divisionEvent[0]})"> {{divisionEvent[1]}}</a>
+                    </td>
+                    <td>
+                         {{divisionEvent[2]}}
+                    </td>
+                    <td>
+                         {{divisionEvent[3]}}
+                    </td>
+                    <td>
+                         {{divisionEvent[4]}}
+                    </td>
+                    <td>
+                         {{divisionEvent[5]}}
+                    </td>
+                    <td>
+                         {{divisionEvent[6]}}
+                    </td>
+                    <td>
+                         {{divisionEvent[7]}}
+                    </td>
+                    <td>
+                         {{divisionEvent[8]}}
+                    </td>
+                    <td>
+                         {{divisionEvent[9]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

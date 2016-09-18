@@ -30,6 +30,9 @@ public class Team implements Serializable {
     @ManyToOne
     private Dict type;
 
+    @ManyToOne
+    private DivisionEvent divisionEvent;
+
     public Long getId() {
         return id;
     }
@@ -60,6 +63,14 @@ public class Team implements Serializable {
 
     public void setType(Dict dict) {
         this.type = dict;
+    }
+
+    public DivisionEvent getDivisionEvent() {
+        return divisionEvent;
+    }
+
+    public void setDivisionEvent(DivisionEvent divisionEvent) {
+        this.divisionEvent = divisionEvent;
     }
 
     @Override

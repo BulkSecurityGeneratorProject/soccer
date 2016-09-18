@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('TeamDialogController', TeamDialogController);
 
-    TeamDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Team', 'Club', 'Dict'];
+    TeamDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Team', 'Club', 'Dict', 'DivisionEvent'];
 
-    function TeamDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Team, Club, Dict) {
+    function TeamDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Team, Club, Dict, DivisionEvent) {
         var vm = this;
 
         vm.team = entity;
@@ -15,6 +15,7 @@
         vm.save = save;
         vm.clubs = Club.query();
         vm.dicts = Dict.query();
+        vm.divisionevents = DivisionEvent.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

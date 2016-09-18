@@ -13,6 +13,13 @@
       "relationshipName": "division",
       "otherEntityName": "division",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipType": "one-to-many",
+      "relationshipName": "team",
+      "otherEntityName": "team",
+      "otherEntityRelationshipName": "divisionEvent"
     }
   ],
   "fields": [],

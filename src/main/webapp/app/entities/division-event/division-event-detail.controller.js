@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('DivisionEventDetailController', DivisionEventDetailController);
 
-    DivisionEventDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'DivisionEvent', 'Season', 'Division'];
+    DivisionEventDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'DivisionEvent', 'Season', 'Division', 'Team'];
 
-    function DivisionEventDetailController($scope, $rootScope, $stateParams, previousState, entity, DivisionEvent, Season, Division) {
+    function DivisionEventDetailController($scope, $rootScope, $stateParams, previousState, entity, DivisionEvent, Season, Division, Team) {
         var vm = this;
 
         vm.divisionEvent = entity;

@@ -28,10 +28,10 @@
                 <tr ng-repeat="divisionEvent in vm.divisionEvents track by divisionEvent.id">
                     <td><a ui-sref="division-event-detail({id:divisionEvent.id})">{{divisionEvent.id}}</a></td>
                     <td>
-                        <a ui-sref="season-detail({id:divisionEvent.season.id})">{{divisionEvent.season.name}}</a>
+                        <a ui-sref="season-detail({id:divisionEvent.season.id})">{{divisionEvent.season.id}}</a>
                     </td>
                     <td>
-                        <a ui-sref="division-detail({id:divisionEvent.division.id})">{{divisionEvent.division.name}}</a>
+                        <a ui-sref="division-detail({id:divisionEvent.division.id})">{{divisionEvent.division.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
