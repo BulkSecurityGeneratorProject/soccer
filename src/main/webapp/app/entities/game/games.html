@@ -43,7 +43,7 @@
                     <td>{{game.homeScoreHalf}}</td>
                     <td>{{game.roadScoreHalf}}</td>
                     <td>
-                        <a ui-sref="timeslot-detail({id:game.timeslot.id})">{{game.timeslot.name}}</a>
+                        <a ui-sref="timeslot-detail({id:game.timeslot.id})">{{game.timeslot.divisionEvent.season.name}}-{{game.timeslot.divisionEvent.division.name}}</a>
                     </td>
                     <td>
                         <a ui-sref="venue-detail({id:game.venue.id})">{{game.venue.name}}</a>

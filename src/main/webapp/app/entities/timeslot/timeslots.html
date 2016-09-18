@@ -21,6 +21,7 @@
                     <th><span>ID</span></th>
                     <th><span>Round</span></th>
                     <th><span>Type</span></th>
+                    <th><span>Division Event</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,6 +31,9 @@
                     <td>{{timeslot.round}}</td>
                     <td>
                         <a ui-sref="dict-detail({id:timeslot.type.id})">{{timeslot.type.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="division-event-detail({id:timeslot.divisionEvent.id})">{{timeslot.divisionEvent.season.name}}-{{timeslot.divisionEvent.division.name}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

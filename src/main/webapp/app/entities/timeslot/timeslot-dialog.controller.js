@@ -5,15 +5,16 @@
         .module('soccerApp')
         .controller('TimeslotDialogController', TimeslotDialogController);
 
-    TimeslotDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Timeslot', 'Dict'];
+    TimeslotDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Timeslot', 'Dict', 'DivisionEvent'];
 
-    function TimeslotDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Timeslot, Dict) {
+    function TimeslotDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Timeslot, Dict, DivisionEvent) {
         var vm = this;
 
         vm.timeslot = entity;
         vm.clear = clear;
         vm.save = save;
         vm.dicts = Dict.query();
+        vm.divisionevents = DivisionEvent.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

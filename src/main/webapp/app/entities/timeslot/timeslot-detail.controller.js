@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('TimeslotDetailController', TimeslotDetailController);
 
-    TimeslotDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Timeslot', 'Dict'];
+    TimeslotDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Timeslot', 'Dict', 'DivisionEvent'];
 
-    function TimeslotDetailController($scope, $rootScope, $stateParams, previousState, entity, Timeslot, Dict) {
+    function TimeslotDetailController($scope, $rootScope, $stateParams, previousState, entity, Timeslot, Dict, DivisionEvent) {
         var vm = this;
 
         vm.timeslot = entity;

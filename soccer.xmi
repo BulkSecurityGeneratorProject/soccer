@@ -1,350 +1,357 @@
-<?xml version="1.0" encoding="UTF-8"?><uml:Model xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:version="2.1" xmi:id="_n6IakHpCEeaiH-nE7_ccBg" name="soccer">
-  <eAnnotations xmi:id="_n6IakXpCEeaiH-nE7_ccBg" source="Objing">
-    <contents xmi:type="uml:Property" xmi:id="_n6IaknpCEeaiH-nE7_ccBg" name="exporterVersion">
-      <defaultValue xmi:type="uml:LiteralString" xmi:id="_n6Iak3pCEeaiH-nE7_ccBg" value="3.0.0"/>
+<?xml version="1.0" encoding="UTF-8"?><uml:Model xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:version="2.1" xmi:id="_5_9PIHpQEeaiH-nE7_ccBg" name="soccer">
+  <eAnnotations xmi:id="_5_9PIXpQEeaiH-nE7_ccBg" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_5_9PInpQEeaiH-nE7_ccBg" name="exporterVersion">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_5_9PI3pQEeaiH-nE7_ccBg" value="3.0.0"/>
     </contents>
   </eAnnotations>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6IalHpCEeaiH-nE7_ccBg" name="Player">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IalXpCEeaiH-nE7_ccBg" name="team" visibility="private" type="_n6IanXpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6IamXpCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IalnpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PJHpQEeaiH-nE7_ccBg" name="Player">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PJXpQEeaiH-nE7_ccBg" name="team" visibility="private" type="_5_9PLXpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PKXpQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PJnpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ial3pCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PJ3pQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IamHpCEeaiH-nE7_ccBg" name="birth" visibility="private" type="_n6IavnpCEeaiH-nE7_ccBg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PKHpQEeaiH-nE7_ccBg" name="birth" visibility="private" type="_5_9PTnpQEeaiH-nE7_ccBg" isUnique="false"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6IamXpCEeaiH-nE7_ccBg" memberEnd="_n6IalXpCEeaiH-nE7_ccBg _n6IamnpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6IamnpCEeaiH-nE7_ccBg" visibility="public" type="_n6IalHpCEeaiH-nE7_ccBg" association="_n6IamXpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6Iam3pCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IanHpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PKXpQEeaiH-nE7_ccBg" memberEnd="_5_9PJXpQEeaiH-nE7_ccBg _5_9PKnpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PKnpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PJHpQEeaiH-nE7_ccBg" association="_5_9PKXpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PK3pQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PLHpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6IanXpCEeaiH-nE7_ccBg" name="Team">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IannpCEeaiH-nE7_ccBg" name="club" visibility="private" type="_n6Iaq3pCEeaiH-nE7_ccBg" aggregation="shared" association="_n6Iao3pCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ian3pCEeaiH-nE7_ccBg" name="type" visibility="private" type="_n6IawnpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6Iap3pCEeaiH-nE7_ccBg">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IaoHpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PLXpQEeaiH-nE7_ccBg" name="Team">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PLnpQEeaiH-nE7_ccBg" name="club" visibility="private" type="_5_9PO3pQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PM3pQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PL3pQEeaiH-nE7_ccBg" name="type" visibility="private" type="_5_9PUnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PN3pQEeaiH-nE7_ccBg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PMHpQEeaiH-nE7_ccBg"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IaoXpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PMXpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IaonpCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PMnpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6Iao3pCEeaiH-nE7_ccBg" memberEnd="_n6IannpCEeaiH-nE7_ccBg _n6IapHpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6IapHpCEeaiH-nE7_ccBg" visibility="public" type="_n6IanXpCEeaiH-nE7_ccBg" association="_n6Iao3pCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6IapXpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IapnpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PM3pQEeaiH-nE7_ccBg" memberEnd="_5_9PLnpQEeaiH-nE7_ccBg _5_9PNHpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PNHpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PLXpQEeaiH-nE7_ccBg" association="_5_9PM3pQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PNXpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PNnpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6Iap3pCEeaiH-nE7_ccBg" memberEnd="_n6Ian3pCEeaiH-nE7_ccBg _n6IaqHpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6IaqHpCEeaiH-nE7_ccBg" visibility="public" type="_n6IanXpCEeaiH-nE7_ccBg" association="_n6Iap3pCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6IaqXpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IaqnpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PN3pQEeaiH-nE7_ccBg" memberEnd="_5_9PL3pQEeaiH-nE7_ccBg _5_9POHpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9POHpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PLXpQEeaiH-nE7_ccBg" association="_5_9PN3pQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9POXpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9POnpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6Iaq3pCEeaiH-nE7_ccBg" name="Club">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IarHpCEeaiH-nE7_ccBg" name="association" visibility="private" type="_n6IaunpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6IasnpCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IarXpCEeaiH-nE7_ccBg" name="venue" visibility="private" type="_n6Ia0HpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6IatnpCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IarnpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PO3pQEeaiH-nE7_ccBg" name="Club">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PPHpQEeaiH-nE7_ccBg" name="association" visibility="private" type="_5_9PSnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PQnpQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PPXpQEeaiH-nE7_ccBg" name="venue" visibility="private" type="_5_9PYHpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PRnpQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PPnpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Iar3pCEeaiH-nE7_ccBg" name="createAt" visibility="private" type="_n6IavnpCEeaiH-nE7_ccBg" isUnique="false"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IasHpCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PP3pQEeaiH-nE7_ccBg" name="createAt" visibility="private" type="_5_9PTnpQEeaiH-nE7_ccBg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PQHpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IasXpCEeaiH-nE7_ccBg" name="shortName" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PQXpQEeaiH-nE7_ccBg" name="shortName" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6IasnpCEeaiH-nE7_ccBg" memberEnd="_n6IarHpCEeaiH-nE7_ccBg _n6Ias3pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6Ias3pCEeaiH-nE7_ccBg" visibility="public" type="_n6Iaq3pCEeaiH-nE7_ccBg" association="_n6IasnpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6IatHpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IatXpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PQnpQEeaiH-nE7_ccBg" memberEnd="_5_9PPHpQEeaiH-nE7_ccBg _5_9PQ3pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PQ3pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PO3pQEeaiH-nE7_ccBg" association="_5_9PQnpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PRHpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PRXpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6IatnpCEeaiH-nE7_ccBg" memberEnd="_n6IarXpCEeaiH-nE7_ccBg _n6Iat3pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6Iat3pCEeaiH-nE7_ccBg" visibility="public" type="_n6Iaq3pCEeaiH-nE7_ccBg" association="_n6IatnpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6IauHpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IauXpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PRnpQEeaiH-nE7_ccBg" memberEnd="_5_9PPXpQEeaiH-nE7_ccBg _5_9PR3pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PR3pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PO3pQEeaiH-nE7_ccBg" association="_5_9PRnpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PSHpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PSXpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6IaunpCEeaiH-nE7_ccBg" name="Association">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Iau3pCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PSnpQEeaiH-nE7_ccBg" name="Association">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PS3pQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IavHpCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PTHpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IavXpCEeaiH-nE7_ccBg" name="createAt" visibility="private" type="_n6IavnpCEeaiH-nE7_ccBg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PTXpQEeaiH-nE7_ccBg" name="createAt" visibility="private" type="_5_9PTnpQEeaiH-nE7_ccBg" isUnique="false"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_n6IavnpCEeaiH-nE7_ccBg" name="LocalDate"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6Iav3pCEeaiH-nE7_ccBg" name="DictKind">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IawHpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_5_9PTnpQEeaiH-nE7_ccBg" name="LocalDate"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PT3pQEeaiH-nE7_ccBg" name="DictKind">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PUHpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IawXpCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
-      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6IawnpCEeaiH-nE7_ccBg" name="Dict">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Iaw3pCEeaiH-nE7_ccBg" name="dictKind" visibility="private" type="_n6Iav3pCEeaiH-nE7_ccBg" aggregation="shared" association="_n6Iax3pCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IaxHpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
-      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IaxXpCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
-      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IaxnpCEeaiH-nE7_ccBg" name="code" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PUXpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6Iax3pCEeaiH-nE7_ccBg" memberEnd="_n6Iaw3pCEeaiH-nE7_ccBg _n6IayHpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6IayHpCEeaiH-nE7_ccBg" visibility="public" type="_n6IawnpCEeaiH-nE7_ccBg" association="_n6Iax3pCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6IayXpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IaynpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PUnpQEeaiH-nE7_ccBg" name="Dict">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PU3pQEeaiH-nE7_ccBg" name="dictKind" visibility="private" type="_5_9PT3pQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PV3pQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PVHpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PVXpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PVnpQEeaiH-nE7_ccBg" name="code" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PV3pQEeaiH-nE7_ccBg" memberEnd="_5_9PU3pQEeaiH-nE7_ccBg _5_9PWHpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PWHpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PUnpQEeaiH-nE7_ccBg" association="_5_9PV3pQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PWXpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PWnpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6Iay3pCEeaiH-nE7_ccBg" name="Season">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IazHpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PW3pQEeaiH-nE7_ccBg" name="Season">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PXHpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IazXpCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PXXpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IaznpCEeaiH-nE7_ccBg" name="startAt" visibility="private" type="_n6IavnpCEeaiH-nE7_ccBg" isUnique="false"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Iaz3pCEeaiH-nE7_ccBg" name="endAt" visibility="private" type="_n6IavnpCEeaiH-nE7_ccBg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PXnpQEeaiH-nE7_ccBg" name="startAt" visibility="private" type="_5_9PTnpQEeaiH-nE7_ccBg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PX3pQEeaiH-nE7_ccBg" name="endAt" visibility="private" type="_5_9PTnpQEeaiH-nE7_ccBg" isUnique="false"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6Ia0HpCEeaiH-nE7_ccBg" name="Venue">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia0XpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PYHpQEeaiH-nE7_ccBg" name="Venue">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PYXpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia0npCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PYnpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia03pCEeaiH-nE7_ccBg" name="shortName" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PY3pQEeaiH-nE7_ccBg" name="shortName" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia1HpCEeaiH-nE7_ccBg" name="createAt" visibility="private" type="_n6IavnpCEeaiH-nE7_ccBg" isUnique="false"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia1XpCEeaiH-nE7_ccBg" name="address" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PZHpQEeaiH-nE7_ccBg" name="createAt" visibility="private" type="_5_9PTnpQEeaiH-nE7_ccBg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PZXpQEeaiH-nE7_ccBg" name="address" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia1npCEeaiH-nE7_ccBg" name="city" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PZnpQEeaiH-nE7_ccBg" name="city" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia13pCEeaiH-nE7_ccBg" name="province" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PZ3pQEeaiH-nE7_ccBg" name="province" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia2HpCEeaiH-nE7_ccBg" name="town" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PaHpQEeaiH-nE7_ccBg" name="town" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia2XpCEeaiH-nE7_ccBg" name="country" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PaXpQEeaiH-nE7_ccBg" name="country" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia2npCEeaiH-nE7_ccBg" name="zip" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PanpQEeaiH-nE7_ccBg" name="zip" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia23pCEeaiH-nE7_ccBg" name="telephone" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Pa3pQEeaiH-nE7_ccBg" name="telephone" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia3HpCEeaiH-nE7_ccBg" name="latlng" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PbHpQEeaiH-nE7_ccBg" name="latlng" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6Ia3XpCEeaiH-nE7_ccBg" name="Division">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia3npCEeaiH-nE7_ccBg" name="type" visibility="private" type="_n6IawnpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6Ia5npCEeaiH-nE7_ccBg">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6Ia33pCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PbXpQEeaiH-nE7_ccBg" name="Division">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PbnpQEeaiH-nE7_ccBg" name="type" visibility="private" type="_5_9PUnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PdnpQEeaiH-nE7_ccBg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9Pb3pQEeaiH-nE7_ccBg"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia4HpCEeaiH-nE7_ccBg" name="association" visibility="private" type="_n6IaunpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6Ia6npCEeaiH-nE7_ccBg">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6Ia4XpCEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PcHpQEeaiH-nE7_ccBg" name="association" visibility="private" type="_5_9PSnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PenpQEeaiH-nE7_ccBg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PcXpQEeaiH-nE7_ccBg"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia4npCEeaiH-nE7_ccBg" name="rankingRule" visibility="public" type="_n6JBq3pCEeaiH-nE7_ccBg" aggregation="shared" association="_n6Ia7npCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia43pCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PcnpQEeaiH-nE7_ccBg" name="rankingRule" visibility="private" type="_5_9Pv3pQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PfnpQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Pc3pQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia5HpCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PdHpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia5XpCEeaiH-nE7_ccBg" name="createAt" visibility="private" type="_n6IavnpCEeaiH-nE7_ccBg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PdXpQEeaiH-nE7_ccBg" name="createAt" visibility="private" type="_5_9PTnpQEeaiH-nE7_ccBg" isUnique="false"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6Ia5npCEeaiH-nE7_ccBg" memberEnd="_n6Ia3npCEeaiH-nE7_ccBg _n6Ia53pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6Ia53pCEeaiH-nE7_ccBg" visibility="public" type="_n6Ia3XpCEeaiH-nE7_ccBg" association="_n6Ia5npCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6Ia6HpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6Ia6XpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PdnpQEeaiH-nE7_ccBg" memberEnd="_5_9PbnpQEeaiH-nE7_ccBg _5_9Pd3pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9Pd3pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PbXpQEeaiH-nE7_ccBg" association="_5_9PdnpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PeHpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PeXpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6Ia6npCEeaiH-nE7_ccBg" memberEnd="_n6Ia4HpCEeaiH-nE7_ccBg _n6Ia63pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6Ia63pCEeaiH-nE7_ccBg" visibility="public" type="_n6Ia3XpCEeaiH-nE7_ccBg" association="_n6Ia6npCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6Ia7HpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6Ia7XpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PenpQEeaiH-nE7_ccBg" memberEnd="_5_9PcHpQEeaiH-nE7_ccBg _5_9Pe3pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9Pe3pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PbXpQEeaiH-nE7_ccBg" association="_5_9PenpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PfHpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PfXpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6Ia7npCEeaiH-nE7_ccBg" memberEnd="_n6Ia4npCEeaiH-nE7_ccBg _n6Ia73pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6Ia73pCEeaiH-nE7_ccBg" visibility="public" type="_n6Ia3XpCEeaiH-nE7_ccBg" association="_n6Ia7npCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6Ia8HpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6Ia8XpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PfnpQEeaiH-nE7_ccBg" memberEnd="_5_9PcnpQEeaiH-nE7_ccBg _5_9Pf3pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9Pf3pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PbXpQEeaiH-nE7_ccBg" association="_5_9PfnpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PgHpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PgXpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6Ia8npCEeaiH-nE7_ccBg" name="DivisionEvent">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia83pCEeaiH-nE7_ccBg" name="season" visibility="private" type="_n6Iay3pCEeaiH-nE7_ccBg" aggregation="shared" association="_n6Ia9npCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia9HpCEeaiH-nE7_ccBg" name="division" visibility="private" type="_n6Ia3XpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6Ia-npCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia9XpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PgnpQEeaiH-nE7_ccBg" name="DivisionEvent">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Pg3pQEeaiH-nE7_ccBg" name="season" visibility="private" type="_5_9PW3pQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PhnpQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PhHpQEeaiH-nE7_ccBg" name="division" visibility="private" type="_5_9PbXpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PinpQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PhXpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6Ia9npCEeaiH-nE7_ccBg" memberEnd="_n6Ia83pCEeaiH-nE7_ccBg _n6Ia93pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6Ia93pCEeaiH-nE7_ccBg" visibility="public" type="_n6Ia8npCEeaiH-nE7_ccBg" association="_n6Ia9npCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6Ia-HpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6Ia-XpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PhnpQEeaiH-nE7_ccBg" memberEnd="_5_9Pg3pQEeaiH-nE7_ccBg _5_9Ph3pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9Ph3pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PgnpQEeaiH-nE7_ccBg" association="_5_9PhnpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PiHpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PiXpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6Ia-npCEeaiH-nE7_ccBg" memberEnd="_n6Ia9HpCEeaiH-nE7_ccBg _n6Ia-3pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6Ia-3pCEeaiH-nE7_ccBg" visibility="public" type="_n6Ia8npCEeaiH-nE7_ccBg" association="_n6Ia-npCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6Ia_HpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6Ia_XpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PinpQEeaiH-nE7_ccBg" memberEnd="_5_9PhHpQEeaiH-nE7_ccBg _5_9Pi3pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9Pi3pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PgnpQEeaiH-nE7_ccBg" association="_5_9PinpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PjHpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PjXpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6Ia_npCEeaiH-nE7_ccBg" name="Timeslot">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6Ia_3pCEeaiH-nE7_ccBg" name="type" visibility="private" type="_n6IawnpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6IbA3pCEeaiH-nE7_ccBg">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IbAHpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PjnpQEeaiH-nE7_ccBg" name="Timeslot">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Pj3pQEeaiH-nE7_ccBg" name="type" visibility="private" type="_5_9PUnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PlHpQEeaiH-nE7_ccBg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PkHpQEeaiH-nE7_ccBg"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbAXpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PkXpQEeaiH-nE7_ccBg" name="divisionEvent" visibility="private" type="_5_9PgnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PmHpQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PknpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbAnpCEeaiH-nE7_ccBg" name="round" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Pk3pQEeaiH-nE7_ccBg" name="round" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6IbA3pCEeaiH-nE7_ccBg" memberEnd="_n6Ia_3pCEeaiH-nE7_ccBg _n6IbBHpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6IbBHpCEeaiH-nE7_ccBg" visibility="public" type="_n6Ia_npCEeaiH-nE7_ccBg" association="_n6IbA3pCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6IbBXpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IbBnpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PlHpQEeaiH-nE7_ccBg" memberEnd="_5_9Pj3pQEeaiH-nE7_ccBg _5_9PlXpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PlXpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PjnpQEeaiH-nE7_ccBg" association="_5_9PlHpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PlnpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9Pl3pQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6IbB3pCEeaiH-nE7_ccBg" name="Game">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbCHpCEeaiH-nE7_ccBg" name="timeslot" visibility="private" type="_n6Ia_npCEeaiH-nE7_ccBg" aggregation="shared" association="_n6IbFnpCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbCXpCEeaiH-nE7_ccBg" name="venue" visibility="private" type="_n6Ia0HpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6IbGnpCEeaiH-nE7_ccBg">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IbCnpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PmHpQEeaiH-nE7_ccBg" memberEnd="_5_9PkXpQEeaiH-nE7_ccBg _5_9PmXpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PmXpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PjnpQEeaiH-nE7_ccBg" association="_5_9PmHpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PmnpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9Pm3pQEeaiH-nE7_ccBg"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PnHpQEeaiH-nE7_ccBg" name="Game">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PnXpQEeaiH-nE7_ccBg" name="timeslot" visibility="private" type="_5_9PjnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9Pq3pQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PnnpQEeaiH-nE7_ccBg" name="venue" visibility="private" type="_5_9PYHpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9Pr3pQEeaiH-nE7_ccBg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9Pn3pQEeaiH-nE7_ccBg"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbC3pCEeaiH-nE7_ccBg" name="status" visibility="private" type="_n6IawnpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6IbHnpCEeaiH-nE7_ccBg">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IbDHpCEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PoHpQEeaiH-nE7_ccBg" name="status" visibility="private" type="_5_9PUnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9Ps3pQEeaiH-nE7_ccBg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PoXpQEeaiH-nE7_ccBg"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbDXpCEeaiH-nE7_ccBg" name="homeTeam" visibility="private" type="_n6IanXpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6JBo3pCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbDnpCEeaiH-nE7_ccBg" name="roadTeam" visibility="private" type="_n6IanXpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6JBp3pCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbD3pCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PonpQEeaiH-nE7_ccBg" name="homeTeam" visibility="private" type="_5_9PLXpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9Pt3pQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Po3pQEeaiH-nE7_ccBg" name="roadTeam" visibility="private" type="_5_9PLXpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9Pu3pQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PpHpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbEHpCEeaiH-nE7_ccBg" name="startAt" visibility="private" type="_n6IavnpCEeaiH-nE7_ccBg" isUnique="false"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbEXpCEeaiH-nE7_ccBg" name="homeScore" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PpXpQEeaiH-nE7_ccBg" name="startAt" visibility="private" type="_5_9PTnpQEeaiH-nE7_ccBg" isUnique="false"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PpnpQEeaiH-nE7_ccBg" name="homeScore" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbEnpCEeaiH-nE7_ccBg" name="roadScore" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Pp3pQEeaiH-nE7_ccBg" name="roadScore" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbE3pCEeaiH-nE7_ccBg" name="note" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PqHpQEeaiH-nE7_ccBg" name="note" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbFHpCEeaiH-nE7_ccBg" name="homeScoreHalf" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PqXpQEeaiH-nE7_ccBg" name="homeScoreHalf" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6IbFXpCEeaiH-nE7_ccBg" name="roadScoreHalf" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PqnpQEeaiH-nE7_ccBg" name="roadScoreHalf" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6IbFnpCEeaiH-nE7_ccBg" memberEnd="_n6IbCHpCEeaiH-nE7_ccBg _n6IbF3pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6IbF3pCEeaiH-nE7_ccBg" visibility="public" type="_n6IbB3pCEeaiH-nE7_ccBg" association="_n6IbFnpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6IbGHpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IbGXpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9Pq3pQEeaiH-nE7_ccBg" memberEnd="_5_9PnXpQEeaiH-nE7_ccBg _5_9PrHpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PrHpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PnHpQEeaiH-nE7_ccBg" association="_5_9Pq3pQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PrXpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PrnpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6IbGnpCEeaiH-nE7_ccBg" memberEnd="_n6IbCXpCEeaiH-nE7_ccBg _n6IbG3pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6IbG3pCEeaiH-nE7_ccBg" visibility="public" type="_n6IbB3pCEeaiH-nE7_ccBg" association="_n6IbGnpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6IbHHpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6IbHXpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9Pr3pQEeaiH-nE7_ccBg" memberEnd="_5_9PnnpQEeaiH-nE7_ccBg _5_9PsHpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PsHpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PnHpQEeaiH-nE7_ccBg" association="_5_9Pr3pQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PsXpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PsnpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6IbHnpCEeaiH-nE7_ccBg" memberEnd="_n6IbC3pCEeaiH-nE7_ccBg _n6JBoHpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6JBoHpCEeaiH-nE7_ccBg" visibility="public" type="_n6IbB3pCEeaiH-nE7_ccBg" association="_n6IbHnpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6JBoXpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6JBonpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9Ps3pQEeaiH-nE7_ccBg" memberEnd="_5_9PoHpQEeaiH-nE7_ccBg _5_9PtHpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PtHpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PnHpQEeaiH-nE7_ccBg" association="_5_9Ps3pQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PtXpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PtnpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6JBo3pCEeaiH-nE7_ccBg" memberEnd="_n6IbDXpCEeaiH-nE7_ccBg _n6JBpHpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6JBpHpCEeaiH-nE7_ccBg" visibility="public" type="_n6IbB3pCEeaiH-nE7_ccBg" association="_n6JBo3pCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6JBpXpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6JBpnpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9Pt3pQEeaiH-nE7_ccBg" memberEnd="_5_9PonpQEeaiH-nE7_ccBg _5_9PuHpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PuHpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PnHpQEeaiH-nE7_ccBg" association="_5_9Pt3pQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PuXpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PunpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6JBp3pCEeaiH-nE7_ccBg" memberEnd="_n6IbDnpCEeaiH-nE7_ccBg _n6JBqHpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6JBqHpCEeaiH-nE7_ccBg" visibility="public" type="_n6IbB3pCEeaiH-nE7_ccBg" association="_n6JBp3pCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6JBqXpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6JBqnpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9Pu3pQEeaiH-nE7_ccBg" memberEnd="_5_9Po3pQEeaiH-nE7_ccBg _5_9PvHpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PvHpQEeaiH-nE7_ccBg" visibility="public" type="_5_9PnHpQEeaiH-nE7_ccBg" association="_5_9Pu3pQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PvXpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PvnpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6JBq3pCEeaiH-nE7_ccBg" name="RankingRule">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBrHpCEeaiH-nE7_ccBg" name="rankedOn" visibility="private" type="_n6IawnpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6JBtHpCEeaiH-nE7_ccBg">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6JBrXpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9Pv3pQEeaiH-nE7_ccBg" name="RankingRule">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PwHpQEeaiH-nE7_ccBg" name="rankedOn" visibility="private" type="_5_9PUnpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9PyHpQEeaiH-nE7_ccBg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9PwXpQEeaiH-nE7_ccBg"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBrnpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PwnpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBr3pCEeaiH-nE7_ccBg" name="win" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Pw3pQEeaiH-nE7_ccBg" name="win" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBsHpCEeaiH-nE7_ccBg" name="loss" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PxHpQEeaiH-nE7_ccBg" name="loss" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBsXpCEeaiH-nE7_ccBg" name="draw" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PxXpQEeaiH-nE7_ccBg" name="draw" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBsnpCEeaiH-nE7_ccBg" name="scoreFor" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PxnpQEeaiH-nE7_ccBg" name="scoreFor" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBs3pCEeaiH-nE7_ccBg" name="scoreAgain" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Px3pQEeaiH-nE7_ccBg" name="scoreAgain" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6JBtHpCEeaiH-nE7_ccBg" memberEnd="_n6JBrHpCEeaiH-nE7_ccBg _n6JBtXpCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6JBtXpCEeaiH-nE7_ccBg" visibility="public" type="_n6JBq3pCEeaiH-nE7_ccBg" association="_n6JBtHpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6JBtnpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6JBt3pCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9PyHpQEeaiH-nE7_ccBg" memberEnd="_5_9PwHpQEeaiH-nE7_ccBg _5_9PyXpQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9PyXpQEeaiH-nE7_ccBg" visibility="public" type="_5_9Pv3pQEeaiH-nE7_ccBg" association="_5_9PyHpQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9PynpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9Py3pQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6JBuHpCEeaiH-nE7_ccBg" name="ResultData">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBuXpCEeaiH-nE7_ccBg" name="game" visibility="private" type="_n6IbB3pCEeaiH-nE7_ccBg" aggregation="shared" association="_n6JBvnpCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBunpCEeaiH-nE7_ccBg" name="player" visibility="public" type="_n6IalHpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6JBwnpCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBu3pCEeaiH-nE7_ccBg" name="resultField" visibility="private" type="_n6JBynpCEeaiH-nE7_ccBg" aggregation="shared" association="_n6JBxnpCEeaiH-nE7_ccBg"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBvHpCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9PzHpQEeaiH-nE7_ccBg" name="ResultData">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PzXpQEeaiH-nE7_ccBg" name="game" visibility="private" type="_5_9PnHpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9P0npQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9PznpQEeaiH-nE7_ccBg" name="player" visibility="public" type="_5_9PJHpQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9P1npQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9Pz3pQEeaiH-nE7_ccBg" name="resultField" visibility="private" type="_5_9P3npQEeaiH-nE7_ccBg" aggregation="shared" association="_5_9P2npQEeaiH-nE7_ccBg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9P0HpQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBvXpCEeaiH-nE7_ccBg" name="value" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9P0XpQEeaiH-nE7_ccBg" name="value" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Integer"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6JBvnpCEeaiH-nE7_ccBg" memberEnd="_n6JBuXpCEeaiH-nE7_ccBg _n6JBv3pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6JBv3pCEeaiH-nE7_ccBg" visibility="public" type="_n6JBuHpCEeaiH-nE7_ccBg" association="_n6JBvnpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6JBwHpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6JBwXpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9P0npQEeaiH-nE7_ccBg" memberEnd="_5_9PzXpQEeaiH-nE7_ccBg _5_9P03pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9P03pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PzHpQEeaiH-nE7_ccBg" association="_5_9P0npQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9P1HpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9P1XpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6JBwnpCEeaiH-nE7_ccBg" memberEnd="_n6JBunpCEeaiH-nE7_ccBg _n6JBw3pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6JBw3pCEeaiH-nE7_ccBg" visibility="public" type="_n6JBuHpCEeaiH-nE7_ccBg" association="_n6JBwnpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6JBxHpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6JBxXpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9P1npQEeaiH-nE7_ccBg" memberEnd="_5_9PznpQEeaiH-nE7_ccBg _5_9P13pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9P13pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PzHpQEeaiH-nE7_ccBg" association="_5_9P1npQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9P2HpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9P2XpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_n6JBxnpCEeaiH-nE7_ccBg" memberEnd="_n6JBu3pCEeaiH-nE7_ccBg _n6JBx3pCEeaiH-nE7_ccBg">
-    <ownedEnd xmi:type="uml:Property" xmi:id="_n6JBx3pCEeaiH-nE7_ccBg" visibility="public" type="_n6JBuHpCEeaiH-nE7_ccBg" association="_n6JBxnpCEeaiH-nE7_ccBg">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n6JByHpCEeaiH-nE7_ccBg" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n6JByXpCEeaiH-nE7_ccBg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5_9P2npQEeaiH-nE7_ccBg" memberEnd="_5_9Pz3pQEeaiH-nE7_ccBg _5_9P23pQEeaiH-nE7_ccBg">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5_9P23pQEeaiH-nE7_ccBg" visibility="public" type="_5_9PzHpQEeaiH-nE7_ccBg" association="_5_9P2npQEeaiH-nE7_ccBg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_9P3HpQEeaiH-nE7_ccBg" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_9P3XpQEeaiH-nE7_ccBg"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_n6JBynpCEeaiH-nE7_ccBg" name="ResultField">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBy3pCEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
+  <packagedElement xmi:type="uml:Class" xmi:id="_5_9P3npQEeaiH-nE7_ccBg" name="ResultField">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9P33pQEeaiH-nE7_ccBg" name="id" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_n6JBzHpCEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5_9P4HpQEeaiH-nE7_ccBg" name="name" visibility="private" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
     </ownedAttribute>
   </packagedElement>

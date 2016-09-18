@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Timeslot Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockTimeslot, MockDict;
+        var MockEntity, MockPreviousState, MockTimeslot, MockDict, MockDivisionEvent;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -14,6 +14,7 @@ describe('Controller Tests', function() {
             MockPreviousState = jasmine.createSpy('MockPreviousState');
             MockTimeslot = jasmine.createSpy('MockTimeslot');
             MockDict = jasmine.createSpy('MockDict');
+            MockDivisionEvent = jasmine.createSpy('MockDivisionEvent');
             
 
             var locals = {
@@ -22,7 +23,8 @@ describe('Controller Tests', function() {
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
                 'Timeslot': MockTimeslot,
-                'Dict': MockDict
+                'Dict': MockDict,
+                'DivisionEvent': MockDivisionEvent
             };
             createController = function() {
                 $injector.get('$controller')("TimeslotDetailController", locals);
