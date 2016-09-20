@@ -9,12 +9,11 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('hello', {
-            parent: 'entity',
-            url: '/table/1',
+        .state('division-event.table', {
+            parent: 'division-event',
+            url: '/{id}/table',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'DivisionEventTable'
             },
             views: {
                 'content@': {
@@ -24,6 +23,7 @@
                 }
             },
             resolve: {
+
             }
         });
     }

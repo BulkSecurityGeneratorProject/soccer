@@ -12,10 +12,10 @@
         
         vm.divisionEvents = [];
 
-        loadAll();
+        loadAll($state.params);
 
-        function loadAll() {
-        	DivisionEventTable.query(function(result) {
+        function loadAll(params) {
+        	DivisionEventTable.query(params,function(result) {
                 vm.divisionEvents = result;
             });
         }

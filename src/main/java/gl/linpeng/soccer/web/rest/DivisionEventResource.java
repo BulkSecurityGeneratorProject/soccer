@@ -163,7 +163,7 @@ public class DivisionEventResource {
 	 * @return the ResponseEntity with status 200 (OK) and the list of
 	 *         divisionEvents in body
 	 */
-	@RequestMapping(value = "/division-events/{id}/table", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/division-event/{id}/table", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public List<Team> getDivisionEventTable(@PathVariable Long id) {
 		log.debug("REST request to get table of DivisionEvents : {}", id);
