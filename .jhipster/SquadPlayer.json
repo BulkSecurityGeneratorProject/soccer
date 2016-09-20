@@ -1,0 +1,35 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "squad",
+      "otherEntityName": "squad",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "player",
+      "otherEntityName": "player",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "playerNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "isSubstitute",
+      "fieldType": "Boolean"
+    }
+  ],
+  "changelogDate": "20160920053528",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "squad_player"
+}

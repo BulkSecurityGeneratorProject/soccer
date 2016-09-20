@@ -1,0 +1,24 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipType": "many-to-one",
+      "relationshipName": "game",
+      "otherEntityName": "game",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "team",
+      "otherEntityName": "team",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [],
+  "changelogDate": "20160920053527",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "squad"
+}

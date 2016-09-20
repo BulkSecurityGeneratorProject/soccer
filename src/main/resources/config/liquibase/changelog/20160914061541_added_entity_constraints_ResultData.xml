@@ -14,11 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="game"/>
 
-        <addForeignKeyConstraint baseColumnNames="player_id"
+        <addForeignKeyConstraint baseColumnNames="squad_player_id"
                                  baseTableName="result_data"
-                                 constraintName="fk_result_data_player_id"
+                                 constraintName="fk_result_data_squad_player_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="player"/>
+                                 referencedTableName="squad_player"/>
 
         <addForeignKeyConstraint baseColumnNames="result_field_id"
                                  baseTableName="result_data"

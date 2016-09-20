@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity SquadPlayer.
+    -->
+    <changeSet id="20160920053528-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="squad_id"
+                                 baseTableName="squad_player"
+                                 constraintName="fk_squad_player_squad_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="squad"/>
+
+        <addForeignKeyConstraint baseColumnNames="player_id"
+                                 baseTableName="squad_player"
+                                 constraintName="fk_squad_player_player_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="player"/>
+
+    </changeSet>
+</databaseChangeLog>

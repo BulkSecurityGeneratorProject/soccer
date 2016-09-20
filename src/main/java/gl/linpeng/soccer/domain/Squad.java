@@ -8,12 +8,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A ResultData.
+ * A Squad.
  */
 @Entity
-@Table(name = "result_data")
+@Table(name = "squad")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class ResultData implements Serializable {
+public class Squad implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,17 +21,11 @@ public class ResultData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "value")
-    private Integer value;
-
     @ManyToOne
     private Game game;
 
     @ManyToOne
-    private SquadPlayer squadPlayer;
-
-    @ManyToOne
-    private ResultField resultField;
+    private Team team;
 
     public Long getId() {
         return id;
@@ -39,14 +33,6 @@ public class ResultData implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public void setValue(Integer value) {
-        this.value = value;
     }
 
     public Game getGame() {
@@ -57,20 +43,12 @@ public class ResultData implements Serializable {
         this.game = game;
     }
 
-    public SquadPlayer getSquadPlayer() {
-        return squadPlayer;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setSquadPlayer(SquadPlayer squadPlayer) {
-        this.squadPlayer = squadPlayer;
-    }
-
-    public ResultField getResultField() {
-        return resultField;
-    }
-
-    public void setResultField(ResultField resultField) {
-        this.resultField = resultField;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     @Override
@@ -81,11 +59,11 @@ public class ResultData implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ResultData resultData = (ResultData) o;
-        if(resultData.id == null || id == null) {
+        Squad squad = (Squad) o;
+        if(squad.id == null || id == null) {
             return false;
         }
-        return Objects.equals(id, resultData.id);
+        return Objects.equals(id, squad.id);
     }
 
     @Override
@@ -95,9 +73,8 @@ public class ResultData implements Serializable {
 
     @Override
     public String toString() {
-        return "ResultData{" +
+        return "Squad{" +
             "id=" + id +
-            ", value='" + value + "'" +
             '}';
     }
 }

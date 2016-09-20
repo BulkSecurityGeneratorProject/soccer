@@ -14,26 +14,26 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity ResultData.
+        Added the entity SquadPlayer.
     -->
-    <changeSet id="20160914061541-1" author="jhipster">
-        <createTable tableName="result_data">
+    <changeSet id="20160920053528-1" author="jhipster">
+        <createTable tableName="squad_player">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="value" type="integer">
+            <column name="player_number" type="integer">
                 <constraints nullable="true" />
             </column>
             
-            <column name="game_id" type="bigint">
+            <column name="is_substitute" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="squad_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="squad_player_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="result_field_id" type="bigint">
+            <column name="player_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

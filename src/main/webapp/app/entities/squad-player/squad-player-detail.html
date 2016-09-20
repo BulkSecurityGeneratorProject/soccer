@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Squad Player</span> {{vm.squadPlayer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Player Number</span></dt>
+        <dd>
+            <span>{{vm.squadPlayer.playerNumber}}</span>
+        </dd>
+        <dt><span>Is Substitute</span></dt>
+        <dd>
+            <span>{{vm.squadPlayer.isSubstitute}}</span>
+        </dd>
+        <dt><span>Squad</span></dt>
+        <dd>
+            <a ui-sref="squad-detail({id:vm.squadPlayer.squad.id})">{{vm.squadPlayer.squad.id}}</a>
+        </dd>
+        <dt><span>Player</span></dt>
+        <dd>
+            <a ui-sref="player-detail({id:vm.squadPlayer.player.id})">{{vm.squadPlayer.player.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="squad-player-detail.edit({id:vm.squadPlayer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>
