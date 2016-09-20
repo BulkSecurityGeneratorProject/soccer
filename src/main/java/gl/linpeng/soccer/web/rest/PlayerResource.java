@@ -1,12 +1,17 @@
 package gl.linpeng.soccer.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import gl.linpeng.soccer.domain.Player;
 
+import gl.linpeng.soccer.domain.Player;
+import gl.linpeng.soccer.domain.Team;
 import gl.linpeng.soccer.repository.PlayerRepository;
+import gl.linpeng.soccer.repository.PlayerSpecifications;
 import gl.linpeng.soccer.web.rest.util.HeaderUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -89,6 +95,21 @@ public class PlayerResource {
     public List<Player> getAllPlayers() {
         log.debug("REST request to get all Players");
         List<Player> players = playerRepository.findAll();
+        return players;
+    }
+    
+    /**
+     * GET  /players : get all the players of team.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of players in body
+     */
+    @RequestMapping(value = "/team/{id}/players",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Player> getAllTeamPlayers(@PathVariable Long id) {
+        log.debug("REST request to get all team Players");
+        List<Player> players = playerRepository.findAll(PlayerSpecifications.findByTeam(id));
         return players;
     }
 

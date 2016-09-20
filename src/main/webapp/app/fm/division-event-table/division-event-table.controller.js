@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('DivisionEventTableController', DivisionEventTableController);
 
-    DivisionEventTableController.$inject = ['$scope','$state',  'DivisionEvent', 'DivisionEventTable'];
+    DivisionEventTableController.$inject = ['$scope','$state',  'DivisionEvent', 'DivisionEventTable','DivisionEventGoalRanking','DivisionEventAssistRanking'];
 
-    function DivisionEventTableController ($scope, $state,DivisionEvent,DivisionEventTable) {
+    function DivisionEventTableController ($scope, $state,DivisionEvent,DivisionEventTable,DivisionEventGoalRanking,DivisionEventAssistRanking) {
         var vm = this;
         
         vm.divisionEvents = [];
@@ -19,6 +19,12 @@
         	DivisionEventTable.query($state.params,function(result) {
                 vm.divisionEvents = result;
             });
+        	DivisionEventGoalRanking.query($state.params,function(result){
+        		vm.goalRankings = result;
+        	});
+        	DivisionEventAssistRanking.query($state.params,function(result){
+        		vm.assistRankings = result;
+        	});
         }
     }
 })();

@@ -1,0 +1,42 @@
+<div>
+    <h2>Game Squad</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="game.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Game
+                    </span>
+                </button>
+            </div> -->
+            <p>{{vm.game.timeslot.divisionEvent.season.name}}-{{vm.game.timeslot.divisionEvent.division.name}}-第{{vm.game.timeslot.round}}轮</p>
+        	<p>{{vm.team.name}} - 报名表</p>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>Name</span></th>
+                    <th><span>Team</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in vm.players track by player.id">
+                    <td><a ui-sref="player-detail({id:player.id})">{{player.name}}</a></td>
+                    <td>
+                        <a ui-sref="team-detail({id:player.team.id})">{{player.team.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

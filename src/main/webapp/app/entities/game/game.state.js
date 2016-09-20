@@ -160,6 +160,58 @@
                     $state.go('^');
                 });
             }]
+        })
+        .state('game.homesquad',{
+        	parent:'game',
+        	url:'/{id}/homesquad',
+        	data:{
+        		authorities: ['ROLE_USER'],
+        		homeTeam:true
+        	},
+        	views:{
+        		'content@': {
+                    templateUrl: 'app/entities/game/game-squad.html',
+                    controller: 'GameSquadController',
+                    controllerAs: 'vm'
+                }
+        	},
+        	resolve: {
+
+            }
+        })
+        .state('game.roadsquad',{
+        	parent:'game',
+        	url:'/{id}/roadsquad',
+        	data:{
+        		authorities: ['ROLE_USER']
+        	},
+        	views:{
+        		'content@': {
+                    templateUrl: 'app/entities/game/game-squad.html',
+                    controller: 'GameSquadController',
+                    controllerAs: 'vm'
+                }
+        	},
+        	resolve: {
+
+            }
+        })
+       .state('game.result', {
+            parent: 'game',
+            url: '/{id}/result',
+            data: {
+                authorities: ['ROLE_USER'],
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/result-data/result-data-list.html',
+                    controller: 'ResultDataListEditController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+
+            }
         });
     }
 

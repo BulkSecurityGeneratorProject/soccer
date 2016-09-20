@@ -3,7 +3,6 @@ package gl.linpeng.soccer.web.rest;
 import gl.linpeng.soccer.domain.DivisionEvent;
 import gl.linpeng.soccer.domain.Team;
 import gl.linpeng.soccer.repository.DivisionEventRepository;
-import gl.linpeng.soccer.repository.TeamRepository;
 import gl.linpeng.soccer.web.rest.util.HeaderUtil;
 
 import java.net.URI;
@@ -190,6 +189,49 @@ public class DivisionEventResource {
 						+ "from team t,game g2 where t.division_event_id= "
 						+ id + "and g2.road_team_id=t.id) "
 						+ "group by name order by PTS DESC,GD DESC");
+		Query query = entityManager.createNativeQuery(sql);
+		return query.getResultList();
+	}
+
+	/**
+	 * GET /division-events : get the divisionEvents goal-ranking.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of
+	 *         divisionEvents in body
+	 */
+	@RequestMapping(value = "/division-event/{id}/goal-ranking", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Team> getDivisionEventGoalRanking(@PathVariable Long id) {
+		log.debug("REST request to get Goal-Ranking of DivisionEvents : {}", id);
+
+		String sql = String.format("SELECT "
+				+ "p.id,p.name,SUM(rd.value) AS goal FROM "
+				+ "RESULT_DATA rd,SQUAD_PLAYER sp,PLAYER p "
+				+ "WHERE sp.id = rd.squad_player_id "
+				+ "AND sp.player_id = p.id " + "AND rd.result_field_id=3 "
+				+ "GROUP BY p.name " + "ORDER BY goal DESC");
+		Query query = entityManager.createNativeQuery(sql);
+		return query.getResultList();
+	}
+
+	/**
+	 * GET /division-events : get the divisionEvents assist-ranking.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of
+	 *         divisionEvents in body
+	 */
+	@RequestMapping(value = "/division-event/{id}/assist-ranking", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Team> getDivisionEventAssistRanking(@PathVariable Long id) {
+		log.debug("REST request to get Assist-Ranking of DivisionEvents : {}",
+				id);
+
+		String sql = String.format("SELECT "
+				+ "p.id,p.name,SUM(rd.value) AS assist FROM "
+				+ "RESULT_DATA rd,SQUAD_PLAYER sp,PLAYER p "
+				+ "WHERE sp.id = rd.squad_player_id "
+				+ "AND sp.player_id = p.id " + "AND rd.result_field_id=4 "
+				+ "GROUP BY p.name " + "ORDER BY assist DESC");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
 	}

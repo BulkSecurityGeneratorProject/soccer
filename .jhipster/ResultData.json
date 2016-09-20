@@ -10,8 +10,8 @@
     {
       "relationshipId": 2,
       "relationshipType": "many-to-one",
-      "relationshipName": "player",
-      "otherEntityName": "player",
+      "relationshipName": "squadPlayer",
+      "otherEntityName": "squadPlayer",
       "otherEntityField": "id"
     },
     {

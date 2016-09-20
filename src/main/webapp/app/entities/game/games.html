@@ -59,6 +59,24 @@
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
+                        	<button type="submit"
+                                    ui-sref="game.homesquad({id:game.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game.roadsquad({id:game.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        	<button type="submit"
+                                    ui-sref="game.result({id:game.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
                             <button type="submit"
                                     ui-sref="game-detail({id:game.id})"
                                     class="btn btn-info btn-sm">

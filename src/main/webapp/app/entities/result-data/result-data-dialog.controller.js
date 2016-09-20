@@ -5,16 +5,16 @@
         .module('soccerApp')
         .controller('ResultDataDialogController', ResultDataDialogController);
 
-    ResultDataDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'ResultData', 'Game', 'Player', 'ResultField'];
+    ResultDataDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'ResultData', 'Game', 'SquadPlayer', 'ResultField'];
 
-    function ResultDataDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, ResultData, Game, Player, ResultField) {
+    function ResultDataDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, ResultData, Game, SquadPlayer, ResultField) {
         var vm = this;
 
         vm.resultData = entity;
         vm.clear = clear;
         vm.save = save;
         vm.games = Game.query();
-        vm.players = Player.query();
+        vm.squadplayers = SquadPlayer.query();
         vm.resultfields = ResultField.query();
 
         $timeout(function (){

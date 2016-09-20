@@ -64,5 +64,55 @@
                 </tr>
             </tbody>
         </table>
+        
     </div>
+    
+    <div class="container-fluid">
+   
+    <div class="row">
+        	 	<div class="col-xs-6 ">
+        	 		<h4>射手榜</h4>
+			        <table class="jh-table table">
+			            <thead>
+			                <tr>
+			                    <th><span>Name</span></th>
+			                    <th><span>Goal</span></th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr ng-repeat="player in vm.goalRankings track by player[0]">
+			                    <td>
+			                       <a ui-sref="player-detail({id:player[0]})"> {{player[1]}}</a>
+			                    </td>
+			                    <td>
+			                         {{player[2]}}
+			                    </td>
+			                </tr>
+			            </tbody>
+			        </table>
+        	 	</div>
+        	 	<div class="col-xs-6 ">
+        	 		<h4>助攻榜</h4>
+			        <table class="jh-table table table-striped">
+			            <thead>
+			                <tr>
+			                    <th><span>Name</span></th>
+			                    <th><span>Assist</span></th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr ng-repeat="player in vm.assistRankings track by player[0]">
+			                    <td>
+			                       <a ui-sref="player-detail({id:player[0]})"> {{player[1]}}</a>
+			                    </td>
+			                    <td>
+			                         {{player[1]}}
+			                    </td>
+			                </tr>
+			            </tbody>
+			        </table>
+        	 	
+        	 	</div>
+        	</div>
+         </div>
 </div>
