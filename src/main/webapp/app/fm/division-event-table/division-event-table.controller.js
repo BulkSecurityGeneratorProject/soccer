@@ -5,17 +5,18 @@
         .module('soccerApp')
         .controller('DivisionEventTableController', DivisionEventTableController);
 
-    DivisionEventTableController.$inject = ['$scope', '$state', 'DivisionEventTable'];
+    DivisionEventTableController.$inject = ['$scope','$state',  'DivisionEvent', 'DivisionEventTable'];
 
-    function DivisionEventTableController ($scope, $state, DivisionEventTable) {
+    function DivisionEventTableController ($scope, $state,DivisionEvent,DivisionEventTable) {
         var vm = this;
         
         vm.divisionEvents = [];
+        vm.divisionEventEntity = DivisionEvent.get({id : $state.params.id});
+    
+        loadAll();
 
-        loadAll($state.params);
-
-        function loadAll(params) {
-        	DivisionEventTable.query(params,function(result) {
+        function loadAll() {
+        	DivisionEventTable.query($state.params,function(result) {
                 vm.divisionEvents = result;
             });
         }
