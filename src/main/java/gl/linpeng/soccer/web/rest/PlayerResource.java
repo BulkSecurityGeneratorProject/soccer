@@ -109,7 +109,13 @@ public class PlayerResource {
     @Timed
     public List<Player> getAllTeamPlayers(@PathVariable Long id) {
         log.debug("REST request to get all team Players");
-        List<Player> players = playerRepository.findAll(PlayerSpecifications.findByTeam(id));
+        //List<Player> players = playerRepository.findAll(PlayerSpecifications.findByTeam(id));
+        Player player = new Player();
+        Team team = new Team();
+        team.setId(id);
+        player.setTeam(team);
+        Example<Player> example = Example.of(player);
+        List<Player> players = playerRepository.findAll(example);
         return players;
     }
 
