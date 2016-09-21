@@ -7,7 +7,7 @@
             <p>{{vm.game.timeslot.divisionEvent.season.name}}-{{vm.game.timeslot.divisionEvent.division.name}}-第{{vm.game.timeslot.round}}轮</p>
             <p>{{vm.game.homeTeam.name}} VS {{vm.game.roadTeam.name}}</p>
             <p>比分：{{vm.game.homeScore+' - '+vm.game.roadScore}}</p>
-            <p>比赛时间：{{vm.game.startAt}}</p>
+            <p>比赛时间：{{vm.game.startAt | date:'mediumDate'}}</p>
             <p>比赛地点：{{vm.game.venue.name}}</p>
                 <!-- <button class="btn btn-primary" ui-sref="result-data.new" >
                     <span class="glyphicon glyphicon-plus"></span>
