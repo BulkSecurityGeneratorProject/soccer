@@ -174,4 +174,21 @@ public class SquadResource {
 		return resultDatas;
 	}
 
+	/**
+	 * POST /squads : save all the result data of squad.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of result
+	 *         data in body
+	 */
+	@RequestMapping(value = "/squads/{id}/result-data", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<ResultData> saveAllSquadResultData(@PathVariable Long id,
+			@RequestBody List<ResultData> resultDatas) {
+		log.debug("REST request to save all Squad result data {} , {}", id,
+				resultDatas);
+		resultDatas = resultDataRepository.save(resultDatas);
+		// final : get LTS resultData of this squad
+		return resultDatas;
+	}
+
 }
