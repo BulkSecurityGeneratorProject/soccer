@@ -9,7 +9,8 @@
 
     function ResultDataListEditController($scope,$state,Game,GameSquadQuery,ResultField,ResultDataSquad) {
         var vm = this;
-
+        vm.save = saveRow;
+        
         // 1. Get game information
          Game.get({id:$state.params.id},function(result){
         	 vm.game = result;
@@ -31,6 +32,7 @@
          					angular.forEach(vm.resultDatas,function(resultData,index){
          						if(player.player.id == resultData.squadPlayer.player.id){
              						player[""+resultData.resultField.id] = resultData.value;
+             						player['$'+resultData.resultField.id] = resultData.id;
              					}
          					});
          					
@@ -56,7 +58,14 @@
          			        	    getData: function () { return vm.players; }, 
 
          			        	    options: { 
-         			        	        showDelete: true,
+         			        	        showDeleteButton: false,
+         			        	        showEditButton: true,
+         			        	        editable: true,
+         			        	        disabled:false,
+         			        	        perRowEditModeEnabled: true,
+         			        	        allowMultiSelect: false,
+         			        	        dynamicColumns: true,
+         			        	        editRequested:vm.save,
          			        	        columns: columns
          			        	    }
          			        	};
@@ -67,6 +76,53 @@
      				
      		});
          });
+         
+         function saveRow(row){
+        	 if(!row.$editable){ // 提交状态
+        		 //vm.isSaving = true;
+        		 // translate row data to result data list
+        		 
+        		ResultDataSquad.save({id:vm.players[0].squad.id},parsetRowToResultDataList(row),onSaveSuccess,onSaveError);
+        	 }
+         }
+         
+         function parsetRowToResultDataList(row){
+        	 var result = [];
+        	 var squadPlayerId = row.id;
+        	 // example construct : {id:xx,value:xx,squadPlayer : { },resultField: {id : 1} }
+        	 angular.forEach(vm.resultFields,function(resultField,index){
+        		 if(row[resultField.id]){// make sure that has a valid value
+        			 var resultData = {};
+        			 resultData.value = row[resultField.id];
+        			 
+        			 // result data record id
+            		 if(row['$'+resultField.id]){ 
+            			 resultData.id = row['$'+resultField.id];
+            		 }
+            		 resultData.resultField = {
+            				 id:resultField.id
+            		 };
+            		 resultData.squadPlayer = {
+            				 id:squadPlayerId
+            		 };
+            		 resultData.game = {
+            				 id:$state.params.id
+            		 };
+            		 result = result.concat(resultData);
+        		 }
+        		 
+        	 });
+        	 return result;
+         }
+         
+         function onSaveSuccess (result) {
+             $scope.$emit('soccerApp:squadResultDataUpdate', result);
+             vm.isSaving = false;
+         }
+
+         function onSaveError () {
+             vm.isSaving = false;
+         }
         
     }
 })();
