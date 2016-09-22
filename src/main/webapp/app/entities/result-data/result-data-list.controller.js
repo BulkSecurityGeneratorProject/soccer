@@ -20,6 +20,10 @@
          			id:$state.params.id,
          			tid: vm.game.homeTeam.id
          	};
+             var roadData = {
+          			id:$state.params.id,
+          			tid: vm.game.roadTeam.id
+          	};
              GameSquadQuery.query(data,function(result){
      				vm.players = result;
      				// Get all exists result data of this squad
@@ -74,7 +78,64 @@
          				
      				});
      				
-     		});
+     		});// End of home data load
+             
+             // road data load
+             GameSquadQuery.query(roadData,function(result){
+  				vm.roadPlayers = result;
+  				// Get all exists result data of this squad
+  				ResultDataSquad.query({id:vm.roadPlayers[0].squad.id},function(result){
+  					vm.roadResultDatas = result;
+  					// translate
+      				angular.forEach(vm.roadPlayers,function(player,index){
+      					player.playerName = player.player.name;
+      					
+      					angular.forEach(vm.roadResultDatas,function(resultData,index){
+      						if(player.player.id == resultData.squadPlayer.player.id){
+          						player[""+resultData.resultField.id] = resultData.value;
+          						player['$'+resultData.resultField.id] = resultData.id;
+          					}
+      					});
+      					
+      				});
+      				
+      				// 3. Get all result field
+      				ResultField.query(function(result){
+      					vm.resultFields = result;
+      					
+      					var columns = [
+ 								{field:'id',disabled:true,hidden:true},
+ 								{field: 'playerName', disabled: true,"title": "姓名"},
+ 								{field:'playerNumber',inputType: 'number','title':'号码'},
+ 								{field:'isSubstitute',inputType: 'checkbox','title':'替补'}
+      					];
+      					
+      					angular.forEach(vm.resultFields,function(resultField,index){
+      						columns = columns.concat([{field:resultField.id,title:resultField.name,inputType: 'number'}]);
+      					});
+      					
+      					vm.myRoadGridConfig = {
+      			        	    // should return your data (an array)        
+      			        	    getData: function () { return vm.roadPlayers; }, 
+
+      			        	    options: { 
+      			        	        showDeleteButton: false,
+      			        	        showEditButton: true,
+      			        	        editable: true,
+      			        	        disabled:false,
+      			        	        perRowEditModeEnabled: true,
+      			        	        allowMultiSelect: false,
+      			        	        dynamicColumns: true,
+      			        	        editRequested:vm.save,
+      			        	        columns: columns
+      			        	    }
+      			        	};
+      					
+      				});
+      				
+  				});
+  				
+             });
          });
          
          function saveRow(row){
