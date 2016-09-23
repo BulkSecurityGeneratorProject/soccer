@@ -74,14 +74,15 @@
 	           					}
 	       					});
 	       				});
-	       				if(!fields || fields.length ==0){ //fields is empty,go to query
-	       					ResultField.query(function(result){
-	       						copy(result,fields);
-	       						generatGridConfig(players,callback);
-	       					});
-	       				}else{ // fields already exits and not empty
-	       					generatGridConfig(players,callback);
-	       				}
+	       				
+	       				//angular async mode,fields always empty first time call
+       					ResultField.query(function(result){
+       						if(!fields || fields.length ==0){
+       							// fields is empty,go to copy
+       							copy(result,fields);
+       						}
+       						generatGridConfig(players,callback);
+       					});
 	       				
             		 });// end of ResultDataSquad query
             	 });// end of GameSquadQuery query
@@ -104,7 +105,7 @@
 					{field:'isSubstitute',inputType: 'checkbox','title':'替补'}
 				];
 				angular.forEach(vm.resultFields,function(resultField,index){
-					columns = columns.concat([{field:resultField.id,title:resultField.name,inputType: 'number'}]);
+					columns = columns.concat([{field:resultField.id,title:resultField.name,inputType: 'number',min:0}]);
 				});
 				
 				var result = {

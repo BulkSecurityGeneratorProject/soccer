@@ -69,6 +69,7 @@
                 <input ng-switch-default=""
                        class="form-control sg-column-{{columnIndex}}"
                        type="{{ column.inputType || 'text' }}"
+                       min="{{column.min}}"
                        ng-model="row[column.field]"
                        ng-required="column.required"
                        placeholder="{{column.placeholder}}"
