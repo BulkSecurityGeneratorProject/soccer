@@ -34,7 +34,7 @@
             <tbody>
                 <tr ng-repeat="divisionEvent in vm.divisionEvents track by divisionEvent[0]">
                     <!-- <td>{{divisionEvent[0]}}</td> -->
-                    <td>
+                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
                        <a ui-sref="team-detail({id:divisionEvent[0]})"> {{divisionEvent[1]}}</a>
                     </td>
                     <td>
@@ -81,7 +81,7 @@
 			            </thead>
 			            <tbody>
 			                <tr ng-repeat="player in vm.goalRankings track by player[0]">
-			                    <td>
+			                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
 			                       <a ui-sref="player-detail({id:player[0]})"> {{player[1]}}</a>
 			                    </td>
 			                    <td>
@@ -102,7 +102,7 @@
 			            </thead>
 			            <tbody>
 			                <tr ng-repeat="player in vm.assistRankings track by player[0]">
-			                    <td>
+			                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
 			                       <a ui-sref="player-detail({id:player[0]})"> {{player[1]}}</a>
 			                    </td>
 			                    <td>
