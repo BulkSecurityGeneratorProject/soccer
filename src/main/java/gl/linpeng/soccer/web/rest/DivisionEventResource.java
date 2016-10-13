@@ -1,8 +1,12 @@
 package gl.linpeng.soccer.web.rest;
 
 import gl.linpeng.soccer.domain.DivisionEvent;
+import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.domain.Team;
+import gl.linpeng.soccer.domain.Timeslot;
 import gl.linpeng.soccer.repository.DivisionEventRepository;
+import gl.linpeng.soccer.repository.GameRepository;
+import gl.linpeng.soccer.repository.TeamRepository;
 import gl.linpeng.soccer.web.rest.util.HeaderUtil;
 
 import java.net.URI;
@@ -17,6 +21,7 @@ import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +45,10 @@ public class DivisionEventResource {
 
 	@Inject
 	private DivisionEventRepository divisionEventRepository;
+	@Inject
+	private GameRepository gameRepository;
+	@Inject
+	private TeamRepository teamRepository;
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -234,6 +243,45 @@ public class DivisionEventResource {
 				+ "GROUP BY p.name " + "ORDER BY assist DESC");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
+	}
+	
+	/**
+	 * GET /division-events : get all the divisionEvent games.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of
+	 *         divisionEvent games in body
+	 */
+	@RequestMapping(value = "/division-events/{id}/games", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Game> getAllDivisionEventGames(@PathVariable Long id) {
+		log.debug("REST request to get all DivisionEvent games,{}",id);
+		Game example = new Game();
+		Timeslot exampleTimeslot = new Timeslot();
+		DivisionEvent exampleDivisionEvent = new DivisionEvent();
+		exampleDivisionEvent.setId(id);
+		exampleTimeslot.setDivisionEvent(exampleDivisionEvent);
+		example.setTimeslot(exampleTimeslot);
+		List<Game> games = gameRepository.findAll(Example.of(example));
+		return games;
+	}
+	
+	/**
+	 * GET /division-events : get all the divisionEvent teams.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of
+	 *         divisionEvent teams in body
+	 */
+	@RequestMapping(value = "/division-events/{id}/teams", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Team> getAllDivisionEventTeams(@PathVariable Long id) {
+		log.debug("REST request to get all DivisionEvent teams,{}",id);
+		
+		Team example = new Team();
+		DivisionEvent exampleDivisionEvent = new DivisionEvent();
+		exampleDivisionEvent.setId(id);
+		example.setDivisionEvent(exampleDivisionEvent);
+		List<Team> teams = teamRepository.findAll(Example.of(example));
+		return teams;
 	}
 
 }
