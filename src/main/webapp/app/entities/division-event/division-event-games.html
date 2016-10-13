@@ -1,0 +1,71 @@
+<div>
+    <h2>Multiple Create Timeslots</h2>
+    <jhi-alert></jhi-alert>
+    <form name="editForm" role="form" novalidate ng-submit="vm.generateGames()">
+	    <div class="container-fluid">
+	        <div class="row">
+	            <div class="col-xs-4 no-padding-left">
+	               <button class="btn btn-primary"  type="submit">
+	                    <span class="glyphicon glyphicon-plus"></span>
+	                    <span >
+	                        Generate Games
+	                    </span>
+	                </button>
+	                
+	                <div class="form-group">
+			            <label class="control-label" for="field_startAt">Start At</label>
+			                <div class="input-group">
+			                    <input id="field_startAt" type="text" class="form-control" name="startAt" uib-datepicker-popup="{{dateformat}}" ng-model="vm.generate.startAt" is-open="vm.datePickerOpenStatus.startAt"
+			                    />
+			                    <span class="input-group-btn">
+			                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+			                    </span>
+			                </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="control-label" for="field_endAt">End At</label>
+			                <div class="input-group">
+			                    <input id="field_endAt" type="text" class="form-control" name="endAt" uib-datepicker-popup="{{dateformat}}" ng-model="vm.generate.endAt" is-open="vm.datePickerOpenStatus.endAt"
+			                    />
+			                    <span class="input-group-btn">
+			                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+			                    </span>
+			                </div>
+			        </div>
+			        <div class="form-group form-inline">
+			            <label class="control-label" >Every</label>
+			                <div class="input-group">
+			                    <select class="form-control"  id="field_every_day" name="every_day" ng-model="vm.generate.every.day" >
+			                    	<option ng-repeat="day in vm.daysOfWeek track by day.id" value="{{day.id}}">{{day.name}}</option>
+			                    </select>
+			                </div>
+			                <div class="input-group">
+			                	<select class="form-control"  id="field_every_interval" name="every_interval" ng-model="vm.generate.every.interval" >
+			                    	<option ng-repeat="interval in vm.intervalOfTime track by interval.id" value="{{interval.id}}">{{interval.name}}</option>
+			                    </select>
+			                </div>
+			                <div class="input-group">
+			                    <select class="form-control"  id="field_every_hour" name="every_hour" ng-model="vm.generate.every.hour" >
+			                    	<option ng-repeat="hour in vm.hoursOfDay track by hour.id" value="{{hour.id}}">{{hour.name}}</option>
+			                    </select>
+			                </div>
+			                <div class="input-group">    
+			                    <select class="form-control"  id="field_every_minute" name="every_minute" ng-model="vm.generate.every.minute" >
+			                    	<option ng-repeat="minute in vm.minutesOfHour track by minute.id" value="{{minute.id}}">{{minute.name}}</option>
+			                    </select>
+			                 </div>   
+			        </div>
+	            </div>
+	        </div>
+	    </div>
+    </form>
+    <br/>
+    <script type="text/ng-template" id="simple-grid.html" src="bower_components/angular-simple-grid/src/simple-grid.html"></script>
+    创建的比赛：
+    <div simple-grid="vm.tempGamesConfig"></div>
+    已存在比赛：
+    <div simple-grid="vm.gamesConfig"></div>
+    
+  <span ng-bind-html="vm.rr|htmlContent"></span>  
+ 
+</div>
