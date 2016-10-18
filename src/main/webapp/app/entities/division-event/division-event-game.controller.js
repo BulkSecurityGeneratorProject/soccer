@@ -300,7 +300,7 @@
 				{field:'id',disabled:true,hidden:true},
 				{field: 'round',"title": "轮次",inputType: 'number'},
 				{field:'timeslotTypeName','title':'类别'},
-				{field:'time',title:'比赛时间'},
+				{field:'time',title:'比赛时间',inputType: "datetime",},
 				{field:'homeTeamName',title:'主队'},
 				{field:'roadTeamName',title:'客队'},
 				{field:'venueName',title:'场地'}
@@ -327,7 +327,21 @@
         function saveRow(row){
         	if(!row.$editable){ // 提交状态
 	       		vm.isSaving = true;
-	       		DivisionEventGame.save($state.params,row,onSaveSuccess,onSaveError);
+	       		console.log(row);
+	       		var game = new Object();
+	       		game.id = row.id;
+	       		game.startAt = new Date(Date.parse(row.time,'yyyy-MM-dd HH:mm'));
+	       		game.venue = new Object();
+	       		game.venue.id = row.venue.id;
+	       		game.homeTeam = new Object();
+	       		game.homeTeam.id = row.homeTeam.id;
+	       		game.roadTeam = new Object();
+	       		game.roadTeam.id = row.roadTeam.id;
+	       		game.timeslot = new Object();
+	       		game.timeslot.round = row.round;
+	       		game.timeslot.divisionEvent = new Object();
+	       		game.timeslot.divisionEvent.id = $state.params.id;
+	       		DivisionEventGame.save($state.params,game,onSaveSuccess,onSaveError);
         	}
         }
         
