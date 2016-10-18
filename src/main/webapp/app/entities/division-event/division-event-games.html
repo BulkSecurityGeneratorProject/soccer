@@ -34,26 +34,39 @@
 			        </div>
 			        <div class="form-group form-inline">
 			            <label class="control-label" >Every</label>
+			            <div ng-repeat="ev in vm.generate.every.replies">
+			            
 			                <div class="input-group">
-			                    <select class="form-control"  id="field_every_day" name="every_day" ng-model="vm.generate.every.day" >
+			                    <select class="form-control"  id="field_every_day_{{$index + 1}}" name="every_day_{{$index + 1}}" ng-model="vm.generate.every.data[$index].day" >
 			                    	<option ng-repeat="day in vm.daysOfWeek track by day.id" value="{{day.id}}">{{day.name}}</option>
 			                    </select>
 			                </div>
 			                <div class="input-group">
-			                	<select class="form-control"  id="field_every_interval" name="every_interval" ng-model="vm.generate.every.interval" >
+			                	<select class="form-control"  id="field_every_interval_{{$index + 1}}" name="every_interval_{{$index + 1}}" ng-model="vm.generate.every.data[$index].interval" >
 			                    	<option ng-repeat="interval in vm.intervalOfTime track by interval.id" value="{{interval.id}}">{{interval.name}}</option>
 			                    </select>
 			                </div>
 			                <div class="input-group">
-			                    <select class="form-control"  id="field_every_hour" name="every_hour" ng-model="vm.generate.every.hour" >
+			                    <select class="form-control"  id="field_every_hour_{{$index + 1}}" name="every_hour_{{$index + 1}}" ng-model="vm.generate.every.data[$index].hour" >
 			                    	<option ng-repeat="hour in vm.hoursOfDay track by hour.id" value="{{hour.id}}">{{hour.name}}</option>
 			                    </select>
 			                </div>
 			                <div class="input-group">    
-			                    <select class="form-control"  id="field_every_minute" name="every_minute" ng-model="vm.generate.every.minute" >
+			                    <select class="form-control"  id="field_every_minute_{{$index + 1}}" name="every_minute_{{$index + 1}}" ng-model="vm.generate.every.data[$index].minute" >
 			                    	<option ng-repeat="minute in vm.minutesOfHour track by minute.id" value="{{minute.id}}">{{minute.name}}</option>
 			                    </select>
 			                 </div>   
+			                 
+			                 <div class="input-group"> 
+		                         <a href="" ng-click="vm.incrEvery($index)">
+					                    <span class="glyphicon glyphicon-plus"></span>
+		                         </a>
+		                         <a href="" ng-click="vm.decrEvery($index)" ng-show="vm.generate.every.canDescReply" class="">
+		                            <span class="glyphicon glyphicon-minus"></span>
+		                         </a>
+		                          <span class="glyphicon glyphicon-minus" ng-show="!vm.generate.every.canDescReply"></span>
+                   			 </div>
+			              </div>   <!-- ng-repeat end -->
 			        </div>
 	            </div>
 	        </div>
@@ -66,6 +79,6 @@
     已存在比赛：
     <div simple-grid="vm.gamesConfig"></div>
     
-  <span ng-bind-html="vm.rr|htmlContent"></span>  
+  <!-- <span ng-bind-html="vm.rr|htmlContent"></span>   -->
  
 </div>

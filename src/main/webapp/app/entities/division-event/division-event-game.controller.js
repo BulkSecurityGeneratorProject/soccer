@@ -20,6 +20,8 @@
         vm.datePickerOpenStatus = {};
         vm.generateGames = generateGames;
         vm.generate = {}; // 生成比赛实例
+        vm.generate.every = {};
+        vm.generate.every.replies =[{key: 0, value: ""}];
         vm.teams = [];
         vm.daysOfWeek = [
                          {id:0,name:'周日'},
@@ -61,15 +63,62 @@
         
         vm.intervalOfTime = [{id:0,name:'上午'},{id:1,name:'下午'}];
         
+        
         vm.games = [];
         vm.gamesConfig = null;
 
         loadAll();
         
+        function getDateBetween(startAt,endAt,day,interval,hour,minute,dates){
+        	var startAtDate =new Date();
+        	startAtDate.setTime(startAt.getTime());
+        	var endAtDate = new Date();
+        	endAtDate.setTime(endAt.getTime());
+        	
+        	while(startAtDate < endAtDate){
+        		var lastest = (7+ day - startAtDate.getDay())%7;
+        		if(lastest ==0){
+        			startAtDate.setMinutes(parseInt(vm.minutesOfHour[minute].name));
+        			if(interval ==0){
+        				// 上午
+        				startAtDate.setHours(parseInt(vm.hoursOfDay[hour].name));
+        			}else{
+        				// 下午
+        				startAtDate.setHours(12+ parseInt(vm.hoursOfDay[hour].name));
+        			}
+        			var okDate = new Date();
+        			okDate.setTime(startAtDate.getTime());
+        			dates.push(okDate);
+        			startAtDate.setDate(startAtDate.getDate()+7);
+        		}else{
+        			startAtDate.setDate(startAtDate.getDate()+lastest);
+        		}
+        	}
+        }
+        
         function generateGames(){
         	// get all args
             // console.log("=========start At "+ vm.generate.startAt+"  endAt "+vm.generate.endAt + "  every "+vm.generate.every.day+" "+vm.generate.every.interval+" "+ vm.generate.every.hour+" "+vm.generate.every.minute);
+        	var startAt = vm.generate.startAt;
+        	var endAt = vm.generate.endAt;
+        	var everyData = vm.generate.every.data;
+        	var i = 0;
         	
+        	var dates = new Array();
+        	while(everyData.hasOwnProperty(i)){
+        		var data = everyData[i];
+        		var day = data.day;
+        		var interval = data.interval;
+        		var hour = data.hour;
+        		var minute = data.minute;
+        		getDateBetween(startAt,endAt,day,interval,hour,minute,dates);
+        		i++;
+        	}
+        	
+        	// 日期从小到大排序
+        	vm.dates =  dates.sort(function(a,b){
+        		return a.getTime() - b.getTime();
+        	});
         	// compute min-max timeslot
         	DivisionEventTeam.query($state.params,function(result){
         		vm.teams = result;
@@ -80,10 +129,67 @@
         		// 偶数个队，保证每个队都能完成（队数-1）*2次比赛，保证主客场数量一致，保证最多且最少与另一队进行一次主、客场比赛
         		// 奇数个队，保证每个队都能完成（队数-1）*2次比赛，保证主客场数量一致
         		 vm.rr = createSchedule();
+        		 vm.newGames = parsetToGame(vm.rr);
+        		 vm.tempGamesConfig = generateConfig(vm.newGames);
         	});
         	
         }
-       //vm.rr = RoundRobin(11);
+        
+        function parsetToGame(ary){
+        	var result = [];
+        	for(var i=0;i<ary.length;i++){
+        		// rounds
+        		var round = i+1;
+        		for(var j=0;j<ary[i].length;j++){
+        			// games
+        			var g = ary[i][j];
+        			var venueId = '';
+        			var venueName='';
+        			if(g[0].club && g[0].club.venue){
+        				venueId = g[0].club.venue.id;
+        				venueName = g[0].club.venue.name;
+        			}
+        			
+        			var timeslot =  vm.dates.length;
+        			var matchesOfTimeslot = Math.floor(ary.length*ary[0].length / timeslot);
+        			// var matchesLeft = ary.length % timeslot;
+        			var time = new Date();
+        			var whichTimeslotDate = Math.floor((i*ary[0].length+j)/matchesOfTimeslot);
+        			
+        			// console.log(" 每轮应该进行多少场比赛： "+matchesOfTimeslot+" 当前比赛在哪个比赛日："+whichTimeslotDate);
+        			if(whichTimeslotDate < timeslot){
+        				// 取余分布
+        				time.setTime(vm.dates[whichTimeslotDate].getTime());
+        			}else{ 
+        				// 余数比赛,因为是最后的比赛,所以简单的放到最后一天进行,不合理的地方,需要由人工进行干预
+        				time.setTime(vm.dates[timeslot-1].getTime());
+        			}
+        			
+        			var game = {
+        					id:"",
+        					round:round,
+        					time:time.getFullYear()+"-"+(time.getMonth()+1)+"-"+time.getDate()+" "+time.getHours()+":"+time.getMinutes(),
+        					timeslotTypeName:"",
+        					homeTeamName:g[0].name,
+        					roadTeamName:g[1].name,
+        					venueName:venueName,
+        					venue:{
+        						id:venueId
+        					},
+        					homeTeam:{
+        						id:g[0].id,
+        						name:g[0].name
+        					},
+        					roadTeam:{
+        						id:g[1].id,
+        						name:g[1].name
+        					}
+        			};
+        			result.push(game);
+        		}
+        	}
+        	return result;
+        }
         
         function cut(array,begin,end){
         	var result = [];
@@ -95,7 +201,7 @@
         function createSchedule(){
         		 var teams = vm.teams.length;
         	     var  i;
-        	     var  ret = "" ;
+        	     //var  ret = "" ;
         	     var  round;
         	     var  numplayers = 0;
         	     numplayers = parseInt(teams) + parseInt(teams % 2);
@@ -103,17 +209,17 @@
         	     var  a = new  Array(numplayers - 1);
         	     var map = {};
         	     var  alength = a.length;
-        	     for  (var  x = 0; x < (numplayers); x++) { a[x] = vm.teams[x].name; }
+        	     for  (var  x = 0; x < (numplayers); x++) { a[x] = vm.teams[x]; }
         	     if  (numplayers != parseInt(teams)) { a[alength] = "BYE" ; }
         	     var  pos;
         	     var  pos2;
         	     var roundGames = new Array(vm.minTimeslot);
         	     
-        	     ret = "----- ROUND #1-----<br />" 
+        	     //ret = "----- ROUND #1-----<br />" 
         	     var gameArrays =  new Array(numplayers / 2);
         	     
         	     for  (var  r1a = 0; r1a < (numplayers / 2); r1a++) {
-        	       ret += a[r1a] + " vs. "  + a[alength - r1a] + "<br />" 
+        	       //ret += a[r1a] + " vs. "  + a[alength - r1a] + "<br />" 
         	       gameArrays[r1a] = [a[r1a],a[alength - r1a]];
         	     }
         	     roundGames[0] = gameArrays;
@@ -121,13 +227,13 @@
         	     for  (round = 2; round < alength + 1; round++) {
         	    	 var gameArrays =  new Array(numplayers / 2);
         	    	 
-        	         ret += "<br /><br />----- ROUND #"  + round + "-----<br />" 
+        	         //ret += "<br /><br />----- ROUND #"  + round + "-----<br />" 
         	         // 随机保证主客场
         	         if(Math.random()*10 >5){
-        	        	 ret +=   a[alength - (round - 1)]+ " vs. "  + a[0]+ "<br />" 
+        	        	 //ret +=   a[alength - (round - 1)]+ " vs. "  + a[0]+ "<br />" 
         	        	 gameArrays[0] = [a[alength - (round - 1)],a[0]];
         	         }else{
-        	        	 ret += a[0] + " vs. "  + a[alength - (round - 1)] + "<br />" 
+        	        	 //ret += a[0] + " vs. "  + a[alength - (round - 1)] + "<br />" 
         	        	 gameArrays[0] = [a[0],a[alength - (round - 1)]];
         	         }
         	         
@@ -145,21 +251,25 @@
         	             if  (pos2 < (alength * -1)) {
         	                 pos2 += alength
         	             }
-        	             ret += a[(alength + pos2)]
-        	             ret += " vs. "  + a[(alength - pos)] + "<br />" 
+        	             //ret += a[(alength + pos2)]
+        	             //ret += " vs. "  + a[(alength - pos)] + "<br />" 
         	             gameArrays[i-1] = [a[(alength + pos2)],a[(alength - pos)]];
         	         }
         	         roundGames[round-1] = gameArrays;
         	     }
         	     // 下半程
         	     for  (var r = alength+1; r < alength*2+1; r++) {
-        	    	 ret += "<br /><br />----- ROUND #"+r+"-----<br />";
+        	    	 //ret += "<br /><br />----- ROUND #"+r+"-----<br />";
+        	    	 var gameArrays =  new Array(numplayers / 2);
         	    	 for(var  i = 0; i < (numplayers / 2); i++){
         	    		 //主客场调换
-        	    		 ret += roundGames[r-alength-1][i][1] + " vs. "  + roundGames[r-alength-1][i][0] + "<br />" 
+        	    		 //ret += roundGames[r-alength-1][i][1] + " vs. "  + roundGames[r-alength-1][i][0] + "<br />" 
+        	    		 gameArrays[i] =  [roundGames[r-alength-1][i][1],roundGames[r-alength-1][i][0]];
         	    	 }
+        	    	 roundGames[r-1] = gameArrays;
         	     }
-        	     return  ret;
+        	     //return  ret;
+        	     return roundGames;
         	 }
         
         function loadAll() {
@@ -180,11 +290,11 @@
 	            	game.venueName = game.venue.name;
 	            	
                 });
-                vm.gamesConfig = generateConfig();
+                vm.gamesConfig = generateConfig(vm.games);
             });
         }
         
-        function generateConfig(){
+        function generateConfig(data){
         	// timeslot + game
         	var columns = [
 				{field:'id',disabled:true,hidden:true},
@@ -197,7 +307,7 @@
 			];
 			
         	var result = {
-	        	    getData: function () { return vm.games; }, 
+	        	    getData: function () { return data; }, 
 	        	    options: { 
 	        	        showDeleteButton: true,
 	        	        showEditButton: true,
@@ -252,5 +362,33 @@
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
         }
+        
+        vm.incrEvery = function(idx){
+        	vm.generate.every.replies.splice(idx + 1, 0,
+        			{key: new Date().getTime(), value: ""});   // 用时间戳作为每个item的key
+        			// 增加新的回复后允许删除
+        			vm.generate.every.canDescReply = true;
+        };
+        
+        vm.decrEvery = function(idx) {
+        	// 如果回复数大于1，删除被点击回复
+        	if (vm.generate.every.replies.length > 1) {
+        		vm.generate.every.replies.splice(idx, 1);
+        	}
+           // 如果回复数为1，不允许删除
+        	 if (vm.generate.every.replies.length == 1) {
+        		 vm.generate.every.canDescReply = false;
+        	 }
+         };
+         
+         vm.combineReplies = function() {
+	        var cr = "";
+	        for (var i = 0; i < vm.generate.every.replies.length; i++) {
+	        	cr += "#" + vm.generate.every.replies[i].value;
+	        }
+	        cr = cr.substring(1);
+	        //$log.debug("Combined replies: " + cr);
+	        return cr;
+         }
     }
 })();
