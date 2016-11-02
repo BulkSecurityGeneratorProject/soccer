@@ -7,7 +7,7 @@
     TeamPlayer.$inject = ['$resource', 'DateUtils'];
 
     function TeamPlayer ($resource, DateUtils) {
-        var resourceUrl =  'api/team/:id/players';
+        var resourceUrl =  'api/teams/:id/players';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
