@@ -44,6 +44,16 @@
       "main": [
         "dist/css/bootstrap.css"
       ]
+    },
+    "isteven-angular-multiselect":{
+    	"dependencies": {
+	        "angular": "1.5.8"
+	      }
+    },
+    "angular-simple-grid":{
+    	"dependencies": {
+	        "angular": "1.5.8"
+	      }
     }
   },
   "resolutions": {
