@@ -181,6 +181,8 @@ public class Game implements Serializable {
             ", note='" + note + "'" +
             ", homeScoreHalf='" + homeScoreHalf + "'" +
             ", roadScoreHalf='" + roadScoreHalf + "'" +
+            ","+homeTeam.toString()+","+roadTeam.toString()+
+            ","+timeslot.toString()+
             '}';
     }
 }
