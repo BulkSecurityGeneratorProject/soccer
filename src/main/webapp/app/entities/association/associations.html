@@ -31,6 +31,12 @@
                         <td>{{association.createAt | date:'mediumDate'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
+                        	<button type="submit"
+                                    ui-sref="association.dash({id:association.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-dashboard"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
                             <button type="submit"
                                     ui-sref="association-detail({id:association.id})"
                                     class="btn btn-info btn-sm">
