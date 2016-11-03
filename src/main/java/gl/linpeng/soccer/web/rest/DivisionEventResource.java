@@ -7,6 +7,7 @@ import gl.linpeng.soccer.domain.Timeslot;
 import gl.linpeng.soccer.repository.DivisionEventRepository;
 import gl.linpeng.soccer.repository.GameRepository;
 import gl.linpeng.soccer.repository.TeamRepository;
+import gl.linpeng.soccer.repository.TimeslotRepository;
 import gl.linpeng.soccer.web.rest.util.HeaderUtil;
 
 import java.net.URI;
@@ -49,6 +50,8 @@ public class DivisionEventResource {
 	private GameRepository gameRepository;
 	@Inject
 	private TeamRepository teamRepository;
+	@Inject
+	private TimeslotRepository timeslotRepository;
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -263,6 +266,51 @@ public class DivisionEventResource {
 		example.setTimeslot(exampleTimeslot);
 		List<Game> games = gameRepository.findAll(Example.of(example));
 		return games;
+	}
+	
+	/**
+	 * POST /division-events : save all the divisionEvent games.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of
+	 *         divisionEvent games in body
+	 */
+	@RequestMapping(value = "/division-events/{id}/games", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Game> saveAllDivisionEventGames(@PathVariable Long id,@RequestBody Game game) {
+		log.debug("REST request to save all DivisionEvent games,{},{}",id,game);
+		if(game.getTimeslot()==null){
+			return ResponseEntity
+					.badRequest()
+					.headers(
+							HeaderUtil
+									.createFailureAlert("divisionEventGame",
+											"error",
+											"timeslot cannot be null"))
+					.body(null);
+		}
+		
+		Timeslot example = new Timeslot();
+		example.setRound(game.getTimeslot().getRound());
+		DivisionEvent exampleDivisionEvent = new DivisionEvent();
+		exampleDivisionEvent.setId(id);
+		example.setDivisionEvent(exampleDivisionEvent);
+		Timeslot timeslot = timeslotRepository.findOne(Example.of(example));
+		if(null!=timeslot){
+			game.setTimeslot(timeslot);
+		}else{
+			//create a new timeslot of division event
+			timeslot = timeslotRepository.save(example);
+			game.setTimeslot(timeslot);
+		}
+		
+		if(game.getId()==null){
+			game = gameRepository.save(game);
+		}else{
+			game = gameRepository.saveAndFlush(game);
+		}
+		return ResponseEntity.ok().headers(
+				HeaderUtil.createEntityCreationAlert("divisionEventGame",
+						id.toString())).body(game);
 	}
 	
 	/**
