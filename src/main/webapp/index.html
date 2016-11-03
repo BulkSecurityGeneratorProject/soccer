@@ -10,8 +10,9 @@
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/isteven-angular-multiselect/isteven-multi-select.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="bower_components/isteven-angular-multiselect/isteven-multi-select.css">
+    <link rel="stylesheet" href="bower_components/angular-simple-grid/src/simple-grid.css">
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
@@ -63,7 +64,7 @@
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
     <script src="bower_components/isteven-angular-multiselect/isteven-multi-select.js"></script>
-    
+    <script src="bower_components/angular-simple-grid/src/simple-grid.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -138,12 +139,12 @@
     <script src="app/entities/result-field/result-field.state.js"></script>
     <script src="app/entities/result-field/result-field.service.js"></script>
     <script src="app/entities/result-field/result-field.controller.js"></script>
+    <script src="app/entities/result-data/result-data-squad.service.js"></script>
     <script src="app/entities/result-data/result-data-list.controller.js"></script>
     <script src="app/entities/result-data/result-data-dialog.controller.js"></script>
     <script src="app/entities/result-data/result-data-detail.controller.js"></script>
     <script src="app/entities/result-data/result-data-delete-dialog.controller.js"></script>
     <script src="app/entities/result-data/result-data.state.js"></script>
-    <script src="app/entities/result-data/result-data-squad.service.js"></script>
     <script src="app/entities/result-data/result-data.service.js"></script>
     <script src="app/entities/result-data/result-data.controller.js"></script>
     <script src="app/entities/ranking-rule/ranking-rule-dialog.controller.js"></script>
@@ -169,6 +170,9 @@
     <script src="app/entities/game/game.service.js"></script>
     <script src="app/entities/game/game.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
+    <script src="app/entities/division-event/division-event-teams.service.js"></script>
+    <script src="app/entities/division-event/division-event-games.service.js"></script>
+    <script src="app/entities/division-event/division-event-game.controller.js"></script>
     <script src="app/entities/division-event/division-event-dialog.controller.js"></script>
     <script src="app/entities/division-event/division-event-detail.controller.js"></script>
     <script src="app/entities/division-event/division-event-delete-dialog.controller.js"></script>
@@ -205,6 +209,9 @@
     <script src="app/entities/association/association.state.js"></script>
     <script src="app/entities/association/association.service.js"></script>
     <script src="app/entities/association/association.controller.js"></script>
+    <script src="app/dashboard/dashboard.state.js"></script>
+    <script src="app/dashboard/association/association-index.state.js"></script>
+    <script src="app/dashboard/association/association-index.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>
@@ -277,7 +284,6 @@
     <script src="app/account/activate/activate.state.js"></script>
     <script src="app/account/activate/activate.controller.js"></script>
     <script src="app/account/account.state.js"></script>
-    <script src="bower_components/angular-simple-grid/src/simple-grid.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
