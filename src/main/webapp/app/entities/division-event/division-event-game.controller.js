@@ -10,9 +10,9 @@
 			}
 		}]);
 
-    DivisionEventGameController.$inject = ['$scope', '$state', 'DivisionEventGame','DivisionEventTeam'];
+    DivisionEventGameController.$inject = ['$scope', '$state', 'DivisionEventGame','DivisionEventTeam','Game'];
 
-    function DivisionEventGameController ($scope, $state,DivisionEventGame,DivisionEventTeam) {
+    function DivisionEventGameController ($scope, $state,DivisionEventGame,DivisionEventTeam,Game) {
         var vm = this;
         vm.save = saveRow;
         vm.deleteRow = deleteRow;
@@ -318,7 +318,8 @@
 	        	        dynamicColumns: true,
 	        	        editRequested:vm.save,
 	        	        rowDeleted:vm.deleteRow,
-	        	        columns: columns
+	        	        columns: columns,
+	        	        saveAll:vm.saveAll
 	        	    }
 	        	};
         	return result;
@@ -375,6 +376,12 @@
 
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
+        }
+        
+        vm.saveAll = function(data){
+        	 angular.forEach(data,function(row,index){
+        		 vm.save(row);
+        	 });
         }
         
         vm.incrEvery = function(idx){
