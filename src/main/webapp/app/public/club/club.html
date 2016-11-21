@@ -1,0 +1,64 @@
+<h1>{{vm.club.name}}</h1>
+<div id="tabs" ng-controller="PublicClubController">
+        <ul class="nav nav-tabs">
+            <li ng-repeat="tab in tabs" 
+                ng-class="{active:isActiveTab(tab.url)}" >
+                <a ng-click="onClickTab(tab)">{{tab.title}}</a>
+            </li>
+        </ul>
+        <div id="mainView">
+            <div ng-include="currentTab"></div>
+        </div>
+    </div>
+    
+    
+    <script type="text/ng-template" id="overview.tpl.html">
+        <div id="overview" class="container">
+
+    			<div class="row">
+        			<div class="col-sm-12">
+        				<div class="col-md-6">
+							<img src="/content/images/logo-jhipster.png"><br>
+							<label>Alias</label> {{vm.club.shortName}}<br>
+							<a href="###">Offical Website</a><br>
+							<label>Created At</label> {{vm.club.createAt | date:'mediumDate'}}
+						</div>
+        				<div class="col-md-6">
+							<img src="/content/images/logo-jhipster.png"><br>
+							<label>Name</label>{{vm.club.venue.name}}<br>
+							<label>Alias</label>{{vm.club.venue.shortName}}<br>
+							<label>City</label>{{vm.club.venue.city}}<br>
+							<label>Address</label>{{vm.club.venue.address}}<br>
+							<label>Tel</label>{{vm.club.venue.telephone}}
+						</div>
+					</div>
+					<div class="col-sm-12">
+        				<div class="col-md-6">
+							<h2>Matche List</h2>
+						</div>
+        				<div class="col-md-6">
+							<h2>Player List</h2><br>
+							<table>
+								<tr><th>No.</th><th>Name</th><th>Birth</th></tr>
+								<tr ng-repeat="player in vm.players" ><td><img src="/content/images/logo-jhipster.png" width="25px" height="30px"></td><td>{{player.name}}</td><td>{{player.birth | date:'mediumDate'}}</td></tr>
+							</table>
+						</div>
+					</div>
+    			</div>
+
+        </div>
+    </script>
+    
+    <script type="text/ng-template" id="players.tpl.html">
+        <div id="players">
+            <h1>Players</h1>
+            <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+        </div>
+    </script>
+    
+    <script type="text/ng-template" id="venue.tpl.html">
+        <div id="venue">
+            <h1>Venue</h1>
+            <p>In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+        </div>
+    </script>
