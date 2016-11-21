@@ -1,7 +1,9 @@
 package gl.linpeng.soccer.web.rest;
 
+import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.domain.Player;
 import gl.linpeng.soccer.domain.Team;
+import gl.linpeng.soccer.repository.GameRepository;
 import gl.linpeng.soccer.repository.PlayerRepository;
 import gl.linpeng.soccer.repository.TeamRepository;
 import gl.linpeng.soccer.web.rest.util.HeaderUtil;
@@ -34,128 +36,163 @@ import com.codahale.metrics.annotation.Timed;
 @RequestMapping("/api")
 public class TeamResource {
 
-    private final Logger log = LoggerFactory.getLogger(TeamResource.class);
-        
-    @Inject
-    private TeamRepository teamRepository;
-    @Inject
-    private PlayerRepository playerRepository;
+	private final Logger log = LoggerFactory.getLogger(TeamResource.class);
 
-    /**
-     * POST  /teams : Create a new team.
-     *
-     * @param team the team to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new team, or with status 400 (Bad Request) if the team has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @RequestMapping(value = "/teams",
-        method = RequestMethod.POST,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Team> createTeam(@RequestBody Team team) throws URISyntaxException {
-        log.debug("REST request to save Team : {}", team);
-        if (team.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("team", "idexists", "A new team cannot already have an ID")).body(null);
-        }
-        Team result = teamRepository.save(team);
-        return ResponseEntity.created(new URI("/api/teams/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("team", result.getId().toString()))
-            .body(result);
-    }
+	@Inject
+	private TeamRepository teamRepository;
+	@Inject
+	private PlayerRepository playerRepository;
+	@Inject
+	private GameRepository gameRepository;
 
-    /**
-     * PUT  /teams : Updates an existing team.
-     *
-     * @param team the team to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated team,
-     * or with status 400 (Bad Request) if the team is not valid,
-     * or with status 500 (Internal Server Error) if the team couldnt be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @RequestMapping(value = "/teams",
-        method = RequestMethod.PUT,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Team> updateTeam(@RequestBody Team team) throws URISyntaxException {
-        log.debug("REST request to update Team : {}", team);
-        if (team.getId() == null) {
-            return createTeam(team);
-        }
-        Team result = teamRepository.save(team);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("team", team.getId().toString()))
-            .body(result);
-    }
+	/**
+	 * POST /teams : Create a new team.
+	 *
+	 * @param team
+	 *            the team to create
+	 * @return the ResponseEntity with status 201 (Created) and with body the
+	 *         new team, or with status 400 (Bad Request) if the team has
+	 *         already an ID
+	 * @throws URISyntaxException
+	 *             if the Location URI syntax is incorrect
+	 */
+	@RequestMapping(value = "/teams", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Team> createTeam(@RequestBody Team team)
+			throws URISyntaxException {
+		log.debug("REST request to save Team : {}", team);
+		if (team.getId() != null) {
+			return ResponseEntity
+					.badRequest()
+					.headers(
+							HeaderUtil.createFailureAlert("team", "idexists",
+									"A new team cannot already have an ID"))
+					.body(null);
+		}
+		Team result = teamRepository.save(team);
+		return ResponseEntity
+				.created(new URI("/api/teams/" + result.getId()))
+				.headers(
+						HeaderUtil.createEntityCreationAlert("team", result
+								.getId().toString())).body(result);
+	}
 
-    /**
-     * GET  /teams : get all the teams.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of teams in body
-     */
-    @RequestMapping(value = "/teams",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public List<Team> getAllTeams() {
-        log.debug("REST request to get all Teams");
-        List<Team> teams = teamRepository.findAll();
-        return teams;
-    }
+	/**
+	 * PUT /teams : Updates an existing team.
+	 *
+	 * @param team
+	 *            the team to update
+	 * @return the ResponseEntity with status 200 (OK) and with body the updated
+	 *         team, or with status 400 (Bad Request) if the team is not valid,
+	 *         or with status 500 (Internal Server Error) if the team couldnt be
+	 *         updated
+	 * @throws URISyntaxException
+	 *             if the Location URI syntax is incorrect
+	 */
+	@RequestMapping(value = "/teams", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Team> updateTeam(@RequestBody Team team)
+			throws URISyntaxException {
+		log.debug("REST request to update Team : {}", team);
+		if (team.getId() == null) {
+			return createTeam(team);
+		}
+		Team result = teamRepository.save(team);
+		return ResponseEntity
+				.ok()
+				.headers(
+						HeaderUtil.createEntityUpdateAlert("team", team.getId()
+								.toString())).body(result);
+	}
 
-    /**
-     * GET  /teams/:id : get the "id" team.
-     *
-     * @param id the id of the team to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the team, or with status 404 (Not Found)
-     */
-    @RequestMapping(value = "/teams/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Team> getTeam(@PathVariable Long id) {
-        log.debug("REST request to get Team : {}", id);
-        Team team = teamRepository.findOne(id);
-        return Optional.ofNullable(team)
-            .map(result -> new ResponseEntity<>(
-                result,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
+	/**
+	 * GET /teams : get all the teams.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of teams in
+	 *         body
+	 */
+	@RequestMapping(value = "/teams", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Team> getAllTeams() {
+		log.debug("REST request to get all Teams");
+		List<Team> teams = teamRepository.findAll();
+		return teams;
+	}
 
-    /**
-     * DELETE  /teams/:id : delete the "id" team.
-     *
-     * @param id the id of the team to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
-    @RequestMapping(value = "/teams/{id}",
-        method = RequestMethod.DELETE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Void> deleteTeam(@PathVariable Long id) {
-        log.debug("REST request to delete Team : {}", id);
-        teamRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("team", id.toString())).build();
-    }
-    
-    /**
-     * GET  /players : get all the players of team.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of players in body
-     */
-    @RequestMapping(value = "/teams/{id}/players",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public List<Player> getAllTeamPlayers(@PathVariable Long id) {
-        log.debug("REST request to get all team Players");
-        Player player = new Player();
-        Team team = new Team();
-        team.setId(id);
-        player.setTeam(team);
-        Example<Player> example = Example.of(player);
-        List<Player> players = playerRepository.findAll(example);
-        return players;
-    }
+	/**
+	 * GET /teams/:id : get the "id" team.
+	 *
+	 * @param id
+	 *            the id of the team to retrieve
+	 * @return the ResponseEntity with status 200 (OK) and with body the team,
+	 *         or with status 404 (Not Found)
+	 */
+	@RequestMapping(value = "/teams/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Team> getTeam(@PathVariable Long id) {
+		log.debug("REST request to get Team : {}", id);
+		Team team = teamRepository.findOne(id);
+		return Optional.ofNullable(team)
+				.map(result -> new ResponseEntity<>(result, HttpStatus.OK))
+				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	}
+
+	/**
+	 * DELETE /teams/:id : delete the "id" team.
+	 *
+	 * @param id
+	 *            the id of the team to delete
+	 * @return the ResponseEntity with status 200 (OK)
+	 */
+	@RequestMapping(value = "/teams/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Void> deleteTeam(@PathVariable Long id) {
+		log.debug("REST request to delete Team : {}", id);
+		teamRepository.delete(id);
+		return ResponseEntity
+				.ok()
+				.headers(
+						HeaderUtil.createEntityDeletionAlert("team",
+								id.toString())).build();
+	}
+
+	/**
+	 * GET /players : get all the players of team.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of players
+	 *         in body
+	 */
+	@RequestMapping(value = "/teams/{id}/players", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Player> getAllTeamPlayers(@PathVariable Long id) {
+		log.debug("REST request to get all team Players");
+		Player player = new Player();
+		Team team = new Team();
+		team.setId(id);
+		player.setTeam(team);
+		Example<Player> example = Example.of(player);
+		List<Player> players = playerRepository.findAll(example);
+		return players;
+	}
+
+	/**
+	 * GET /games : get all the games of team.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of games in
+	 *         body
+	 */
+	@RequestMapping(value = "/teams/{id}/games", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Game> getAllTeamGames(@PathVariable Long id) {
+		log.debug("REST request to get all Team {} Games", id);
+		Game example = new Game();
+		Team exampleTeam = new Team();
+		exampleTeam.setId(id);
+		example.setHomeTeam(exampleTeam);
+		// TODO ? How to query by 'OR' operation in Spring Data DSL
+		// example.setRoadTeam(exampleTeam);
+		List<Game> games = gameRepository.findAll(Example.of(example));
+		return games;
+	}
 
 }
