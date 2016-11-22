@@ -18,7 +18,6 @@
     PublicClubController.$inject = ['$scope','$state',  'Club','TeamPlayer','TeamGame'];
 
     function PublicClubController ($scope, $state,Club,TeamPlayer,TeamGame) {
-    	var clubId = 1;
     	
         var vm = this;
         $scope.tabs = [{
@@ -46,17 +45,12 @@
             return $scope.now.getTime() > new Date(dStr).getTime();
         }
         
-        
-        
         // 1. Get Club Basic information
-        // vm.club = Club.Get({id : $state.params.id});
-        vm.club = Club.get({id:clubId});
+        vm.club = Club.get({id:$state.params.id});
         // 2. Get All Club team with player
-        vm.players = TeamPlayer.query({id:1});
+        vm.players = TeamPlayer.query({id:$state.params.id});
         // 3. Get schdule of teams
-       TeamGame.query({id:1},function(result){
-    	   vm.games = result;
-        });
+        vm.games = TeamGame.query({id:$state.params.id});
         // 4. History and so on
         
     }
