@@ -172,7 +172,8 @@ public class PlayerResource {
 						+ "s.NAME as season_name,"
 						+ "tm.name as team_name,"
 						+ "sum(CASE rf.name WHEN '进球' THEN rd.value END)  goal,"
-						+ "sum(CASE rf.name WHEN '助攻' THEN rd.value END)  assist "
+						+ "sum(CASE rf.name WHEN '助攻' THEN rd.value END)  assist,"
+						+ "de.id as division_event_id "
 						+ "FROM "
 						+ "Player p "
 						+ "LEFT OUTER JOIN SQUAD_PLAYER sp "
@@ -189,7 +190,7 @@ public class PlayerResource {
 						+ "left outer join Team tm on tm.id = sq.team_id on sq.id = sp.squad_id "
 						+ "ON sp.player_id = p.id WHERE p.id = "
 						+ id
-						+ " group by p.id,p.NAME,d.NAME,s.name order by s.name desc");
+						+ " group by p.id,p.NAME,d.NAME,s.name,de.id order by s.name desc");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
 	}
