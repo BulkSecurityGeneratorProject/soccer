@@ -23,6 +23,7 @@ import javax.persistence.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -275,7 +276,8 @@ public class DivisionEventResource {
 		exampleDivisionEvent.setId(id);
 		exampleTimeslot.setDivisionEvent(exampleDivisionEvent);
 		example.setTimeslot(exampleTimeslot);
-		List<Game> games = gameRepository.findAll(Example.of(example));
+		List<Game> games = gameRepository.findAll(Example.of(example),
+				new Sort(new Sort.Order(Sort.Direction.ASC, "startAt")));
 		return games;
 	}
 
