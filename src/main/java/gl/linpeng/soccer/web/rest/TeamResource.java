@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +47,8 @@ public class TeamResource {
 	private PlayerRepository playerRepository;
 	@Inject
 	private GameRepository gameRepository;
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	/**
 	 * POST /teams : Create a new team.
@@ -193,6 +198,37 @@ public class TeamResource {
 		// example.setRoadTeam(exampleTeam);
 		List<Game> games = gameRepository.findAll(Example.of(example));
 		return games;
+	}
+
+	/**
+	 * GET /division-events : get the team player statistics.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of
+	 *         statistics data in body
+	 */
+	@RequestMapping(value = "/teams/{id}/player-statistics", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Player> getPlayerStatistics(@PathVariable Long id) {
+		log.debug("REST request to get Player statistics data of team : {}", id);
+
+		String sql = String
+				.format("select p.id,p.name,"
+						+ "sum(CASE rf.name WHEN '进球' THEN rd.value END)  goal,"
+						+ "sum(CASE rf.name WHEN '助攻' THEN rd.value END)  assist,"
+						+ "sum(CASE rf.name WHEN '黄牌' THEN rd.value END)  yellow,"
+						+ "sum(CASE rf.name WHEN '红牌' THEN rd.value END)  red"
+						+ " from Team tm "
+						+ "left outer join squad sq "
+						+ "left outer join squad_player sp "
+						+ "left outer join player p on p.id = sp.player_id "
+						+ "left outer join Result_data rd "
+						+ "left outer join result_field rf on rf.id = rd.result_field_id "
+						+ "on rd.squad_player_id = sp.id "
+						+ "on sp.squad_id = sq.id " + "on sq.team_id = tm.id"
+						+ " where tm.id='" + id + "'"
+						+ "group by p.id,p.name order by p.name");
+		Query query = entityManager.createNativeQuery(sql);
+		return query.getResultList();
 	}
 
 }
