@@ -15,9 +15,9 @@
             }; 
        });
 
-    PublicClubController.$inject = ['$scope','$state',  'Club','TeamPlayer','TeamGame'];
+    PublicClubController.$inject = ['$scope','$state',  'Club','TeamPlayer','TeamGame','TeamCustom'];
 
-    function PublicClubController ($scope, $state,Club,TeamPlayer,TeamGame) {
+    function PublicClubController ($scope, $state,Club,TeamPlayer,TeamGame,TeamCustom) {
     	
         var vm = this;
         $scope.tabs = [{
@@ -48,7 +48,8 @@
         // 1. Get Club Basic information
         vm.club = Club.get({id:$state.params.id});
         // 2. Get All Club team with player
-        vm.players = TeamPlayer.query({id:$state.params.id});
+        //vm.players = TeamPlayer.query({id:$state.params.id});
+        vm.players = TeamCustom.query({id:$state.params.id});
         // 3. Get schdule of teams
         vm.games = TeamGame.query({id:$state.params.id});
         // 4. History and so on
