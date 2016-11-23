@@ -9,3 +9,47 @@
 	}
 </style>
 <h1>{{vm.player.name}}</h1>
+<div id="overview" class="container">
+	<div class="row">
+    	<div class="col-sm-11">
+    		<div class="col-md-5">
+    			<img src="/content/images/logo-jhipster.png">
+    		</div>
+    		<div class="col-md-6">
+				<label>Birthdate</label> {{vm.player.birth | date:'yyyy-MM-dd'}}<br>
+				<label>Age</label> {{vm.player.birth | ageFilter}}<br>
+				<label>Posision</label> TBA<br>
+				<label>Height</label> TBA<br>
+				<label>Weight</label> TBA
+    		</div>
+    	</div>
+    	<div class="col-sm-11">
+    		<!-- Career statistics -->
+    		
+    		<div class="panel panel-default">
+			  <!-- Default panel contents -->
+			  <div class="panel-heading"><strong>Career</strong></div>
+			
+			  <!-- Table -->
+			  <table class="table">
+	    			<tr>
+	    				<th>Season</th>
+	    				<th>Team</th>
+	    				<th>Division</th>
+	    				<th>Goal</th>
+	    				<th>Assist</th>
+	    			</tr>
+	    			<tr ng-repeat="data in vm.careerData">
+	    				<td>{{data[3]}}</td>
+	    				<td>{{data[4]}}</td>
+	    				<td>{{data[2]}}</td>
+	    				<td>{{data[5]}}</td>
+	    				<td>{{data[6]}}</td>
+	    			</tr>
+	    		</table>
+			</div>
+    		
+    	</div>
+    	
+    </div>
+</div>		
