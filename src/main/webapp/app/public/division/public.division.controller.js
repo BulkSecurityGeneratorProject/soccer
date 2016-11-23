@@ -41,10 +41,18 @@
             return $scope.now.getTime() > new Date(dStr).getTime();
         }
         
+        function recentMonth(obj) {
+        	return	 Math.abs(($scope.now.getTime() - new Date(obj.startAt).getTime())/(24 * 60 * 60 * 1000)) <=31;
+        }
+        
         // 1. division event basic information
         vm.division = DivisionEvent.get({id:$state.params.id});
         // 2. schduled information
-        vm.games = DivisionEventGame.query({id:$state.params.id});
+        DivisionEventGame.query({id:$state.params.id},function(result){
+        	 vm.games = result;
+        	 vm.recentGames = vm.games.filter(recentMonth);
+        });
+       
         // 3. Clubs table(statistics)
         vm.divisionTable = DivisionEventTable.query($state.params);
         // 4. Player table(statistics)
