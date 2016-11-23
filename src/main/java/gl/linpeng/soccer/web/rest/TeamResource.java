@@ -190,14 +190,8 @@ public class TeamResource {
 	@Timed
 	public List<Game> getAllTeamGames(@PathVariable Long id) {
 		log.debug("REST request to get all Team {} Games", id);
-		Game example = new Game();
-		Team exampleTeam = new Team();
-		exampleTeam.setId(id);
-		example.setHomeTeam(exampleTeam);
-		// TODO ? How to query by 'OR' operation in Spring Data DSL
-		// example.setRoadTeam(exampleTeam);
-		List<Game> games = gameRepository.findAll(Example.of(example));
-		return games;
+		// here query recent 1 month game
+		return gameRepository.findGamesByTeam(id, 31);
 	}
 
 	/**
