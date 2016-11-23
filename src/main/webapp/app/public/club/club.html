@@ -27,12 +27,13 @@
     			<div class="row">
         			<div class="col-sm-12">
         				<div class="col-md-6">
-							<img src="/content/images/logo-jhipster.png"><br>
-							<label>Alias</label> {{vm.club.shortName}}<br>
-							<a href="###">Offical Website</a><br>
-							<label>Created At</label> {{vm.club.createAt | date:'mediumDate'}}
+								<img src="/content/images/logo-jhipster.png"><br>
+								<label>Alias</label> {{vm.club.shortName}}<br>
+								<a href="###">Offical Website</a><br>
+								<label>Created At</label> {{vm.club.createAt | date:'mediumDate'}}
 						</div>
-        				<div class="col-md-6">
+						
+        				<div class="col-md-5">
 							<img src="/content/images/logo-jhipster.png"><br>
 							<label>Name</label>{{vm.club.venue.name}}<br>
 							<label>Alias</label>{{vm.club.venue.shortName}}<br>
@@ -42,33 +43,49 @@
 						</div>
 					</div>
 					<div class="col-sm-12">
-        				<div class="col-md-6">
-							<h2>Matche List</h2>
-							<table>
-								<tr><th>StartAt</th><th>Home</th><th>Score</th><th>Road</th></tr>
-								<tr ng-repeat="game in vm.games" ><td>{{game.startAt}}</td><td>{{game.homeTeam.name}}</td><td ng-if="isBefore(game.startAt)" style="text-align:center;"><span ng-class="{'bigger': game.homeScore > game.roadScore, 'littler': game.homeScore < game.roadScore}">{{game.homeScore}}</span>:<span ng-class="{'littler': game.homeScore > game.roadScore, 'bigger': game.homeScore < game.roadScore}">{{game.roadScore}}</span></td><td ng-if="!isBefore(game.startAt)">TBA</td><td>{{game.roadTeam.name}}</td></tr>
-							</table>
+        				<div class="col-sm-5">
+							<div class="panel panel-default">
+			  					<!-- Default panel contents -->
+			  					<div class="panel-heading"><strong>Schduled</strong></div>
+			
+			  					<!-- Table -->
+			  					<table class="table">
+									<tr><th>StartAt</th><th>Home</th><th>Score</th><th>Road</th></tr>
+									<tr ng-repeat="game in vm.games" ><td>{{game.startAt}}</td><td>{{game.homeTeam.name}}</td><td ng-if="isBefore(game.startAt)" style="text-align:center;"><span ng-class="{'bigger': game.homeScore > game.roadScore, 'littler': game.homeScore < game.roadScore}">{{game.homeScore}}</span>:<span ng-class="{'littler': game.homeScore > game.roadScore, 'bigger': game.homeScore < game.roadScore}">{{game.roadScore}}</span></td><td ng-if="!isBefore(game.startAt)">TBA</td><td>{{game.roadTeam.name}}</td></tr>
+								 </table>
+							 </div>
+						  </div>	
+						<div class="col-sm-1">
 						</div>
-        				<div class="col-md-6">
-							<h2>Player List</h2>
-							<table>
-								<tr><th>No.</th><th>Name</th><th>Birth</th></tr>
-								<tr ng-repeat="player in vm.players" ><td><img src="/content/images/logo-jhipster.png" width="25px" height="30px"></td><td><a ui-sref="public.player({id:player.id})">{{player.name}}</a></td><td>{{player.birth | date:'mediumDate'}}</td></tr>
-							</table>
-						</div>
-					</div>
-    			</div>
+        				<div class="col-sm-5">
+							
+							<div class="panel panel-default">
+			  					<!-- Default panel contents -->
+			  					<div class="panel-heading"><strong>Players</strong></div>
+			
+			  					<!-- Table -->
+			  					<table class="table">
+									<tr><th>No.</th><th>Name</th><th>Birth</th></tr>
+									<tr ng-repeat="player in vm.players" ><td><img src="/content/images/logo-jhipster.png" width="25px" height="30px"></td><td><a ui-sref="public.player({id:player.id})">{{player.name}}</a></td><td>{{player.birth | date:'mediumDate'}}</td></tr>
+								</table>
+							 </div>
+						</div><!-- end of col-md-6-->
 
-        </div>
+					</div><!-- end of col-sm-12-->
+    			</div><!-- end of row-->
+
+        </div><!-- end of container -->
     </script>
     
     <script type="text/ng-template" id="players.tpl.html">
         <div id="players">
             <h1>Players</h1>
-            <table>
+			<div class="panel panel-default">
+            <table class="table">
 				<tr><th>No.</th><th>Name</th><th>Age</th><th>Posision</th><th>Timeup</th><th>Goal</th><th>Assis</th><th>Yellow Card</th><th>Red Card</th></tr>
 				<tr ng-repeat="player in vm.players" ><td><img src="/content/images/logo-jhipster.png" width="25px" height="30px"></td><td>{{player.name}}</td><td>{{player.birth | ageFilter}}</td><td>TBA</td><td>TBA</td><td>TBA</td><td>TBA</td><td>TBA</td><td>TBA</td></tr>
 			</table>
+			</div>
         </div>
     </script>
     
