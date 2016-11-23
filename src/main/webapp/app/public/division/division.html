@@ -1,3 +1,13 @@
+<style>
+	.bigger{
+		background-color: pink;
+		font-weight: bolder;
+	}
+	.littler{
+		background-color: lightgreen;
+		font-weight: bolder;
+	}
+</style>
 <h1>{{vm.division.season.name}} - {{vm.division.division.name}}</h1>
 <div id="tabs" ng-controller="PublicDivisionController">
        <ul class="nav nav-tabs">
@@ -16,6 +26,35 @@
 </script>
 <script type="text/ng-template"  id="schduled.tpl.html">
 	<div id="schduled" class="container">
+		<div class="row">
+        	<div class="col-sm-11">
+				<div class="panel panel-default">
+				<table class="jh-table table">
+					<tr>
+						<th><span>Round</span></th>
+						<th><span>Type</span></th>
+			            <th><span>Start At</span></th>
+						<th><span>Home</span></th>
+			            <th><span>Score</span></th>
+						<th><span>Road</span></th>
+						<th><span>Venue</span></th>
+			        </tr>
+			        <tr ng-repeat="game in vm.games">
+						<td>{{game.timeslot.round}}</td>	
+						<td>{{game.timeslot.type.name}}</td>	
+						<td>{{game.startAt}}</td>
+						<td><a ui-sref="public.club({id:game.homeTeam.club.id})">{{game.homeTeam.name}}</a></td>
+						<td ng-if="isBefore(game.startAt)">
+							<span ng-class="{'bigger': game.homeScore > game.roadScore, 'littler': game.homeScore < game.roadScore}">{{game.homeScore}}</span>:
+							<span ng-class="{'littler': game.homeScore > game.roadScore, 'bigger': game.homeScore < game.roadScore}">{{game.roadScore}}</span>
+						</td>
+						<td ng-if="!isBefore(game.startAt)">TBA</td>
+						<td><a ui-sref="public.club({id:game.roadTeam.club.id})">{{game.roadTeam.name}}</a></td>
+						<td>{{game.venue.name}}</td>
+					</tr>
+				</table>
+				</div>
+			</div>
 	</div>
 </script>
 <script type="text/ng-template"  id="clubs.tpl.html">
