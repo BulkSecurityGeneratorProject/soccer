@@ -180,26 +180,27 @@ public class DivisionEventResource {
 		log.debug("REST request to get table of DivisionEvents : {}", id);
 
 		String sql = String
-				.format("select id,name,count(id) as GP,count(WIN) as W"
+				.format("select id,name,club_id,count(id) as GP,count(WIN) as W"
 						+ ",count(LOSS) as L,count(DRAW) as D,sum(GS) as GS"
 						+ ",sum(GA) as GA,sum(GS)- sum(GA) as GD,(count(WIN)*3+count(DRAW)*1) AS PTS "
 						+ "from "
-						+ "(select t.id,t.name"
+						+ "(select t.id,t.name,c.id as club_id"
 						+ ",case when g.home_score > g.road_score then '1' end as WIN"
 						+ ",case when g.home_score < g.road_score then '1' end as LOSS"
 						+ ",case when g.home_score = g.road_score  then '1' end AS DRAW"
 						+ ",g.home_score as GS,g.road_score as GA "
-						+ "from team t,game g where t.division_event_id= "
+						+ "from team t LEFT OUTER JOIN club c on c.id = t.club_id,game g where t.division_event_id= "
 						+ id
-						+ "and g.home_team_id=t.id "
+						+ " and g.home_team_id=t.id "
 						+ "union all "
-						+ "select t.id,t.name"
+						+ "select t.id,t.name,c.id as club_id"
 						+ ",case when g2.home_score < g2.road_score then '1' end as WIN"
 						+ ",case when g2.home_score > g2.road_score then '1' end as LOSS"
 						+ ",case when g2.home_score = g2.road_score  then '1' end AS DRAW"
 						+ ",g2.road_score as GS,g2.home_score as GA "
-						+ "from team t,game g2 where t.division_event_id= "
-						+ id + "and g2.road_team_id=t.id) "
+						+ "from team t LEFT OUTER JOIN club c on c.id = t.club_id,game g2 where t.division_event_id= "
+						+ id
+						+ "and g2.road_team_id=t.id) "
 						+ "group by name order by PTS DESC,GD DESC");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();

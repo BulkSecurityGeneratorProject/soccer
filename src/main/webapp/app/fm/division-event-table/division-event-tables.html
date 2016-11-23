@@ -35,10 +35,7 @@
                 <tr ng-repeat="divisionEvent in vm.divisionEvents track by divisionEvent[0]">
                     <!-- <td>{{divisionEvent[0]}}</td> -->
                     <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
-                       <a ui-sref="team-detail({id:divisionEvent[0]})"> {{divisionEvent[1]}}</a>
-                    </td>
-                    <td>
-                         {{divisionEvent[2]}}
+                       <a ui-sref="team-detail({id:divisionEvent[2]})"> {{divisionEvent[1]}}</a>
                     </td>
                     <td>
                          {{divisionEvent[3]}}
@@ -60,6 +57,9 @@
                     </td>
                     <td>
                          {{divisionEvent[9]}}
+                    </td>
+                    <td>
+                         {{divisionEvent[10]}}
                     </td>
                 </tr>
             </tbody>
