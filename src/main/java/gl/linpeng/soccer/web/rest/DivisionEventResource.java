@@ -216,12 +216,17 @@ public class DivisionEventResource {
 	public List<Team> getDivisionEventGoalRanking(@PathVariable Long id) {
 		log.debug("REST request to get Goal-Ranking of DivisionEvents : {}", id);
 
-		String sql = String.format("SELECT "
-				+ "p.id,p.name,SUM(rd.value) AS goal FROM "
-				+ "RESULT_DATA rd,SQUAD_PLAYER sp,PLAYER p "
-				+ "WHERE sp.id = rd.squad_player_id "
-				+ "AND sp.player_id = p.id " + "AND rd.result_field_id=3 "
-				+ "GROUP BY p.name " + "ORDER BY goal DESC");
+		String sql = String
+				.format("SELECT "
+						+ "p.id,p.name,tm.name as team_name,tm.id as team_id,SUM(rd.value) AS goal FROM "
+						+ "RESULT_DATA rd,SQUAD_PLAYER sp "
+						+ "left outer join squad sq "
+						+ "left outer join team tm on tm.id = sq.team_id "
+						+ "on sq.id = sp.squad_id,PLAYER p "
+						+ "WHERE sp.id = rd.squad_player_id "
+						+ "AND sp.player_id = p.id "
+						+ "AND rd.result_field_id=3 " + "GROUP BY p.name "
+						+ "ORDER BY goal DESC");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
 	}
@@ -238,16 +243,21 @@ public class DivisionEventResource {
 		log.debug("REST request to get Assist-Ranking of DivisionEvents : {}",
 				id);
 
-		String sql = String.format("SELECT "
-				+ "p.id,p.name,SUM(rd.value) AS assist FROM "
-				+ "RESULT_DATA rd,SQUAD_PLAYER sp,PLAYER p "
-				+ "WHERE sp.id = rd.squad_player_id "
-				+ "AND sp.player_id = p.id " + "AND rd.result_field_id=4 "
-				+ "GROUP BY p.name " + "ORDER BY assist DESC");
+		String sql = String
+				.format("SELECT "
+						+ "p.id,p.name,tm.name as team_name,tm.id as team_id,SUM(rd.value) AS assist FROM "
+						+ "RESULT_DATA rd,SQUAD_PLAYER sp "
+						+ "left outer join squad sq "
+						+ "left outer join team tm on tm.id = sq.team_id "
+						+ "on sq.id = sp.squad_id,PLAYER p "
+						+ "WHERE sp.id = rd.squad_player_id "
+						+ "AND sp.player_id = p.id "
+						+ "AND rd.result_field_id=4 " + "GROUP BY p.name "
+						+ "ORDER BY assist DESC");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
 	}
-	
+
 	/**
 	 * GET /division-events : get all the divisionEvent games.
 	 *
@@ -257,7 +267,7 @@ public class DivisionEventResource {
 	@RequestMapping(value = "/division-events/{id}/games", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public List<Game> getAllDivisionEventGames(@PathVariable Long id) {
-		log.debug("REST request to get all DivisionEvent games,{}",id);
+		log.debug("REST request to get all DivisionEvent games,{}", id);
 		Game example = new Game();
 		Timeslot exampleTimeslot = new Timeslot();
 		DivisionEvent exampleDivisionEvent = new DivisionEvent();
@@ -267,7 +277,7 @@ public class DivisionEventResource {
 		List<Game> games = gameRepository.findAll(Example.of(example));
 		return games;
 	}
-	
+
 	/**
 	 * POST /division-events : save all the divisionEvent games.
 	 *
@@ -276,43 +286,45 @@ public class DivisionEventResource {
 	 */
 	@RequestMapping(value = "/division-events/{id}/games", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
-	public ResponseEntity<Game> saveAllDivisionEventGames(@PathVariable Long id,@RequestBody Game game) {
-		log.debug("REST request to save all DivisionEvent games,{},{}",id,game);
-		if(game.getTimeslot()==null){
+	public ResponseEntity<Game> saveAllDivisionEventGames(
+			@PathVariable Long id, @RequestBody Game game) {
+		log.debug("REST request to save all DivisionEvent games,{},{}", id,
+				game);
+		if (game.getTimeslot() == null) {
 			return ResponseEntity
 					.badRequest()
 					.headers(
-							HeaderUtil
-									.createFailureAlert("divisionEventGame",
-											"error",
-											"timeslot cannot be null"))
+							HeaderUtil.createFailureAlert("divisionEventGame",
+									"error", "timeslot cannot be null"))
 					.body(null);
 		}
-		
+
 		Timeslot example = new Timeslot();
 		example.setRound(game.getTimeslot().getRound());
 		DivisionEvent exampleDivisionEvent = new DivisionEvent();
 		exampleDivisionEvent.setId(id);
 		example.setDivisionEvent(exampleDivisionEvent);
 		Timeslot timeslot = timeslotRepository.findOne(Example.of(example));
-		if(null!=timeslot){
+		if (null != timeslot) {
 			game.setTimeslot(timeslot);
-		}else{
-			//create a new timeslot of division event
+		} else {
+			// create a new timeslot of division event
 			timeslot = timeslotRepository.save(example);
 			game.setTimeslot(timeslot);
 		}
-		
-		if(game.getId()==null){
+
+		if (game.getId() == null) {
 			game = gameRepository.save(game);
-		}else{
+		} else {
 			game = gameRepository.saveAndFlush(game);
 		}
-		return ResponseEntity.ok().headers(
-				HeaderUtil.createEntityCreationAlert("divisionEventGame",
-						id.toString())).body(game);
+		return ResponseEntity
+				.ok()
+				.headers(
+						HeaderUtil.createEntityCreationAlert(
+								"divisionEventGame", id.toString())).body(game);
 	}
-	
+
 	/**
 	 * GET /division-events : get all the divisionEvent teams.
 	 *
@@ -322,8 +334,8 @@ public class DivisionEventResource {
 	@RequestMapping(value = "/division-events/{id}/teams", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public List<Team> getAllDivisionEventTeams(@PathVariable Long id) {
-		log.debug("REST request to get all DivisionEvent teams,{}",id);
-		
+		log.debug("REST request to get all DivisionEvent teams,{}", id);
+
 		Team example = new Team();
 		DivisionEvent exampleDivisionEvent = new DivisionEvent();
 		exampleDivisionEvent.setId(id);
