@@ -1,14 +1,139 @@
-<h1>{{vm.player.name}}</h1>
-<div id="overview" class="container">
-	<div class="row">
-    	<div class="col-sm-11">
-    		<div class="col-md-5">
-    			
-    		</div>
-    		<div class="col-md-6">
-				
-    		</div>
-    	</div>
-    	
-    </div>
+<h1>{{vm.division.season.name}} - {{vm.division.division.name}}</h1>
+<div id="tabs" ng-controller="PublicDivisionController">
+       <ul class="nav nav-tabs">
+           <li ng-repeat="tab in tabs" 
+               ng-class="{active:isActiveTab(tab.url)}" >
+               <a ng-click="onClickTab(tab)">{{tab.title}}</a>
+           </li>
+       </ul>
+       <div id="mainView">
+           <div ng-include="currentTab"></div>
+       </div>
 </div>
+<script type="text/ng-template"  id="overview.tpl.html">
+	<div id="overview" class="container">
+	</div>
+</script>
+<script type="text/ng-template"  id="schduled.tpl.html">
+	<div id="schduled" class="container">
+	</div>
+</script>
+<script type="text/ng-template"  id="clubs.tpl.html">
+	<div id="clubs" class="container">
+		<div class="row">
+        	<div class="col-sm-11">
+				<table class="jh-table table table-striped">
+                    <thead>
+                        <tr>
+                            <!-- <th><span>ID</span></th> -->
+                            <th><span>Name</span></th>
+                            <th><span>GP</span></th>
+                            <th><span>W</span></th>
+                            <th><span>L</span></th>
+                            <th><span>D</span></th>
+                            <th><span>GS</span></th>
+                            <th><span>GA</span></th>
+                            <th><span>GD</span></th>
+                            <th><span>PTS</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="divisionEvent in vm.divisionTable track by divisionEvent[0]">
+                            <!-- <td>{{divisionEvent[0]}}</td> -->
+                            <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+                               <a ui-sref="team-detail({id:divisionEvent[0]})"> {{divisionEvent[1]}}</a>
+                            </td>
+                            <td>
+                                 {{divisionEvent[2]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[3]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[4]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[5]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[6]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[7]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[8]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[9]}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/ng-template"  id="players.tpl.html">
+	<div id="players" class="container">
+		
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="panel panel-default">
+  					<!-- Default panel contents -->
+  					<div class="panel-heading"><strong>Goal Ranking</strong></div>
+
+					<table class="jh-table table">
+			            <thead>
+			                <tr>
+			                    <th><span>Name</span></th>
+			                    <th><span>Goal</span></th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr ng-repeat="player in vm.goalRankings track by player[0]">
+			                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+			                       <a ui-sref="player-detail({id:player[0]})"> {{player[1]}}</a>
+			                    </td>
+			                    <td>
+			                         {{player[2]}}
+			                    </td>
+			                </tr>
+			            </tbody>
+			        </table>
+				</div>
+			</div>
+			<div class="col-sm-1">
+			</div>
+			<div class="col-sm-5">
+				<div class="panel panel-default">
+  					<!-- Default panel contents -->
+  					<div class="panel-heading"><strong>Assist Ranking</strong></div>
+					<table class="jh-table table table-striped">
+			            <thead>
+			                <tr>
+			                    <th><span>Name</span></th>
+			                    <th><span>Assist</span></th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr ng-repeat="player in vm.assistRankings track by player[0]">
+			                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+			                       <a ui-sref="player-detail({id:player[0]})"> {{player[1]}}</a>
+			                    </td>
+			                    <td>
+			                         {{player[2]}}
+			                    </td>
+			                </tr>
+			            </tbody>
+			        </table>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</script>
+<script type="text/ng-template"  id="venues.tpl.html">
+	<div id="venues" class="container">
+	</div>
+</script>
