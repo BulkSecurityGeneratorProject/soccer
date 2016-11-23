@@ -212,7 +212,7 @@ public class TeamResource {
 		log.debug("REST request to get Player statistics data of team : {}", id);
 
 		String sql = String
-				.format("select p.id,p.name,"
+				.format("select p.id,p.name,p.birth,"
 						+ "sum(CASE rf.name WHEN '进球' THEN rd.value END)  goal,"
 						+ "sum(CASE rf.name WHEN '助攻' THEN rd.value END)  assist,"
 						+ "sum(CASE rf.name WHEN '黄牌' THEN rd.value END)  yellow,"
@@ -226,7 +226,7 @@ public class TeamResource {
 						+ "on rd.squad_player_id = sp.id "
 						+ "on sp.squad_id = sq.id " + "on sq.team_id = tm.id"
 						+ " where tm.id='" + id + "'"
-						+ "group by p.id,p.name order by p.name");
+						+ "group by p.id,p.name,p.birth order by p.name");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
 	}
