@@ -1,4 +1,4 @@
-<h1>{{vm.vm.association.name}}</h1>
+<h1>{{vm.association.name}}</h1>
 <div id="tabs" ng-controller="PublicAssociationController">
        <ul class="nav nav-tabs">
            <li ng-repeat="tab in tabs" 
@@ -15,16 +15,13 @@
 	<div id="overview" class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				
+				<!-- association basic information -->
         		<div class="col-sm-6">
-				
+					<label>Create At</label> {{vm.association.createAt|date:'yyyy-MM-dd'}}
 				</div>
-			
+				
 			</div>
-			<div class="col-sm-12">
 			
-			
-			</div>
 		</div>	
 	</div>
 </script>
@@ -34,10 +31,19 @@
 		
 	</div>
 </script>
-<script type="text/ng-template"  id="clubs.tpl.html">
+<script type="text/ng-template"  id="divisions.tpl.html">
 	<br>	
-	<div id="clubs" class="container">
-		
+	<div id="divisions" class="container">
+		<div class="row">
+        	<div class="col-sm-11">
+				<div class="panel panel-default">
+					<table class="jh-table table">
+						<tr><th>Name</th><th>Create At</th><th>Type</th></tr>
+						<tr ng-repeat="division in vm.divisions"><td><a ui-sref="public.division({id:division.id})">{{division.name}}</a></td><td>{{division.createAt|date:'yyyy-MM-dd'}}</td><td>{{division.type.name}}</td></tr>
+					</table>
+				</div>
+			</div>
+		</div>	<!-- end of row-->
 	</div>
 </script>
 <script type="text/ng-template"  id="players.tpl.html">
