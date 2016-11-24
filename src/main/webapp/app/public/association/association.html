@@ -32,24 +32,44 @@
 	</div>
 </script>
 <script type="text/ng-template"  id="divisions.tpl.html">
-	<br>	
+	<br>
 	<div id="divisions" class="container">
 		<div class="row">
-        	<div class="col-sm-11">
-				<div class="panel panel-default">
-					<table class="jh-table table">
-						<tr><th>Name</th><th>Create At</th><th>Type</th></tr>
-						<tr ng-repeat="division in vm.divisions"><td><a ui-sref="public.division({id:division.id})">{{division.name}}</a></td><td>{{division.createAt|date:'yyyy-MM-dd'}}</td><td>{{division.type.name}}</td></tr>
-					</table>
-				</div>
-			</div>
-		</div>	<!-- end of row-->
+        <div class="col-lg-4" ng-repeat="division in vm.divisions">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>{{division.name}}</h2>
+          <p>This is division interduce</p>
+          <p><a class="btn btn-default" ui-sref="public.division({id:division.id})" role="button">View details »</a></p>
+        </div>
+      </div>
+
+	</div>
+</script>
+<script type="text/ng-template"  id="clubs.tpl.html">
+	<br>
+	<div id="clubs" class="container">
+		<div class="row">
+        <div class="col-lg-3" ng-repeat="club in vm.clubs">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="40" height="40">
+          <h3>{{club.name}}</h3>
+          <p>{{club.shortName}},create at {{club.createAt|date:'yyyy-MM-dd'}}.</p>
+          <p><a class="btn btn-default" ui-sref="public.club({id:club.id})" role="button">View details »</a></p>
+        </div>
+      </div>
 	</div>
 </script>
 <script type="text/ng-template"  id="players.tpl.html">
 	<br>
 	<div id="players" class="container">
-		
+		<div class="row">
+        <div class="col-lg-3" ng-repeat="player in vm.players">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="40" height="40">
+          <h3>{{player.name}}</h3>
+          <p>from {{player.team.name}}.</p>
+          <p><a class="btn btn-default" ui-sref="public.player({id:player.id})" role="button">View details »</a></p>
+        </div>
+      </div>
+
 	</div>
 </script>
 <script type="text/ng-template"  id="venues.tpl.html">
