@@ -332,12 +332,15 @@ ui bootstrap tweaks
 
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
- .gold{
- 	background-color:gold;
+ .gold, .gold a{
+ 	font-size: large;
+  	color: gold;
  }
- .silver{
- 	background-color:silver;
+ .silver, .silver a{
+  	color: silver;
  }
- .cornsilk{
- 	background-color:cornsilk;
+ .cornsilk, .cornsilk a{
  }
+ .last, .last a{
+ 	color:lightcoral;
+}

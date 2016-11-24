@@ -67,9 +67,10 @@
 			<div class="col-sm-5">
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Point Ranking</strong></div>
-				<table class="jh-table table table-striped">
+				<table class="jh-table table">
                     <thead>
                         <tr>
+							<th><span>Rank</span></th>
                             <th><span>Name</span></th>
                             <th><span>W</span></th>
                             <th><span>L</span></th>
@@ -81,9 +82,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="divisionEvent in vm.divisionTable track by divisionEvent[0]">
+                        <tr ng-repeat="divisionEvent in vm.divisionTable track by divisionEvent[0]"  ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2,'last':$last}">
+							<td>{{$index+1}}</td>
                             <!-- <td>{{divisionEvent[0]}}</td> -->
-                            <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+                            <td>
                                <a ui-sref="public.club({id:divisionEvent[2]})"> {{divisionEvent[1]}}</a>
                             </td>
                             <td>
@@ -120,13 +122,17 @@
 					<table class="jh-table table">
 			            <thead>
 			                <tr>
+								<th><span>Rank</span></th>
 			                    <th><span>Name</span></th>
 			                    <th><span>Goal</span></th>
 			                </tr>
 			            </thead>
 			            <tbody>
-			                <tr ng-repeat="player in vm.goalRankings track by player[0]">
-			                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+			                <tr ng-repeat="player in vm.goalRankings track by player[0]" ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+			                    <td>
+									{{$index+1}}
+								</td>
+								<td>
 			                       <a ui-sref="public.player({id:player[0]})"> {{player[1]}}</a>
 			                    </td>
 								<td>
@@ -144,13 +150,15 @@
 					<table class="jh-table table table-striped">
 			            <thead>
 			                <tr>
+								<th><span>Rank</span></th>
 			                    <th><span>Name</span></th>
 			                    <th><span>Assist</span></th>
 			                </tr>
 			            </thead>
 			            <tbody>
-			                <tr ng-repeat="player in vm.assistRankings track by player[0]">
-			                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+			                <tr ng-repeat="player in vm.assistRankings track by player[0]" ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+			                    <td>{{$index+1}}</td>
+								<td>
 			                       <a ui-sref="public.player({id:player[0]})"> {{player[1]}}</a>
 			                    </td>
 								<td>
@@ -209,6 +217,7 @@
                     <thead>
                         <tr>
                             <!-- <th><span>ID</span></th> -->
+							<th><span>Rank</span></th>
                             <th><span>Name</span></th>
                             <th><span>GP</span></th>
                             <th><span>W</span></th>
@@ -221,9 +230,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="divisionEvent in vm.divisionTable track by divisionEvent[0]">
+                        <tr ng-repeat="divisionEvent in vm.divisionTable track by divisionEvent[0]" ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2,'last':$last}">
                             <!-- <td>{{divisionEvent[0]}}</td> -->
-                            <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+							<td>{{$index+1}}</td>
+                            <td>
                                <a ui-sref="public.club({id:divisionEvent[2]})"> {{divisionEvent[1]}}</a>
                             </td>
                             <td>
@@ -271,14 +281,16 @@
 					<table class="jh-table table">
 			            <thead>
 			                <tr>
+								<th><span>Rank</span></th>
 			                    <th><span>Name</span></th>
 								<th><span>Team</span></th>
 			                    <th><span>Goal</span></th>
 			                </tr>
 			            </thead>
 			            <tbody>
-			                <tr ng-repeat="player in vm.goalRankings track by player[0]">
-			                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+			                <tr ng-repeat="player in vm.goalRankings track by player[0]"  ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+								<td>{{$index+1}}</td>
+			                    <td>
 			                       <a ui-sref="public.player({id:player[0]})"> {{player[1]}}</a>
 			                    </td>
 								<td>
@@ -301,14 +313,16 @@
 					<table class="jh-table table table-striped">
 			            <thead>
 			                <tr>
+								<th><span>Rank</span></th>
 			                    <th><span>Name</span></th>
 								<th><span>Team</span></th>
 			                    <th><span>Assist</span></th>
 			                </tr>
 			            </thead>
 			            <tbody>
-			                <tr ng-repeat="player in vm.assistRankings track by player[0]">
-			                    <td ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+			                <tr ng-repeat="player in vm.assistRankings track by player[0]"  ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2}">
+								<td>{{$index+1}}</td>
+			                    <td>
 			                       <a ui-sref="public.player({id:player[0]})"> {{player[1]}}</a>
 			                    </td>
 			                    <td>
