@@ -1,12 +1,19 @@
 package gl.linpeng.soccer.domain;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A Game.
@@ -23,7 +30,7 @@ public class Game implements Serializable {
     private Long id;
 
     @Column(name = "start_at")
-    private LocalDate startAt;
+    private LocalDateTime startAt;
 
     @Column(name = "home_score")
     private Integer homeScore;
@@ -63,11 +70,11 @@ public class Game implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getStartAt() {
+    public LocalDateTime getStartAt() {
         return startAt;
     }
 
-    public void setStartAt(LocalDate startAt) {
+    public void setStartAt(LocalDateTime startAt) {
         this.startAt = startAt;
     }
 

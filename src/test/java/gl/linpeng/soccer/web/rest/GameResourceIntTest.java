@@ -1,35 +1,40 @@
 package gl.linpeng.soccer.web.rest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import gl.linpeng.soccer.SoccerApp;
-
 import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.repository.GameRepository;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Test class for the GameResource REST controller.
@@ -42,8 +47,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class GameResourceIntTest {
 
-    private static final LocalDate DEFAULT_START_AT = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_START_AT = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_START_AT = LocalDateTime.ofEpochSecond(0L, 0,ZoneOffset.ofHours(0));
+    private static final LocalDateTime UPDATED_START_AT = LocalDateTime.now(ZoneId.systemDefault());
 
     private static final Integer DEFAULT_HOME_SCORE = 1;
     private static final Integer UPDATED_HOME_SCORE = 2;
