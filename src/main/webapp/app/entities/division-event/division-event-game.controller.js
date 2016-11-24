@@ -151,7 +151,7 @@
         			}
         			
         			var timeslot =  vm.dates.length;
-        			var matchesOfTimeslot = Math.floor(ary.length*ary[0].length / timeslot);
+        			var matchesOfTimeslot = Math.ceil(ary.length*ary[0].length / timeslot);
         			// var matchesLeft = ary.length % timeslot;
         			var time = new Date();
         			var whichTimeslotDate = Math.floor((i*ary[0].length+j)/matchesOfTimeslot);
