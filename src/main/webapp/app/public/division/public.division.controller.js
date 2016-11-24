@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('PublicDivisionController', PublicDivisionController);
 
-    PublicDivisionController.$inject = ['$scope','$state','DivisionEvent','DivisionEventTable','DivisionEventGoalRanking','DivisionEventAssistRanking','DivisionEventGame'];
+    PublicDivisionController.$inject = ['$scope','$state','Division','DivisionEvent','DivisionEventTable','DivisionEventGoalRanking','DivisionEventAssistRanking','DivisionEventGame'];
 
-    function PublicDivisionController ($scope, $state,DivisionEvent,DivisionEventTable,DivisionEventGoalRanking,DivisionEventAssistRanking,DivisionEventGame) {
+    function PublicDivisionController ($scope, $state,Division,DivisionEvent,DivisionEventTable,DivisionEventGoalRanking,DivisionEventAssistRanking,DivisionEventGame) {
         var vm = this;
         $scope.now = new Date();
         $scope.tabs = [{
@@ -41,23 +41,42 @@
             return $scope.now.getTime() > new Date(dStr).getTime();
         }
         
+        /**
+         * Change division handle
+         */
+        $scope.changeToDivisionEvent = function(divisionEvent){
+        	$scope.currentDivisionEvent = divisionEvent;
+        	refreshPage();
+        }
+        
         function recentMonth(obj) {
         	return	 Math.abs(($scope.now.getTime() - new Date(obj.startAt).getTime())/(24 * 60 * 60 * 1000)) <=31;
         }
         
-        // 1. division event basic information
-        vm.division = DivisionEvent.get({id:$state.params.id});
-        // 2. schduled information
-        DivisionEventGame.query({id:$state.params.id},function(result){
-        	 vm.games = result;
-        	 vm.recentGames = vm.games.filter(recentMonth);
+        // 1. division basic information
+        vm.division = Division.get({id:$state.params.id});
+        // 1.1 get all division events order by season
+        Division.queryDivisions({id:$state.params.id},function(result){
+        	vm.divisionEvents = result;
+        	// initialize division event
+        	$scope.changeToDivisionEvent(vm.divisionEvents[0]);
         });
-       
-        // 3. Clubs table(statistics)
-        vm.divisionTable = DivisionEventTable.query($state.params);
-        // 4. Player table(statistics)
-        vm.goalRankings = DivisionEventGoalRanking.query($state.params);
-        vm.assistRankings = DivisionEventAssistRanking.query($state.params);
-        // 5. venus table
+        
+        function refreshPage(){
+       	 // all below is require a event id,and event id is get from division and season
+       	 // 2. schduled information
+       	var id = $scope.currentDivisionEvent.id;
+           DivisionEventGame.query({id:id},function(result){
+           	 vm.games = result;
+           	 vm.recentGames = vm.games.filter(recentMonth);
+           });
+           
+           // 3. Clubs table(statistics)
+           vm.divisionTable = DivisionEventTable.query({id:id});
+           // 4. Player table(statistics)
+           vm.goalRankings = DivisionEventGoalRanking.query({id:id});
+           vm.assistRankings = DivisionEventAssistRanking.query({id:id});
+           // 5. venus table
+       }
     }
 })();

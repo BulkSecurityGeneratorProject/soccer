@@ -8,7 +8,17 @@
 		font-weight: bolder;
 	}
 </style>
-<h1>{{vm.division.season.name}} - {{vm.division.division.name}}</h1>
+<p>
+	<h1>{{vm.division.name}}</h1>
+	<select>
+		<option 
+			ng-repeat="divisionEvent in vm.divisionEvents" 
+			value="{{division.id}}"
+			onchange="changeToDivisionEvent(divisionEvent)">
+				{{divisionEvent.season.name}}
+		</option>
+	</select>
+</p>
 <div id="tabs" ng-controller="PublicDivisionController">
        <ul class="nav nav-tabs">
            <li ng-repeat="tab in tabs" 
