@@ -40,7 +40,7 @@
     {
       "fieldId": 1,
       "fieldName": "startAt",
-      "fieldType": "LocalDate"
+      "fieldType": "ZonedDateTime"
     },
     {
       "fieldId": 2,

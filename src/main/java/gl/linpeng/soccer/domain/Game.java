@@ -1,19 +1,12 @@
 package gl.linpeng.soccer.domain;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.Objects;
 
 /**
  * A Game.
@@ -30,7 +23,7 @@ public class Game implements Serializable {
     private Long id;
 
     @Column(name = "start_at")
-    private LocalDateTime startAt;
+    private ZonedDateTime startAt;
 
     @Column(name = "home_score")
     private Integer homeScore;
@@ -70,11 +63,11 @@ public class Game implements Serializable {
         this.id = id;
     }
 
-    public LocalDateTime getStartAt() {
+    public ZonedDateTime getStartAt() {
         return startAt;
     }
 
-    public void setStartAt(LocalDateTime startAt) {
+    public void setStartAt(ZonedDateTime startAt) {
         this.startAt = startAt;
     }
 
@@ -188,8 +181,6 @@ public class Game implements Serializable {
             ", note='" + note + "'" +
             ", homeScoreHalf='" + homeScoreHalf + "'" +
             ", roadScoreHalf='" + roadScoreHalf + "'" +
-            ","+homeTeam.toString()+","+roadTeam.toString()+
-            ","+timeslot.toString()+
             '}';
     }
 }

@@ -67,6 +67,7 @@
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="game" columnName="start_at" columnDataType="datetime"/>
         
     </changeSet>
 </databaseChangeLog>

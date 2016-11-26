@@ -1,40 +1,37 @@
 package gl.linpeng.soccer.web.rest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import gl.linpeng.soccer.SoccerApp;
+
 import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.repository.GameRepository;
-
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Test class for the GameResource REST controller.
@@ -46,9 +43,11 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest(classes = SoccerApp.class)
 
 public class GameResourceIntTest {
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").withZone(ZoneId.of("Z"));
 
-    private static final LocalDateTime DEFAULT_START_AT = LocalDateTime.ofEpochSecond(0L, 0,ZoneOffset.ofHours(0));
-    private static final LocalDateTime UPDATED_START_AT = LocalDateTime.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_START_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_START_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_START_AT_STR = dateTimeFormatter.format(DEFAULT_START_AT);
 
     private static final Integer DEFAULT_HOME_SCORE = 1;
     private static final Integer UPDATED_HOME_SCORE = 2;
@@ -147,7 +146,7 @@ public class GameResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(game.getId().intValue())))
-                .andExpect(jsonPath("$.[*].startAt").value(hasItem(DEFAULT_START_AT.toString())))
+                .andExpect(jsonPath("$.[*].startAt").value(hasItem(DEFAULT_START_AT_STR)))
                 .andExpect(jsonPath("$.[*].homeScore").value(hasItem(DEFAULT_HOME_SCORE)))
                 .andExpect(jsonPath("$.[*].roadScore").value(hasItem(DEFAULT_ROAD_SCORE)))
                 .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE.toString())))
@@ -166,7 +165,7 @@ public class GameResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(game.getId().intValue()))
-            .andExpect(jsonPath("$.startAt").value(DEFAULT_START_AT.toString()))
+            .andExpect(jsonPath("$.startAt").value(DEFAULT_START_AT_STR))
             .andExpect(jsonPath("$.homeScore").value(DEFAULT_HOME_SCORE))
             .andExpect(jsonPath("$.roadScore").value(DEFAULT_ROAD_SCORE))
             .andExpect(jsonPath("$.note").value(DEFAULT_NOTE.toString()))
