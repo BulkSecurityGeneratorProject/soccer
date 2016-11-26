@@ -1,4 +1,4 @@
-# soccer
+# soccer ![](https://api.travis-ci.org/magixsource/soccer.svg)
 
 This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
 
