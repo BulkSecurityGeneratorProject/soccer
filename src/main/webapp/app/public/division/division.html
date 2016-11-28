@@ -55,7 +55,7 @@
 							<span ng-class="{'bigger': game.homeScore > game.roadScore, 'littler': game.homeScore < game.roadScore}">{{game.homeScore}}</span>:
 							<span ng-class="{'littler': game.homeScore > game.roadScore, 'bigger': game.homeScore < game.roadScore}">{{game.roadScore}}</span>
 						</td>
-						<td ng-if="!isBefore(game.startAt)">TBA</td>
+						<td ng-if="!isBefore(game.startAt)">vs</td>
 						<td><a ui-sref="public.club({id:game.roadTeam.club.id})">{{game.roadTeam.name}}</a></td>
 					</tr>
 				</table>
@@ -198,7 +198,7 @@
 							<span ng-class="{'bigger': game.homeScore > game.roadScore, 'littler': game.homeScore < game.roadScore}">{{game.homeScore}}</span>:
 							<span ng-class="{'littler': game.homeScore > game.roadScore, 'bigger': game.homeScore < game.roadScore}">{{game.roadScore}}</span>
 						</td>
-						<td ng-if="!isBefore(game.startAt)">TBA</td>
+						<td ng-if="!isBefore(game.startAt)">vs</td>
 						<td><a ui-sref="public.club({id:game.roadTeam.club.id})">{{game.roadTeam.name}}</a></td>
 						<td>{{game.venue.name}}</td>
 					</tr>
