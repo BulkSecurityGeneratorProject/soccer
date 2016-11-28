@@ -32,6 +32,13 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
+                    	<li ui-sref-active="active" >
+                            <a ui-sref="public.association({id:1})">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span >Public</span>
+                            </a>
+                        </li>
+                        
                         <li ui-sref-active="active" >
                             <a ui-sref="player" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
@@ -132,6 +139,12 @@
                             <a ui-sref="squad-player" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span >Squad Player</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" >
+                            <a ui-sref="lineup" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span >Lineup</span>
                             </a>
                         </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
