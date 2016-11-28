@@ -18,6 +18,16 @@
       "fieldId": 2,
       "fieldName": "birth",
       "fieldType": "LocalDate"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "height",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "weight",
+      "fieldType": "Integer"
     }
   ],
   "changelogDate": "20160913082456",

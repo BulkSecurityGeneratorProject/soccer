@@ -97,6 +97,8 @@
                             return {
                                 name: null,
                                 birth: null,
+                                height: null,
+                                weight: null,
                                 id: null
                             };
                         }

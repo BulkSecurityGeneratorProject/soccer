@@ -29,6 +29,14 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="height" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="weight" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
             <column name="team_id" type="bigint">
                 <constraints nullable="true" />
             </column>

@@ -28,6 +28,12 @@ public class Player implements Serializable {
     @Column(name = "birth")
     private LocalDate birth;
 
+    @Column(name = "height")
+    private Integer height;
+
+    @Column(name = "weight")
+    private Integer weight;
+
     @ManyToOne
     private Team team;
 
@@ -53,6 +59,22 @@ public class Player implements Serializable {
 
     public void setBirth(LocalDate birth) {
         this.birth = birth;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 
     public Team getTeam() {
@@ -89,6 +111,8 @@ public class Player implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", birth='" + birth + "'" +
+            ", height='" + height + "'" +
+            ", weight='" + weight + "'" +
             '}';
     }
 }

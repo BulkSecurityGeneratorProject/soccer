@@ -12,6 +12,14 @@
         <dd>
             <span>{{vm.player.birth | date:'mediumDate'}}</span>
         </dd>
+        <dt><span>Height</span></dt>
+        <dd>
+            <span>{{vm.player.height}}</span>
+        </dd>
+        <dt><span>Weight</span></dt>
+        <dd>
+            <span>{{vm.player.weight}}</span>
+        </dd>
         <dt><span>Team</span></dt>
         <dd>
             <a ui-sref="team-detail({id:vm.player.team.id})">{{vm.player.team.id}}</a>

@@ -47,6 +47,12 @@ public class PlayerResourceIntTest {
     private static final LocalDate DEFAULT_BIRTH = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_BIRTH = LocalDate.now(ZoneId.systemDefault());
 
+    private static final Integer DEFAULT_HEIGHT = 1;
+    private static final Integer UPDATED_HEIGHT = 2;
+
+    private static final Integer DEFAULT_WEIGHT = 1;
+    private static final Integer UPDATED_WEIGHT = 2;
+
     @Inject
     private PlayerRepository playerRepository;
 
@@ -83,6 +89,8 @@ public class PlayerResourceIntTest {
         Player player = new Player();
         player.setName(DEFAULT_NAME);
         player.setBirth(DEFAULT_BIRTH);
+        player.setHeight(DEFAULT_HEIGHT);
+        player.setWeight(DEFAULT_WEIGHT);
         return player;
     }
 
@@ -109,6 +117,8 @@ public class PlayerResourceIntTest {
         Player testPlayer = players.get(players.size() - 1);
         assertThat(testPlayer.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testPlayer.getBirth()).isEqualTo(DEFAULT_BIRTH);
+        assertThat(testPlayer.getHeight()).isEqualTo(DEFAULT_HEIGHT);
+        assertThat(testPlayer.getWeight()).isEqualTo(DEFAULT_WEIGHT);
     }
 
     @Test
@@ -123,7 +133,9 @@ public class PlayerResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(player.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].birth").value(hasItem(DEFAULT_BIRTH.toString())));
+                .andExpect(jsonPath("$.[*].birth").value(hasItem(DEFAULT_BIRTH.toString())))
+                .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT)))
+                .andExpect(jsonPath("$.[*].weight").value(hasItem(DEFAULT_WEIGHT)));
     }
 
     @Test
@@ -138,7 +150,9 @@ public class PlayerResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(player.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.birth").value(DEFAULT_BIRTH.toString()));
+            .andExpect(jsonPath("$.birth").value(DEFAULT_BIRTH.toString()))
+            .andExpect(jsonPath("$.height").value(DEFAULT_HEIGHT))
+            .andExpect(jsonPath("$.weight").value(DEFAULT_WEIGHT));
     }
 
     @Test
@@ -160,6 +174,8 @@ public class PlayerResourceIntTest {
         Player updatedPlayer = playerRepository.findOne(player.getId());
         updatedPlayer.setName(UPDATED_NAME);
         updatedPlayer.setBirth(UPDATED_BIRTH);
+        updatedPlayer.setHeight(UPDATED_HEIGHT);
+        updatedPlayer.setWeight(UPDATED_WEIGHT);
 
         restPlayerMockMvc.perform(put("/api/players")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -172,6 +188,8 @@ public class PlayerResourceIntTest {
         Player testPlayer = players.get(players.size() - 1);
         assertThat(testPlayer.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testPlayer.getBirth()).isEqualTo(UPDATED_BIRTH);
+        assertThat(testPlayer.getHeight()).isEqualTo(UPDATED_HEIGHT);
+        assertThat(testPlayer.getWeight()).isEqualTo(UPDATED_WEIGHT);
     }
 
     @Test

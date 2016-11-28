@@ -21,6 +21,8 @@
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
                     <th><span>Birth</span></th>
+                    <th><span>Height</span></th>
+                    <th><span>Weight</span></th>
                     <th><span>Team</span></th>
                     <th></th>
                 </tr>
@@ -30,6 +32,8 @@
                     <td><a ui-sref="player-detail({id:player.id})">{{player.id}}</a></td>
                     <td>{{player.name}}</td>
                         <td>{{player.birth | date:'mediumDate'}}</td>
+                    <td>{{player.height}}</td>
+                    <td>{{player.weight}}</td>
                     <td>
                         <a ui-sref="team-detail({id:player.team.id})">{{player.team.id}}</a>
                     </td>
