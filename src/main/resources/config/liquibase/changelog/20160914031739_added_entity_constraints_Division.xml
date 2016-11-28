@@ -26,5 +26,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="ranking_rule"/>
 
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="division"
+                                 constraintName="fk_division_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dict"/>
+
     </changeSet>
 </databaseChangeLog>

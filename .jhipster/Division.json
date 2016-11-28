@@ -20,6 +20,13 @@
       "relationshipName": "rankingRule",
       "otherEntityName": "rankingRule",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipType": "many-to-one",
+      "relationshipName": "status",
+      "otherEntityName": "dict",
+      "otherEntityField": "id"
     }
   ],
   "fields": [

@@ -37,6 +37,9 @@ public class Division implements Serializable {
     @ManyToOne
     private RankingRule rankingRule;
 
+    @ManyToOne
+    private Dict status;
+
     public Long getId() {
         return id;
     }
@@ -83,6 +86,14 @@ public class Division implements Serializable {
 
     public void setRankingRule(RankingRule rankingRule) {
         this.rankingRule = rankingRule;
+    }
+
+    public Dict getStatus() {
+        return status;
+    }
+
+    public void setStatus(Dict dict) {
+        this.status = dict;
     }
 
     @Override

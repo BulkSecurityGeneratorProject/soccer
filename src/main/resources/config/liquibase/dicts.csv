@@ -19,3 +19,6 @@ id;name;code;dict_kind_id
 18;AMC;10;5
 19;AML;11;5
 20;AMR;12;5
+21;Maintenance;0;6
+22;OK;1;6
+23;Cancelled;2;6
