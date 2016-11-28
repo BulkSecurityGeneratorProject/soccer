@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Lineup</span> {{vm.lineup.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Player Number</span></dt>
+        <dd>
+            <span>{{vm.lineup.playerNumber}}</span>
+        </dd>
+        <dt><span>Player</span></dt>
+        <dd>
+            <a ui-sref="player-detail({id:vm.lineup.player.id})">{{vm.lineup.player.id}}</a>
+        </dd>
+        <dt><span>Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.lineup.team.id})">{{vm.lineup.team.id}}</a>
+        </dd>
+        <dt><span>Division Event</span></dt>
+        <dd>
+            <a ui-sref="division-event-detail({id:vm.lineup.divisionEvent.id})">{{vm.lineup.divisionEvent.id}}</a>
+        </dd>
+        <dt><span>Player Position</span></dt>
+        <dd>
+            <a ui-sref="dict-detail({id:vm.lineup.playerPosition.id})">{{vm.lineup.playerPosition.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="lineup-detail.edit({id:vm.lineup.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

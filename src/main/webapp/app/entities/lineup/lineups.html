@@ -1,0 +1,72 @@
+<div>
+    <h2>Lineups</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="lineup.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Lineup
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Player Number</span></th>
+                    <th><span>Player</span></th>
+                    <th><span>Team</span></th>
+                    <th><span>Division Event</span></th>
+                    <th><span>Player Position</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lineup in vm.lineups track by lineup.id">
+                    <td><a ui-sref="lineup-detail({id:lineup.id})">{{lineup.id}}</a></td>
+                    <td>{{lineup.playerNumber}}</td>
+                    <td>
+                        <a ui-sref="player-detail({id:lineup.player.id})">{{lineup.player.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="team-detail({id:lineup.team.id})">{{lineup.team.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="division-event-detail({id:lineup.divisionEvent.id})">{{lineup.divisionEvent.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dict-detail({id:lineup.playerPosition.id})">{{lineup.playerPosition.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="lineup-detail({id:lineup.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="lineup.edit({id:lineup.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="lineup.delete({id:lineup.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
