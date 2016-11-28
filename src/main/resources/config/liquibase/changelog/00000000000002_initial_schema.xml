@@ -4,7 +4,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet id="00000000000002" author="jhipster">
+	<!-- Application default init data -->
+    <changeSet id="00000000000002" author="linpeng">
        <loadData encoding="UTF-8"
                   file="config/liquibase/dict_kinds.csv"
                   separator=";"
@@ -16,7 +17,41 @@
           <loadData encoding="GBK"
                   file="config/liquibase/result_fields.csv"
                   separator=";"
-                  tableName="result_field"/>        
+                  tableName="result_field"/>
     </changeSet>
-    
+    <!-- init data for dev profile -->
+    <changeSet id="00000000000003" author="linpeng" context="dev">
+    	<loadData encoding="GBK"
+                  file="config/liquibase/associations.csv"
+                  separator=";"
+                  tableName="Association"/>
+        <loadData encoding="GBK"
+                  file="config/liquibase/seasons.csv"
+                  separator=";"
+                  tableName="Season"/>          
+        <loadData encoding="GBK"
+                  file="config/liquibase/divisions.csv"
+                  separator=";"
+                  tableName="Division"/>
+         <loadData encoding="GBK"
+                  file="config/liquibase/division_events.csv"
+                  separator=";"
+                  tableName="Division_event"/>
+           <loadData encoding="GBK"
+                  file="config/liquibase/venues.csv"
+                  separator=";"
+                  tableName="venue"/>       
+          <loadData encoding="GBK"
+                  file="config/liquibase/clubs.csv"
+                  separator=";"
+                  tableName="CLUB"/>
+           <loadData encoding="GBK"
+                  file="config/liquibase/teams.csv"
+                  separator=";"
+                  tableName="team"/>
+            <loadData encoding="GBK"
+                  file="config/liquibase/players.csv"
+                  separator=";"
+                  tableName="player"/>                                                   
+    </changeSet>
 </databaseChangeLog>
