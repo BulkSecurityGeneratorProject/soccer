@@ -10,6 +10,7 @@
         var resourceUrl =  'api/lineups/:id';
 
         return $resource(resourceUrl, {}, {
+        	'saveBatch': { url: 'api/lineups-batch', method: 'POST', isArray: true},
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
