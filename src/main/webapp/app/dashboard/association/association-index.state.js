@@ -49,6 +49,31 @@
                     $state.go('^');
                 });
             }]
+        })
+        .state('association.dash-club-regist', {
+            parent: 'association.dash',
+            url: '/club-signin',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/dashboard/association/club-signin-dialog.html',
+                    controller: 'ClubSigninDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Association', function(Association) {
+                            return Association.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('association.dash', null, { reload: 'association.dash' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 
