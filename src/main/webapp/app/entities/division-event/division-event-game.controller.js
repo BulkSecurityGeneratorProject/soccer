@@ -316,7 +316,7 @@
 	        	        perRowEditModeEnabled: true,
 	        	        allowMultiSelect: false,
 	        	        dynamicColumns: true,
-	        	        editRequested:vm.save,
+	        	        /*editRequested:vm.save,*/
 	        	        rowDeleted:vm.deleteRow,
 	        	        columns: columns,
 	        	        saveAll:vm.saveAll
@@ -325,6 +325,9 @@
         	return result;
         }
         
+        /**
+         * 已失效，不可使用
+         */
         function saveRow(row){
         	if(!row.$editable){ // 提交状态
 	       		vm.isSaving = true;
@@ -379,9 +382,25 @@
         }
         
         vm.saveAll = function(data){
-        	 angular.forEach(data,function(row,index){
-        		 vm.save(row);
-        	 });
+        	vm.isSaving = true;
+        	var games = data.map(function(row){
+        		var game = new Object();
+           		game.id = row.id;
+           		game.startAt = new Date(Date.parse(row.time,'yyyy-MM-dd HH:mm'));
+           		game.venue = new Object();
+           		game.venue.id = row.venue.id;
+           		game.homeTeam = new Object();
+           		game.homeTeam.id = row.homeTeam.id;
+           		game.roadTeam = new Object();
+           		game.roadTeam.id = row.roadTeam.id;
+           		game.timeslot = new Object();
+           		game.timeslot.round = row.round;
+           		game.timeslot.divisionEvent = new Object();
+           		game.timeslot.divisionEvent.id = $state.params.id;
+           		return game;
+        	});
+       		
+       		DivisionEventGame.saveBatch($state.params,games,onSaveSuccess,onSaveError);
         }
         
         vm.incrEvery = function(idx){

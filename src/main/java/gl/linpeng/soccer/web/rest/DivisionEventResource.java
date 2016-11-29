@@ -290,53 +290,6 @@ public class DivisionEventResource {
 	}
 
 	/**
-	 * POST /division-events : save all the divisionEvent games.
-	 *
-	 * @return the ResponseEntity with status 200 (OK) and the list of
-	 *         divisionEvent games in body
-	 */
-	@RequestMapping(value = "/division-events/{id}/games", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@Timed
-	public ResponseEntity<Game> saveAllDivisionEventGames(
-			@PathVariable Long id, @RequestBody Game game) {
-		log.debug("REST request to save all DivisionEvent games,{},{}", id,
-				game);
-		if (game.getTimeslot() == null) {
-			return ResponseEntity
-					.badRequest()
-					.headers(
-							HeaderUtil.createFailureAlert("divisionEventGame",
-									"error", "timeslot cannot be null"))
-					.body(null);
-		}
-
-		Timeslot example = new Timeslot();
-		example.setRound(game.getTimeslot().getRound());
-		DivisionEvent exampleDivisionEvent = new DivisionEvent();
-		exampleDivisionEvent.setId(id);
-		example.setDivisionEvent(exampleDivisionEvent);
-		Timeslot timeslot = timeslotRepository.findOne(Example.of(example));
-		if (null != timeslot) {
-			game.setTimeslot(timeslot);
-		} else {
-			// create a new timeslot of division event
-			timeslot = timeslotRepository.save(example);
-			game.setTimeslot(timeslot);
-		}
-
-		if (game.getId() == null) {
-			game = gameRepository.save(game);
-		} else {
-			game = gameRepository.saveAndFlush(game);
-		}
-		return ResponseEntity
-				.ok()
-				.headers(
-						HeaderUtil.createEntityCreationAlert(
-								"divisionEventGame", id.toString())).body(game);
-	}
-
-	/**
 	 * GET /division-events : get all the divisionEvent teams.
 	 *
 	 * @return the ResponseEntity with status 200 (OK) and the list of
@@ -353,6 +306,57 @@ public class DivisionEventResource {
 		example.setDivisionEvent(exampleDivisionEvent);
 		List<Team> teams = teamRepository.findAll(Example.of(example));
 		return teams;
+	}
+	
+	/**
+	 * 
+	 * POST /division-events : save all the divisionEvent games.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of
+	 *         divisionEvent games in body
+	 */
+	@RequestMapping(value = "/division-events/{id}/games", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<List<Game>> saveAllDivisionEventGames(
+			@PathVariable Long id, @RequestBody List<Game> games) {
+		log.debug("REST request to save all DivisionEvent games,{},{}", id,
+				games);
+		
+		for (Game game : games) {
+			if (game.getTimeslot() == null) { // 比赛的轮次必须存在,强制验证
+				return ResponseEntity
+						.badRequest()
+						.headers(
+								HeaderUtil.createFailureAlert("divisionEventGame",
+										"error", "timeslot cannot be null"))
+						.body(null);
+			}
+		}
+		
+		// 这里使用遍历，保证在高并发提交时不会事务交叉
+		for (Game game : games) {
+			Timeslot example = new Timeslot();
+			example.setRound(game.getTimeslot().getRound());
+			DivisionEvent exampleDivisionEvent = new DivisionEvent();
+			exampleDivisionEvent.setId(id);
+			example.setDivisionEvent(exampleDivisionEvent);
+			Timeslot timeslot = timeslotRepository.findOne(Example.of(example));
+			
+			if (null == timeslot) {
+				// create a new timeslot of division event
+				timeslot = timeslotRepository.save(example);
+			}
+			game.setTimeslot(timeslot);
+		}
+
+		// 设置好timeslot之后再统一保存比赛信息
+		games = gameRepository.save(games);
+
+		return ResponseEntity
+				.ok()
+				.headers(
+						HeaderUtil.createEntityCreationAlert(
+								"divisionEventGame", id.toString())).body(games);
 	}
 
 }
