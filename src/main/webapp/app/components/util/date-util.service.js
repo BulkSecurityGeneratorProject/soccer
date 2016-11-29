@@ -13,6 +13,7 @@
             convertDateTimeFromServer : convertDateTimeFromServer,
             convertLocalDateFromServer : convertLocalDateFromServer,
             convertLocalDateToServer : convertLocalDateToServer,
+            convertDateTimeToServer : convertDateTimeToServer,
             dateformat : dateformat
         };
 
@@ -25,7 +26,15 @@
                 return null;
             }
         }
-
+        
+        function convertDateTimeToServer (date) {
+            if (date) {
+            	return date.toISOString();
+            } else {
+                return null;
+            }
+        }
+        
         function convertLocalDateFromServer (date) {
             if (date) {
                 var dateString = date.split('-');

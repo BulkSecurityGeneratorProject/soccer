@@ -24,14 +24,14 @@
             'update': {
                 method: 'PUT',
                 transformRequest: function (data) {
-                    data.startAt = DateUtils.convertLocalDateToServer(data.startAt);
+                    data.startAt = DateUtils.convertDateTimeToServer(data.startAt);
                     return angular.toJson(data);
                 }
             },
             'save': {
                 method: 'POST',
                 transformRequest: function (data) {
-                    data.startAt = DateUtils.convertLocalDateToServer(data.startAt);
+                    data.startAt = DateUtils.convertDateTimeToServer(data.startAt);
                     return angular.toJson(data);
                 }
             }
