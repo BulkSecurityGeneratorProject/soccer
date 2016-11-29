@@ -10,14 +10,11 @@
 </style>
 <p>
 	<h1>{{vm.division.name}}</h1>
-	<select>
-		<option 
-			ng-repeat="divisionEvent in vm.divisionEvents" 
-			value="{{division.id}}"
-			onchange="changeToDivisionEvent(divisionEvent)">
-				{{divisionEvent.season.name}}
-		</option>
-	</select>
+	<select
+		ng-model="divisionEvent" 
+		ng-change="changeToDivisionEvent(divisionEvent)"
+		ng-options="divisionEvent as divisionEvent.season.name for divisionEvent in vm.divisionEvents">
+     </select>
 </p>
 <div id="tabs" ng-controller="PublicDivisionController">
        <ul class="nav nav-tabs">
