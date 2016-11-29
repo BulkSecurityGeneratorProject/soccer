@@ -224,10 +224,14 @@ public class DivisionEventResource {
 						+ "RESULT_DATA rd,SQUAD_PLAYER sp "
 						+ "left outer join squad sq "
 						+ "left outer join team tm on tm.id = sq.team_id "
+						+" left outer join game g left outer join timeslot t "
+						+ "left outer join division_event de on de.id = t.division_event_id "
+						+ "on t.id = g.timeslot_id on g.id = sq.game_id "
 						+ "on sq.id = sp.squad_id,PLAYER p "
 						+ "WHERE sp.id = rd.squad_player_id "
 						+ "AND sp.player_id = p.id "
-						+ "AND rd.result_field_id=3 " + "GROUP BY p.name "
+						+ "AND rd.result_field_id=3 AND de.id="+id 
+						+ "GROUP BY p.name "
 						+ "ORDER BY goal DESC");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
@@ -251,10 +255,14 @@ public class DivisionEventResource {
 						+ "RESULT_DATA rd,SQUAD_PLAYER sp "
 						+ "left outer join squad sq "
 						+ "left outer join team tm on tm.id = sq.team_id "
+						+" left outer join game g left outer join timeslot t "
+						+ "left outer join division_event de on de.id = t.division_event_id "
+						+ "on t.id = g.timeslot_id on g.id = sq.game_id "
 						+ "on sq.id = sp.squad_id,PLAYER p "
 						+ "WHERE sp.id = rd.squad_player_id "
 						+ "AND sp.player_id = p.id "
-						+ "AND rd.result_field_id=4 " + "GROUP BY p.name "
+						+ "AND rd.result_field_id=4 AND de.id="+id 
+						+ "GROUP BY p.name "
 						+ "ORDER BY assist DESC");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
