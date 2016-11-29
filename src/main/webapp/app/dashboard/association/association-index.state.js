@@ -25,6 +25,30 @@
             resolve: {
 
             }
+        }).state('association.dashedit', {
+            parent: 'association.dash',
+            url: '/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/association/association-dialog.html',
+                    controller: 'AssociationDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Association', function(Association) {
+                            return Association.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('association.dash', null, { reload: 'association.dash' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 

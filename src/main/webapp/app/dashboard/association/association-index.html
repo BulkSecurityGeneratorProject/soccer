@@ -3,4 +3,13 @@
 	<p><h3>注册赛事<span>{{vm.divisionCount}}</span>项</h3></p>
 	<p><h3>注册俱乐部<span>{{vm.clubCount}}</span>家</h3></p>
 	<p><h3>注册运动员<span>{{vm.playerCount}}</span>名</h3></p>
+	
+	<p>
+		<button type="submit"
+                 ui-sref="association.dashedit({id:vm.association.id})"
+                 class="btn btn-primary btn-sm">Association edit
+             <span class="glyphicon glyphicon-pencil"></span>
+             <span class="hidden-xs hidden-sm"></span>
+         </button>
+    </p>
 </div>
