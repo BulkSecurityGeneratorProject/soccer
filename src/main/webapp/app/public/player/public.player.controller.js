@@ -15,9 +15,9 @@
             }; 
        });
 
-    PublicPlayerController.$inject = ['$scope','$state','Player','PlayerCustom'];
+    PublicPlayerController.$inject = ['$scope','$state','Player','PlayerExt'];
 
-    function PublicPlayerController ($scope, $state,Player,PlayerCustom) {
+    function PublicPlayerController ($scope, $state,Player,PlayerExt) {
         var vm = this;
         $scope.now = new Date();
         
@@ -29,7 +29,7 @@
         vm.player = Player.get({id:$state.params.id});
         
         // 2. fetch career of player, Career format: Season,Team,Division,Time,Goal,Assias,Yellow,Red
-        vm.careerData = PlayerCustom.query({id:$state.params.id});
+        vm.careerData = PlayerExt.queryCareer({id:$state.params.id});
         // 3. fetch glory of player, glory format: Season,Division
     }
 })();

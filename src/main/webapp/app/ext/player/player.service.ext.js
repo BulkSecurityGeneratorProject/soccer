@@ -2,15 +2,15 @@
     'use strict';
     angular
         .module('soccerApp')
-        .factory('PlayerCustom', PlayerCustom);
+        .factory('PlayerExt', PlayerExt);
 
-    PlayerCustom.$inject = ['$resource'];
+    PlayerExt.$inject = ['$resource'];
 
-    function PlayerCustom ($resource) {
+    function PlayerExt ($resource) {
         var resourceUrl =  'api/players/:id/career';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true}
+            'queryCareer': { method: 'GET', isArray: true}
         });
     }
 })();
