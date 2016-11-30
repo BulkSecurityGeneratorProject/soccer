@@ -12,6 +12,10 @@
         <dd>
             <span>{{vm.association.createAt | date:'mediumDate'}}</span>
         </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <a ui-sref="dict-detail({id:vm.association.status.id})">{{vm.association.status.id}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

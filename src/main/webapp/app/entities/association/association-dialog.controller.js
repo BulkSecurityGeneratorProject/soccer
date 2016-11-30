@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('AssociationDialogController', AssociationDialogController);
 
-    AssociationDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Association'];
+    AssociationDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Association', 'Dict'];
 
-    function AssociationDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Association) {
+    function AssociationDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Association, Dict) {
         var vm = this;
 
         vm.association = entity;
@@ -15,6 +15,7 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+        vm.dicts = Dict.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

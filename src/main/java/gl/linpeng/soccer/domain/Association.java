@@ -28,6 +28,9 @@ public class Association implements Serializable {
     @Column(name = "create_at")
     private LocalDate createAt;
 
+    @ManyToOne
+    private Dict status;
+
     public Long getId() {
         return id;
     }
@@ -50,6 +53,14 @@ public class Association implements Serializable {
 
     public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
+    }
+
+    public Dict getStatus() {
+        return status;
+    }
+
+    public void setStatus(Dict dict) {
+        this.status = dict;
     }
 
     @Override

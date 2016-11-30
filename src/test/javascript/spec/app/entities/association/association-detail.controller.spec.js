@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Association Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockAssociation;
+        var MockEntity, MockPreviousState, MockAssociation, MockDict;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -13,6 +13,7 @@ describe('Controller Tests', function() {
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
             MockAssociation = jasmine.createSpy('MockAssociation');
+            MockDict = jasmine.createSpy('MockDict');
             
 
             var locals = {
@@ -20,7 +21,8 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Association': MockAssociation
+                'Association': MockAssociation,
+                'Dict': MockDict
             };
             createController = function() {
                 $injector.get('$controller')("AssociationDetailController", locals);

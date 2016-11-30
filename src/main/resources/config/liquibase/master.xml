@@ -37,6 +37,7 @@
     <include file="classpath:config/liquibase/changelog/20160920053527_added_entity_constraints_Squad.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160920053528_added_entity_constraints_SquadPlayer.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161128084706_added_entity_constraints_Lineup.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160913082459_added_entity_constraints_Association.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <include file="classpath:config/liquibase/changelog/00000000000002_initial_schema.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>
