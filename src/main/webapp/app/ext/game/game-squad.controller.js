@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('GameSquadController', GameSquadController);
 
-    GameSquadController.$inject = ['$scope', '$state', 'Game','TeamExt','GameSquad','GameSquadQuery'];
+    GameSquadController.$inject = ['$scope', '$state', 'Game','TeamExt','GameExt'];
 
-    function GameSquadController ($scope, $state,Game,TeamExt,GameSquad,GameSquadQuery) {
+    function GameSquadController ($scope, $state,Game,TeamExt,GameExt) {
         var vm = this;
         
         vm.save = save;
@@ -41,7 +41,7 @@
             			id:$state.params.id,
             			tid:vm.team.id
             	};
-            	GameSquadQuery.query(data,function(result){
+            	GameExt.queryGameSquadByTeam(data,function(result){
      				vm.existSquadPlayers = result;
      				angular.forEach(vm.players,function(player,index){
      					angular.forEach(vm.existSquadPlayers,function(squadPlayer,squadIndex){
@@ -66,7 +66,7 @@
             		team:vm.team.id
             };
             
-            GameSquad.save(vm.data,onSaveSuccess,onSaveError);
+            GameExt.saveGameSquad(vm.data,onSaveSuccess,onSaveError);
         }
         
         function onSaveSuccess (result) {

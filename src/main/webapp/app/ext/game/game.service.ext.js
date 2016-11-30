@@ -2,16 +2,16 @@
     'use strict';
     angular
         .module('soccerApp')
-        .factory('GameSquad', GameSquad);
+        .factory('GameExt', GameExt);
 
-    GameSquad.$inject = ['$resource'];
+    GameExt.$inject = ['$resource'];
 
-    function GameSquad ($resource) {
+    function GameExt ($resource) {
         var resourceUrl =  'api/games/squad';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
-            'get': {
+            'queryGameSquad': { method: 'GET', isArray: true},
+            'getGameSquad': {
                 method: 'GET',
                 transformResponse: function (data) {
                     if (data) {
@@ -20,18 +20,19 @@
                     return data;
                 }
             },
-            'update': {
+            'updateGameSquad': {
                 method: 'PUT',
                 transformRequest: function (data) {
                     return angular.toJson(data);
                 }
             },
-            'save': {
+            'saveGameSquad': {
                 method: 'POST',
                 transformRequest: function (data) {
                     return angular.toJson(data);
                 }
-            }
+            },
+            'queryGameSquadByTeam': {url: 'api/games/:id/squad/:tid', method: 'GET', isArray: true}
         });
     }
 })();

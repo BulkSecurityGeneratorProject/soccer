@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('ResultDataEditGridController', ResultDataEditGridController);
 
-    ResultDataEditGridController.$inject = ['$scope','$state','Game','GameSquadQuery','ResultField','ResultDataExt'];
+    ResultDataEditGridController.$inject = ['$scope','$state','Game','GameExt','ResultField','ResultDataExt'];
 
-    function ResultDataEditGridController($scope,$state,Game,GameSquadQuery,ResultField,ResultDataExt) {
+    function ResultDataEditGridController($scope,$state,Game,GameExt,ResultField,ResultDataExt) {
         var vm = this;
         vm.save = saveRow;
         
@@ -59,7 +59,7 @@
               * @param callback  what should we do after all
               */
              function getGridConfig(params,players,datas,fields,callback){
-            	 GameSquadQuery.query(params,function(result){
+            	 GameExt.queryGameSquadByTeam(params,function(result){
             		 copy(result,players);
             		 ResultDataExt.querySquadGameResult({id:players[0].squad.id},function(result){
             			 copy(result,datas);
@@ -85,7 +85,7 @@
        					});
 	       				
             		 });// end of ResultDataExt querySquadGameResult
-            	 });// end of GameSquadQuery query
+            	 });// end of GameExt queryGameSquadByTeam
              }
              
          });

@@ -3,8 +3,8 @@ package gl.linpeng.soccer.web.rest.ext;
 import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.domain.Player;
 import gl.linpeng.soccer.domain.Team;
-import gl.linpeng.soccer.repository.GameRepository;
 import gl.linpeng.soccer.repository.PlayerRepository;
+import gl.linpeng.soccer.repository.ext.GameRepositoryExt;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class TeamResourceExt {
 	@Inject
 	private PlayerRepository playerRepository;
 	@Inject
-	private GameRepository gameRepository;
+	private GameRepositoryExt gameRepositoryExt;
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -72,7 +72,7 @@ public class TeamResourceExt {
 	public List<Game> getAllTeamGames(@PathVariable Long id) {
 		log.debug("REST request to get all Team {} Games", id);
 		// here query recent 1 month game
-		return gameRepository.findGamesByTeam(id, 31);
+		return gameRepositoryExt.findGamesByTeam(id, 31);
 	}
 
 	/**
