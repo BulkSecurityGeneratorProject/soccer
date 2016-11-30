@@ -34,8 +34,7 @@
                     data.createAt = DateUtils.convertLocalDateToServer(data.createAt);
                     return angular.toJson(data);
                 }
-            },
-            'queryDivisions':{url: 'api/divisions/:id/division-events', method: 'GET', isArray: true}
+            }
         });
     }
 })();

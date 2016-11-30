@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('PublicDivisionController', PublicDivisionController);
 
-    PublicDivisionController.$inject = ['$scope','$state','Division','DivisionEvent','DivisionEventTable','DivisionEventGoalRanking','DivisionEventAssistRanking','DivisionEventGame'];
+    PublicDivisionController.$inject = ['$scope','$state','Division','DivisionExt','DivisionEvent','DivisionEventTable','DivisionEventGoalRanking','DivisionEventAssistRanking','DivisionEventGame'];
 
-    function PublicDivisionController ($scope, $state,Division,DivisionEvent,DivisionEventTable,DivisionEventGoalRanking,DivisionEventAssistRanking,DivisionEventGame) {
+    function PublicDivisionController ($scope, $state,Division,DivisionExt,DivisionEvent,DivisionEventTable,DivisionEventGoalRanking,DivisionEventAssistRanking,DivisionEventGame) {
         var vm = this;
         $scope.now = new Date();
         $scope.tabs = [{
@@ -56,7 +56,7 @@
         // 1. division basic information
         vm.division = Division.get({id:$state.params.id});
         // 1.1 get all division events order by season
-        Division.queryDivisions({id:$state.params.id},function(result){
+        DivisionExt.queryDivisions({id:$state.params.id},function(result){
         	vm.divisionEvents = result;
         	// initialize division event
         	$scope.changeToDivisionEvent(vm.divisionEvents[0]);
