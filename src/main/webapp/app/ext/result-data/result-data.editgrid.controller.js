@@ -3,11 +3,11 @@
 
     angular
         .module('soccerApp')
-        .controller('ResultDataListEditController', ResultDataListEditController);
+        .controller('ResultDataEditGridController', ResultDataEditGridController);
 
-    ResultDataListEditController.$inject = ['$scope','$state','Game','GameSquadQuery','ResultField','ResultDataSquad'];
+    ResultDataEditGridController.$inject = ['$scope','$state','Game','GameSquadQuery','ResultField','ResultDataExt'];
 
-    function ResultDataListEditController($scope,$state,Game,GameSquadQuery,ResultField,ResultDataSquad) {
+    function ResultDataEditGridController($scope,$state,Game,GameSquadQuery,ResultField,ResultDataExt) {
         var vm = this;
         vm.save = saveRow;
         
@@ -61,7 +61,7 @@
              function getGridConfig(params,players,datas,fields,callback){
             	 GameSquadQuery.query(params,function(result){
             		 copy(result,players);
-            		 ResultDataSquad.query({id:players[0].squad.id},function(result){
+            		 ResultDataExt.querySquadGameResult({id:players[0].squad.id},function(result){
             			 copy(result,datas);
 	   					// translate
 	       				angular.forEach(players,function(player,index){
@@ -84,7 +84,7 @@
        						generatGridConfig(players,callback);
        					});
 	       				
-            		 });// end of ResultDataSquad query
+            		 });// end of ResultDataExt querySquadGameResult
             	 });// end of GameSquadQuery query
              }
              
@@ -159,7 +159,7 @@
          function saveRow(row){
         	 if(!row.$editable){ // 提交状态
         		 vm.isSaving = true;
-        		ResultDataSquad.save({id:vm.players[0].squad.id},parsetRowToResultDataList(row),onSaveSuccess,onSaveError);
+        		ResultDataExt.saveGameResult({id:vm.players[0].squad.id},parsetRowToResultDataList(row),onSaveSuccess,onSaveError);
         	 }
          }
          

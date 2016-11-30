@@ -204,8 +204,8 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/result-data/result-data-list.html',
-                    controller: 'ResultDataListEditController',
+                    templateUrl: 'app/ext/result-data/result-data.editgrid.html',
+                    controller: 'ResultDataEditGridController',
                     controllerAs: 'vm'
                 }
             },
