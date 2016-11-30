@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('PublicDivisionController', PublicDivisionController);
 
-    PublicDivisionController.$inject = ['$scope','$state','Division','DivisionExt','DivisionEvent','DivisionEventTable','DivisionEventGoalRanking','DivisionEventAssistRanking','DivisionEventGame'];
+    PublicDivisionController.$inject = ['$scope','$state','Division','DivisionExt','DivisionEvent','DivisionEventTable','DivisionEventGoalRanking','DivisionEventAssistRanking','DivisionEventExt'];
 
-    function PublicDivisionController ($scope, $state,Division,DivisionExt,DivisionEvent,DivisionEventTable,DivisionEventGoalRanking,DivisionEventAssistRanking,DivisionEventGame) {
+    function PublicDivisionController ($scope, $state,Division,DivisionExt,DivisionEvent,DivisionEventTable,DivisionEventGoalRanking,DivisionEventAssistRanking,DivisionEventExt) {
         var vm = this;
         $scope.now = new Date();
         $scope.tabs = [{
@@ -66,7 +66,7 @@
        	 // all below is require a event id,and event id is get from division and season
        	 // 2. schduled information
        	var id = $scope.currentDivisionEvent.id;
-           DivisionEventGame.query({id:id},function(result){
+           DivisionEventExt.queryGames({id:id},function(result){
            	 vm.games = result;
            	 vm.recentGames = vm.games.filter(recentMonth);
            });

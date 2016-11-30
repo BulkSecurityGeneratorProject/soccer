@@ -10,9 +10,9 @@
 			}
 		}]);
 
-    DivisionEventGameController.$inject = ['$scope', '$state', 'DivisionEventGame','DivisionEventTeam','Game'];
+    DivisionEventGameController.$inject = ['$scope', '$state', 'DivisionEventExt','Game'];
 
-    function DivisionEventGameController ($scope, $state,DivisionEventGame,DivisionEventTeam,Game) {
+    function DivisionEventGameController ($scope, $state,DivisionEventExt,Game) {
         var vm = this;
         vm.save = saveRow;
         vm.deleteRow = deleteRow;
@@ -120,7 +120,7 @@
         		return a.getTime() - b.getTime();
         	});
         	// compute min-max timeslot
-        	DivisionEventTeam.query($state.params,function(result){
+        	DivisionEventExt.queryTeams($state.params,function(result){
         		vm.teams = result;
         		vm.minTimeslot = (vm.teams.length -1)*2; // 主客场各一轮
         		vm.maxTimeslot = vm.minTimeslot; // maxTimeslot not supported
@@ -273,7 +273,7 @@
         	 }
         
         function loadAll() {
-        	DivisionEventGame.query($state.params,function(result) {
+        	DivisionEventExt.queryGames($state.params,function(result) {
                 vm.games = result;
                 angular.forEach(vm.games,function(game,index){
 	            	if(game.timeslot && game.timeslot.type){
@@ -323,30 +323,6 @@
 	        	    }
 	        	};
         	return result;
-        }
-        
-        /**
-         * 已失效，不可使用
-         */
-        function saveRow(row){
-        	if(!row.$editable){ // 提交状态
-	       		vm.isSaving = true;
-	       		console.log(row);
-	       		var game = new Object();
-	       		game.id = row.id;
-	       		game.startAt = new Date(Date.parse(row.time,'yyyy-MM-dd HH:mm'));
-	       		game.venue = new Object();
-	       		game.venue.id = row.venue.id;
-	       		game.homeTeam = new Object();
-	       		game.homeTeam.id = row.homeTeam.id;
-	       		game.roadTeam = new Object();
-	       		game.roadTeam.id = row.roadTeam.id;
-	       		game.timeslot = new Object();
-	       		game.timeslot.round = row.round;
-	       		game.timeslot.divisionEvent = new Object();
-	       		game.timeslot.divisionEvent.id = $state.params.id;
-	       		DivisionEventGame.save($state.params,game,onSaveSuccess,onSaveError);
-        	}
         }
         
         function onSaveSuccess (result) {
@@ -400,7 +376,7 @@
            		return game;
         	});
        		
-       		DivisionEventGame.saveBatch($state.params,games,onSaveSuccess,onSaveError);
+        	DivisionEventExt.saveGameBatch($state.params,games,onSaveSuccess,onSaveError);
         }
         
         vm.incrEvery = function(idx){
