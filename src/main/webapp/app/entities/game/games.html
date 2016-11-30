@@ -36,50 +36,29 @@
             <tbody>
                 <tr ng-repeat="game in vm.games track by game.id">
                     <td><a ui-sref="game-detail({id:game.id})">{{game.id}}</a></td>
-                        <td>{{game.startAt | date:'mediumDate'}}</td>
+                    <td>{{game.startAt | date:'medium'}}</td>
                     <td>{{game.homeScore}}</td>
                     <td>{{game.roadScore}}</td>
                     <td>{{game.note}}</td>
                     <td>{{game.homeScoreHalf}}</td>
                     <td>{{game.roadScoreHalf}}</td>
                     <td>
-                        <a ui-sref="timeslot-detail({id:game.timeslot.id})">{{game.timeslot.divisionEvent.season.name}}-{{game.timeslot.divisionEvent.division.name}}-第{{game.timeslot.round}}轮</a>
+                        <a ui-sref="timeslot-detail({id:game.timeslot.id})">{{game.timeslot.id}}</a>
                     </td>
                     <td>
-                        <a ui-sref="venue-detail({id:game.venue.id})">{{game.venue.name}}</a>
+                        <a ui-sref="venue-detail({id:game.venue.id})">{{game.venue.id}}</a>
                     </td>
                     <td>
                         <a ui-sref="dict-detail({id:game.status.id})">{{game.status.id}}</a>
                     </td>
                     <td>
-                        <a ui-sref="team-detail({id:game.homeTeam.id})">{{game.homeTeam.name}}</a>
+                        <a ui-sref="team-detail({id:game.homeTeam.id})">{{game.homeTeam.id}}</a>
                     </td>
                     <td>
-                        <a ui-sref="team-detail({id:game.roadTeam.id})">{{game.roadTeam.name}}</a>
+                        <a ui-sref="team-detail({id:game.roadTeam.id})">{{game.roadTeam.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
-                        	<button type="submit"
-                                    ui-sref="game.homesquad({id:game.id})"
-                                    title="home team squad"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-user"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
-                            <button type="submit"
-                            		title="road team squad"
-                                    ui-sref="game.roadsquad({id:game.id})"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-user"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
-                        	<button type="submit"
-                        			title="edit result data of game"
-                                    ui-sref="game.result({id:game.id})"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-list-alt"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
                             <button type="submit"
                                     ui-sref="game-detail({id:game.id})"
                                     class="btn btn-info btn-sm">
