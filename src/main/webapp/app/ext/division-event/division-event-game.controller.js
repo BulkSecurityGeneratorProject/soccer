@@ -14,7 +14,6 @@
 
     function DivisionEventGameController ($scope, $state,DivisionEventExt,Game) {
         var vm = this;
-        vm.save = saveRow;
         vm.deleteRow = deleteRow;
         vm.openCalendar = openCalendar;
         vm.datePickerOpenStatus = {};
