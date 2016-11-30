@@ -1,16 +1,12 @@
 package gl.linpeng.soccer.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-
-import gl.linpeng.soccer.domain.Dict;
 import gl.linpeng.soccer.domain.DictKind;
-import gl.linpeng.soccer.repository.DictKindRepository;
-import gl.linpeng.soccer.repository.DictRepository;
-import gl.linpeng.soccer.web.rest.util.HeaderUtil;
 
+import gl.linpeng.soccer.repository.DictKindRepository;
+import gl.linpeng.soccer.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Example;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -35,9 +30,7 @@ public class DictKindResource {
         
     @Inject
     private DictKindRepository dictKindRepository;
-    @Inject
-    private DictRepository dictRepository;
-    
+
     /**
      * POST  /dict-kinds : Create a new dictKind.
      *
@@ -133,25 +126,6 @@ public class DictKindResource {
         log.debug("REST request to delete DictKind : {}", id);
         dictKindRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("dictKind", id.toString())).build();
-    }
-    
-    /**
-     * GET  /dict-kinds/{id}/dicts : get all the dicts of dictKind.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of dicts in body
-     */
-    @RequestMapping(value = "/dict-kinds/{id}/dicts",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public List<Dict> getAllDictsByDictKind(@PathVariable Long id) {
-        log.debug("REST request to get all Dicts of dictKind {}",id);
-        Dict example = new Dict();
-        DictKind exampleDictKind = new DictKind();
-        exampleDictKind.setId(id);
-        example.setDictKind(exampleDictKind);
-        List<Dict> dicts = dictRepository.findAll(Example.of(example));
-        return dicts;
     }
 
 }

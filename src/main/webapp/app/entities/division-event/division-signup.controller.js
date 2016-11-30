@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('DivisionEventSignupController', DivisionEventSignupController);
 
-    DivisionEventSignupController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'DivisionEvent', 'DictKind', 'Team', 'Player','Lineup'];
+    DivisionEventSignupController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'DivisionEvent', 'DictKindExt', 'Team', 'Player','Lineup'];
 
-    function DivisionEventSignupController($scope, $rootScope, $stateParams, previousState, entity, DivisionEvent, DictKind, Team, Player,Lineup) {
+    function DivisionEventSignupController($scope, $rootScope, $stateParams, previousState, entity, DivisionEvent, DictKindExt, Team, Player,Lineup) {
         var vm = this;
 
         vm.divisionEvent = entity;
@@ -16,7 +16,7 @@
         vm.currentPlayers=[];
         vm.players =Player.query();
         
-        vm.positions = DictKind.queryDicts({id:'5'}); // position dicts
+        vm.positions = DictKindExt.queryDicts({id:'5'}); // position dicts
         
         vm.teams = Team.query();
         
