@@ -132,30 +132,5 @@ public class LineupResource {
         lineupRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("lineup", id.toString())).build();
     }
-    
-    /**
-     * POST  /lineups-batch : Create batch lineup.
-     *
-     * @param lineup the lineup to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new lineup, or with status 400 (Bad Request) if the lineup has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @RequestMapping(value = "/lineups-batch",
-        method = RequestMethod.POST,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<List<Lineup>> createBatchLineup(@RequestBody List<Lineup> lineups) throws URISyntaxException {
-        log.debug("REST request to save batch Lineup : {}", lineups);
-        
-        for (Lineup lineup : lineups) {
-        	if (lineup.getId() != null) {
-        		return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("lineup", "idexists", "A new lineup cannot already have an ID")).body(null);
-            }
-		}
-        
-        List<Lineup> result = lineupRepository.save(lineups);
-        return ResponseEntity.created(new URI("/api/lineups-batch"))
-            .body(result);
-    }
 
 }

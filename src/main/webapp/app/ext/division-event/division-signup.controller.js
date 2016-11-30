@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('DivisionEventSignupController', DivisionEventSignupController);
 
-    DivisionEventSignupController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'DivisionEvent', 'DictKindExt', 'Team', 'Player','Lineup'];
+    DivisionEventSignupController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'DivisionEvent', 'DictKindExt', 'Team', 'Player','LineupExt'];
 
-    function DivisionEventSignupController($scope, $rootScope, $stateParams, previousState, entity, DivisionEvent, DictKindExt, Team, Player,Lineup) {
+    function DivisionEventSignupController($scope, $rootScope, $stateParams, previousState, entity, DivisionEvent, DictKindExt, Team, Player,LineupExt) {
         var vm = this;
 
         vm.divisionEvent = entity;
@@ -57,7 +57,7 @@
 	       	// 大名单最小18人，最大30人
 	       	if(targetData.length>18 && targetData.length<=30){
 	    	   // save lineup
-	    	   Lineup.saveBatch(targetData,onSaveSuccess,onSaveError);
+	    	   LineupExt.saveBatch(targetData,onSaveSuccess,onSaveError);
 	       }else{
 	    	   $scope.errorMsg = "lineup min 18,max 30 player.";
 	       }
