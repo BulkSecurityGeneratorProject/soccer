@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('GameSquadController', GameSquadController);
 
-    GameSquadController.$inject = ['$scope', '$state', 'Game','TeamPlayer','GameSquad','GameSquadQuery'];
+    GameSquadController.$inject = ['$scope', '$state', 'Game','TeamExt','GameSquad','GameSquadQuery'];
 
-    function GameSquadController ($scope, $state,Game,TeamPlayer,GameSquad,GameSquadQuery) {
+    function GameSquadController ($scope, $state,Game,TeamExt,GameSquad,GameSquadQuery) {
         var vm = this;
         
         vm.save = save;
@@ -32,7 +32,7 @@
         			 vm.team = vm.game.roadTeam;
         		 }
         		 // load all player of team
-     			TeamPlayer.query({id:vm.team.id},function(result){
+        		 TeamExt.queryPlayers({id:vm.team.id},function(result){
      				vm.players = result;
      			});
      			
