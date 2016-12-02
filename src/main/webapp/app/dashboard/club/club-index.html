@@ -1,29 +1,61 @@
 <div>
-	<h2><span>{{vm.club.name}}</span> </h2>
+	<h2>
+		<span>{{vm.club.name}}</span>
+	</h2>
 	<p>
-		<button type="submit"
-                 ui-sref="club.dashedit({id:vm.club.id})"
-                 class="btn btn-primary btn-sm">Club edit
-             <span class="glyphicon glyphicon-pencil"></span>
-             <span class="hidden-xs hidden-sm"></span>
-         </button>
-         <button type="submit"
-                 ui-sref="team({id:vm.association.id})"
-                 class="btn btn-primary btn-sm">Team management
-             <span class="glyphicon glyphicon-pencil"></span>
-             <span class="hidden-xs hidden-sm"></span>
-         </button>
-         <button type="submit"
-                 ui-sref="player({id:vm.association.id})"
-                 class="btn btn-primary btn-sm">Player management
-             <span class="glyphicon glyphicon-pencil"></span>
-             <span class="hidden-xs hidden-sm"></span>
-         </button>
-         <button type="submit"
-                 ui-sref="division-event-signup({id:1})"
-                 class="btn btn-primary btn-sm">Division Event Registement
-             <span class="glyphicon glyphicon-pencil"></span>
-             <span class="hidden-xs hidden-sm"></span>
-         </button>
-    </p>
+		<button type="submit" ui-sref="club.dashedit({id:vm.club.id})"
+			class="btn btn-primary btn-sm">
+			Club edit <span class="glyphicon glyphicon-pencil"></span> <span
+				class="hidden-xs hidden-sm"></span>
+		</button>
+		<button type="submit" ui-sref="team({id:vm.association.id})"
+			class="btn btn-primary btn-sm">
+			Team management <span class="glyphicon glyphicon-pencil"></span> <span
+				class="hidden-xs hidden-sm"></span>
+		</button>
+		<button type="submit" ui-sref="player({id:vm.association.id})"
+			class="btn btn-primary btn-sm">
+			Player management <span class="glyphicon glyphicon-pencil"></span> <span
+				class="hidden-xs hidden-sm"></span>
+		</button>
+		<button type="submit" ui-sref="division-event-signup({id:1})"
+			class="btn btn-primary btn-sm">
+			Division Event Registement <span class="glyphicon glyphicon-pencil"></span>
+			<span class="hidden-xs hidden-sm"></span>
+		</button>
+	</p>
+	<div id="overview" class="container">
+
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<strong>Schduled</strong>
+					</div>
+
+					<!-- Table -->
+					<table class="table">
+						<tr>
+							<th>StartAt</th>
+							<th>Home</th>
+							<th>Score</th>
+							<th>Road</th>
+						</tr>
+						<tr ng-repeat="game in vm.games">
+							<td>{{game.startAt| date:'yyyy-MM-dd'}}</td>
+							<td><a ui-sref="public.club({id:game.homeTeam.club.id})">{{game.homeTeam.name}}</a></td>
+							<td ng-if="isBefore(game.startAt)"><span
+								ng-class="{'bigger': game.homeScore > game.roadScore, 'littler': game.homeScore < game.roadScore}">{{game.homeScore}}</span>:
+								<span
+								ng-class="{'littler': game.homeScore > game.roadScore, 'bigger': game.homeScore < game.roadScore}">{{game.roadScore}}</span>
+							</td>
+							<td ng-if="!isBefore(game.startAt)">{{game.startAt| date:'HH:mm a'}}</td>
+							<td><a ui-sref="public.club({id:game.roadTeam.club.id})">{{game.roadTeam.name}}</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
