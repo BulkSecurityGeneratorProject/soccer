@@ -55,6 +55,46 @@
 						</tr>
 					</table>
 				</div>
+				
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<strong>Next Game</strong>
+					</div>
+					<div ng-if="vm.nextTeam">
+						<p>  {{vm.nextGame.startAt| date: 'yyyy-MM-dd'}} vs 
+						<a ui-sref="public.club({id:vm.nextTeam.club.id})">{{vm.nextTeam.name}}</a>
+						 on {{vm.nextGame.startAt|date:'HH:mm a'}}</p>
+					</div>
+				</div>
+				
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<strong>Opponent recent games</strong>
+					</div>
+					<table class="table">
+						<tr>
+							<th>StartAt</th>
+							<th>Home</th>
+							<th>Score</th>
+							<th>Road</th>
+						</tr>
+						<tr ng-repeat="game in vm.recentGamesOfNextTeam">
+							<td>{{game.startAt| date:'yyyy-MM-dd'}}</td>
+							<td><a ui-sref="public.club({id:game.homeTeam.club.id})">{{game.homeTeam.name}}</a></td>
+							<td ng-if="isBefore(game.startAt)"><span
+								ng-class="{'bigger': game.homeScore > game.roadScore, 'littler': game.homeScore < game.roadScore}">{{game.homeScore}}</span>:
+								<span
+								ng-class="{'littler': game.homeScore > game.roadScore, 'bigger': game.homeScore < game.roadScore}">{{game.roadScore}}</span>
+							</td>
+							<td ng-if="!isBefore(game.startAt)">{{game.startAt| date:'HH:mm a'}}</td>
+							<td><a ui-sref="public.club({id:game.roadTeam.club.id})">{{game.roadTeam.name}}</a></td>
+						</tr>
+					</table>
+					
+				</div>
+				
 			</div>
 		</div>
 	</div>

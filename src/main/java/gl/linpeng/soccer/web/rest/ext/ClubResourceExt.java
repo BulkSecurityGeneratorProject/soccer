@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,5 +46,25 @@ public class ClubResourceExt {
 		int recentDays = 30;
 		List<Game> games = gameRepositoryExt.findGamesByClub(id, recentDays);
 		return games;
+	}
+
+	/**
+	 * GET /clubs/:id/nextGame : get next game of club "id".
+	 *
+	 * @param id
+	 *            the id of the club
+	 * @return the next game
+	 */
+	@RequestMapping(value = "/clubs/{id}/nextgame", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public Game getNextGame(@PathVariable Long id) {
+		log.debug("REST request to get next game of club : {}", id);
+		List<Game> games = gameRepositoryExt.findNextGamesByClub(id,
+				new PageRequest(0, 1));
+		Game game = null;
+		if (games.size() > 0) {
+			game = games.get(0);
+		}
+		return game;
 	}
 }

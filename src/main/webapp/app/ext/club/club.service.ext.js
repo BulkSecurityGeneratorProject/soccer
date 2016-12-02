@@ -10,7 +10,8 @@
         var resourceUrl =  'api/clubs/:id';
 
         return $resource(resourceUrl, {}, {
-            'queryGames':{url: resourceUrl+'/games', method: 'GET', isArray: true}
+            'queryGames':{url: resourceUrl+'/games', method: 'GET', isArray: true},
+            'queryNextGame':{url: resourceUrl+'/nextgame', method: 'GET'}
         });
     }
 })();

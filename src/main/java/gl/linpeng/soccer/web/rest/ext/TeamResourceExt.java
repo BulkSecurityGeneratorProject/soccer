@@ -16,6 +16,7 @@ import javax.persistence.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -104,5 +105,22 @@ public class TeamResourceExt {
 						+ "group by p.id,p.name,p.birth order by p.name");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
+	}
+
+	/**
+	 * GET /teams/:id/passedgames/{count} : get passwd game of team "id".
+	 *
+	 * @param id
+	 *            the id of the team
+	 * @return the passed game list
+	 */
+	@RequestMapping(value = "/teams/{id}/passedgames/{count}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Game> getPassedGames(@PathVariable Long id,
+			@PathVariable int count) {
+		log.debug("REST request to get passed {} games of team: {}", count, id);
+		List<Game> games = gameRepositoryExt.findPassedGamesByTeam(id,
+				new PageRequest(0, count));
+		return games;
 	}
 }
