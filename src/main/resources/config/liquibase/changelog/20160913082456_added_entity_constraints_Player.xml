@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="team"/>
 
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="player"
+                                 constraintName="fk_player_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dict"/>
+
     </changeSet>
 </databaseChangeLog>

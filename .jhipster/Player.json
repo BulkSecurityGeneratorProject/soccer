@@ -6,6 +6,13 @@
       "relationshipName": "team",
       "otherEntityName": "team",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipType": "many-to-one",
+      "relationshipName": "status",
+      "otherEntityName": "dict",
+      "otherEntityField": "id"
     }
   ],
   "fields": [

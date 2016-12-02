@@ -37,6 +37,9 @@ public class Player implements Serializable {
     @ManyToOne
     private Team team;
 
+    @ManyToOne
+    private Dict status;
+
     public Long getId() {
         return id;
     }
@@ -83,6 +86,14 @@ public class Player implements Serializable {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Dict getStatus() {
+        return status;
+    }
+
+    public void setStatus(Dict dict) {
+        this.status = dict;
     }
 
     @Override
