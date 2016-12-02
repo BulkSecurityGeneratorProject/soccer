@@ -22,3 +22,5 @@ id;name;code;dict_kind_id
 21;Maintenance;0;6
 22;OK;1;6
 23;Cancelled;2;6
+24;Pro;1;7
+25;Free;2;7
