@@ -123,4 +123,41 @@ public class TeamResourceExt {
 				new PageRequest(0, count));
 		return games;
 	}
+
+	/**
+	 * GET /teams/:id/result-statistics : get total season game result
+	 * statistics data
+	 * 
+	 * @param id
+	 *            team id
+	 * @return statistics result
+	 */
+	@RequestMapping(value = "/teams/{id}/result-statistics", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List gameResultStatistics(@PathVariable Long id) {
+		String sql = String
+				.format("select TYPE,count(W) as W, count(D) as D,count(L) as L,sum(GS) as GS,"
+						+ "sum(GA) as GA,(count(W)*3+count(D)) as PTS,count(NGS) as NGS,count(NGA) as NGA from "
+						+ "(select 'HOME' as TYPE,CONCAT(g.home_score,':',g.road_score) as SCORE,"
+						+ "(case when g.home_score > g.road_score then 1 end) as W ,"
+						+ "(case when g.home_score = g.road_score then 1 end) as D,"
+						+ "(case when g.home_score <  g.road_score then 1 end) as L,"
+						+ "g.home_score as GS,g.road_score as GA,"
+						+ "(case when g.home_score = 0 then 1 end) as NGS,"
+						+ "(case when g.road_score = 0 then 1 end) as NGA ,"
+						+ "(g.home_score - g.road_score) as SD from game g where g.home_team_id = "
+						+ id
+						+ "union all "
+						+ "select 'ROAD' as TYPE,CONCAT(g.home_score,':',g.road_score) as SCORE"
+						+ ",(case when g.home_score < g.road_score then 1 end) as W ,"
+						+ "(case when g.home_score = g.road_score then 1 end) as D,"
+						+ "(case when g.home_score >  g.road_score then 1 end) as L,"
+						+ "g.road_score as GS,g.home_score as GA,"
+						+ "(case when g.road_score = 0 then 1 end) as NGS,"
+						+ "(case when g.home_score = 0 then 1 end) as NGA,"
+						+ "(g.road_score - g.home_score) as SD from game g where g.road_team_id =  "
+						+ id + ") group by TYPE", id);
+		Query query = entityManager.createNativeQuery(sql);
+		return query.getResultList();
+	}
 }

@@ -31,9 +31,12 @@
             	 }
         		 // get recent games of next team
         		 vm.recentGamesOfNextTeam = TeamExt.queryPassedGames({id : vm.nextTeam.id,count:5});
+        		 vm.nextTeamResultStatistics = TeamExt.queryResultStatistics({id:vm.nextTeam.id});
         	 }
         	
         });
+        
+        
         
     }
 })();

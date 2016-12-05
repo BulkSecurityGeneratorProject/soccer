@@ -27,6 +27,7 @@
 	<div id="overview" class="container">
 
 		<div class="row">
+			<!-- <div class="col-sm-12"> -->
 			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<!-- Default panel contents -->
@@ -55,7 +56,8 @@
 						</tr>
 					</table>
 				</div>
-				
+			</div><!-- end of col-sm-5 -->
+			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<!-- Default panel contents -->
 					<div class="panel-heading">
@@ -67,7 +69,8 @@
 						 on {{vm.nextGame.startAt|date:'HH:mm a'}}</p>
 					</div>
 				</div>
-				
+				</div><!-- end of col-sm-5 -->
+				<div class="col-sm-5">
 				<div class="panel panel-default">
 					<!-- Default panel contents -->
 					<div class="panel-heading">
@@ -94,8 +97,53 @@
 					</table>
 					
 				</div>
+				</div><!-- end of col-sm-5 -->
 				
-			</div>
+				<div class="col-sm-5">
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<strong>Opponent Statistics</strong>
+					</div>
+					<table class="table">
+						<tr>
+							<th></th>
+							<th>W</th>
+							<th>D</th>
+							<th>L</th>
+							<th>GS</th>
+							<th>GA</th>
+							<th>PTS</th>
+							<th>NGS</th>
+							<th>NGA</th>
+						</tr>
+						<tr ng-repeat="row in vm.nextTeamResultStatistics">
+							<td>{{row[0]}}</td>
+							<td>{{row[1]}}</td>
+							<td>{{row[2]}}</td>
+							<td>{{row[3]}}</td>
+							<td>{{row[4]}}</td>
+							<td>{{row[5]}}</td>
+							<td>{{row[6]}}</td>
+							<td>{{row[7]}}</td>
+							<td>{{row[8]}}</td>
+						</tr>
+						<tr>
+							<td>TOTAL</td>
+							<td>{{vm.nextTeamResultStatistics[0][1]+vm.nextTeamResultStatistics[1][1]}}</td>
+							<td>{{vm.nextTeamResultStatistics[0][2]+vm.nextTeamResultStatistics[1][2]}}</td>
+							<td>{{vm.nextTeamResultStatistics[0][3]+vm.nextTeamResultStatistics[1][3]}}</td>
+							<td>{{vm.nextTeamResultStatistics[0][4]+vm.nextTeamResultStatistics[1][4]}}</td>
+							<td>{{vm.nextTeamResultStatistics[0][5]+vm.nextTeamResultStatistics[1][5]}}</td>
+							<td>{{vm.nextTeamResultStatistics[0][6]+vm.nextTeamResultStatistics[1][6]}}</td>
+							<td>{{vm.nextTeamResultStatistics[0][7]+vm.nextTeamResultStatistics[1][7]}}</td>
+							<td>{{vm.nextTeamResultStatistics[0][8]+vm.nextTeamResultStatistics[1][8]}}</td>
+						</tr>
+					</table>
+				</div>
+				</div><!-- end of col-sm-5 -->
+				
+			<!-- </div> -->
 		</div>
 	</div>
 </div>
