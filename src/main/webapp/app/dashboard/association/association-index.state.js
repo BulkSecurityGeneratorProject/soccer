@@ -25,6 +25,21 @@
             resolve: {
 
             }
+        }).state('association.division-event', {
+            parent: 'association',
+            url: '/{id}/division-events',
+            data: {
+                authorities: ['ROLE_USER'],
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/division-event/division-events.html',
+                    controller: 'DivisionEventController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+            }
         }).state('association.dashedit', {
             parent: 'association.dash',
             url: '/edit',
