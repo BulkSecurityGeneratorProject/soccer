@@ -1,6 +1,9 @@
 package gl.linpeng.soccer.web.rest.ext;
 
+import gl.linpeng.soccer.domain.Club;
 import gl.linpeng.soccer.domain.Game;
+import gl.linpeng.soccer.domain.Team;
+import gl.linpeng.soccer.repository.TeamRepository;
 import gl.linpeng.soccer.repository.ext.GameRepositoryExt;
 
 import java.util.List;
@@ -9,6 +12,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +35,9 @@ public class ClubResourceExt {
 
 	@Inject
 	private GameRepositoryExt gameRepositoryExt;
+
+	@Inject
+	private TeamRepository teamRepository;
 
 	/**
 	 * GET /clubs : get all the club games.
@@ -66,5 +73,23 @@ public class ClubResourceExt {
 			game = games.get(0);
 		}
 		return game;
+	}
+
+	/**
+	 * GET /clubs/:id/teams : get all team of club "id".
+	 *
+	 * @param id
+	 *            the id of the club
+	 * @return team list
+	 */
+	@RequestMapping(value = "/clubs/{id}/teams", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Team> getClubTeams(@PathVariable Long id) {
+		Club club = new Club();
+		Team exampleTeam = new Team();
+		club.setId(id);
+		exampleTeam.setClub(club);
+		List<Team> teams = teamRepository.findAll(Example.of(exampleTeam));
+		return teams;
 	}
 }

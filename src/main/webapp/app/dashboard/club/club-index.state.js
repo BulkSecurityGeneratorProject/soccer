@@ -49,6 +49,22 @@
                     $state.go('^');
                 });
             }]
+        }).state('club.teams',{
+        	parent: 'club',
+            url: '/{id}/teams',
+            data: {
+                authorities: ['ROLE_USER'],
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/team/teams.html',
+                    controller: 'ClubTeamController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+
+            }
         });
     }
 
