@@ -25,7 +25,51 @@
             resolve: {
 
             }
-        }).state('association.division-event', {
+        }).state('association.division', {
+            parent: 'association',
+            url: '/{id}/division',
+            data: {
+                authorities: ['ROLE_USER'],
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/dashboard/association/divisions.html',
+                    controller: 'AssociationDivisionController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+            }
+        }).state('association-division-new', {
+            parent: 'association.division',
+            url: '/new',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/division/division-dialog.html',
+                    controller: 'AssociationDivisionDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                name: null,
+                                createAt: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('association.division', null, { reload: 'association.division' });
+                }, function() {
+                    $state.go('association.division');
+                });
+            }]
+        })
+        .state('association.division-event', {
             parent: 'association',
             url: '/{id}/division-events',
             data: {
