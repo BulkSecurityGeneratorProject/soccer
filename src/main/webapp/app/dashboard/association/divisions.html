@@ -23,7 +23,6 @@
                     <th><span>Create At</span></th>
                     <th><span>Type</span></th>
                     <th><span>Association</span></th>
-                    <th><span>Ranking Rule</span></th>
                     <th><span>Status</span></th>
                     <th></th>
                 </tr>
@@ -34,27 +33,24 @@
                     <td>{{division.name}}</td>
                         <td>{{division.createAt | date:'mediumDate'}}</td>
                     <td>
-                        <a ui-sref="dict-detail({id:division.type.id})">{{division.type.id}}</a>
+                        {{division.type.name}}
                     </td>
                     <td>
-                        <a ui-sref="association-detail({id:division.association.id})">{{division.association.id}}</a>
+                        {{division.association.name}}
                     </td>
                     <td>
-                        <a ui-sref="ranking-rule-detail({id:division.rankingRule.id})">{{division.rankingRule.id}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="dict-detail({id:division.status.id})">{{division.status.id}}</a>
+                        {{division.status.name}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="division-detail({id:division.id})"
+                                    ui-sref="association-division-detail({id:division.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="division.edit({id:division.id})"
+                                    ui-sref="association-division-detail.edit({id:division.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm"></span>

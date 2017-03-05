@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span>Division</span> {{vm.division.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.division.name}}</span>
+        </dd>
+        <dt><span>Create At</span></dt>
+        <dd>
+            <span>{{vm.division.createAt | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <a ui-sref="dict-detail({id:vm.division.type.id})">{{vm.division.type.id}}</a>
+        </dd>
+        <dt><span>Association</span></dt>
+        <dd>
+            <a ui-sref="association-detail({id:vm.division.association.id})">{{vm.division.association.id}}</a>
+        </dd>
+        <dt><span>Ranking Rule</span></dt>
+        <dd>
+            <a ui-sref="ranking-rule-detail({id:vm.division.rankingRule.id})">{{vm.division.rankingRule.id}}</a>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <a ui-sref="dict-detail({id:vm.division.status.id})">{{vm.division.status.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="association-division-detail.edit({id:vm.division.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>
