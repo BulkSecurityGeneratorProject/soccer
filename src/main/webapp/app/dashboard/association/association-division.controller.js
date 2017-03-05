@@ -12,6 +12,7 @@
         vm.divisions = [];
         AssociationExt.queryDivisions($state.params,function(result) {
         	vm.divisions = result;
+        	vm.id = $state.params.id;
         });
     }
 })();

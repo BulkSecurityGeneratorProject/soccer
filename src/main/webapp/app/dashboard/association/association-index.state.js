@@ -70,7 +70,7 @@
             }]
         }).state('association-division-detail', {
             parent: 'association.division',
-            url: '/{id}',
+            url: '/{did}',
             data: {
                 authorities: ['ROLE_USER'],
             },
@@ -83,7 +83,7 @@
             },
             resolve: {
                 entity: ['$stateParams', 'Division', function($stateParams, Division) {
-                    return Division.get({id : $stateParams.id}).$promise;
+                    return Division.get({id : $stateParams.did}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
@@ -97,20 +97,20 @@
         })
         .state('association-division-detail.edit', {
             parent: 'association.division',
-            url: '/{id}/edit',
+            url: '/{did}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/division/division-dialog.html',
+                    templateUrl: 'app/dashboard/association/division-dialog.html',
                     controller: 'DivisionDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: ['Division', function(Division) {
-                            return Division.get({id : $stateParams.id}).$promise;
+                            return Division.get({id : $stateParams.did}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -119,6 +119,30 @@
                     $state.go('^');
                 });
             }]
+        }).state('association-division-delete', {
+            parent: 'association.division',
+            url: '/{did}/delete',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/division/division-delete-dialog.html',
+                    controller: 'DivisionDeleteController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Division', function(Division) {
+                            return Division.get({id : $stateParams.did}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('association.division', null, { reload: 'association.division' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+            
         })
         .state('association.division-event', {
             parent: 'association',
