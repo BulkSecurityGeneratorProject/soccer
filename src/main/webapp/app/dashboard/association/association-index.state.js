@@ -48,7 +48,7 @@
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/division/division-dialog.html',
+                    templateUrl: 'app/dashboard/association/division-dialog.html',
                     controller: 'AssociationDivisionDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',

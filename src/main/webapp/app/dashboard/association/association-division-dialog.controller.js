@@ -16,7 +16,7 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.dicts = Dict.query();
-        vm.associations = Association.query();
+        vm.division.association = Association.get($stateParams);
         vm.rankingrules = RankingRule.query();
 
         $timeout(function (){
