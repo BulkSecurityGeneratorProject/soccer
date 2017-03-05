@@ -65,6 +65,23 @@
             resolve: {
 
             }
+        })
+        .state('club.players',{
+        	parent: 'club',
+            url: '/{id}/players',
+            data: {
+                authorities: ['ROLE_USER'],
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/entities/player/players.html',
+                    controller: 'ClubPlayerController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+
+            }
         });
     }
 

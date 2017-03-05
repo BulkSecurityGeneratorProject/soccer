@@ -2,7 +2,9 @@ package gl.linpeng.soccer.web.rest.ext;
 
 import gl.linpeng.soccer.domain.Club;
 import gl.linpeng.soccer.domain.Game;
+import gl.linpeng.soccer.domain.Player;
 import gl.linpeng.soccer.domain.Team;
+import gl.linpeng.soccer.repository.PlayerRepository;
 import gl.linpeng.soccer.repository.TeamRepository;
 import gl.linpeng.soccer.repository.ext.GameRepositoryExt;
 
@@ -38,6 +40,8 @@ public class ClubResourceExt {
 
 	@Inject
 	private TeamRepository teamRepository;
+	@Inject
+	private PlayerRepository playerRepository;
 
 	/**
 	 * GET /clubs : get all the club games.
@@ -91,5 +95,28 @@ public class ClubResourceExt {
 		exampleTeam.setClub(club);
 		List<Team> teams = teamRepository.findAll(Example.of(exampleTeam));
 		return teams;
+	}
+
+	/**
+	 * GET /clubs/:id/players : get all player of club "id".
+	 *
+	 * @param id
+	 *            the id of the club
+	 * @return player list
+	 */
+	@RequestMapping(value = "/clubs/{id}/players", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Player> getClubPlayers(@PathVariable Long id) {
+		Club club = new Club();
+		Team team = new Team();
+		Player examplePlayer = new Player();
+
+		club.setId(id);
+		team.setClub(club);
+		examplePlayer.setTeam(team);
+
+		List<Player> players = playerRepository.findAll(Example
+				.of(examplePlayer));
+		return players;
 	}
 }
