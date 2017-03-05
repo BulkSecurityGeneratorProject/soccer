@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('PublicAssociationController', PublicAssociationController);
 
-    PublicAssociationController.$inject = ['$scope','$state','Association','AssociationDivision','AssociationClub','AssociationPlayer'];
+    PublicAssociationController.$inject = ['$scope','$state','Association','AssociationExt'];
 
-    function PublicAssociationController ($scope, $state,Association,AssociationDivision,AssociationClub,AssociationPlayer) {
+    function PublicAssociationController ($scope, $state,Association,AssociationExt) {
         var vm = this;
         $scope.now = new Date();
         $scope.tabs = [{
@@ -51,10 +51,10 @@
         // 1. association basic information
         vm.association = Association.get({id:$state.params.id});
         // 2. all associate division
-        vm.divisions = AssociationDivision.query({id:$state.params.id});
+        vm.divisions = AssociationExt.queryDivisions({id:$state.params.id});
         // 3. all associate clubs
-        vm.clubs = AssociationClub.query({id:$state.params.id});
+        vm.clubs = AssociationExt.queryClubs({id:$state.params.id});
         // 3. all associate players
-        vm.players = AssociationPlayer.query({id:$state.params.id});
+        vm.players = AssociationExt.queryPlayers({id:$state.params.id});
     }
 })();
