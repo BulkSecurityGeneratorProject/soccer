@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span>Division Event</span> {{vm.divisionEvent.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Season</span></dt>
+        <dd>
+            <a ui-sref="season-detail({id:vm.divisionEvent.season.id})">{{vm.divisionEvent.season.id}}</a>
+        </dd>
+        <dt><span>Division</span></dt>
+        <dd>
+            <a ui-sref="division-detail({id:vm.divisionEvent.division.id})">{{vm.divisionEvent.division.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="association-division-event-detail.edit({did:vm.divisionEvent.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>
