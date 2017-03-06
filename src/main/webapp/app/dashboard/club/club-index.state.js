@@ -171,22 +171,130 @@
                 });
             }]
         })
-        .state('club.players',{
+        .state('club.player',{
         	parent: 'club',
-            url: '/{id}/players',
+            url: '/{id}/player',
             data: {
                 authorities: ['ROLE_USER'],
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/player/players.html',
+                    templateUrl: 'app/dashboard/club/players.html',
                     controller: 'ClubPlayerController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-
+               
             }
+        })
+        .state('club-player-detail', {
+            parent: 'club.player',
+            url: '/{pid}',
+            data: {
+                authorities: ['ROLE_USER'],
+                pageTitle: 'Player'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/dashboard/club/player-detail.html',
+                    controller: 'PlayerDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                entity: ['$stateParams', 'Player', function($stateParams, Player) {
+                    return Player.get({id : $stateParams.pid}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'player',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
+        })
+        .state('club-player-new', {
+            parent: 'club.player',
+            url: '/new',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/dashboard/club/player-dialog.html',
+                    controller: 'PlayerDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                name: null,
+                                birth: null,
+                                height: null,
+                                weight: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('club.player', null, { reload: 'club.player' });
+                }, function() {
+                    $state.go('club.player');
+                });
+            }]
+        })
+        .state('club-player-edit', {
+            parent: 'club.player',
+            url: '/{pid}/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/player/player-dialog.html',
+                    controller: 'PlayerDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Player', function(Player) {
+                            return Player.get({id : $stateParams.pid}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
+        .state('club-player-delete', {
+            parent: 'club.player',
+            url: '/{pid}/delete',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/player/player-delete-dialog.html',
+                    controller: 'PlayerDeleteController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Player', function(Player) {
+                            return Player.get({id : $stateParams.pid}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('player', null, { reload: 'player' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 
