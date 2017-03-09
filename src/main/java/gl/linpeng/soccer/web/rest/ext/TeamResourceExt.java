@@ -1,12 +1,16 @@
 package gl.linpeng.soccer.web.rest.ext;
 
+import gl.linpeng.soccer.domain.Club;
+import gl.linpeng.soccer.domain.DivisionEvent;
 import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.domain.Player;
 import gl.linpeng.soccer.domain.Team;
 import gl.linpeng.soccer.repository.PlayerRepository;
+import gl.linpeng.soccer.repository.TeamRepository;
 import gl.linpeng.soccer.repository.ext.GameRepositoryExt;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -17,7 +21,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,6 +46,8 @@ public class TeamResourceExt {
 	private PlayerRepository playerRepository;
 	@Inject
 	private GameRepositoryExt gameRepositoryExt;
+	@Inject
+	private TeamRepository teamRepository;
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -159,5 +167,36 @@ public class TeamResourceExt {
 						+ id + ") group by TYPE", id);
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
+	}
+
+	/**
+	 * GET /teams/club/{club_id}/division-event/{division_id} : get the team by
+	 * club and division event.
+	 *
+	 * @param clubId
+	 *            the id of the club
+	 * @param divisionEventId
+	 *            the id of the division event
+	 * @return the ResponseEntity with status 200 (OK) and with body the team,
+	 *         or with status 404 (Not Found)
+	 */
+	@RequestMapping(value = "/teams/{clubId}/division-event/{divisionEventId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Team> getTeamByClubAndDivisionEvent(
+			@PathVariable Long clubId, @PathVariable Long divisionEventId) {
+		log.debug(
+				"REST request to get Team by club {} and division event : {}",
+				clubId, divisionEventId);
+		Team exampleTeam = new Team();
+		Club club = new Club();
+		DivisionEvent divisionEvent = new DivisionEvent();
+		club.setId(clubId);
+		divisionEvent.setId(divisionEventId);
+		exampleTeam.setClub(club);
+		exampleTeam.setDivisionEvent(divisionEvent);
+		Team team = teamRepository.findOne(Example.of(exampleTeam));
+		return Optional.ofNullable(team)
+				.map(result -> new ResponseEntity<>(result, HttpStatus.OK))
+				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 }
