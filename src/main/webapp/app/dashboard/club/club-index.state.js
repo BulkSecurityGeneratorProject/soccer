@@ -295,6 +295,49 @@
                     $state.go('^');
                 });
             }]
+        })
+         .state('club.division-events', {
+            parent: 'club',
+            url: '/{id}/events',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/dashboard/club/division-events.html',
+                    controller: 'ClubDivisionEventController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+            }
+        })
+         .state('club.division-event-signup', {
+            parent: 'club.division-events',
+            url: '/{did}',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/dashboard/club/division-event-signup.html',
+                    controller: 'ClubDivisionEventSignupController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                entity: ['$stateParams', 'DivisionEvent', function($stateParams, DivisionEvent) {
+                    return DivisionEvent.get({id : $stateParams.did}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'division-event',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
         });
     }
 

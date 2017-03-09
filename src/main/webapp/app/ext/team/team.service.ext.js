@@ -15,6 +15,16 @@
             'queryGames': { url: 'api/teams/:id/games', method: 'GET', isArray: true},
             'queryPassedGames': { url: 'api/teams/:id/passedgames/:count', method: 'GET', isArray: true},
             'queryResultStatistics': { url: 'api/teams/:id/result-statistics', method: 'GET', isArray: true},
+            'getByClubAndDivisionEvent': {
+            	url:'api/teams/:cid/division-event/:did',
+                method: 'GET',
+                transformResponse: function (data) {
+                    if (data) {
+                        data = angular.fromJson(data);
+                    }
+                    return data;
+                }
+            }
         });
     }
 })();

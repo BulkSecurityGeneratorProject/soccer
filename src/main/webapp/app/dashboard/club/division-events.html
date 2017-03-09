@@ -1,0 +1,39 @@
+<div>
+    <h2>Division Events</h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Season</span></th>
+                    <th><span>Division</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="divisionEvent in vm.divisionEvents track by divisionEvent.id">
+                    <td><a ui-sref="division-event-detail({id:divisionEvent.id})">{{divisionEvent.id}}</a></td>
+                    <td>
+                        <a ui-sref="season-detail({id:divisionEvent.season.id})">{{divisionEvent.season.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="division-detail({id:divisionEvent.division.id})">{{divisionEvent.division.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                        	<button type="submit"
+                                    ui-sref="club.division-event-signup({did:divisionEvent.id})"
+                                    title="signup players to a division event"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

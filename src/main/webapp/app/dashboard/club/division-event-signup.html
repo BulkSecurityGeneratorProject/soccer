@@ -1,0 +1,20 @@
+
+<div>
+    <h2> {{vm.divisionEvent.season.name}}-{{vm.divisionEvent.division.name}} Sign up Form</h2>
+    <jhi-alert-error></jhi-alert-error>
+    
+	<div class="alert alert-danger" role="alert" ng-if="errorMsg"><strong>Error! </strong>{{errorMsg}}</div>
+    <hr>
+
+		<!--  {{vm.positions}} -->
+		
+		<script type="text/ng-template" id="simple-grid.html" src="bower_components/angular-simple-grid/src/simple-grid.html"></script>
+	    Line-up：
+	    <div simple-grid="vm.myGridConfig"></div>
+	    
+	    <button type="submit"
+	            ui-sref="{{ vm.previousState }}"
+	            class="btn btn-info">
+	        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+	    </button>
+</div>
