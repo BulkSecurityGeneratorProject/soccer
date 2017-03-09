@@ -1,14 +1,18 @@
 package gl.linpeng.soccer.web.rest.ext;
 
 import gl.linpeng.soccer.domain.Club;
+import gl.linpeng.soccer.domain.DivisionEvent;
 import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.domain.Player;
 import gl.linpeng.soccer.domain.Team;
+import gl.linpeng.soccer.repository.DivisionEventRepository;
 import gl.linpeng.soccer.repository.PlayerRepository;
 import gl.linpeng.soccer.repository.TeamRepository;
 import gl.linpeng.soccer.repository.ext.GameRepositoryExt;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -42,6 +46,8 @@ public class ClubResourceExt {
 	private TeamRepository teamRepository;
 	@Inject
 	private PlayerRepository playerRepository;
+	@Inject
+	private DivisionEventRepository divisionEventRepository;
 
 	/**
 	 * GET /clubs : get all the club games.
@@ -118,5 +124,29 @@ public class ClubResourceExt {
 		List<Player> players = playerRepository.findAll(Example
 				.of(examplePlayer));
 		return players;
+	}
+
+	/**
+	 * GET /clubs/:id/division-events : get all division-event of club "id".
+	 *
+	 * @param id
+	 *            the id of the club
+	 * @return division-event list
+	 */
+	@RequestMapping(value = "/clubs/{id}/division-events", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<DivisionEvent> getDivisionEvents(@PathVariable Long id) {
+		Club club = new Club();
+		Team team = new Team();
+		club.setId(id);
+		team.setClub(club);
+		DivisionEvent exampleDivsionEvent = new DivisionEvent();
+		Set<Team> teams = new HashSet<Team>();
+		teams.add(team);
+		exampleDivsionEvent.setTeams(teams);
+		List<DivisionEvent> divisionEvents = divisionEventRepository
+				.findAll(Example.of(exampleDivsionEvent));
+
+		return divisionEvents;
 	}
 }
