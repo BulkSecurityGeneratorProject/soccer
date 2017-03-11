@@ -14,26 +14,25 @@
         vm.previousState = previousState.name;
         vm.currentTeam = null;
         vm.currentPlayers=[];
-        //TODO 这只应该只查一个队的球员 
-        vm.players =Player.query();
-        
+       
         vm.positions = DictKindExt.queryDicts({id:'5'}); // position dicts
         
-        // vm.teams = Team.query();
-        
-    	vm.currentTeam = TeamExt.getByClubAndDivisionEvent({cid:$stateParams.id,did:$stateParams.did});
-    	// TODO 上面获取的是一个队的球员的时候，这里的过滤器就不需要了
-    	vm.currentPlayers = vm.players.filter(function(player){
-    		player.divisionEvent = vm.divisionEvent;
-    		return player.team.id == vm.currentTeam.id;
+    	TeamExt.getByClubAndDivisionEvent({cid:$stateParams.id,did:$stateParams.did},function(result){
+    		vm.currentTeam = result;
+    		
+    		TeamExt.queryPlayers({id:vm.currentTeam.id},function(result){
+        		vm.currentPlayers = result;
+        		
+            	generatGridConfig(vm.currentPlayers,function(result){
+                	 vm.myGridConfig = result;
+                 });
+        	});
+    		
     	});
     	
-    	generatGridConfig(vm.currentPlayers,function(result){
-        	 vm.myGridConfig = result;
-         });
+    	
         
         vm.saveAll = function(data){
-	       	
 	       	var targetData = data.map(function(d){
 	       		if(d.playerPosition && d.playerNumber){
 	       			// Player number and player position is requried for lineup
