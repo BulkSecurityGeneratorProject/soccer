@@ -1,6 +1,8 @@
 package gl.linpeng.soccer.web.rest.ext;
 
+import gl.linpeng.soccer.domain.DivisionEvent;
 import gl.linpeng.soccer.domain.Lineup;
+import gl.linpeng.soccer.domain.Team;
 import gl.linpeng.soccer.repository.LineupRepository;
 import gl.linpeng.soccer.web.rest.util.HeaderUtil;
 
@@ -12,8 +14,10 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Example;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,5 +72,31 @@ public class LineupResourceExt {
 		List<Lineup> result = lineupRepository.save(lineups);
 		return ResponseEntity.created(new URI("/api/lineups-batch")).body(
 				result);
+	}
+
+	/**
+	 * GET /lineups/division-event/{divisionEventId}/team/{teamId} : get all the
+	 * lineups of team by division.
+	 *
+	 * @return the ResponseEntity with status 200 (OK) and the list of lineups
+	 *         in body
+	 */
+	@RequestMapping(value = "/lineups/division-event/{divisionEventId}/team/{teamId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Lineup> getAllLineupsByDivisionEventAndTeam(
+			@PathVariable Long divisionEventId, @PathVariable Long teamId) {
+		log.debug(
+				"REST request to get all Lineups of team {} by division event {}.",
+				teamId, divisionEventId);
+		Lineup exampleLineup = new Lineup();
+		DivisionEvent divisionEvent = new DivisionEvent();
+		Team team = new Team();
+		divisionEvent.setId(divisionEventId);
+		team.setId(teamId);
+		exampleLineup.setDivisionEvent(divisionEvent);
+		exampleLineup.setTeam(team);
+		List<Lineup> lineups = lineupRepository.findAll(Example
+				.of(exampleLineup));
+		return lineups;
 	}
 }

@@ -23,9 +23,23 @@
     		TeamExt.queryPlayers({id:vm.currentTeam.id},function(result){
         		vm.currentPlayers = result;
         		
-            	generatGridConfig(vm.currentPlayers,function(result){
-                	 vm.myGridConfig = result;
-                 });
+        		LineupExt.queryByDivisionEventAndTeam({did : $stateParams.did,tid : vm.currentTeam.id},function(result){
+        			angular.forEach(result,function(lineup){
+        				angular.forEach(vm.currentPlayers,function(player){
+        					if(player.id == lineup.player.id){
+        						player['playerNumber'] = lineup.playerNumber;
+        						player['playerPosition'] = lineup.playerPosition.name;
+        					}
+        				});
+        				
+    				});
+        			
+        			generatGridConfig(vm.currentPlayers,function(result){
+                   	 vm.myGridConfig = result;
+                    });
+        			
+        		});
+            	
         	});
     		
     	});
