@@ -58,7 +58,7 @@
 		       		
 		       		obj.player.id = d.id;
 		       		obj.team.id = d.team.id;
-		       		obj.divisionEvent.id = d.divisionEvent.id;
+		       		obj.divisionEvent.id = vm.divisionEvent.id;
 		       		obj.playerNumber = d.playerNumber;
 		       		obj.playerPosition.id = d.playerPosition.id;
 		       		return obj;
