@@ -52,6 +52,12 @@
             <loadData encoding="GBK"
                   file="config/liquibase/players.csv"
                   separator=";"
-                  tableName="player"/>                                                   
+                  tableName="player"/>
+
+            <!-- this only for testcase -->
+            <loadData encoding="GBK"
+                  file="config/liquibase/lineup.csv"
+                  separator=";"
+                  tableName="lineup"/>
     </changeSet>
 </databaseChangeLog>
