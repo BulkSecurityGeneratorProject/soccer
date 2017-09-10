@@ -32,7 +32,7 @@ import com.codahale.metrics.annotation.Timed;
 
 /**
  * REST ext controller for managing Game.
- * 
+ *
  * @author linpeng
  */
 @RestController
@@ -51,7 +51,7 @@ public class GameResourceExt {
 
 	/**
 	 * get game squad by game id and team id
-	 * 
+	 *
 	 * @param id
 	 *            game id
 	 * @param tid
@@ -82,7 +82,7 @@ public class GameResourceExt {
 	/**
 	 * POST /games : Create a new game-squad.
 	 *
-	 * @param game
+	 * @param map
 	 *            the game to create
 	 * @return the ResponseEntity with status 201 (Created) and with body the
 	 *         new game, or with status 400 (Bad Request) if the game has
@@ -147,12 +147,18 @@ public class GameResourceExt {
 			List list = (List) collectionObject;
 			for (Object obj : list) {
 				String playerId = null;
+				boolean isSubstitute = false;
+				Integer playerNumber = null;
 				if (obj instanceof Map) {
 					Map objMap = (Map) obj;
-					playerId = objMap.get("id").toString();
+					Map player = (Map) objMap.get("player");
+					playerId = player.get("id").toString();
+					isSubstitute = Boolean.valueOf(objMap.get("isSubstitute").toString());
+                    playerNumber = Integer.valueOf(objMap.get("playerNumber").toString());
 				}
 				SquadPlayer squadPlayer = new SquadPlayer();
-				squadPlayer.setIsSubstitute(false);
+				squadPlayer.setIsSubstitute(isSubstitute);
+				squadPlayer.setPlayerNumber(playerNumber);
 				squadPlayer.setSquad(squad);
 				Player player = new Player();
 				player.setId(Long.valueOf(playerId));
