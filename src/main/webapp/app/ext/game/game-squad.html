@@ -1,3 +1,9 @@
+<link rel="stylesheet" href="content/css/soccer.css">
+<link rel="stylesheet" href="content/css/vertical.css">
+
+
+
+<div>
 <div>
     <h2>Game Squad</h2>
     <jhi-alert></jhi-alert>
@@ -8,10 +14,10 @@
         </div>
     </div>
     <br/>
-    
+
     <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 	     入选阵容(18人)：
-	     <div     
+	     <!-- <div     
 	        directive-id="firstSquad"
 		    isteven-multi-select
 		    input-model="vm.players"
@@ -21,7 +27,190 @@
 		    tick-property="selected"
 		    orientation="horizontal"
 		>
-		</div>
+		</div> -->
+
+		<input type="hidden" name="team_id" value="{{vm.team.id}}">
+		<input type="hidden" name="orientation" value="vertical">
+         <input type="hidden" id="exitPlayers" name="exitPlayers" value="{{vm.existSquadPlayers}}" >
+
+		<div id="selectors">
+         		<div id="formations">
+              	
+                     <select id="formation" name="formation" ng-model="vm.formation" ng-options="formation as formation.label for formation in vm.formations track by formation.value">
+                     </select>
+                    
+              </div>
+
+            <input type="hidden" ng-repeat="pos in vm.postionMapping"
+                        ng-class="{true: 'player_id active', false: 'player_id sub'}[pos.indexOf('SB') == -1]"
+                        data-formations = "{{vm.positionFormationMapping[$index]}}"
+                        name="{{pos}}" value="" >
+         </div>
+
+         <div id="pitch" class="formation-4222">
+         		<div class="player empty keeper centre  ui-draggable" data-formations=",352,442,442D,4411,433,451,4231,532,4222,3412,343,3421,4141," data-line="keeper" data-line-name="Goalkeeper" data-name="centre" data-position="GK" style="display: block;">
+              	<img src="content/images/player.png" alt="">
+    				<span></span>
+        			<em class="outline"></em>                        
+        		</div>
+              <div class="player empty defence left  ui-draggable" data-formations=",442,442D,4411,433,451,4231,532,4222,4141," data-line="defence" data-line-name="Defence" data-name="left" data-position="LB" style="display: block;">
+              	<img src="content/images/player.png" alt="">
+        			<span></span>
+        			<em class="outline"></em>                        
+        		</div>
+              <div class="player empty defence left-centre  ui-draggable" data-formations=",352,442,442D,4411,433,451,4231,532,4222,3412,343,3421,4141," data-line="defence" data-line-name="Defence" data-name="left centre" data-position="LCB" style="display: block;">
+              	<img src="content/images/player.png" alt="">
+        			<span></span>
+        			<em class="outline"></em>                       
+        		</div>
+            	<div class="player empty defence centre  ui-draggable" data-formations=",352,532,3412,343,3421," data-line="defence" data-line-name="Defence" data-name="centre" data-position="CB" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty defence right-centre  ui-draggable" data-formations=",352,442,442D,4411,433,451,4231,532,4222,3412,343,3421,4141," data-line="defence" data-line-name="Defence" data-name="right centre" data-position="RCB" style="display: block;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+           	<div class="player empty defence right  ui-draggable" data-formations=",442,442D,4411,433,451,4231,532,4222,4141," data-line="defence" data-line-name="Defence" data-name="right" data-position="RB" style="display: block;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty defMid left-centre  ui-draggable" data-formations=",4231,4222," data-line="defMid" data-line-name="Def. midfield" data-name="left centre" data-position="LDM" style="display: block;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty defMid centre  ui-draggable" data-formations=",442D,4141," data-line="defMid" data-line-name="Def. midfield" data-name="centre" data-position="CDM" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty defMid right-centre  ui-draggable" data-formations=",4231,4222," data-line="defMid" data-line-name="Def. midfield" data-name="right centre" data-position="RDM" style="display: block;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty midfield left  ui-draggable" data-formations=",352,442,442D,4411,433,451,532,3412,343,3421,4141," data-line="midfield" data-line-name="Midfield" data-name="left" data-position="LM" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty midfield left-centre  ui-draggable" data-formations=",352,442,4411,451,3412,343,3421,4141," data-line="midfield" data-line-name="Midfield" data-name="left centre" data-position="LCM" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty midfield centre  ui-draggable" data-formations=",352,433,451,532," data-line="midfield" data-line-name="Midfield" data-name="centre" data-position="CM" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty midfield right-centre  ui-draggable" data-formations=",352,442,4411,451,3412,343,3421,4141," data-line="midfield" data-line-name="Midfield" data-name="right centre" data-position="RCM" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty midfield right  ui-draggable" data-formations=",352,442,442D,4411,433,451,532,3412,343,3421,4141," data-line="midfield" data-line-name="Midfield" data-name="right" data-position="RM" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty attMid left-centre  ui-draggable" data-formations=",4231,4222,3421," data-line="attMid" data-line-name="Att. midfield" data-name="left centre" data-position="LAM" style="display: block;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty attMid centre  ui-draggable" data-formations=",442D,4411,4231,3412," data-line="attMid" data-line-name="Att. midfield" data-name="centre" data-position="CAM" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty attMid right-centre  ui-draggable" data-formations=",4231,4222,3421," data-line="attMid" data-line-name="Att. midfield" data-name="right centre" data-position="RAM" style="display: block;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty attack left-centre  ui-draggable" data-formations=",352,442,442D,433,532,4222,3412,343," data-line="attack" data-line-name="Attack" data-name="left centre" data-position="LF" style="display: block;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty attack centre  ui-draggable" data-formations=",4411,433,451,4231,343,3421,4141," data-line="attack" data-line-name="Attack" data-name="centre" data-position="CF" style="display: none;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+            	<div class="player empty attack right-centre  ui-draggable" data-formations=",352,442,442D,433,532,4222,3412,343," data-line="attack" data-line-name="Attack" data-name="right centre" data-position="RF" style="display: block;">
+                	<img src="content/images/player.png" alt="">
+    				<span></span>
+    				<em class="outline"></em>                        
+    			</div>
+                    
+                    
+          </div><!-- end of pitch -->
+
+          <div id="substitutes">
+          	<div class="player sub sub1 empty " data-position="SB1">        
+          		<img src="content/images/player.png" alt="">
+		        	<span></span>
+		        	<em class="outline"></em>
+		     </div>
+		     <div class="player sub sub2 empty " data-position="SB2">        
+		     	<img src="content/images/player.png" alt="">
+		         <span></span>
+		         <em class="outline"></em>
+		     </div>
+		     <div class="player sub sub3 empty " data-position="SB3">        
+		     	<img src="content/images/player.png" alt="">
+		        	<span></span>
+		         <em class="outline"></em>
+		    </div>
+		     <div class="player sub sub4 empty " data-position="SB4">        
+		        <img src="content/images/player.png" alt="">
+		        <span></span>
+		        <em class="outline"></em>
+		    </div>
+		    <div class="player sub sub5 empty " data-position="SB5">        
+		        <img src="content/images/player.png" alt="">
+		        <span></span>
+		        <em class="outline"></em>
+		    </div>
+		    <div class="player sub sub6 empty " data-position="SB6">        
+		        <img src="content/images/player.png" alt="">
+		        <span></span>
+		        <em class="outline"></em>
+		    </div>
+		    <div class="player sub sub7 empty " data-position="SB7">        
+		        <img src="content/images/player.png" alt="">
+		        <span></span>
+		        <em class="outline"></em>
+		    </div>                    
+		</div><!-- end of substitutes -->
+
+		<div id="players" class="closed">
+   			<h3></h3>
+
+    			<div id="list">
+                   
+                   <div ng-repeat="player in vm.players track by player.id"
+                        data-player-id="{{player.id}}" data-lines="" style="display: none;" >
+                    <em><img src="content/images/109.jpg" alt="{{player.name}}"></em>
+                    <span>{{player.name}}{{player.id}}</span>
+                   </div> 
+
+                  
+                  <div data-player-id="" class="remove">
+                     <em><img src="content/images/player.png" alt=""></em>
+                      <span></span>
+                        </div>
+                    </div>
+
+                    <a href="#" id="close">Close</a>
+                </div>
+
 		
 		<hr>
 	     <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
@@ -29,3 +218,13 @@
 	     </button>
      </form>
 </div>
+<script src="content/javascript/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="content/javascript/uniform.min.js"></script>
+<script>
+        var _key = "nn";
+        var _team_id = 3;
+        var _formation = "4222";
+        var _orientation = "vertical";
+        var _lang = "en";
+</script>
+<script src="content/javascript/xi.js"></script>

@@ -1,0 +1,571 @@
+#container {
+	width: 500px;
+	height: 650px
+}
+
+.subs1 #container {
+	height: 740px
+}
+
+.subs2 #container {
+	height: 830px
+}
+
+.subs3 #container {
+	height: 920px
+}
+
+#pitch {
+	background-image: url(/content/images/pitch.png);
+	width: 500px;
+	height: 615px
+}
+
+.attack {
+	top: 20px
+}
+
+.attMid {
+	top: 138.75px
+}
+
+.midfield {
+	top: 185px
+}
+
+.defMid {
+	top: 257.5px
+}
+
+.defence {
+	top: 350px
+}
+
+.keeper {
+	top: 495px
+}
+
+.left {
+	left: 48px
+}
+
+.left-centre {
+	left: 156px
+}
+
+.centre {
+	left: 210px
+}
+
+.right-centre {
+	left: 264px
+}
+
+.right {
+	left: 372px
+}
+
+#substitutes {
+	top: 650px;
+	padding: 5px
+}
+
+.formation-3412 .defence {
+	top: 376.25px
+}
+
+.formation-3412 .defence.left-centre {
+	left: 100px
+}
+
+.formation-3412 .defence.centre {
+	margin-top: 15px
+}
+
+.formation-3412 .defence.right-centre {
+	left: 320px
+}
+
+.formation-3412 .midfield {
+	top: 257.5px
+}
+
+.formation-3412 .midfield.left {
+	left: 20px
+}
+
+.formation-3412 .midfield.left-centre {
+	left: 142px
+}
+
+.formation-3412 .midfield.right-centre {
+	left: 278px
+}
+
+.formation-3412 .midfield.right {
+	left: 400px
+}
+
+.formation-352 .defence.left-centre {
+	left: 90px
+}
+
+.formation-352 .defence.centre {
+	margin-top: 15px
+}
+
+.formation-352 .defence.right-centre {
+	left: 330px
+}
+
+.formation-352 .midfield.left {
+	left: 20px;
+	margin-top: -25px
+}
+
+.formation-352 .midfield.left-centre {
+	left: 115px
+}
+
+.formation-352 .midfield.centre {
+	margin-top: 15px
+}
+
+.formation-352 .midfield.right-centre {
+	left: 305px
+}
+
+.formation-352 .midfield.right {
+	left: 400px;
+	margin-top: -25px
+}
+
+.formation-4222 .defence {
+	top: 376.25px
+}
+
+.formation-4222 .defence.left {
+	margin-top: -25px
+}
+
+.formation-4222 .defence.right {
+	margin-top: -25px
+}
+
+.formation-4222 .attMid.left-centre {
+	left: 102px
+}
+
+.formation-4222 .attMid.right-centre {
+	left: 318px
+}
+
+.formation-4231 .defence {
+	top: 376.25px
+}
+
+.formation-4231 .defence.left {
+	margin-top: -25px
+}
+
+.formation-4231 .defence.right {
+	margin-top: -25px
+}
+
+.formation-4231 .attMid.left-centre {
+	left: 102px;
+	margin-top: -20px
+}
+
+.formation-4231 .attMid.right-centre {
+	left: 318px;
+	margin-top: -20px
+}
+
+.formation-433 .defence.left {
+	margin-top: -25px
+}
+
+.formation-433 .defence.right {
+	margin-top: -25px
+}
+
+.formation-433 .midfield.left {
+	left: 102px
+}
+
+.formation-433 .midfield.centre {
+	margin-top: 25px
+}
+
+.formation-433 .midfield.right {
+	left: 318px
+}
+
+.formation-433 .attack.left-centre {
+	left: 102px;
+	margin-top: 25px
+}
+
+.formation-433 .attack.right-centre {
+	left: 318px;
+	margin-top: 25px
+}
+
+.formation-4411 .defence {
+	top: 376.25px
+}
+
+.formation-4411 .midfield {
+	top: 257.5px
+}
+
+.formation-4411 .left,.formation-4411 .right {
+	margin-top: -15px
+}
+
+.formation-442 .defence.left,.formation-442 .defence.right {
+	margin-top: -15px
+}
+
+.formation-442 .defence.centre-left,.formation-442 .defence.centre-right {
+	margin-top: 15px
+}
+
+.formation-442 .midfield.left,.formation-442 .midfield.right {
+	margin-top: -15px
+}
+
+.formation-442 .midfield.centre-left,.formation-442 .midfield.centre-right {
+	margin-top: 15px
+}
+
+.formation-442D .defence {
+	top: 376.25px
+}
+
+.formation-442D .midfield {
+	top: 198px
+}
+
+.formation-451 .defence.left {
+	margin-top: -25px
+}
+
+.formation-451 .defence.right {
+	margin-top: -25px
+}
+
+.formation-451 .midfield.left {
+	left: 20px;
+	margin-top: -25px
+}
+
+.formation-451 .midfield.left-centre {
+	left: 115px
+}
+
+.formation-451 .midfield.centre {
+	margin-top: 25px
+}
+
+.formation-451 .midfield.right-centre {
+	left: 305px
+}
+
+.formation-451 .midfield.right {
+	left: 400px;
+	margin-top: -25px
+}
+
+.formation-532 .defence.left {
+	left: 20px;
+	margin-top: -25px
+}
+
+.formation-532 .defence.left-centre {
+	left: 115px
+}
+
+.formation-532 .defence.centre {
+	margin-top: 25px
+}
+
+.formation-532 .defence.right-centre {
+	left: 305px
+}
+
+.formation-532 .defence.right {
+	left: 400px;
+	margin-top: -25px
+}
+
+.formation-532 .midfield.left {
+	left: 62.5px
+}
+
+.formation-532 .midfield.centre {
+	margin-top: 25px
+}
+
+.formation-532 .midfield.right {
+	left: 357.5px
+}
+
+.formation-343 .defence.left-centre {
+	left: 90px
+}
+
+.formation-343 .defence.centre {
+	margin-top: 15px
+}
+
+.formation-343 .defence.right-centre {
+	left: 330px
+}
+
+.formation-343 .attack.left-centre {
+	left: 102px;
+	margin-top: 25px
+}
+
+.formation-343 .attack.right-centre {
+	left: 318px;
+	margin-top: 25px
+}
+
+.formation-3421 .defence {
+	top: 376.25px
+}
+
+.formation-3421 .defence.left-centre {
+	left: 100px
+}
+
+.formation-3421 .defence.centre {
+	margin-top: 15px
+}
+
+.formation-3421 .defence.right-centre {
+	left: 320px
+}
+
+.formation-3421 .midfield {
+	top: 257.5px
+}
+
+.formation-3421 .midfield.left {
+	left: 20px
+}
+
+.formation-3421 .midfield.left-centre {
+	left: 142px
+}
+
+.formation-3421 .midfield.right-centre {
+	left: 278px
+}
+
+.formation-3421 .midfield.right {
+	left: 400px
+}
+
+.formation-4141 .defence {
+	top: 376.25px
+}
+
+.formation-4141 .midfield {
+	top: 138.75px
+}
+
+#players {
+	height: 320px;
+	max-height: 320px
+}
+
+#list {
+	height: 255px
+}
+
+@media only screen and (max-width: 509px) {
+	#container {
+		width: 300px;
+		height: 369px
+	}
+
+	.subs1 #container {
+		height: 423px
+	}
+
+	.subs2 #container {
+		height: 477px
+	}
+
+	.subs3 #container {
+		height: 531px
+	}
+
+	#powered a {
+		width: 30px;
+		background-image: url(/i/icon.png)
+	}
+
+	#pitch {
+		width: 300px;
+		height: 369px
+	}
+
+	.attack {
+		top: 12px
+	}
+
+	.attMid {
+		top: 83px
+	}
+
+	.midfield {
+		top: 120px
+	}
+
+	.defMid {
+		top: 154px
+	}
+
+	.defence {
+		top: 210px
+	}
+
+	.keeper {
+		top: 297px
+	}
+
+	.left {
+		left: 28px
+	}
+
+	.left-centre {
+		left: 94px
+	}
+
+	.centre {
+		left: 126px
+	}
+
+	.right-centre {
+		left: 158px
+	}
+
+	.right {
+		left: 224px
+	}
+
+	#substitutes {
+		top: 404px;
+		padding: 3px
+	}
+
+	#players {
+		height: 369px;
+		max-height: 369px
+	}
+
+	#list {
+		height: 317px
+	}
+
+	.formation-3412 .defence,.formation-4222 .defence,.formation-4231 .defence,.formation-4411 .defence,.formation-3421 .defence {
+		top: 226px
+	}
+
+	.formation-4222 .defence.left,.formation-4222 .defence.right,.formation-4231 .defence.left,.formation-4231 .defence.right,.formation-433 .defence.left,.formation-433 .defence.right,.formation-451 .defence.left,.formation-451 .defence.right,.formation-352 .midfield.left,.formation-352 .midfield.right,.formation-451 .midfield.left,.formation-451 .midfield.right,.formation-532 .defence.left,.formation-532 .defence.right {
+		margin-top: -15px
+	}
+
+	.formation-3412 .defence.centre,.formation-3421 .defence.centre,.formation-352 .defence.centre,.formation-352 .midfield.centre,.formation-442 .defence.centre-left,.formation-442 .defence.centre-right,.formation-442 .midfield.centre-left,.formation-442 .midfield.centre-right {
+		margin-top: 9px
+	}
+
+	.formation-433 .midfield.centre,.formation-451 .midfield.centre,.formation-532 .defence.centre,.formation-532 .midfield.centre,.formation-433 .attack.left-centre,.formation-433 .attack.right-centre {
+		margin-top: 15px
+	}
+
+	.formation-4411 .left,.formation-4411 .right,.formation-442 .defence.left,.formation-442 .defence.right,.formation-442 .midfield.left,.formation-442 .midfield.right {
+		margin-top: -9px
+	}
+
+	.formation-4231 .attMid.left-centre,.formation-4231 .attMid.right-centre {
+		margin-top: -12px
+	}
+
+	.formation-3412 .midfield,.formation-3421 .midfield,.formation-4411 .midfield {
+		top: 155px
+	}
+
+	.formation-442D .defence,.formation-4141 .defence {
+		top: 226px
+	}
+
+	.formation-442D .midfield {
+		top: 119px
+	}
+
+	.formation-3412 .midfield.left,.formation-3421 .midfield.left,.formation-352 .midfield.left,.formation-451 .midfield.left,.formation-532 .defence.left {
+		left: 12px
+	}
+
+	.formation-532 .midfield.left {
+		left: 38px
+	}
+
+	.formation-352 .defence.left-centre,.formation-343 .defence.left-centre {
+		left: 54px
+	}
+
+	.formation-3412 .defence.left-centre,.formation-3421 .defence.left-centre {
+		left: 60px
+	}
+
+	.formation-4222 .attMid.left-centre,.formation-4231 .attMid.left-centre,.formation-433 .midfield.left,.formation-433 .attack.left-centre,.formation-343 .attack.left-centre {
+		left: 61px
+	}
+
+	.formation-352 .midfield.left-centre,.formation-451 .midfield.left-centre,.formation-532 .defence.left-centre {
+		left: 69px
+	}
+
+	.formation-3412 .midfield.left-centre,.formation-3421 .midfield.left-centre {
+		left: 85px
+	}
+
+	.formation-3412 .midfield.right-centre,.formation-3421 .midfield.right-centre {
+		left: 167px
+	}
+
+	.formation-352 .midfield.right-centre,.formation-451 .midfield.right-centre,.formation-532 .defence.right-centre {
+		left: 183px
+	}
+
+	.formation-4222 .attMid.right-centre,.formation-4231 .attMid.right-centre,.formation-433 .midfield.right,.formation-433 .attack.right-centre,.formation-343 .attack.right-centre {
+		left: 191px
+	}
+
+	.formation-3412 .defence.right-centre,.formation-3421 .defence.right-centre {
+		left: 192px
+	}
+
+	.formation-352 .defence.right-centre,.formation-343 .defence.right-centre {
+		left: 198px
+	}
+
+	.formation-532 .midfield.right {
+		left: 214px
+	}
+
+	.formation-3412 .midfield.right,.formation-3421 .midfield.right,.formation-352 .midfield.right,.formation-451 .midfield.right,.formation-532 .defence.right {
+		left: 240px
+	}
+
+	.formation-4141 .midfield {
+		top: 83px
+	}
+}

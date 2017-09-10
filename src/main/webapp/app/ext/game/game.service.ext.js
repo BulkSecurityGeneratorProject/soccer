@@ -28,6 +28,7 @@
             },
             'saveGameSquad': {
                 method: 'POST',
+                isArray: true,
                 transformRequest: function (data) {
                     return angular.toJson(data);
                 }
