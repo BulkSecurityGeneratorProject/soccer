@@ -1,5 +1,7 @@
 package gl.linpeng.soccer.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import gl.linpeng.soccer.domain.util.SimpleJsonSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -28,9 +30,11 @@ public class SquadPlayer implements Serializable {
     private Boolean isSubstitute;
 
     @ManyToOne
+    @JsonSerialize(using = SimpleJsonSerializer.class)
     private Squad squad;
 
     @ManyToOne
+    @JsonSerialize(using = SimpleJsonSerializer.class)
     private Player player;
 
     public Long getId() {

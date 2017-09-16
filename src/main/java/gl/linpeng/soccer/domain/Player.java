@@ -1,5 +1,7 @@
 package gl.linpeng.soccer.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import gl.linpeng.soccer.domain.util.SimpleJsonSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -35,6 +37,7 @@ public class Player implements Serializable {
     private Integer weight;
 
     @ManyToOne
+    @JsonSerialize(using = SimpleJsonSerializer.class)
     private Team team;
 
     @ManyToOne
