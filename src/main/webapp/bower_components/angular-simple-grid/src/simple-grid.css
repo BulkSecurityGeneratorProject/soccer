@@ -1,4 +1,4 @@
-table.simple-grid > tbody > tr > td > select 
+table.simple-grid > tbody > tr > td > select
 {
     background-color: transparent;
 }
@@ -42,17 +42,17 @@ table.simple-grid > tbody > tr > td > input[type="checkbox"]
    width: auto;
 }
 
-table.simple-grid > tbody > tr > td > input.ng-invalid, 
+table.simple-grid > tbody > tr > td > input.ng-invalid,
 table.simple-grid > tbody > tr > td > input.ng-invalid:focus,
 table.simple-grid > tbody > tr > td > select.ng-invalid,
 table.simple-grid > tbody > tr > td > select.ng-invalid:focus {
     background-color: #fcc;
 }
-table.simple-grid > tbody > tr > td > input:focus, 
+table.simple-grid > tbody > tr > td > input:focus,
 table.simple-grid > tbody > tr > td > input:hover
 /*
 ,table.simple-grid > tbody > tr > td > select:focus
-,table.simple-grid > tbody > tr > td > select:hover 
+,table.simple-grid > tbody > tr > td > select:hover
 */
 
 {
@@ -77,9 +77,9 @@ table.simple-grid > tbody > tr.deleted > td
     text-decoration: line-through;
 }
 table.simple-grid > tbody > tr > td.sg-actions-cell
-, table.simple-grid > tbody > tr > td.sg-actions-cell .btn 
+, table.simple-grid > tbody > tr > td.sg-actions-cell .btn
 , .table.simple-grid > tbody > tr > td.sg-actions-cell
-, .table.simple-grid > tbody > tr > td.sg-actions-cell .btn 
+, .table.simple-grid > tbody > tr > td.sg-actions-cell .btn
 {
     vertical-align: middle;
     text-decoration: none;
@@ -99,7 +99,8 @@ table.simple-grid > tbody > tr.selected, table.simple-grid > tbody > tr.selected
 table.simple-grid > tbody > tr.selected > td > input,table.simple-grid > tbody > tr.selected.focused > td > input
 ,table.simple-grid > tbody > tr.selected > td > select,table.simple-grid > tbody > tr.selected.focused > td > select
 {
-    color: white;
+    color: black;
+    padding: 2px;
 }
 table.simple-grid > tbody > tr.selected > td > input:focus
 ,table.simple-grid > tbody > tr.selected > td > select:focus
