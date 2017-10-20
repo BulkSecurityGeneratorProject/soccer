@@ -1,5 +1,4 @@
 {
-  "fluentMethods": true,
   "relationships": [
     {
       "relationshipType": "many-to-one",
