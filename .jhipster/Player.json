@@ -1,14 +1,13 @@
 {
+  "fluentMethods": true,
   "relationships": [
     {
-      "relationshipId": 1,
       "relationshipType": "many-to-one",
       "relationshipName": "team",
       "otherEntityName": "team",
       "otherEntityField": "id"
     },
     {
-      "relationshipId": 2,
       "relationshipType": "many-to-one",
       "relationshipName": "status",
       "otherEntityName": "dict",
@@ -17,24 +16,24 @@
   ],
   "fields": [
     {
-      "fieldId": 1,
       "fieldName": "name",
       "fieldType": "String"
     },
     {
-      "fieldId": 2,
       "fieldName": "birth",
       "fieldType": "LocalDate"
     },
     {
-      "fieldId": 3,
       "fieldName": "height",
       "fieldType": "Integer"
     },
     {
-      "fieldId": 4,
       "fieldName": "weight",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "String"
     }
   ],
   "changelogDate": "20160913082456",

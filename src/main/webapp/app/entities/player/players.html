@@ -23,6 +23,7 @@
                     <th jh-sort-by="birth"><span>Birth</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="height"><span>Height</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="picture"><span>Picture</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="team.id"><span>Team</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="status.id"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -35,6 +36,7 @@
                         <td>{{player.birth | date:'mediumDate'}}</td>
                     <td>{{player.height}}</td>
                     <td>{{player.weight}}</td>
+                    <td>{{player.picture}}</td>
                     <td>
                         <a ui-sref="team-detail({id:player.team.id})">{{player.team.id}}</a>
                     </td>

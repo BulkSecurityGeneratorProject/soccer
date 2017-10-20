@@ -36,6 +36,9 @@ public class Player implements Serializable {
     @Column(name = "weight")
     private Integer weight;
 
+    @Column(name = "picture")
+    private String picture;
+
     @ManyToOne
     @JsonSerialize(using = SimpleJsonSerializer.class)
     private Team team;
@@ -83,6 +86,14 @@ public class Player implements Serializable {
         this.weight = weight;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public Team getTeam() {
         return team;
     }
@@ -127,6 +138,7 @@ public class Player implements Serializable {
             ", birth='" + birth + "'" +
             ", height='" + height + "'" +
             ", weight='" + weight + "'" +
+            ", picture='" + picture + "'" +
             '}';
     }
 }

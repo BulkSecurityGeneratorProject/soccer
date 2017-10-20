@@ -119,6 +119,7 @@
                                 birth: null,
                                 height: null,
                                 weight: null,
+                                picture: null,
                                 id: null
                             };
                         }
