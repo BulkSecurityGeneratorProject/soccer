@@ -1,0 +1,70 @@
+<div>
+    <h2>Referees</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="referee.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Referee
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Name</span></th>
+                    <th><span>Picture</span></th>
+                    <th><span>Association</span></th>
+                    <th><span>Type</span></th>
+                    <th><span>Status</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="referee in vm.referees track by referee.id">
+                    <td><a ui-sref="referee-detail({id:referee.id})">{{referee.id}}</a></td>
+                    <td>{{referee.name}}</td>
+                    <td>{{referee.picture}}</td>
+                    <td>
+                        <a ui-sref="association-detail({id:referee.association.id})">{{referee.association.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dict-detail({id:referee.type.id})">{{referee.type.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dict-detail({id:referee.status.id})">{{referee.status.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="referee-detail({id:referee.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="referee.edit({id:referee.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="referee.delete({id:referee.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "game",
+      "otherEntityName": "game",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "referee",
+      "otherEntityName": "referee",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "type",
+      "otherEntityName": "dict",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [],
+  "changelogDate": "20171021051123",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "game_referee"
+}

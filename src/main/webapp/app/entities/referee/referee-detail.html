@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Referee</span> {{vm.referee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.referee.name}}</span>
+        </dd>
+        <dt><span>Picture</span></dt>
+        <dd>
+            <span>{{vm.referee.picture}}</span>
+        </dd>
+        <dt><span>Association</span></dt>
+        <dd>
+            <a ui-sref="association-detail({id:vm.referee.association.id})">{{vm.referee.association.id}}</a>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <a ui-sref="dict-detail({id:vm.referee.type.id})">{{vm.referee.type.id}}</a>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <a ui-sref="dict-detail({id:vm.referee.status.id})">{{vm.referee.status.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="referee-detail.edit({id:vm.referee.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

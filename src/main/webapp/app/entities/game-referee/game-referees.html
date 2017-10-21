@@ -1,0 +1,66 @@
+<div>
+    <h2>Game Referees</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="game-referee.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Game Referee
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Game</span></th>
+                    <th><span>Referee</span></th>
+                    <th><span>Type</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="gameReferee in vm.gameReferees track by gameReferee.id">
+                    <td><a ui-sref="game-referee-detail({id:gameReferee.id})">{{gameReferee.id}}</a></td>
+                    <td>
+                        <a ui-sref="game-detail({id:gameReferee.game.id})">{{gameReferee.game.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="referee-detail({id:gameReferee.referee.id})">{{gameReferee.referee.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dict-detail({id:gameReferee.type.id})">{{gameReferee.type.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="game-referee-detail({id:gameReferee.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game-referee.edit({id:gameReferee.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="game-referee.delete({id:gameReferee.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

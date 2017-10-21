@@ -9,28 +9,30 @@
     },
     {
       "relationshipType": "many-to-one",
-      "relationshipName": "venue",
-      "otherEntityName": "venue",
+      "relationshipName": "type",
+      "otherEntityName": "dict",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "status",
+      "otherEntityName": "dict",
       "otherEntityField": "id"
     }
   ],
   "fields": [
     {
-      "fieldName": "createAt",
-      "fieldType": "LocalDate"
-    },
-    {
       "fieldName": "name",
       "fieldType": "String"
     },
     {
-      "fieldName": "shortName",
+      "fieldName": "picture",
       "fieldType": "String"
     }
   ],
-  "changelogDate": "20160913082458",
+  "changelogDate": "20171021051121",
   "dto": "no",
   "pagination": "no",
   "service": "no",
-  "entityTableName": "club"
+  "entityTableName": "referee"
 }
