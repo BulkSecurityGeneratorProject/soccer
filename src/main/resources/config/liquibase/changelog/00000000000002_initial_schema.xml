@@ -59,5 +59,17 @@
                   file="config/liquibase/lineup.csv"
                   separator=";"
                   tableName="lineup"/>
+            <loadData encoding="GBK"
+                  file="config/liquibase/coachs.csv"
+                  separator=";"
+                  tableName="coach"/>
+            <loadData encoding="GBK"
+                  file="config/liquibase/referees.csv"
+                  separator=";"
+                  tableName="referee"/> 
+            <loadData encoding="GBK"
+                  file="config/liquibase/events.csv"
+                  separator=";"
+                  tableName="event"/>                   
     </changeSet>
 </databaseChangeLog>

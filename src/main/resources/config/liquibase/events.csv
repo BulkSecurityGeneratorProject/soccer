@@ -1,0 +1,12 @@
+id;event_time;event_type;event_sub_type;association_id;division_event_id;game_id;club_id;team_id;target_club_id;player_id;target_player_id;referee_id;coach_id;target_team_id
+1;1999-10-1;1;null;1;null;null;null;null;null;null;null;null;null;null
+2;1999-10-2;101;null;1;1;null;null;null;null;null;null;null;null;null
+3;1999-10-2;102;null;1;null;null;null;null;null;1;null;null;null;null
+4;1999-10-2;103;null;1;null;null;1;null;null;null;null;null;null;null
+5;1999-10-2;104;null;1;null;null;1;1;null;null;null;null;null;null
+6;1999-10-2;105;null;1;null;null;null;null;null;null;null;1;null;null
+7;1999-10-2;106;null;1;null;null;null;null;null;null;null;null;1;null
+8;2009-10-1;201;null;1;1;null;1;1;null;null;null;null;1;null
+9;2010-10-1;301;1;1;1;null;1;1;null;1;null;null;null;null
+10;2011-10-1;151;1;1;null;null;2;2;1;1;null;null;null;1
+11;2010-10-1;302;1;1;1;null;1;1;null;1;2;null;null;null
