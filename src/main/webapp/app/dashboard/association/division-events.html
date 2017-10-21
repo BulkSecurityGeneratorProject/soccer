@@ -43,8 +43,15 @@
                                 <!--<span class="hidden-xs hidden-sm"></span>-->
                             <!--</button>-->
                         	<button type="submit"
-                                    ui-sref="division-event.games({id:divisionEvent.id})"
+                                    ui-sref="division-event.generate-games({id:divisionEvent.id})"
                                     title="create games of division event"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="division-event.games({id:divisionEvent.id})"
+                                    title="view games of division event"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 <span class="hidden-xs hidden-sm"></span>
