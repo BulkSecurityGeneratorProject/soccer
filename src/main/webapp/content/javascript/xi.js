@@ -78,10 +78,12 @@ function translate(key, replacements)
                 var playerNumber = obj.playerNumber;
                 var playerPosition = obj.playerPosition;
                 var isSub = obj.isSubstitute;
+                var photo = obj.player.picture;
 
-                //console.log(playerId+" "+ playerName+" "+ playerNumber+" "+ playerPosition +" "+ isSub);
+                // console.log(playerId+" "+ playerName+" "+ playerNumber+" "+ playerPosition +" "+ isSub+" "+photo);
                 var $player   = $('.player[data-position="' + playerPosition + '"]');
-                selectPlayer(playerId,$player,playerPosition,playerName,null);
+                
+                selectPlayer(playerId,$player,playerPosition,playerName,photo);
             });
         }
 

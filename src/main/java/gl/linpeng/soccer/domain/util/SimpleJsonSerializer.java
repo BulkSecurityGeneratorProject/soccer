@@ -27,6 +27,7 @@ public class SimpleJsonSerializer extends JsonSerializer {
         SERIALIZE_FIELDS.add("id");
         SERIALIZE_FIELDS.add("name");
         SERIALIZE_FIELDS.add("code");
+        SERIALIZE_FIELDS.add("picture");
     }
 
     @Override
