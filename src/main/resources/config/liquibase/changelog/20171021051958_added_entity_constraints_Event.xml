@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Event.
+    -->
+    <changeSet id="20171021051958-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="association_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_association_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="association"/>
+
+        <addForeignKeyConstraint baseColumnNames="division_event_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_division_event_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="division_event"/>
+
+        <addForeignKeyConstraint baseColumnNames="game_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_game_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="game"/>
+
+        <addForeignKeyConstraint baseColumnNames="club_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_club_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="club"/>
+
+        <addForeignKeyConstraint baseColumnNames="team_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_team_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="team"/>
+
+        <addForeignKeyConstraint baseColumnNames="target_club_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_target_club_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="club"/>
+
+        <addForeignKeyConstraint baseColumnNames="player_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_player_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="player"/>
+
+        <addForeignKeyConstraint baseColumnNames="target_player_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_target_player_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="player"/>
+
+        <addForeignKeyConstraint baseColumnNames="referee_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_referee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="referee"/>
+
+        <addForeignKeyConstraint baseColumnNames="coach_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_coach_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="coach"/>
+
+        <addForeignKeyConstraint baseColumnNames="target_team_id"
+                                 baseTableName="event"
+                                 constraintName="fk_event_target_team_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="team"/>
+
+    </changeSet>
+</databaseChangeLog>

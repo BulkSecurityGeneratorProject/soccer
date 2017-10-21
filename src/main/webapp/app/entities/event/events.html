@@ -1,0 +1,106 @@
+<div>
+    <h2>Events</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="event.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Event
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Event Time</span></th>
+                    <th><span>Event Type</span></th>
+                    <th><span>Event Sub Type</span></th>
+                    <th><span>Amount</span></th>
+                    <th><span>Association</span></th>
+                    <th><span>Division Event</span></th>
+                    <th><span>Game</span></th>
+                    <th><span>Club</span></th>
+                    <th><span>Team</span></th>
+                    <th><span>Target Club</span></th>
+                    <th><span>Player</span></th>
+                    <th><span>Target Player</span></th>
+                    <th><span>Referee</span></th>
+                    <th><span>Coach</span></th>
+                    <th><span>Target Team</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="event in vm.events track by event.id">
+                    <td><a ui-sref="event-detail({id:event.id})">{{event.id}}</a></td>
+                        <td>{{event.eventTime | date:'mediumDate'}}</td>
+                    <td>{{event.eventType}}</td>
+                    <td>{{event.eventSubType}}</td>
+                    <td>{{event.amount}}</td>
+                    <td>
+                        <a ui-sref="association-detail({id:event.association.id})">{{event.association.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="division-event-detail({id:event.divisionEvent.id})">{{event.divisionEvent.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="game-detail({id:event.game.id})">{{event.game.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="club-detail({id:event.club.id})">{{event.club.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="team-detail({id:event.team.id})">{{event.team.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="club-detail({id:event.targetClub.id})">{{event.targetClub.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="player-detail({id:event.player.id})">{{event.player.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="player-detail({id:event.targetPlayer.id})">{{event.targetPlayer.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="referee-detail({id:event.referee.id})">{{event.referee.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="coach-detail({id:event.coach.id})">{{event.coach.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="team-detail({id:event.targetTeam.id})">{{event.targetTeam.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="event-detail({id:event.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="event.edit({id:event.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="event.delete({id:event.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "association",
+      "otherEntityName": "association",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "divisionEvent",
+      "otherEntityName": "divisionEvent",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "game",
+      "otherEntityName": "game",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "club",
+      "otherEntityName": "club",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "team",
+      "otherEntityName": "team",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "targetClub",
+      "otherEntityName": "club",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "player",
+      "otherEntityName": "player",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "targetPlayer",
+      "otherEntityName": "player",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "referee",
+      "otherEntityName": "referee",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "coach",
+      "otherEntityName": "coach",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "targetTeam",
+      "otherEntityName": "team",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "eventTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "eventType",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "eventSubType",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "changelogDate": "20171021051958",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "event"
+}

@@ -1,0 +1,120 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myEventLabel">Create or edit a Event</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.event.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.event.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_eventTime">Event Time</label>
+                <div class="input-group">
+                    <input id="field_eventTime" type="text" class="form-control" name="eventTime" uib-datepicker-popup="{{dateformat}}" ng-model="vm.event.eventTime" is-open="vm.datePickerOpenStatus.eventTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('eventTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_eventType">Event Type</label>
+            <input type="number" class="form-control" name="eventType" id="field_eventType"
+                    ng-model="vm.event.eventType"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_eventSubType">Event Sub Type</label>
+            <input type="number" class="form-control" name="eventSubType" id="field_eventSubType"
+                    ng-model="vm.event.eventSubType"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                    ng-model="vm.event.amount"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_association">Association</label>
+            <select class="form-control" id="field_association" name="association" ng-model="vm.event.association" ng-options="association as association.id for association in vm.associations track by association.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_divisionEvent">Division Event</label>
+            <select class="form-control" id="field_divisionEvent" name="divisionEvent" ng-model="vm.event.divisionEvent" ng-options="divisionEvent as divisionEvent.id for divisionEvent in vm.divisionevents track by divisionEvent.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_game">Game</label>
+            <select class="form-control" id="field_game" name="game" ng-model="vm.event.game" ng-options="game as game.id for game in vm.games track by game.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_club">Club</label>
+            <select class="form-control" id="field_club" name="club" ng-model="vm.event.club" ng-options="club as club.id for club in vm.clubs track by club.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_team">Team</label>
+            <select class="form-control" id="field_team" name="team" ng-model="vm.event.team" ng-options="team as team.id for team in vm.teams track by team.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_targetClub">Target Club</label>
+            <select class="form-control" id="field_targetClub" name="targetClub" ng-model="vm.event.targetClub" ng-options="club as club.id for club in vm.clubs track by club.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_player">Player</label>
+            <select class="form-control" id="field_player" name="player" ng-model="vm.event.player" ng-options="player as player.id for player in vm.players track by player.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_targetPlayer">Target Player</label>
+            <select class="form-control" id="field_targetPlayer" name="targetPlayer" ng-model="vm.event.targetPlayer" ng-options="player as player.id for player in vm.players track by player.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_referee">Referee</label>
+            <select class="form-control" id="field_referee" name="referee" ng-model="vm.event.referee" ng-options="referee as referee.id for referee in vm.referees track by referee.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_coach">Coach</label>
+            <select class="form-control" id="field_coach" name="coach" ng-model="vm.event.coach" ng-options="coach as coach.id for coach in vm.coaches track by coach.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_targetTeam">Target Team</label>
+            <select class="form-control" id="field_targetTeam" name="targetTeam" ng-model="vm.event.targetTeam" ng-options="team as team.id for team in vm.teams track by team.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

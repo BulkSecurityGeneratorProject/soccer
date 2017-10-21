@@ -26,6 +26,7 @@
     <include file="classpath:config/liquibase/changelog/20171021051121_added_entity_Referee.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171021051122_added_entity_Coach.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171021051123_added_entity_GameReferee.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20171021051958_added_entity_Event.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20160913082458_added_entity_constraints_Club.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160913082457_added_entity_constraints_Team.xml" relativeToChangelogFile="false"/>
@@ -44,6 +45,7 @@
     <include file="classpath:config/liquibase/changelog/20171021051121_added_entity_constraints_Referee.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171021051122_added_entity_constraints_Coach.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171021051123_added_entity_constraints_GameReferee.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20171021051958_added_entity_constraints_Event.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <include file="classpath:config/liquibase/changelog/00000000000002_initial_schema.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

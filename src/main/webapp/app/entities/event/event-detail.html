@@ -1,0 +1,79 @@
+
+<div>
+    <h2><span>Event</span> {{vm.event.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Event Time</span></dt>
+        <dd>
+            <span>{{vm.event.eventTime | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Event Type</span></dt>
+        <dd>
+            <span>{{vm.event.eventType}}</span>
+        </dd>
+        <dt><span>Event Sub Type</span></dt>
+        <dd>
+            <span>{{vm.event.eventSubType}}</span>
+        </dd>
+        <dt><span>Amount</span></dt>
+        <dd>
+            <span>{{vm.event.amount}}</span>
+        </dd>
+        <dt><span>Association</span></dt>
+        <dd>
+            <a ui-sref="association-detail({id:vm.event.association.id})">{{vm.event.association.id}}</a>
+        </dd>
+        <dt><span>Division Event</span></dt>
+        <dd>
+            <a ui-sref="division-event-detail({id:vm.event.divisionEvent.id})">{{vm.event.divisionEvent.id}}</a>
+        </dd>
+        <dt><span>Game</span></dt>
+        <dd>
+            <a ui-sref="game-detail({id:vm.event.game.id})">{{vm.event.game.id}}</a>
+        </dd>
+        <dt><span>Club</span></dt>
+        <dd>
+            <a ui-sref="club-detail({id:vm.event.club.id})">{{vm.event.club.id}}</a>
+        </dd>
+        <dt><span>Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.event.team.id})">{{vm.event.team.id}}</a>
+        </dd>
+        <dt><span>Target Club</span></dt>
+        <dd>
+            <a ui-sref="club-detail({id:vm.event.targetClub.id})">{{vm.event.targetClub.id}}</a>
+        </dd>
+        <dt><span>Player</span></dt>
+        <dd>
+            <a ui-sref="player-detail({id:vm.event.player.id})">{{vm.event.player.id}}</a>
+        </dd>
+        <dt><span>Target Player</span></dt>
+        <dd>
+            <a ui-sref="player-detail({id:vm.event.targetPlayer.id})">{{vm.event.targetPlayer.id}}</a>
+        </dd>
+        <dt><span>Referee</span></dt>
+        <dd>
+            <a ui-sref="referee-detail({id:vm.event.referee.id})">{{vm.event.referee.id}}</a>
+        </dd>
+        <dt><span>Coach</span></dt>
+        <dd>
+            <a ui-sref="coach-detail({id:vm.event.coach.id})">{{vm.event.coach.id}}</a>
+        </dd>
+        <dt><span>Target Team</span></dt>
+        <dd>
+            <a ui-sref="team-detail({id:vm.event.targetTeam.id})">{{vm.event.targetTeam.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="event-detail.edit({id:vm.event.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>
