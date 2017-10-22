@@ -63,6 +63,19 @@
                     $state.go('^');
                 });
             }]
+        }).state('association-game-result-edit', {
+            parent: 'division-event.games',
+            url: '/{gid}/result',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/ext/result-data/result-data.editgrid.html',
+                    controller: 'ResultDataEditGridController',
+                    controllerAs: 'vm'
+                }
+            },
         }).state('division-event-signup', {
             parent: 'entity',
             url: '/division-event/{id}/signup',

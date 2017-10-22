@@ -57,8 +57,17 @@
                             
                             <button type="submit"
                                     ui-sref="association-division-event-gameedit({gid:game.id,id:vm.divisionEventId})"
+                                    title="edit game base information"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+
+                            <button type="submit"
+                                    ui-sref="association-game-result-edit({gid:game.id})"
+                                    title="edit game result information"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-edit"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
                             
