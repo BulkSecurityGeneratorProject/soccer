@@ -24,7 +24,7 @@
         ClubExt.queryNextGame({id : $state.params.id},function(result){
         	 vm.nextGame = result;
         	 if(vm.nextGame && vm.nextGame.homeTeam && vm.nextGame.roadTeam){
-        		 if(vm.nextGame.homeTeam.club == $state.params.id){
+               if(vm.nextGame.homeTeam.club.id == $state.params.id){
             		 vm.nextTeam = vm.nextGame.roadTeam;
                     vm.homeTeam = vm.nextGame.homeTeam;
             	 }else{
