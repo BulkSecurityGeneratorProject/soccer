@@ -75,10 +75,11 @@
 
         	Game.get({id:$state.params.id},function(result){
         		 vm.game = result;
-        		 if($state.current.data.homeTeam){
-        			 vm.team = vm.game.homeTeam;
+               // set home team when $state is exist homeTeam or $state tid equals homeTeam 
+        		 if($state.current.data.homeTeam || ($state.params.tid && $state.params.tid == vm.game.homeTeam.id)){
+                    vm.team = vm.game.homeTeam;
         		 }else{
-        			 vm.team = vm.game.roadTeam;
+        			  vm.team = vm.game.roadTeam;
         		 }
         		 // load all player of team
         		 TeamExt.queryPlayers({id:vm.team.id},function(result){

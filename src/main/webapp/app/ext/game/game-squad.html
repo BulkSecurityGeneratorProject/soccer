@@ -198,6 +198,7 @@
                    <div ng-repeat="player in vm.players track by player.id"
                         data-player-id="{{player.id}}" data-lines="" style="display: none;" >
                     <em>
+                        // TODO here got a issue of angular, html always connect to resource before angular realy rendered.
                         <img ng-if="player.picture" src="{{player.picture}}" alt="{{player.name}}">
 
                         <img ng-if="player.picture == null" src="content/images/109.jpg" alt="{{player.name}}">

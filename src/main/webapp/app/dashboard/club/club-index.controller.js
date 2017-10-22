@@ -26,8 +26,10 @@
         	 if(vm.nextGame && vm.nextGame.homeTeam && vm.nextGame.roadTeam){
         		 if(vm.nextGame.homeTeam.club == $state.params.id){
             		 vm.nextTeam = vm.nextGame.roadTeam;
+                    vm.homeTeam = vm.nextGame.homeTeam;
             	 }else{
             		 vm.nextTeam = vm.nextGame.homeTeam;
+                    vm.homeTeam = vm.nextGame.roadTeam;
             	 }
         		 // get recent games of next team
         		 vm.recentGamesOfNextTeam = TeamExt.queryPassedGames({id : vm.nextTeam.id,count:5});

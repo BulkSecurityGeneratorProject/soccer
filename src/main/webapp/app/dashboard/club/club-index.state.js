@@ -65,6 +65,22 @@
             resolve: {
 
             }
+        }).state('club-nextgame-squad',{
+            parent: 'club',
+            url: '/games/{id}/team/{tid}',
+            data: {
+                authorities: ['ROLE_USER'],
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/ext/game/game-squad.html',
+                    controller: 'GameSquadController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+
+            }
         })
         .state('club-team-detail', {
             parent: 'club-team',

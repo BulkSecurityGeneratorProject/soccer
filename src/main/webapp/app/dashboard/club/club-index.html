@@ -74,6 +74,15 @@
                                 <td>{{vm.nextGame.startAt| date: 'yyyy-MM-dd'}}</td>
                                 <td><a ui-sref="public.club({id:vm.nextTeam.club.id})">{{vm.nextTeam.name}}</a></td>
                                 <td>{{vm.nextGame.startAt|date:'HH:mm a'}}</td>
+                                <td>
+                                	<button type="submit"
+	                                    ui-sref="club-nextgame-squad({id:vm.nextGame.id,tid:vm.homeTeam.id})"
+	                                    title="edit or view next game squad of yours"
+	                                    class="btn btn-primary btn-sm">
+		                                <span class="glyphicon glyphicon-list-alt"></span>
+		                                <span class="hidden-xs hidden-sm"></span>
+		                            </button>
+                                </td>
                             </tr>
                         </table>
 					</div>
