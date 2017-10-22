@@ -48,7 +48,7 @@ public interface GameRepositoryExt extends GameRepository {
 	 *            接下来的几场比赛
 	 * @return
 	 */
-	@Query("select g from Game g where (g.homeTeam.club.id = :clubId or g.roadTeam.club.id =  :clubId) and datediff(day,now(),g.startAt) > 0 ORDER BY g.startAt ASC ")
+	@Query("select g from Game g where (g.homeTeam.club.id = :clubId or g.roadTeam.club.id =  :clubId) and datediff(second,now(),g.startAt) > 0 ORDER BY g.startAt ASC ")
 	List<Game> findNextGamesByClub(@Param("clubId") Long id, Pageable page);
 
 	/**
@@ -59,7 +59,7 @@ public interface GameRepositoryExt extends GameRepository {
 	 * @param pageable
 	 * @return
 	 */
-	@Query("select g from Game g where (g.homeTeam.id = :teamId or g.roadTeam.id =  :teamId) and datediff(day,now(),g.startAt) < 0 ORDER BY g.startAt DESC ")
+	@Query("select g from Game g where (g.homeTeam.id = :teamId or g.roadTeam.id =  :teamId) and datediff(second,now(),g.startAt) < 0 ORDER BY g.startAt DESC ")
 	List<Game> findPassedGamesByTeam(@Param("teamId") Long id, Pageable pageable);
 
 }
