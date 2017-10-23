@@ -22,6 +22,7 @@
                     <th><span>Create At</span></th>
                     <th><span>Name</span></th>
                     <th><span>Short Name</span></th>
+                    <th><span>Picture</span></th>
                     <th><span>Association</span></th>
                     <th><span>Venue</span></th>
                     <th></th>
@@ -33,6 +34,7 @@
                         <td>{{club.createAt | date:'mediumDate'}}</td>
                     <td>{{club.name}}</td>
                     <td>{{club.shortName}}</td>
+                    <td>{{club.picture}}</td>
                     <td>
                         <a ui-sref="association-detail({id:club.association.id})">{{club.association.id}}</a>
                     </td>

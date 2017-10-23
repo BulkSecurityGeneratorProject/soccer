@@ -46,6 +46,8 @@ public class DivisionResourceIntTest {
 
     private static final LocalDate DEFAULT_CREATE_AT = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_CREATE_AT = LocalDate.now(ZoneId.systemDefault());
+    private static final String DEFAULT_PICTURE = "AAAAA";
+    private static final String UPDATED_PICTURE = "BBBBB";
 
     @Inject
     private DivisionRepository divisionRepository;
@@ -80,9 +82,10 @@ public class DivisionResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Division createEntity(EntityManager em) {
-        Division division = new Division();
-        division.setName(DEFAULT_NAME);
-        division.setCreateAt(DEFAULT_CREATE_AT);
+        Division division = new Division()
+                .name(DEFAULT_NAME)
+                .createAt(DEFAULT_CREATE_AT)
+                .picture(DEFAULT_PICTURE);
         return division;
     }
 
@@ -109,6 +112,7 @@ public class DivisionResourceIntTest {
         Division testDivision = divisions.get(divisions.size() - 1);
         assertThat(testDivision.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testDivision.getCreateAt()).isEqualTo(DEFAULT_CREATE_AT);
+        assertThat(testDivision.getPicture()).isEqualTo(DEFAULT_PICTURE);
     }
 
     @Test
@@ -123,7 +127,8 @@ public class DivisionResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(division.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())));
+                .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())))
+                .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())));
     }
 
     @Test
@@ -138,7 +143,8 @@ public class DivisionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(division.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()));
+            .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()))
+            .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()));
     }
 
     @Test
@@ -158,8 +164,10 @@ public class DivisionResourceIntTest {
 
         // Update the division
         Division updatedDivision = divisionRepository.findOne(division.getId());
-        updatedDivision.setName(UPDATED_NAME);
-        updatedDivision.setCreateAt(UPDATED_CREATE_AT);
+        updatedDivision
+                .name(UPDATED_NAME)
+                .createAt(UPDATED_CREATE_AT)
+                .picture(UPDATED_PICTURE);
 
         restDivisionMockMvc.perform(put("/api/divisions")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -172,6 +180,7 @@ public class DivisionResourceIntTest {
         Division testDivision = divisions.get(divisions.size() - 1);
         assertThat(testDivision.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testDivision.getCreateAt()).isEqualTo(UPDATED_CREATE_AT);
+        assertThat(testDivision.getPicture()).isEqualTo(UPDATED_PICTURE);
     }
 
     @Test

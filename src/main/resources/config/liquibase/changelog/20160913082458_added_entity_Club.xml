@@ -33,6 +33,10 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="picture" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
             <column name="association_id" type="bigint">
                 <constraints nullable="true" />
             </column>

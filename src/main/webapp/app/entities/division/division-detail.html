@@ -12,6 +12,10 @@
         <dd>
             <span>{{vm.division.createAt | date:'mediumDate'}}</span>
         </dd>
+        <dt><span>Picture</span></dt>
+        <dd>
+            <span>{{vm.division.picture}}</span>
+        </dd>
         <dt><span>Type</span></dt>
         <dd>
             <a ui-sref="dict-detail({id:vm.division.type.id})">{{vm.division.type.id}}</a>

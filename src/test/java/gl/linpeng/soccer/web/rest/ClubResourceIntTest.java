@@ -48,6 +48,8 @@ public class ClubResourceIntTest {
     private static final String UPDATED_NAME = "BBBBB";
     private static final String DEFAULT_SHORT_NAME = "AAAAA";
     private static final String UPDATED_SHORT_NAME = "BBBBB";
+    private static final String DEFAULT_PICTURE = "AAAAA";
+    private static final String UPDATED_PICTURE = "BBBBB";
 
     @Inject
     private ClubRepository clubRepository;
@@ -82,10 +84,11 @@ public class ClubResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Club createEntity(EntityManager em) {
-        Club club = new Club();
-        club.setCreateAt(DEFAULT_CREATE_AT);
-        club.setName(DEFAULT_NAME);
-        club.setShortName(DEFAULT_SHORT_NAME);
+        Club club = new Club()
+                .createAt(DEFAULT_CREATE_AT)
+                .name(DEFAULT_NAME)
+                .shortName(DEFAULT_SHORT_NAME)
+                .picture(DEFAULT_PICTURE);
         return club;
     }
 
@@ -113,6 +116,7 @@ public class ClubResourceIntTest {
         assertThat(testClub.getCreateAt()).isEqualTo(DEFAULT_CREATE_AT);
         assertThat(testClub.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testClub.getShortName()).isEqualTo(DEFAULT_SHORT_NAME);
+        assertThat(testClub.getPicture()).isEqualTo(DEFAULT_PICTURE);
     }
 
     @Test
@@ -128,7 +132,8 @@ public class ClubResourceIntTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(club.getId().intValue())))
                 .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].shortName").value(hasItem(DEFAULT_SHORT_NAME.toString())));
+                .andExpect(jsonPath("$.[*].shortName").value(hasItem(DEFAULT_SHORT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())));
     }
 
     @Test
@@ -144,7 +149,8 @@ public class ClubResourceIntTest {
             .andExpect(jsonPath("$.id").value(club.getId().intValue()))
             .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.shortName").value(DEFAULT_SHORT_NAME.toString()));
+            .andExpect(jsonPath("$.shortName").value(DEFAULT_SHORT_NAME.toString()))
+            .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()));
     }
 
     @Test
@@ -164,9 +170,11 @@ public class ClubResourceIntTest {
 
         // Update the club
         Club updatedClub = clubRepository.findOne(club.getId());
-        updatedClub.setCreateAt(UPDATED_CREATE_AT);
-        updatedClub.setName(UPDATED_NAME);
-        updatedClub.setShortName(UPDATED_SHORT_NAME);
+        updatedClub
+                .createAt(UPDATED_CREATE_AT)
+                .name(UPDATED_NAME)
+                .shortName(UPDATED_SHORT_NAME)
+                .picture(UPDATED_PICTURE);
 
         restClubMockMvc.perform(put("/api/clubs")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -180,6 +188,7 @@ public class ClubResourceIntTest {
         assertThat(testClub.getCreateAt()).isEqualTo(UPDATED_CREATE_AT);
         assertThat(testClub.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testClub.getShortName()).isEqualTo(UPDATED_SHORT_NAME);
+        assertThat(testClub.getPicture()).isEqualTo(UPDATED_PICTURE);
     }
 
     @Test

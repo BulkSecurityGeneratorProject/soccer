@@ -1,59 +1,53 @@
 {
+  "fluentMethods": true,
   "relationships": [],
   "fields": [
     {
-      "fieldId": 1,
       "fieldName": "name",
       "fieldType": "String"
     },
     {
-      "fieldId": 2,
       "fieldName": "shortName",
       "fieldType": "String"
     },
     {
-      "fieldId": 3,
       "fieldName": "createAt",
       "fieldType": "LocalDate"
     },
     {
-      "fieldId": 4,
       "fieldName": "address",
       "fieldType": "String"
     },
     {
-      "fieldId": 5,
       "fieldName": "city",
       "fieldType": "String"
     },
     {
-      "fieldId": 6,
       "fieldName": "province",
       "fieldType": "String"
     },
     {
-      "fieldId": 7,
       "fieldName": "town",
       "fieldType": "String"
     },
     {
-      "fieldId": 8,
       "fieldName": "country",
       "fieldType": "String"
     },
     {
-      "fieldId": 9,
       "fieldName": "zip",
       "fieldType": "String"
     },
     {
-      "fieldId": 10,
       "fieldName": "telephone",
       "fieldType": "String"
     },
     {
-      "fieldId": 11,
       "fieldName": "latlng",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "picture",
       "fieldType": "String"
     }
   ],

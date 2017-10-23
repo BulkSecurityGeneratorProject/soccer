@@ -64,6 +64,8 @@ public class VenueResourceIntTest {
     private static final String UPDATED_TELEPHONE = "BBBBB";
     private static final String DEFAULT_LATLNG = "AAAAA";
     private static final String UPDATED_LATLNG = "BBBBB";
+    private static final String DEFAULT_PICTURE = "AAAAA";
+    private static final String UPDATED_PICTURE = "BBBBB";
 
     @Inject
     private VenueRepository venueRepository;
@@ -98,18 +100,19 @@ public class VenueResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Venue createEntity(EntityManager em) {
-        Venue venue = new Venue();
-        venue.setName(DEFAULT_NAME);
-        venue.setShortName(DEFAULT_SHORT_NAME);
-        venue.setCreateAt(DEFAULT_CREATE_AT);
-        venue.setAddress(DEFAULT_ADDRESS);
-        venue.setCity(DEFAULT_CITY);
-        venue.setProvince(DEFAULT_PROVINCE);
-        venue.setTown(DEFAULT_TOWN);
-        venue.setCountry(DEFAULT_COUNTRY);
-        venue.setZip(DEFAULT_ZIP);
-        venue.setTelephone(DEFAULT_TELEPHONE);
-        venue.setLatlng(DEFAULT_LATLNG);
+        Venue venue = new Venue()
+                .name(DEFAULT_NAME)
+                .shortName(DEFAULT_SHORT_NAME)
+                .createAt(DEFAULT_CREATE_AT)
+                .address(DEFAULT_ADDRESS)
+                .city(DEFAULT_CITY)
+                .province(DEFAULT_PROVINCE)
+                .town(DEFAULT_TOWN)
+                .country(DEFAULT_COUNTRY)
+                .zip(DEFAULT_ZIP)
+                .telephone(DEFAULT_TELEPHONE)
+                .latlng(DEFAULT_LATLNG)
+                .picture(DEFAULT_PICTURE);
         return venue;
     }
 
@@ -145,6 +148,7 @@ public class VenueResourceIntTest {
         assertThat(testVenue.getZip()).isEqualTo(DEFAULT_ZIP);
         assertThat(testVenue.getTelephone()).isEqualTo(DEFAULT_TELEPHONE);
         assertThat(testVenue.getLatlng()).isEqualTo(DEFAULT_LATLNG);
+        assertThat(testVenue.getPicture()).isEqualTo(DEFAULT_PICTURE);
     }
 
     @Test
@@ -168,7 +172,8 @@ public class VenueResourceIntTest {
                 .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())))
                 .andExpect(jsonPath("$.[*].zip").value(hasItem(DEFAULT_ZIP.toString())))
                 .andExpect(jsonPath("$.[*].telephone").value(hasItem(DEFAULT_TELEPHONE.toString())))
-                .andExpect(jsonPath("$.[*].latlng").value(hasItem(DEFAULT_LATLNG.toString())));
+                .andExpect(jsonPath("$.[*].latlng").value(hasItem(DEFAULT_LATLNG.toString())))
+                .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())));
     }
 
     @Test
@@ -192,7 +197,8 @@ public class VenueResourceIntTest {
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()))
             .andExpect(jsonPath("$.zip").value(DEFAULT_ZIP.toString()))
             .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE.toString()))
-            .andExpect(jsonPath("$.latlng").value(DEFAULT_LATLNG.toString()));
+            .andExpect(jsonPath("$.latlng").value(DEFAULT_LATLNG.toString()))
+            .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()));
     }
 
     @Test
@@ -212,17 +218,19 @@ public class VenueResourceIntTest {
 
         // Update the venue
         Venue updatedVenue = venueRepository.findOne(venue.getId());
-        updatedVenue.setName(UPDATED_NAME);
-        updatedVenue.setShortName(UPDATED_SHORT_NAME);
-        updatedVenue.setCreateAt(UPDATED_CREATE_AT);
-        updatedVenue.setAddress(UPDATED_ADDRESS);
-        updatedVenue.setCity(UPDATED_CITY);
-        updatedVenue.setProvince(UPDATED_PROVINCE);
-        updatedVenue.setTown(UPDATED_TOWN);
-        updatedVenue.setCountry(UPDATED_COUNTRY);
-        updatedVenue.setZip(UPDATED_ZIP);
-        updatedVenue.setTelephone(UPDATED_TELEPHONE);
-        updatedVenue.setLatlng(UPDATED_LATLNG);
+        updatedVenue
+                .name(UPDATED_NAME)
+                .shortName(UPDATED_SHORT_NAME)
+                .createAt(UPDATED_CREATE_AT)
+                .address(UPDATED_ADDRESS)
+                .city(UPDATED_CITY)
+                .province(UPDATED_PROVINCE)
+                .town(UPDATED_TOWN)
+                .country(UPDATED_COUNTRY)
+                .zip(UPDATED_ZIP)
+                .telephone(UPDATED_TELEPHONE)
+                .latlng(UPDATED_LATLNG)
+                .picture(UPDATED_PICTURE);
 
         restVenueMockMvc.perform(put("/api/venues")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -244,6 +252,7 @@ public class VenueResourceIntTest {
         assertThat(testVenue.getZip()).isEqualTo(UPDATED_ZIP);
         assertThat(testVenue.getTelephone()).isEqualTo(UPDATED_TELEPHONE);
         assertThat(testVenue.getLatlng()).isEqualTo(UPDATED_LATLNG);
+        assertThat(testVenue.getPicture()).isEqualTo(UPDATED_PICTURE);
     }
 
     @Test

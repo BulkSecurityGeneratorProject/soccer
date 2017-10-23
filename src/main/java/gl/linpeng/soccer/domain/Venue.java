@@ -55,6 +55,9 @@ public class Venue implements Serializable {
     @Column(name = "latlng")
     private String latlng;
 
+    @Column(name = "picture")
+    private String picture;
+
     public Long getId() {
         return id;
     }
@@ -67,12 +70,22 @@ public class Venue implements Serializable {
         return name;
     }
 
+    public Venue name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public String getShortName() {
         return shortName;
+    }
+
+    public Venue shortName(String shortName) {
+        this.shortName = shortName;
+        return this;
     }
 
     public void setShortName(String shortName) {
@@ -83,12 +96,22 @@ public class Venue implements Serializable {
         return createAt;
     }
 
+    public Venue createAt(LocalDate createAt) {
+        this.createAt = createAt;
+        return this;
+    }
+
     public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
     }
 
     public String getAddress() {
         return address;
+    }
+
+    public Venue address(String address) {
+        this.address = address;
+        return this;
     }
 
     public void setAddress(String address) {
@@ -99,12 +122,22 @@ public class Venue implements Serializable {
         return city;
     }
 
+    public Venue city(String city) {
+        this.city = city;
+        return this;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
 
     public String getProvince() {
         return province;
+    }
+
+    public Venue province(String province) {
+        this.province = province;
+        return this;
     }
 
     public void setProvince(String province) {
@@ -115,12 +148,22 @@ public class Venue implements Serializable {
         return town;
     }
 
+    public Venue town(String town) {
+        this.town = town;
+        return this;
+    }
+
     public void setTown(String town) {
         this.town = town;
     }
 
     public String getCountry() {
         return country;
+    }
+
+    public Venue country(String country) {
+        this.country = country;
+        return this;
     }
 
     public void setCountry(String country) {
@@ -131,12 +174,22 @@ public class Venue implements Serializable {
         return zip;
     }
 
+    public Venue zip(String zip) {
+        this.zip = zip;
+        return this;
+    }
+
     public void setZip(String zip) {
         this.zip = zip;
     }
 
     public String getTelephone() {
         return telephone;
+    }
+
+    public Venue telephone(String telephone) {
+        this.telephone = telephone;
+        return this;
     }
 
     public void setTelephone(String telephone) {
@@ -147,8 +200,26 @@ public class Venue implements Serializable {
         return latlng;
     }
 
+    public Venue latlng(String latlng) {
+        this.latlng = latlng;
+        return this;
+    }
+
     public void setLatlng(String latlng) {
         this.latlng = latlng;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public Venue picture(String picture) {
+        this.picture = picture;
+        return this;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override
@@ -186,6 +257,7 @@ public class Venue implements Serializable {
             ", zip='" + zip + "'" +
             ", telephone='" + telephone + "'" +
             ", latlng='" + latlng + "'" +
+            ", picture='" + picture + "'" +
             '}';
     }
 }

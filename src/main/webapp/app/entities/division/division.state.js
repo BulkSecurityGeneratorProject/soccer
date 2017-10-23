@@ -97,6 +97,7 @@
                             return {
                                 name: null,
                                 createAt: null,
+                                picture: null,
                                 id: null
                             };
                         }

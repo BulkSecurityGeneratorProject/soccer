@@ -106,6 +106,7 @@
                                 zip: null,
                                 telephone: null,
                                 latlng: null,
+                                picture: null,
                                 id: null
                             };
                         }

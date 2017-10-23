@@ -1,28 +1,25 @@
 {
+  "fluentMethods": true,
   "relationships": [
     {
-      "relationshipId": 1,
       "relationshipType": "many-to-one",
       "relationshipName": "type",
       "otherEntityName": "dict",
       "otherEntityField": "id"
     },
     {
-      "relationshipId": 2,
       "relationshipType": "many-to-one",
       "relationshipName": "association",
       "otherEntityName": "association",
       "otherEntityField": "id"
     },
     {
-      "relationshipId": 3,
       "relationshipType": "many-to-one",
       "relationshipName": "rankingRule",
       "otherEntityName": "rankingRule",
       "otherEntityField": "id"
     },
     {
-      "relationshipId": 4,
       "relationshipType": "many-to-one",
       "relationshipName": "status",
       "otherEntityName": "dict",
@@ -31,14 +28,16 @@
   ],
   "fields": [
     {
-      "fieldId": 1,
       "fieldName": "name",
       "fieldType": "String"
     },
     {
-      "fieldId": 2,
       "fieldName": "createAt",
       "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "String"
     }
   ],
   "changelogDate": "20160914031739",

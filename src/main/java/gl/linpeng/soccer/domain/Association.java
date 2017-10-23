@@ -28,6 +28,9 @@ public class Association implements Serializable {
     @Column(name = "create_at")
     private LocalDate createAt;
 
+    @Column(name = "picture")
+    private String picture;
+
     @ManyToOne
     private Dict status;
 
@@ -43,6 +46,11 @@ public class Association implements Serializable {
         return name;
     }
 
+    public Association name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -51,12 +59,35 @@ public class Association implements Serializable {
         return createAt;
     }
 
+    public Association createAt(LocalDate createAt) {
+        this.createAt = createAt;
+        return this;
+    }
+
     public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public Association picture(String picture) {
+        this.picture = picture;
+        return this;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public Dict getStatus() {
         return status;
+    }
+
+    public Association status(Dict dict) {
+        this.status = dict;
+        return this;
     }
 
     public void setStatus(Dict dict) {
@@ -89,6 +120,7 @@ public class Association implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", createAt='" + createAt + "'" +
+            ", picture='" + picture + "'" +
             '}';
     }
 }

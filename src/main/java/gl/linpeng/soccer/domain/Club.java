@@ -31,6 +31,9 @@ public class Club implements Serializable {
     @Column(name = "short_name")
     private String shortName;
 
+    @Column(name = "picture")
+    private String picture;
+
     @ManyToOne
     private Association association;
 
@@ -49,12 +52,22 @@ public class Club implements Serializable {
         return createAt;
     }
 
+    public Club createAt(LocalDate createAt) {
+        this.createAt = createAt;
+        return this;
+    }
+
     public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
     }
 
     public String getName() {
         return name;
+    }
+
+    public Club name(String name) {
+        this.name = name;
+        return this;
     }
 
     public void setName(String name) {
@@ -65,12 +78,35 @@ public class Club implements Serializable {
         return shortName;
     }
 
+    public Club shortName(String shortName) {
+        this.shortName = shortName;
+        return this;
+    }
+
     public void setShortName(String shortName) {
         this.shortName = shortName;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public Club picture(String picture) {
+        this.picture = picture;
+        return this;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public Association getAssociation() {
         return association;
+    }
+
+    public Club association(Association association) {
+        this.association = association;
+        return this;
     }
 
     public void setAssociation(Association association) {
@@ -79,6 +115,11 @@ public class Club implements Serializable {
 
     public Venue getVenue() {
         return venue;
+    }
+
+    public Club venue(Venue venue) {
+        this.venue = venue;
+        return this;
     }
 
     public void setVenue(Venue venue) {
@@ -112,6 +153,7 @@ public class Club implements Serializable {
             ", createAt='" + createAt + "'" +
             ", name='" + name + "'" +
             ", shortName='" + shortName + "'" +
+            ", picture='" + picture + "'" +
             '}';
     }
 }

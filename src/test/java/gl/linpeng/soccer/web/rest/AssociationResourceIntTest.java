@@ -46,6 +46,8 @@ public class AssociationResourceIntTest {
 
     private static final LocalDate DEFAULT_CREATE_AT = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_CREATE_AT = LocalDate.now(ZoneId.systemDefault());
+    private static final String DEFAULT_PICTURE = "AAAAA";
+    private static final String UPDATED_PICTURE = "BBBBB";
 
     @Inject
     private AssociationRepository associationRepository;
@@ -80,9 +82,10 @@ public class AssociationResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Association createEntity(EntityManager em) {
-        Association association = new Association();
-        association.setName(DEFAULT_NAME);
-        association.setCreateAt(DEFAULT_CREATE_AT);
+        Association association = new Association()
+                .name(DEFAULT_NAME)
+                .createAt(DEFAULT_CREATE_AT)
+                .picture(DEFAULT_PICTURE);
         return association;
     }
 
@@ -109,6 +112,7 @@ public class AssociationResourceIntTest {
         Association testAssociation = associations.get(associations.size() - 1);
         assertThat(testAssociation.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testAssociation.getCreateAt()).isEqualTo(DEFAULT_CREATE_AT);
+        assertThat(testAssociation.getPicture()).isEqualTo(DEFAULT_PICTURE);
     }
 
     @Test
@@ -123,7 +127,8 @@ public class AssociationResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(association.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())));
+                .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())))
+                .andExpect(jsonPath("$.[*].picture").value(hasItem(DEFAULT_PICTURE.toString())));
     }
 
     @Test
@@ -138,7 +143,8 @@ public class AssociationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(association.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()));
+            .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()))
+            .andExpect(jsonPath("$.picture").value(DEFAULT_PICTURE.toString()));
     }
 
     @Test
@@ -158,8 +164,10 @@ public class AssociationResourceIntTest {
 
         // Update the association
         Association updatedAssociation = associationRepository.findOne(association.getId());
-        updatedAssociation.setName(UPDATED_NAME);
-        updatedAssociation.setCreateAt(UPDATED_CREATE_AT);
+        updatedAssociation
+                .name(UPDATED_NAME)
+                .createAt(UPDATED_CREATE_AT)
+                .picture(UPDATED_PICTURE);
 
         restAssociationMockMvc.perform(put("/api/associations")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -172,6 +180,7 @@ public class AssociationResourceIntTest {
         Association testAssociation = associations.get(associations.size() - 1);
         assertThat(testAssociation.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testAssociation.getCreateAt()).isEqualTo(UPDATED_CREATE_AT);
+        assertThat(testAssociation.getPicture()).isEqualTo(UPDATED_PICTURE);
     }
 
     @Test

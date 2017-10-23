@@ -26,6 +26,10 @@
     {
       "fieldName": "shortName",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "String"
     }
   ],
   "changelogDate": "20160913082458",

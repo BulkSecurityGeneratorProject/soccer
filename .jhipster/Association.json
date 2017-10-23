@@ -1,7 +1,7 @@
 {
+  "fluentMethods": true,
   "relationships": [
     {
-      "relationshipId": 1,
       "relationshipType": "many-to-one",
       "relationshipName": "status",
       "otherEntityName": "dict",
@@ -10,14 +10,16 @@
   ],
   "fields": [
     {
-      "fieldId": 1,
       "fieldName": "name",
       "fieldType": "String"
     },
     {
-      "fieldId": 2,
       "fieldName": "createAt",
       "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "String"
     }
   ],
   "changelogDate": "20160913082459",

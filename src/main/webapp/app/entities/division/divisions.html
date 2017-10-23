@@ -21,6 +21,7 @@
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
                     <th><span>Create At</span></th>
+                    <th><span>Picture</span></th>
                     <th><span>Type</span></th>
                     <th><span>Association</span></th>
                     <th><span>Ranking Rule</span></th>
@@ -33,6 +34,7 @@
                     <td><a ui-sref="division-detail({id:division.id})">{{division.id}}</a></td>
                     <td>{{division.name}}</td>
                         <td>{{division.createAt | date:'mediumDate'}}</td>
+                    <td>{{division.picture}}</td>
                     <td>
                         <a ui-sref="dict-detail({id:division.type.id})">{{division.type.id}}</a>
                     </td>

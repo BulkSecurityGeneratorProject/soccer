@@ -98,6 +98,7 @@
                                 createAt: null,
                                 name: null,
                                 shortName: null,
+                                picture: null,
                                 id: null
                             };
                         }

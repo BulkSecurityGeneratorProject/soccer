@@ -28,6 +28,9 @@ public class Division implements Serializable {
     @Column(name = "create_at")
     private LocalDate createAt;
 
+    @Column(name = "picture")
+    private String picture;
+
     @ManyToOne
     private Dict type;
 
@@ -52,6 +55,11 @@ public class Division implements Serializable {
         return name;
     }
 
+    public Division name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -60,12 +68,35 @@ public class Division implements Serializable {
         return createAt;
     }
 
+    public Division createAt(LocalDate createAt) {
+        this.createAt = createAt;
+        return this;
+    }
+
     public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public Division picture(String picture) {
+        this.picture = picture;
+        return this;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public Dict getType() {
         return type;
+    }
+
+    public Division type(Dict dict) {
+        this.type = dict;
+        return this;
     }
 
     public void setType(Dict dict) {
@@ -76,6 +107,11 @@ public class Division implements Serializable {
         return association;
     }
 
+    public Division association(Association association) {
+        this.association = association;
+        return this;
+    }
+
     public void setAssociation(Association association) {
         this.association = association;
     }
@@ -84,12 +120,22 @@ public class Division implements Serializable {
         return rankingRule;
     }
 
+    public Division rankingRule(RankingRule rankingRule) {
+        this.rankingRule = rankingRule;
+        return this;
+    }
+
     public void setRankingRule(RankingRule rankingRule) {
         this.rankingRule = rankingRule;
     }
 
     public Dict getStatus() {
         return status;
+    }
+
+    public Division status(Dict dict) {
+        this.status = dict;
+        return this;
     }
 
     public void setStatus(Dict dict) {
@@ -122,6 +168,7 @@ public class Division implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", createAt='" + createAt + "'" +
+            ", picture='" + picture + "'" +
             '}';
     }
 }

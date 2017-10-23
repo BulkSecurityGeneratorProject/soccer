@@ -21,6 +21,7 @@
                     <th><span>ID</span></th>
                     <th><span>Name</span></th>
                     <th><span>Create At</span></th>
+                    <th><span>Picture</span></th>
                     <th><span>Status</span></th>
                     <th></th>
                 </tr>
@@ -30,6 +31,7 @@
                     <td><a ui-sref="association-detail({id:association.id})">{{association.id}}</a></td>
                     <td>{{association.name}}</td>
                         <td>{{association.createAt | date:'mediumDate'}}</td>
+                    <td>{{association.picture}}</td>
                     <td>
                         <a ui-sref="dict-detail({id:association.status.id})">{{association.status.id}}</a>
                     </td>
