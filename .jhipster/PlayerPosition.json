@@ -1,0 +1,23 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "player",
+      "otherEntityName": "player",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "position",
+      "otherEntityName": "dict",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [],
+  "changelogDate": "20171023140643",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "player_position"
+}

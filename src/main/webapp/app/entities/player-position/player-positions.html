@@ -1,0 +1,62 @@
+<div>
+    <h2>Player Positions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="player-position.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Player Position
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Player</span></th>
+                    <th><span>Position</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="playerPosition in vm.playerPositions track by playerPosition.id">
+                    <td><a ui-sref="player-position-detail({id:playerPosition.id})">{{playerPosition.id}}</a></td>
+                    <td>
+                        <a ui-sref="player-detail({id:playerPosition.player.id})">{{playerPosition.player.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dict-detail({id:playerPosition.position.id})">{{playerPosition.position.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="player-position-detail({id:playerPosition.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="player-position.edit({id:playerPosition.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="player-position.delete({id:playerPosition.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
