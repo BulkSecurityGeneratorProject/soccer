@@ -52,6 +52,10 @@
         function recentMonth(obj) {
         	return	 Math.abs(($scope.now.getTime() - new Date(obj.startAt).getTime())/(24 * 60 * 60 * 1000)) <=31;
         }
+
+        function recentWeek(obj){
+            return Math.abs(($scope.now.getTime() - new Date(obj.startAt).getTime())/(24 * 60 * 60 * 1000)) <=7;
+        }
         
         // 1. division basic information
         vm.division = Division.get({id:$state.params.id});
@@ -68,7 +72,7 @@
        	var id = $scope.currentDivisionEvent.id;
            DivisionEventExt.queryGames({id:id},function(result){
            	 vm.games = result;
-           	 vm.recentGames = vm.games.filter(recentMonth);
+           	 vm.recentGames = vm.games.filter(recentWeek);
            });
            
            // 3. Clubs table(statistics)
