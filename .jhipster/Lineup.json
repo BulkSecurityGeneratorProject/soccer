@@ -38,7 +38,7 @@
   ],
   "changelogDate": "20161128084706",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "javadoc": "<Enter note text here>",
   "entityTableName": "lineup"

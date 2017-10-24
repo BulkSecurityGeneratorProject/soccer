@@ -5,8 +5,11 @@ import gl.linpeng.soccer.domain.GameReferee;
 
 import gl.linpeng.soccer.repository.GameRefereeRepository;
 import gl.linpeng.soccer.web.rest.util.HeaderUtil;
+import gl.linpeng.soccer.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -80,16 +83,20 @@ public class GameRefereeResource {
     /**
      * GET  /game-referees : get all the gameReferees.
      *
+     * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of gameReferees in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
     @RequestMapping(value = "/game-referees",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<GameReferee> getAllGameReferees() {
-        log.debug("REST request to get all GameReferees");
-        List<GameReferee> gameReferees = gameRefereeRepository.findAll();
-        return gameReferees;
+    public ResponseEntity<List<GameReferee>> getAllGameReferees(Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of GameReferees");
+        Page<GameReferee> page = gameRefereeRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/game-referees");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**

@@ -17,19 +17,19 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr>
-                    <th><span>ID</span></th>
-                    <th><span>Start At</span></th>
-                    <th><span>Home Score</span></th>
-                    <th><span>Road Score</span></th>
-                    <th><span>Note</span></th>
-                    <th><span>Home Score Half</span></th>
-                    <th><span>Road Score Half</span></th>
-                    <th><span>Timeslot</span></th>
-                    <th><span>Venue</span></th>
-                    <th><span>Status</span></th>
-                    <th><span>Home Team</span></th>
-                    <th><span>Road Team</span></th>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startAt"><span>Start At</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="homeScore"><span>Home Score</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="roadScore"><span>Road Score</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="note"><span>Note</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="homeScoreHalf"><span>Home Score Half</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="roadScoreHalf"><span>Road Score Half</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="timeslot.id"><span>Timeslot</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="venue.id"><span>Venue</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status.id"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="homeTeam.id"><span>Home Team</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="roadTeam.id"><span>Road Team</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -82,5 +82,9 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
     </div>
 </div>

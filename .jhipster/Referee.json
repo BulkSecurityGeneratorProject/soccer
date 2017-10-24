@@ -32,7 +32,7 @@
   ],
   "changelogDate": "20171021051121",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "entityTableName": "referee"
 }

@@ -18,7 +18,7 @@
   "fields": [],
   "changelogDate": "20160920053527",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "entityTableName": "squad"
 }

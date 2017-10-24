@@ -70,7 +70,7 @@
   ],
   "changelogDate": "20160914033137",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "entityTableName": "game"
 }

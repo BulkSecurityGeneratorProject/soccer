@@ -17,13 +17,13 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr>
-                    <th><span>ID</span></th>
-                    <th><span>Player Number</span></th>
-                    <th><span>Player</span></th>
-                    <th><span>Team</span></th>
-                    <th><span>Division Event</span></th>
-                    <th><span>Player Position</span></th>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="playerNumber"><span>Player Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="player.id"><span>Player</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="team.id"><span>Team</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="divisionEvent.id"><span>Division Event</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="playerPosition.id"><span>Player Position</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -68,5 +68,9 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
     </div>
 </div>

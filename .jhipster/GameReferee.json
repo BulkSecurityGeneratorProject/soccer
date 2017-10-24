@@ -23,7 +23,7 @@
   "fields": [],
   "changelogDate": "20171021051123",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "entityTableName": "game_referee"
 }
