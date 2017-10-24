@@ -1,13 +1,14 @@
 package gl.linpeng.soccer.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import gl.linpeng.soccer.domain.util.SimpleJsonSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -40,11 +41,15 @@ public class Player implements Serializable {
     private String picture;
 
     @ManyToOne
-    @JsonSerialize(using = SimpleJsonSerializer.class)
     private Team team;
 
     @ManyToOne
     private Dict status;
+
+    @OneToMany(mappedBy = "player")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<PlayerPosition> positions = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -58,12 +63,22 @@ public class Player implements Serializable {
         return name;
     }
 
+    public Player name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public LocalDate getBirth() {
         return birth;
+    }
+
+    public Player birth(LocalDate birth) {
+        this.birth = birth;
+        return this;
     }
 
     public void setBirth(LocalDate birth) {
@@ -74,12 +89,22 @@ public class Player implements Serializable {
         return height;
     }
 
+    public Player height(Integer height) {
+        this.height = height;
+        return this;
+    }
+
     public void setHeight(Integer height) {
         this.height = height;
     }
 
     public Integer getWeight() {
         return weight;
+    }
+
+    public Player weight(Integer weight) {
+        this.weight = weight;
+        return this;
     }
 
     public void setWeight(Integer weight) {
@@ -90,12 +115,22 @@ public class Player implements Serializable {
         return picture;
     }
 
+    public Player picture(String picture) {
+        this.picture = picture;
+        return this;
+    }
+
     public void setPicture(String picture) {
         this.picture = picture;
     }
 
     public Team getTeam() {
         return team;
+    }
+
+    public Player team(Team team) {
+        this.team = team;
+        return this;
     }
 
     public void setTeam(Team team) {
@@ -106,8 +141,38 @@ public class Player implements Serializable {
         return status;
     }
 
+    public Player status(Dict dict) {
+        this.status = dict;
+        return this;
+    }
+
     public void setStatus(Dict dict) {
         this.status = dict;
+    }
+
+    public Set<PlayerPosition> getPositions() {
+        return positions;
+    }
+
+    public Player positions(Set<PlayerPosition> playerPositions) {
+        this.positions = playerPositions;
+        return this;
+    }
+
+    public Player addPositions(PlayerPosition playerPosition) {
+        positions.add(playerPosition);
+        playerPosition.setPlayer(this);
+        return this;
+    }
+
+    public Player removePositions(PlayerPosition playerPosition) {
+        positions.remove(playerPosition);
+        playerPosition.setPlayer(null);
+        return this;
+    }
+
+    public void setPositions(Set<PlayerPosition> playerPositions) {
+        this.positions = playerPositions;
     }
 
     @Override

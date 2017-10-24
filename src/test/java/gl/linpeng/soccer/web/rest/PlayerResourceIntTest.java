@@ -88,12 +88,12 @@ public class PlayerResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Player createEntity(EntityManager em) {
-        Player player = new Player();
-        player.setName(DEFAULT_NAME);
-        player.setBirth(DEFAULT_BIRTH);
-        player.setHeight(DEFAULT_HEIGHT);
-        player.setWeight(DEFAULT_WEIGHT);
-        player.setPicture(DEFAULT_PICTURE);
+        Player player = new Player()
+                .name(DEFAULT_NAME)
+                .birth(DEFAULT_BIRTH)
+                .height(DEFAULT_HEIGHT)
+                .weight(DEFAULT_WEIGHT)
+                .picture(DEFAULT_PICTURE);
         return player;
     }
 
@@ -178,11 +178,12 @@ public class PlayerResourceIntTest {
 
         // Update the player
         Player updatedPlayer = playerRepository.findOne(player.getId());
-        updatedPlayer.setName(UPDATED_NAME);
-        updatedPlayer.setBirth(UPDATED_BIRTH);
-        updatedPlayer.setHeight(UPDATED_HEIGHT);
-        updatedPlayer.setWeight(UPDATED_WEIGHT);
-        updatedPlayer.setPicture(UPDATED_PICTURE);
+        updatedPlayer
+                .name(UPDATED_NAME)
+                .birth(UPDATED_BIRTH)
+                .height(UPDATED_HEIGHT)
+                .weight(UPDATED_WEIGHT)
+                .picture(UPDATED_PICTURE);
 
         restPlayerMockMvc.perform(put("/api/players")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)

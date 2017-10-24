@@ -1,4 +1,5 @@
 {
+  "fluentMethods": true,
   "relationships": [
     {
       "relationshipType": "many-to-one",
@@ -11,6 +12,12 @@
       "relationshipName": "status",
       "otherEntityName": "dict",
       "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "positions",
+      "otherEntityName": "playerPosition",
+      "otherEntityRelationshipName": "player"
     }
   ],
   "fields": [
