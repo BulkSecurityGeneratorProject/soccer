@@ -34,7 +34,7 @@
   ],
   "changelogDate": "20160913082458",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "entityTableName": "club"
 }
