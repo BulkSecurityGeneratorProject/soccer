@@ -38,7 +38,7 @@
   ],
   "changelogDate": "20171021051122",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "entityTableName": "coach"
 }
