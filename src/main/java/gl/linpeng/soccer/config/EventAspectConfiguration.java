@@ -1,6 +1,6 @@
 package gl.linpeng.soccer.config;
 
-import gl.linpeng.soccer.aop.event.AssociationEventAspect;
+import gl.linpeng.soccer.aop.event.EventGenerateAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -16,8 +16,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class EventAspectConfiguration {
 
     @Bean
-    public AssociationEventAspect saveAspect() {
-        return new AssociationEventAspect();
+    public EventGenerateAspect saveAspect() {
+        return new EventGenerateAspect();
     }
 
 }
