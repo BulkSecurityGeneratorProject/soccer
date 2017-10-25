@@ -11,13 +11,13 @@ import org.springframework.data.repository.query.Param;
 
 /**
  * Game repository ext from Spring Data JPA repository
- * 
+ *
  * @author linpeng
  */
 public interface GameRepositoryExt extends GameRepository {
 	/**
 	 * Get all games by team,either home or road team
-	 * 
+	 *
 	 * @param id
 	 *            team id
 	 * @param recent
@@ -29,7 +29,7 @@ public interface GameRepositoryExt extends GameRepository {
 
 	/**
 	 * Get all games by club 这将会查询俱乐部前后30天的所有比赛，即总共60天的比赛日程
-	 * 
+	 *
 	 * @param id
 	 *            club id
 	 * @param recent
@@ -41,10 +41,10 @@ public interface GameRepositoryExt extends GameRepository {
 
 	/**
 	 * 与findGamesByClub不同，这里只关心接下来的比赛
-	 * 
+	 *
 	 * @param id
 	 *            俱乐部id
-	 * @param howManyNext
+	 * @param page
 	 *            接下来的几场比赛
 	 * @return
 	 */
@@ -53,7 +53,7 @@ public interface GameRepositoryExt extends GameRepository {
 
 	/**
 	 * 与上面两个方法按俱乐部维度查不同，这里是按球队id查，而且是查已经结束的比赛
-	 * 
+	 *
 	 * @param id
 	 *            team id
 	 * @param pageable
