@@ -1,6 +1,6 @@
 package gl.linpeng.soccer.aop.event;
 
-import gl.linpeng.soccer.repository.AssociationRepository;
+import gl.linpeng.soccer.domain.Event;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -29,12 +29,10 @@ public class EventGenerateAspect {
 
     @Resource
     private ApplicationContext appContext;
+    @Resource
+    private EventBus eventBus;
 
     private Map<String, JpaRepository> repositoryMap;
-
-    @Resource
-    private AssociationRepository associationRepository;
-
 
     @Pointcut("execution(* gl.linpeng.soccer.repository..*.save*(..))")
     public void savePointcut() {
@@ -44,33 +42,21 @@ public class EventGenerateAspect {
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] args = joinPoint.getArgs();
         Object result = null;
-        Class clz = args[0].getClass();
+        Object arg = args[0];
+        Class clz = arg.getClass();
 
         Object objBefore = null;
-        Object arg = args[0];
         Object id = null;
         Method methodGetId = ReflectionUtils.findMethod(clz, METHOD_GET_ID);
-        if (methodGetId != null) {
+        if (methodGetId != null && !(arg instanceof Event)) {
             id = ReflectionUtils.invokeMethod(methodGetId, arg);
             if (id != null) {
                 // update
-                if (null == repositoryMap) {
-                    repositoryMap = new HashMap<>();
-                    String[] beanNames = appContext.getBeanNamesForType(JpaRepository.class);
-                    // Arrays.sort(beanNames);
-                    for (String beanName : beanNames) {
-                        Object bean = appContext.getBean(beanName);
-                        if (beanName.endsWith(REPOSITORY_SUFFIX) && null != bean) {
-                            String clzName = beanName.replace(REPOSITORY_SUFFIX, "").toUpperCase();
-                            repositoryMap.put(clzName, (JpaRepository) bean);
-                        }
-                    }
-                }
+                initRepositoryMap();
                 JpaRepository jpaRepository = repositoryMap.get(clz.getSimpleName().toUpperCase());
                 if (jpaRepository != null) {
                     objBefore = jpaRepository.findOne((Long) id);
                 }
-
             } else {
                 //create
                 objBefore = clz.newInstance();
@@ -83,16 +69,29 @@ public class EventGenerateAspect {
 
         // after process
         Object afterId = null;
-        if (methodGetId != null) {
+        if (methodGetId != null && !(arg instanceof Event)) {
             afterId = ReflectionUtils.invokeMethod(methodGetId, result);
-
             if (!afterId.equals(id)) {
-                System.out.println(">>>>>>>>>>>>>>>新增记录");
+                eventBus.createEvent(clz, objBefore, result);
             } else {
-                System.out.println(">>>>>>>>>>>>>>>修改记录，" + objBefore + "," + result);
+                eventBus.updateEvent(clz, objBefore, result);
             }
         }
 
         return result;
+    }
+
+    private void initRepositoryMap() {
+        if (null == repositoryMap) {
+            repositoryMap = new HashMap<>();
+            String[] beanNames = appContext.getBeanNamesForType(JpaRepository.class);
+            for (String beanName : beanNames) {
+                Object bean = appContext.getBean(beanName);
+                if (beanName.endsWith(REPOSITORY_SUFFIX) && null != bean) {
+                    String clzName = beanName.replace(REPOSITORY_SUFFIX, "").toUpperCase();
+                    repositoryMap.put(clzName, (JpaRepository) bean);
+                }
+            }
+        }
     }
 }
