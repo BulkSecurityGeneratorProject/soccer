@@ -1,6 +1,5 @@
 package gl.linpeng.soccer.aop.event;
 
-import gl.linpeng.soccer.domain.Association;
 import gl.linpeng.soccer.repository.AssociationRepository;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -65,14 +64,16 @@ public class EventGenerateAspect {
                     }
                 }
             }
-            Association association = associationRepository.findOne((Long) id);
-            objBefore = repositoryMap.get(clz.getSimpleName().toUpperCase()).findOne((Long) id);
+            JpaRepository jpaRepository = repositoryMap.get(clz.getSimpleName().toUpperCase());
+            if(jpaRepository != null){
+                objBefore = jpaRepository.findOne((Long) id);
+            }
+
         } else {
             //create
             objBefore = clz.newInstance();
             BeanUtils.copyProperties(arg, objBefore);
         }
-        System.out.println("====before " + objBefore);
         // begin process
         result = joinPoint.proceed();
 
