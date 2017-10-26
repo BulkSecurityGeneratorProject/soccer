@@ -48,41 +48,49 @@ public class EventGenerateAspect {
 
         Object objBefore = null;
         Object arg = args[0];
+        Object id = null;
         Method methodGetId = ReflectionUtils.findMethod(clz, METHOD_GET_ID);
-        Object id = ReflectionUtils.invokeMethod(methodGetId, arg);
-        if (id != null) {
-            // update
-            if (null == repositoryMap) {
-                repositoryMap = new HashMap<>();
-                String[] beanNames = appContext.getBeanNamesForType(JpaRepository.class);
-                // Arrays.sort(beanNames);
-                for (String beanName : beanNames) {
-                    Object bean = appContext.getBean(beanName);
-                    if (beanName.endsWith(REPOSITORY_SUFFIX) && null != bean) {
-                        String clzName = beanName.replace(REPOSITORY_SUFFIX, "").toUpperCase();
-                        repositoryMap.put(clzName, (JpaRepository) bean);
+        if (methodGetId != null) {
+            id = ReflectionUtils.invokeMethod(methodGetId, arg);
+            if (id != null) {
+                // update
+                if (null == repositoryMap) {
+                    repositoryMap = new HashMap<>();
+                    String[] beanNames = appContext.getBeanNamesForType(JpaRepository.class);
+                    // Arrays.sort(beanNames);
+                    for (String beanName : beanNames) {
+                        Object bean = appContext.getBean(beanName);
+                        if (beanName.endsWith(REPOSITORY_SUFFIX) && null != bean) {
+                            String clzName = beanName.replace(REPOSITORY_SUFFIX, "").toUpperCase();
+                            repositoryMap.put(clzName, (JpaRepository) bean);
+                        }
                     }
                 }
-            }
-            JpaRepository jpaRepository = repositoryMap.get(clz.getSimpleName().toUpperCase());
-            if(jpaRepository != null){
-                objBefore = jpaRepository.findOne((Long) id);
-            }
+                JpaRepository jpaRepository = repositoryMap.get(clz.getSimpleName().toUpperCase());
+                if (jpaRepository != null) {
+                    objBefore = jpaRepository.findOne((Long) id);
+                }
 
-        } else {
-            //create
-            objBefore = clz.newInstance();
-            BeanUtils.copyProperties(arg, objBefore);
+            } else {
+                //create
+                objBefore = clz.newInstance();
+                BeanUtils.copyProperties(arg, objBefore);
+            }
         }
+
         // begin process
         result = joinPoint.proceed();
 
         // after process
-        Object afterId = ReflectionUtils.invokeMethod(methodGetId, result);
-        if (!afterId.equals(id)) {
-            System.out.println(">>>>>>>>>>>>>>>新增记录");
-        } else {
-            System.out.println(">>>>>>>>>>>>>>>修改记录，" + objBefore + "," + result);
+        Object afterId = null;
+        if (methodGetId != null) {
+            afterId = ReflectionUtils.invokeMethod(methodGetId, result);
+
+            if (!afterId.equals(id)) {
+                System.out.println(">>>>>>>>>>>>>>>新增记录");
+            } else {
+                System.out.println(">>>>>>>>>>>>>>>修改记录，" + objBefore + "," + result);
+            }
         }
 
         return result;
