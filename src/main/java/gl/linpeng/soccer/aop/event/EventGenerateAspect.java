@@ -11,6 +11,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.util.ReflectionUtils;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +31,12 @@ public class EventGenerateAspect {
 
     @Resource
     private ApplicationContext appContext;
+
     @Resource
     private EventBus eventBus;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     private Map<String, JpaRepository> repositoryMap;
 
@@ -50,18 +56,24 @@ public class EventGenerateAspect {
         Method methodGetId = ReflectionUtils.findMethod(clz, METHOD_GET_ID);
         if (methodGetId != null && !(arg instanceof Event)) {
             id = ReflectionUtils.invokeMethod(methodGetId, arg);
+            Object sourceObj = clz.newInstance();
+            objBefore = sourceObj;
+
             if (id != null) {
                 // update
                 initRepositoryMap();
                 JpaRepository jpaRepository = repositoryMap.get(clz.getSimpleName().toUpperCase());
                 if (jpaRepository != null) {
-                    objBefore = jpaRepository.findOne((Long) id);
+                    // clear entity in persistence context
+                    entityManager.clear();
+                    sourceObj = jpaRepository.findOne((Long) id);
                 }
             } else {
                 //create
-                objBefore = clz.newInstance();
-                BeanUtils.copyProperties(arg, objBefore);
+                sourceObj = arg;
             }
+            // high level copy
+            BeanUtils.copyProperties(sourceObj, objBefore);
         }
 
         // begin process
@@ -77,7 +89,6 @@ public class EventGenerateAspect {
                 eventBus.onUpdate(clz, objBefore, result);
             }
         }
-
         return result;
     }
 
