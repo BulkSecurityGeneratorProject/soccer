@@ -21,6 +21,10 @@ public final class Constants {
 
     public static final String SYSTEM_ACCOUNT = "system";
 
+    public static final String SOCCER_STATUS_OK = "OK";
+    public static final String SOCCER_STATUS_INACTIVE = "INACTIVE";
+    public static final String SOCCER_STATUS_CANCEL = "CANCEL";
+
     private Constants() {
     }
 
@@ -34,10 +38,10 @@ public final class Constants {
         ASSOCIATION_CREATE(100101, "协会成立"), ASSOCIATION_INACTIVE(100102, "协会不活动"), ASSOCIATION_CANCEL(100103, "协会注销"),
         DIVISION_CREATE(100201, "赛事创建"), DIVISION_INACTIVE(100202, "赛事暂停"), DIVISION_CANCEL(100203, "赛事注销"),
         DIVISION_EVENT_CREATE(103001, "赛事举办"), DIVISION_EVENT_INACTIVE(103002, "赛事停办"), DIVISION_EVENT_CANCEL(103003, "赛事取消"),
-        CLUB_CREATE(104001, "俱乐部注册"), CLUB_INACTIVE(104002, "俱乐部不活动"), CLUB_CANCEL(104003, "俱乐部注销"),
-        TEAM_CREATE(105001, "球队注册"), TEAM_INACTIVE(105002, "球队不活动"), TEAM_CANCEL(105003, "球队注销"),
-        PLAYER_CREATE(106001, "球员注册"), PLAYER_INACTIVE(106002, "球员不活动"), PLAYER_CANCEL(106003, "球员注销"),
-        COACH_CREATE(107001, "教练员注册"), COACH_INACTIVE(107002, "教练员不活动"), COACH_CANCEL(107003, "教练员注销"),
+        CLUB_CREATE(104001, "俱乐部注册"), CLUB_INACTIVE(104002, "俱乐部不活动"), CLUB_CANCEL(104003, "俱乐部注销"), CLUB_CHANGE_VENUE(104004, "更换主场"),
+        TEAM_CREATE(105001, "球队注册"), TEAM_INACTIVE(105002, "球队不活动"), TEAM_CANCEL(105003, "球队注销"), TEAM_JOIN_DIVISION_EVENT(500301, "球队参加赛事"), TEAM_UPDATE_DIVISION_EVENT(500302, "球队更新赛事"), TEAM_LEAVE_DIVISION_EVENT(500303, "球队离开赛事"),
+        PLAYER_CREATE(106001, "球员注册"), PLAYER_INACTIVE(106002, "球员不活动"), PLAYER_CANCEL(106003, "球员注销"), PLAYER_ACCESSION(600501, "球员入队"), PLAYER_DIMISSION(600503, "球员离队"), PLAYER_TRANSFER(600504, "球员转会"), PLAYER_LOAN(600505, "球员租借"),
+        COACH_CREATE(107001, "教练员注册"), COACH_INACTIVE(107002, "教练员不活动"), COACH_CANCEL(107003, "教练员注销"), COACH_ACCESSION(700501, "教练员上任"), COACH_DIMISSION(700503, "教练员下课"), COACH_TRANSFER(700504, "教练员转会"),
         REFEREE_CREATE(108001, "裁判注册"), REFEREE_INACTIVE(108002, "裁判不活动"), REFEREE_CANCEL(108003, "裁判注销");
         private int value;
         private String title;

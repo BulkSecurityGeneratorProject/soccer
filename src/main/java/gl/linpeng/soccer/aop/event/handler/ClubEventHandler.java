@@ -7,6 +7,8 @@ import gl.linpeng.soccer.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Club event handler
@@ -38,6 +40,14 @@ public class ClubEventHandler implements IEventHandler {
 
     @Override
     public void handleUpdate(Class clz, Object before, Object after) {
-
+        Club clubAfter = (Club) after;
+        Club clubBefore = (Club) before;
+        if (!Objects.equals(clubAfter.getVenue(), clubBefore.getVenue())) {
+            Event event = new Event();
+            event.setAssociation(clubAfter.getAssociation());
+            event.setEventTime(LocalDate.now());
+            event.setEventType(Constants.SoccerEventType.CLUB_CHANGE_VENUE.getValue());
+            eventRepository.save(event);
+        }
     }
 }
