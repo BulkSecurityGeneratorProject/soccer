@@ -1,38 +1,39 @@
 package gl.linpeng.soccer.aop.event.handler;
 
 import gl.linpeng.soccer.config.Constants;
-import gl.linpeng.soccer.domain.Association;
+import gl.linpeng.soccer.domain.Coach;
 import gl.linpeng.soccer.domain.Event;
 import gl.linpeng.soccer.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
 
 /**
- * Association event handler
+ * Player event handler
  *
  * @author lin.peng
- * @since 2017-10-26
+ * @since 2017-10-27
  */
 @Service
-public class AssociationEventHandler implements IEventHandler {
+public class CoachEventHandler implements IEventHandler {
 
     @Resource
     private EventRepository eventRepository;
 
     @Override
     public boolean isSupported(Class clz) {
-        return clz.equals(Association.class);
+        return clz.equals(Coach.class);
     }
 
     @Override
     public void handleCreate(Class clz, Object before, Object after) {
-        // create association event
         Event event = new Event();
-        Association association = (Association) after;
-        event.setAssociation(association);
-        event.setEventTime(association.getCreateAt());
-        event.setEventType(Constants.SoccerEventType.ASSOCIATION_CREATE.getValue());
+        Coach coach = (Coach) after;
+        event.setAssociation(coach.getAssociation());
+        event.setCoach(coach);
+        event.setEventTime(LocalDate.now());
+        event.setEventType(Constants.SoccerEventType.COACH_CREATE.getValue());
         eventRepository.save(event);
     }
 

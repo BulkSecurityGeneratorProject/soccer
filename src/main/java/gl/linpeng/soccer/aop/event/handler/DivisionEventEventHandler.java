@@ -1,38 +1,38 @@
 package gl.linpeng.soccer.aop.event.handler;
 
 import gl.linpeng.soccer.config.Constants;
-import gl.linpeng.soccer.domain.Association;
+import gl.linpeng.soccer.domain.DivisionEvent;
 import gl.linpeng.soccer.domain.Event;
 import gl.linpeng.soccer.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
 
 /**
- * Association event handler
+ * Division-event event handler
  *
  * @author lin.peng
- * @since 2017-10-26
+ * @since 2017-10-27
  */
 @Service
-public class AssociationEventHandler implements IEventHandler {
-
+public class DivisionEventEventHandler implements IEventHandler {
     @Resource
     private EventRepository eventRepository;
 
     @Override
     public boolean isSupported(Class clz) {
-        return clz.equals(Association.class);
+        return clz.equals(DivisionEvent.class);
     }
 
     @Override
     public void handleCreate(Class clz, Object before, Object after) {
-        // create association event
         Event event = new Event();
-        Association association = (Association) after;
-        event.setAssociation(association);
-        event.setEventTime(association.getCreateAt());
-        event.setEventType(Constants.SoccerEventType.ASSOCIATION_CREATE.getValue());
+        DivisionEvent divisionEvent = (DivisionEvent) after;
+        //event.setAssociation(divisionEvent.getDivision().getAssociation());
+        event.setDivisionEvent(divisionEvent);
+        event.setEventTime(LocalDate.now());
+        event.setEventType(Constants.SoccerEventType.DIVISION_EVENT_CREATE.getValue());
         eventRepository.save(event);
     }
 

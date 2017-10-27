@@ -23,4 +23,44 @@ public final class Constants {
 
     private Constants() {
     }
+
+    /**
+     * Soccer Event type:
+     * first level code include: association(10),division(20),division event(30),club(40),team(50),player(60),coach(70),referee(80)
+     * second level code include: association(01),division(02),division event(03),club(04),team(05),player(06),coach(07),referee(08)
+     * third level code include: create(01),update(02),cancel(03),transfer(转会04),loan(租借05),renew(续约06),league prize(联赛奖项20),cup prize(杯赛奖项30)
+     */
+    public enum SoccerEventType {
+        ASSOCIATION_CREATE(100101, "协会成立"), ASSOCIATION_INACTIVE(100102, "协会不活动"), ASSOCIATION_CANCEL(100103, "协会注销"),
+        DIVISION_CREATE(100201, "赛事创建"), DIVISION_INACTIVE(100202, "赛事暂停"), DIVISION_CANCEL(100203, "赛事注销"),
+        DIVISION_EVENT_CREATE(103001, "赛事举办"), DIVISION_EVENT_INACTIVE(103002, "赛事停办"), DIVISION_EVENT_CANCEL(103003, "赛事取消"),
+        CLUB_CREATE(104001, "俱乐部注册"), CLUB_INACTIVE(104002, "俱乐部不活动"), CLUB_CANCEL(104003, "俱乐部注销"),
+        TEAM_CREATE(105001, "球队注册"), TEAM_INACTIVE(105002, "球队不活动"), TEAM_CANCEL(105003, "球队注销"),
+        PLAYER_CREATE(106001, "球员注册"), PLAYER_INACTIVE(106002, "球员不活动"), PLAYER_CANCEL(106003, "球员注销"),
+        COACH_CREATE(107001, "教练员注册"), COACH_INACTIVE(107002, "教练员不活动"), COACH_CANCEL(107003, "教练员注销"),
+        REFEREE_CREATE(108001, "裁判注册"), REFEREE_INACTIVE(108002, "裁判不活动"), REFEREE_CANCEL(108003, "裁判注销");
+        private int value;
+        private String title;
+
+        SoccerEventType(int value, String title) {
+            this.title = title;
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+    }
 }

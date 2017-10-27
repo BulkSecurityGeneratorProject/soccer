@@ -1,6 +1,6 @@
 package gl.linpeng.soccer.aop.event;
 
-import gl.linpeng.soccer.aop.event.handler.EventHandler;
+import gl.linpeng.soccer.aop.event.handler.IEventHandler;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +20,14 @@ public class EventBus {
     @Resource
     private ApplicationContext appContext;
 
-    private Set<EventHandler> eventHandlers;
+    private Set<IEventHandler> eventHandlers;
 
     private void init() {
         if (eventHandlers == null) {
             eventHandlers = new HashSet<>();
-            String[] beanNames = appContext.getBeanNamesForType(EventHandler.class);
+            String[] beanNames = appContext.getBeanNamesForType(IEventHandler.class);
             for (String beanName : beanNames) {
-                EventHandler handler = (EventHandler) appContext.getBean(beanName);
+                IEventHandler handler = (IEventHandler) appContext.getBean(beanName);
                 eventHandlers.add(handler);
             }
         }
@@ -43,7 +43,7 @@ public class EventBus {
      */
     public void onCreate(Class clz, Object objBefore, Object objAfter) {
         init();
-        for (EventHandler handler : eventHandlers) {
+        for (IEventHandler handler : eventHandlers) {
             if (handler.isSupported(clz)) {
                 handler.handleCreate(clz, objBefore, objAfter);
             }
@@ -59,7 +59,7 @@ public class EventBus {
      */
     public void onUpdate(Class clz, Object objBefore, Object objAfter) {
         init();
-        for (EventHandler handler : eventHandlers) {
+        for (IEventHandler handler : eventHandlers) {
             if (handler.isSupported(clz)) {
                 handler.handleUpdate(clz, objBefore, objAfter);
             }

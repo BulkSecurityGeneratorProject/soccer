@@ -1,7 +1,7 @@
 package gl.linpeng.soccer.aop.event.handler;
 
 import gl.linpeng.soccer.config.Constants;
-import gl.linpeng.soccer.domain.Association;
+import gl.linpeng.soccer.domain.Club;
 import gl.linpeng.soccer.domain.Event;
 import gl.linpeng.soccer.repository.EventRepository;
 import org.springframework.stereotype.Service;
@@ -9,30 +9,30 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * Association event handler
+ * Club event handler
  *
  * @author lin.peng
- * @since 2017-10-26
+ * @since 2017-10-27
  */
 @Service
-public class AssociationEventHandler implements IEventHandler {
+public class ClubEventHandler implements IEventHandler {
 
     @Resource
     private EventRepository eventRepository;
 
     @Override
     public boolean isSupported(Class clz) {
-        return clz.equals(Association.class);
+        return clz.equals(Club.class);
     }
 
     @Override
     public void handleCreate(Class clz, Object before, Object after) {
-        // create association event
         Event event = new Event();
-        Association association = (Association) after;
-        event.setAssociation(association);
-        event.setEventTime(association.getCreateAt());
-        event.setEventType(Constants.SoccerEventType.ASSOCIATION_CREATE.getValue());
+        Club club = (Club) after;
+        event.setAssociation(club.getAssociation());
+        event.setClub(club);
+        event.setEventTime(club.getCreateAt());
+        event.setEventType(Constants.SoccerEventType.CLUB_CREATE.getValue());
         eventRepository.save(event);
     }
 

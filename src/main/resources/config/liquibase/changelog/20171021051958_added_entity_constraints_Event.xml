@@ -7,7 +7,8 @@
         Added the constraints for entity Event.
     -->
     <changeSet id="20171021051958-2" author="jhipster">
-        
+
+        <!--
         <addForeignKeyConstraint baseColumnNames="association_id"
                                  baseTableName="event"
                                  constraintName="fk_event_association_id"
@@ -73,6 +74,6 @@
                                  constraintName="fk_event_target_team_id"
                                  referencedColumnNames="id"
                                  referencedTableName="team"/>
-
+        -->
     </changeSet>
 </databaseChangeLog>

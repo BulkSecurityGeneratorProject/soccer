@@ -6,7 +6,7 @@ package gl.linpeng.soccer.aop.event.handler;
  * @author lin.peng
  * @since 2017-10-26
  */
-public interface EventHandler {
+public interface IEventHandler {
 
     /**
      * Determine is this class supported
