@@ -72,9 +72,9 @@ public class EventGenerateAspect {
         if (methodGetId != null && !(arg instanceof Event)) {
             afterId = ReflectionUtils.invokeMethod(methodGetId, result);
             if (!afterId.equals(id)) {
-                eventBus.createEvent(clz, objBefore, result);
+                eventBus.onCreate(clz, objBefore, result);
             } else {
-                eventBus.updateEvent(clz, objBefore, result);
+                eventBus.onUpdate(clz, objBefore, result);
             }
         }
 

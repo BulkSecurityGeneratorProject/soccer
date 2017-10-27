@@ -41,7 +41,7 @@ public class EventBus {
      * @param objBefore object before
      * @param objAfter  object after
      */
-    public void createEvent(Class clz, Object objBefore, Object objAfter) {
+    public void onCreate(Class clz, Object objBefore, Object objAfter) {
         init();
         for (EventHandler handler : eventHandlers) {
             if (handler.isSupported(clz)) {
@@ -57,7 +57,7 @@ public class EventBus {
      * @param objBefore object before
      * @param objAfter  object after
      */
-    public void updateEvent(Class clz, Object objBefore, Object objAfter) {
+    public void onUpdate(Class clz, Object objBefore, Object objAfter) {
         init();
         for (EventHandler handler : eventHandlers) {
             if (handler.isSupported(clz)) {
