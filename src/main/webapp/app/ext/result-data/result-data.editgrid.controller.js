@@ -12,15 +12,15 @@
         vm.save = saveRow;
         
         // 1. Get game information
-         Game.get({id:$state.params.id},function(result){
+         Game.get({id:$state.params.gid},function(result){
         	 vm.game = result;
         	// 2. Get players and result data information
              var data = {
-         			id:$state.params.id,
+         			id:$state.params.gid,
          			tid: vm.game.homeTeam.id
          	};
              var roadData = {
-          			id:$state.params.id,
+          			id:$state.params.gid,
           			tid: vm.game.roadTeam.id
           	};
              
