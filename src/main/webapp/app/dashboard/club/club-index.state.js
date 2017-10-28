@@ -234,14 +234,14 @@
         })
         .state('club-player-new', {
             parent: 'club.player',
-            url: '/new',
+            url: '/create',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/dashboard/club/player-dialog.html',
-                    controller: 'PlayerDialogController',
+                    controller: 'ClubPlayerDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
@@ -272,7 +272,7 @@
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/player/player-dialog.html',
-                    controller: 'PlayerDialogController',
+                    controller: 'ClubPlayerDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
