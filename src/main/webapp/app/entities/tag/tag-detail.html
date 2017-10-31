@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Tag</span> {{vm.tag.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{vm.tag.title}}</span>
+        </dd>
+        <dt><span>Association</span></dt>
+        <dd>
+            <a ui-sref="association-detail({id:vm.tag.association.id})">{{vm.tag.association.id}}</a>
+        </dd>
+        <dt><span>Club</span></dt>
+        <dd>
+            <a ui-sref="club-detail({id:vm.tag.club.id})">{{vm.tag.club.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="tag-detail.edit({id:vm.tag.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

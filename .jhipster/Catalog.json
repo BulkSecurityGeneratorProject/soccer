@@ -1,0 +1,53 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "parent",
+      "otherEntityName": "catalog",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "association",
+      "otherEntityName": "association",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "club",
+      "otherEntityName": "club",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "relationshipName": "article",
+      "otherEntityName": "article",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "catalog"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "openComment",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20171031132245",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "catalog"
+}

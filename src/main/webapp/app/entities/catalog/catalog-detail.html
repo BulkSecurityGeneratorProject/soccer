@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Catalog</span> {{vm.catalog.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{vm.catalog.title}}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{vm.catalog.type}}</span>
+        </dd>
+        <dt><span>Open Comment</span></dt>
+        <dd>
+            <span>{{vm.catalog.openComment}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.catalog.status}}</span>
+        </dd>
+        <dt><span>Parent</span></dt>
+        <dd>
+            <a ui-sref="catalog-detail({id:vm.catalog.parent.id})">{{vm.catalog.parent.id}}</a>
+        </dd>
+        <dt><span>Association</span></dt>
+        <dd>
+            <a ui-sref="association-detail({id:vm.catalog.association.id})">{{vm.catalog.association.id}}</a>
+        </dd>
+        <dt><span>Club</span></dt>
+        <dd>
+            <a ui-sref="club-detail({id:vm.catalog.club.id})">{{vm.catalog.club.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="catalog-detail.edit({id:vm.catalog.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

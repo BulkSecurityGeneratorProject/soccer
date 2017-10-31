@@ -1,0 +1,72 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "catalog",
+      "otherEntityName": "catalog",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "association",
+      "otherEntityName": "association",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "club",
+      "otherEntityName": "club",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "tag",
+      "otherEntityName": "tag",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "summary",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "author",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "openComment",
+      "fieldType": "Boolean"
+    }
+  ],
+  "changelogDate": "20171031132246",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "article"
+}

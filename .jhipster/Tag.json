@@ -1,0 +1,35 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "association",
+      "otherEntityName": "association",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "club",
+      "otherEntityName": "club",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "relationshipName": "article",
+      "otherEntityName": "article",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "tag"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20171031132247",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "tag"
+}

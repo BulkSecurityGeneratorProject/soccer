@@ -1,0 +1,98 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myArticleLabel">Create or edit a Article</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.article.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.article.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_summary">Summary</label>
+            <input type="text" class="form-control" name="summary" id="field_summary"
+                    ng-model="vm.article.summary"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_content">Content</label>
+            <input type="text" class="form-control" name="content" id="field_content"
+                    ng-model="vm.article.content"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_picture">Picture</label>
+            <input type="text" class="form-control" name="picture" id="field_picture"
+                    ng-model="vm.article.picture"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_author">Author</label>
+            <input type="text" class="form-control" name="author" id="field_author"
+                    ng-model="vm.article.author"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createAt">Create At</label>
+                <div class="input-group">
+                    <input id="field_createAt" type="text" class="form-control" name="createAt" uib-datepicker-popup="{{dateformat}}" ng-model="vm.article.createAt" is-open="vm.datePickerOpenStatus.createAt"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_type">Type</label>
+            <input type="number" class="form-control" name="type" id="field_type"
+                    ng-model="vm.article.type"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <input type="number" class="form-control" name="status" id="field_status"
+                    ng-model="vm.article.status"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_openComment">Open Comment</label>
+            <input type="checkbox" class="form-control" name="openComment" id="field_openComment"
+                    ng-model="vm.article.openComment"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_catalog">Catalog</label>
+            <select class="form-control" id="field_catalog" multiple name="catalog" ng-model="vm.article.catalogs" ng-options="catalog as catalog.id for catalog in vm.catalogs track by catalog.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="field_association">Association</label>
+            <select class="form-control" id="field_association" name="association" ng-model="vm.article.association" ng-options="association as association.id for association in vm.associations track by association.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_club">Club</label>
+            <select class="form-control" id="field_club" name="club" ng-model="vm.article.club" ng-options="club as club.id for club in vm.clubs track by club.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_tag">Tag</label>
+            <select class="form-control" id="field_tag" multiple name="tag" ng-model="vm.article.tags" ng-options="tag as tag.id for tag in vm.tags track by tag.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,90 @@
+<div>
+    <h2>Articles</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="article.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Article
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Summary</span></th>
+                    <th><span>Content</span></th>
+                    <th><span>Picture</span></th>
+                    <th><span>Author</span></th>
+                    <th><span>Create At</span></th>
+                    <th><span>Type</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>Open Comment</span></th>
+                    <th><span>Catalog</span></th>
+                    <th><span>Association</span></th>
+                    <th><span>Club</span></th>
+                    <th><span>Tag</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="article in vm.articles track by article.id">
+                    <td><a ui-sref="article-detail({id:article.id})">{{article.id}}</a></td>
+                    <td>{{article.summary}}</td>
+                    <td>{{article.content}}</td>
+                    <td>{{article.picture}}</td>
+                    <td>{{article.author}}</td>
+                        <td>{{article.createAt | date:'mediumDate'}}</td>
+                    <td>{{article.type}}</td>
+                    <td>{{article.status}}</td>
+                    <td>{{article.openComment}}</td>
+                    <td>
+                        <span ng-repeat="catalog in article.catalogs">
+                            <a class="form-control-static" ui-sref="catalog-detail({id: catalog.id})">{{catalog.id}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td>
+                        <a ui-sref="association-detail({id:article.association.id})">{{article.association.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="club-detail({id:article.club.id})">{{article.club.id}}</a>
+                    </td>
+                    <td>
+                        <span ng-repeat="tag in article.tags">
+                            <a class="form-control-static" ui-sref="tag-detail({id: tag.id})">{{tag.id}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="article-detail({id:article.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="article.edit({id:article.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="article.delete({id:article.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

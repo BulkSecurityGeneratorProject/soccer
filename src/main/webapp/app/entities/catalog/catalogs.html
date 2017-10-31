@@ -1,0 +1,74 @@
+<div>
+    <h2>Catalogs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="catalog.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Catalog
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Title</span></th>
+                    <th><span>Type</span></th>
+                    <th><span>Open Comment</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>Parent</span></th>
+                    <th><span>Association</span></th>
+                    <th><span>Club</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="catalog in vm.catalogs track by catalog.id">
+                    <td><a ui-sref="catalog-detail({id:catalog.id})">{{catalog.id}}</a></td>
+                    <td>{{catalog.title}}</td>
+                    <td>{{catalog.type}}</td>
+                    <td>{{catalog.openComment}}</td>
+                    <td>{{catalog.status}}</td>
+                    <td>
+                        <a ui-sref="catalog-detail({id:catalog.parent.id})">{{catalog.parent.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="association-detail({id:catalog.association.id})">{{catalog.association.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="club-detail({id:catalog.club.id})">{{catalog.club.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="catalog-detail({id:catalog.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="catalog.edit({id:catalog.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="catalog.delete({id:catalog.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
