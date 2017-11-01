@@ -5,15 +5,16 @@
         .module('soccerApp')
         .controller('DictDialogController', DictDialogController);
 
-    DictDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Dict', 'DictKind'];
+    DictDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Dict', 'DictKind', 'Player'];
 
-    function DictDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Dict, DictKind) {
+    function DictDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Dict, DictKind, Player) {
         var vm = this;
 
         vm.dict = entity;
         vm.clear = clear;
         vm.save = save;
         vm.dictkinds = DictKind.query();
+        vm.players = Player.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('DictDetailController', DictDetailController);
 
-    DictDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Dict', 'DictKind'];
+    DictDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Dict', 'DictKind', 'Player'];
 
-    function DictDetailController($scope, $rootScope, $stateParams, previousState, entity, Dict, DictKind) {
+    function DictDetailController($scope, $rootScope, $stateParams, previousState, entity, Dict, DictKind, Player) {
         var vm = this;
 
         vm.dict = entity;
