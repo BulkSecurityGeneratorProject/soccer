@@ -101,15 +101,16 @@ public class TeamResourceExt {
 						+ "sum(CASE rf.name WHEN '助攻' THEN rd.value END)  assist,"
 						+ "sum(CASE rf.name WHEN '黄牌' THEN rd.value END)  yellow,"
 						+ "sum(CASE rf.name WHEN '红牌' THEN rd.value END)  red"
-						+ " from Team tm "
+						+ " from Player p "
+						+ "left outer join Team tm "
 						+ "left outer join squad sq "
 						+ "left outer join squad_player sp "
-						+ "left outer join player p on p.id = sp.player_id "
 						+ "left outer join Result_data rd "
 						+ "left outer join result_field rf on rf.id = rd.result_field_id "
 						+ "on rd.squad_player_id = sp.id "
 						+ "on sp.squad_id = sq.id " + "on sq.team_id = tm.id"
-						+ " where tm.id='" + id + "'"
+						+" on p.team_id = tm.id"
+						+ " where p.id = sp.player_id and p.team_id='" + id + "'"
 						+ "group by p.id,p.name,p.birth order by p.name");
 		Query query = entityManager.createNativeQuery(sql);
 		return query.getResultList();
