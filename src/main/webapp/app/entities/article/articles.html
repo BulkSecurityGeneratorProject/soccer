@@ -17,20 +17,18 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr>
-                    <th><span>ID</span></th>
-                    <th><span>Summary</span></th>
-                    <th><span>Content</span></th>
-                    <th><span>Picture</span></th>
-                    <th><span>Author</span></th>
-                    <th><span>Create At</span></th>
-                    <th><span>Type</span></th>
-                    <th><span>Status</span></th>
-                    <th><span>Open Comment</span></th>
-                    <th><span>Catalog</span></th>
-                    <th><span>Association</span></th>
-                    <th><span>Club</span></th>
-                    <th><span>Tag</span></th>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="summary"><span>Summary</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="content"><span>Content</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="picture"><span>Picture</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="author"><span>Author</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createAt"><span>Create At</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span>Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="openComment"><span>Open Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="association.id"><span>Association</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="club.id"><span>Club</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -46,20 +44,10 @@
                     <td>{{article.status}}</td>
                     <td>{{article.openComment}}</td>
                     <td>
-                        <span ng-repeat="catalog in article.catalogs">
-                            <a class="form-control-static" ui-sref="catalog-detail({id: catalog.id})">{{catalog.id}}</a>{{$last ? '' : ', '}}
-                        </span>
-                    </td>
-                    <td>
                         <a ui-sref="association-detail({id:article.association.id})">{{article.association.id}}</a>
                     </td>
                     <td>
                         <a ui-sref="club-detail({id:article.club.id})">{{article.club.id}}</a>
-                    </td>
-                    <td>
-                        <span ng-repeat="tag in article.tags">
-                            <a class="form-control-static" ui-sref="tag-detail({id: tag.id})">{{tag.id}}</a>{{$last ? '' : ', '}}
-                        </span>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
@@ -86,5 +74,9 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
     </div>
 </div>
