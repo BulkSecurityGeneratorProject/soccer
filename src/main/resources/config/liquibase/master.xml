@@ -27,11 +27,12 @@
     <include file="classpath:config/liquibase/changelog/20171021051122_added_entity_Coach.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171021051123_added_entity_GameReferee.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171021051958_added_entity_Event.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20171023140643_added_entity_PlayerPosition.xml" relativeToChangelogFile="false"/>
+    <!--<include file="classpath:config/liquibase/changelog/20171023140643_added_entity_PlayerPosition.xml" relativeToChangelogFile="false"/>-->
     <include file="classpath:config/liquibase/changelog/20171031132245_added_entity_Catalog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171031132246_added_entity_Article.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171031132247_added_entity_Tag.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20171031132248_added_entity_ArticleComment.xml" relativeToChangelogFile="false"/>
+    <!--<include file="classpath:config/liquibase/changelog/20171031132248_added_entity_ArticleComment.xml" relativeToChangelogFile="false"/>-->
+    <include file="classpath:config/liquibase/changelog/20171101122055_added_entity_Comment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20160913082458_added_entity_constraints_Club.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160913082457_added_entity_constraints_Team.xml" relativeToChangelogFile="false"/>
@@ -51,11 +52,12 @@
     <include file="classpath:config/liquibase/changelog/20171021051122_added_entity_constraints_Coach.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171021051123_added_entity_constraints_GameReferee.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171021051958_added_entity_constraints_Event.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20171023140643_added_entity_constraints_PlayerPosition.xml" relativeToChangelogFile="false"/>
+    <!--<include file="classpath:config/liquibase/changelog/20171023140643_added_entity_constraints_PlayerPosition.xml" relativeToChangelogFile="false"/>-->
     <include file="classpath:config/liquibase/changelog/20171031132245_added_entity_constraints_Catalog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171031132246_added_entity_constraints_Article.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171031132247_added_entity_constraints_Tag.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20171031132248_added_entity_constraints_ArticleComment.xml" relativeToChangelogFile="false"/>
+    <!--<include file="classpath:config/liquibase/changelog/20171031132248_added_entity_constraints_ArticleComment.xml" relativeToChangelogFile="false"/>-->
+    <include file="classpath:config/liquibase/changelog/20171101122055_added_entity_constraints_Comment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <include file="classpath:config/liquibase/changelog/00000000000002_initial_schema.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>
