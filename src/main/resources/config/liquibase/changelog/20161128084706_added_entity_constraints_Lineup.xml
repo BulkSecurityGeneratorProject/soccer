@@ -26,11 +26,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="division_event"/>
 
-        <addForeignKeyConstraint baseColumnNames="player_position_id"
-                                 baseTableName="lineup"
-                                 constraintName="fk_lineup_player_position_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="dict"/>
-
     </changeSet>
 </databaseChangeLog>

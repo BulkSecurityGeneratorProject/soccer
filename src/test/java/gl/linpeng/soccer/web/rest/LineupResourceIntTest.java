@@ -76,8 +76,8 @@ public class LineupResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Lineup createEntity(EntityManager em) {
-        Lineup lineup = new Lineup();
-        lineup.setPlayerNumber(DEFAULT_PLAYER_NUMBER);
+        Lineup lineup = new Lineup()
+                .playerNumber(DEFAULT_PLAYER_NUMBER);
         return lineup;
     }
 
@@ -150,7 +150,8 @@ public class LineupResourceIntTest {
 
         // Update the lineup
         Lineup updatedLineup = lineupRepository.findOne(lineup.getId());
-        updatedLineup.setPlayerNumber(UPDATED_PLAYER_NUMBER);
+        updatedLineup
+                .playerNumber(UPDATED_PLAYER_NUMBER);
 
         restLineupMockMvc.perform(put("/api/lineups")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)

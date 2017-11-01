@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('LineupDetailController', LineupDetailController);
 
-    LineupDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Lineup', 'Player', 'Team', 'DivisionEvent', 'Dict'];
+    LineupDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Lineup', 'Player', 'Team', 'DivisionEvent'];
 
-    function LineupDetailController($scope, $rootScope, $stateParams, previousState, entity, Lineup, Player, Team, DivisionEvent, Dict) {
+    function LineupDetailController($scope, $rootScope, $stateParams, previousState, entity, Lineup, Player, Team, DivisionEvent) {
         var vm = this;
 
         vm.lineup = entity;

@@ -1,6 +1,5 @@
 package gl.linpeng.soccer.domain;
 
-import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,12 +8,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * <Enter note text here>                                                      
- * 
+ * A Lineup.
  */
-@ApiModel(description = ""
-    + "<Enter note text here>                                                 "
-    + "")
 @Entity
 @Table(name = "lineup")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -38,9 +33,6 @@ public class Lineup implements Serializable {
     @ManyToOne
     private DivisionEvent divisionEvent;
 
-    @ManyToOne
-    private Dict playerPosition;
-
     public Long getId() {
         return id;
     }
@@ -53,12 +45,22 @@ public class Lineup implements Serializable {
         return playerNumber;
     }
 
+    public Lineup playerNumber(Integer playerNumber) {
+        this.playerNumber = playerNumber;
+        return this;
+    }
+
     public void setPlayerNumber(Integer playerNumber) {
         this.playerNumber = playerNumber;
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Lineup player(Player player) {
+        this.player = player;
+        return this;
     }
 
     public void setPlayer(Player player) {
@@ -69,6 +71,11 @@ public class Lineup implements Serializable {
         return team;
     }
 
+    public Lineup team(Team team) {
+        this.team = team;
+        return this;
+    }
+
     public void setTeam(Team team) {
         this.team = team;
     }
@@ -77,16 +84,13 @@ public class Lineup implements Serializable {
         return divisionEvent;
     }
 
+    public Lineup divisionEvent(DivisionEvent divisionEvent) {
+        this.divisionEvent = divisionEvent;
+        return this;
+    }
+
     public void setDivisionEvent(DivisionEvent divisionEvent) {
         this.divisionEvent = divisionEvent;
-    }
-
-    public Dict getPlayerPosition() {
-        return playerPosition;
-    }
-
-    public void setPlayerPosition(Dict dict) {
-        this.playerPosition = dict;
     }
 
     @Override

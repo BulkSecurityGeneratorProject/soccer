@@ -1,37 +1,27 @@
 {
+  "fluentMethods": true,
   "relationships": [
     {
-      "relationshipId": 1,
       "relationshipType": "many-to-one",
       "relationshipName": "player",
       "otherEntityName": "player",
       "otherEntityField": "id"
     },
     {
-      "relationshipId": 2,
       "relationshipType": "many-to-one",
       "relationshipName": "team",
       "otherEntityName": "team",
       "otherEntityField": "id"
     },
     {
-      "relationshipId": 3,
       "relationshipType": "many-to-one",
       "relationshipName": "divisionEvent",
       "otherEntityName": "divisionEvent",
-      "otherEntityField": "id"
-    },
-    {
-      "relationshipId": 4,
-      "relationshipType": "many-to-one",
-      "relationshipName": "playerPosition",
-      "otherEntityName": "dict",
       "otherEntityField": "id"
     }
   ],
   "fields": [
     {
-      "fieldId": 1,
       "fieldName": "playerNumber",
       "fieldType": "Integer"
     }
@@ -40,6 +30,5 @@
   "dto": "no",
   "pagination": "pagination",
   "service": "no",
-  "javadoc": "<Enter note text here>",
   "entityTableName": "lineup"
 }
