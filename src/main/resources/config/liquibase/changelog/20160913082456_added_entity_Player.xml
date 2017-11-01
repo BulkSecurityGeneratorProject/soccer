@@ -49,8 +49,23 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="association_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="player_positions">
+            <column name="positions_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="players_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="players_id, positions_id" tableName="player_positions"/>
         
     </changeSet>
 </databaseChangeLog>

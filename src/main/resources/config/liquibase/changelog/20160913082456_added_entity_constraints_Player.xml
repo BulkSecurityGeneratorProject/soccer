@@ -20,5 +20,22 @@
                                  referencedColumnNames="id"
                                  referencedTableName="dict"/>
 
+        <addForeignKeyConstraint baseColumnNames="players_id"
+                                 baseTableName="player_positions"
+                                 constraintName="fk_player_positions_players_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="player"/>
+        <addForeignKeyConstraint baseColumnNames="positions_id"
+                                 baseTableName="player_positions"
+                                 constraintName="fk_player_positions_positions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dict"/>
+        
+        <addForeignKeyConstraint baseColumnNames="association_id"
+                                 baseTableName="player"
+                                 constraintName="fk_player_association_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="association"/>
+
     </changeSet>
 </databaseChangeLog>

@@ -77,9 +77,9 @@ public class DictResourceIntTest {
      * if they test an entity which requires the current entity.
      */
     public static Dict createEntity(EntityManager em) {
-        Dict dict = new Dict();
-        dict.setName(DEFAULT_NAME);
-        dict.setCode(DEFAULT_CODE);
+        Dict dict = new Dict()
+                .name(DEFAULT_NAME)
+                .code(DEFAULT_CODE);
         return dict;
     }
 
@@ -155,8 +155,9 @@ public class DictResourceIntTest {
 
         // Update the dict
         Dict updatedDict = dictRepository.findOne(dict.getId());
-        updatedDict.setName(UPDATED_NAME);
-        updatedDict.setCode(UPDATED_CODE);
+        updatedDict
+                .name(UPDATED_NAME)
+                .code(UPDATED_CODE);
 
         restDictMockMvc.perform(put("/api/dicts")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)

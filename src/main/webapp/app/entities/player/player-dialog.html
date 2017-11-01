@@ -60,6 +60,16 @@
                 <option value=""></option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="field_positions">Positions</label>
+            <select class="form-control" id="field_positions" multiple name="positions" ng-model="vm.player.positions" ng-options="dict as dict.id for dict in vm.dicts track by dict.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="field_association">Association</label>
+            <select class="form-control" id="field_association" name="association" ng-model="vm.player.association" ng-options="association as association.id for association in vm.associations track by association.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

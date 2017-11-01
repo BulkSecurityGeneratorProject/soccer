@@ -32,6 +32,16 @@
         <dd>
             <a ui-sref="dict-detail({id:vm.player.status.id})">{{vm.player.status.id}}</a>
         </dd>
+        <dt><span>Positions</span></dt>
+        <dd>
+            <span ng-repeat="positions in vm.player.positions">
+                <a ui-sref="dict-detail({id: positions.id})">{{positions.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span>Association</span></dt>
+        <dd>
+            <a ui-sref="association-detail({id:vm.player.association.id})">{{vm.player.association.id}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

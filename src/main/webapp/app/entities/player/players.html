@@ -26,6 +26,7 @@
                     <th jh-sort-by="picture"><span>Picture</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="team.id"><span>Team</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="status.id"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="association.id"><span>Association</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -42,6 +43,9 @@
                     </td>
                     <td>
                         <a ui-sref="dict-detail({id:player.status.id})">{{player.status.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="association-detail({id:player.association.id})">{{player.association.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

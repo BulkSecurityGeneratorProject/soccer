@@ -14,10 +14,18 @@
       "otherEntityField": "id"
     },
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-many",
+      "otherEntityRelationshipName": "player",
       "relationshipName": "positions",
-      "otherEntityName": "playerPosition",
-      "otherEntityRelationshipName": "player"
+      "otherEntityName": "dict",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "association",
+      "otherEntityName": "association",
+      "otherEntityField": "id"
     }
   ],
   "fields": [

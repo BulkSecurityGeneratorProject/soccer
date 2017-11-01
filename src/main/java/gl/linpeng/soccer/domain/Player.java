@@ -1,6 +1,5 @@
 package gl.linpeng.soccer.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -46,10 +45,15 @@ public class Player implements Serializable {
     @ManyToOne
     private Dict status;
 
-    @OneToMany(mappedBy = "player")
-    @JsonIgnore
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<PlayerPosition> positions = new HashSet<>();
+    @JoinTable(name = "player_positions",
+               joinColumns = @JoinColumn(name="players_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="positions_id", referencedColumnName="ID"))
+    private Set<Dict> positions = new HashSet<>();
+
+    @ManyToOne
+    private Association association;
 
     public Long getId() {
         return id;
@@ -150,29 +154,42 @@ public class Player implements Serializable {
         this.status = dict;
     }
 
-    public Set<PlayerPosition> getPositions() {
+    public Set<Dict> getPositions() {
         return positions;
     }
 
-    public Player positions(Set<PlayerPosition> playerPositions) {
-        this.positions = playerPositions;
+    public Player positions(Set<Dict> dicts) {
+        this.positions = dicts;
         return this;
     }
 
-    public Player addPositions(PlayerPosition playerPosition) {
-        positions.add(playerPosition);
-        playerPosition.setPlayer(this);
+    public Player addPositions(Dict dict) {
+        positions.add(dict);
+        dict.getPlayers().add(this);
         return this;
     }
 
-    public Player removePositions(PlayerPosition playerPosition) {
-        positions.remove(playerPosition);
-        playerPosition.setPlayer(null);
+    public Player removePositions(Dict dict) {
+        positions.remove(dict);
+        dict.getPlayers().remove(this);
         return this;
     }
 
-    public void setPositions(Set<PlayerPosition> playerPositions) {
-        this.positions = playerPositions;
+    public void setPositions(Set<Dict> dicts) {
+        this.positions = dicts;
+    }
+
+    public Association getAssociation() {
+        return association;
+    }
+
+    public Player association(Association association) {
+        this.association = association;
+        return this;
+    }
+
+    public void setAssociation(Association association) {
+        this.association = association;
     }
 
     @Override

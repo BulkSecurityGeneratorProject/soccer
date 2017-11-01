@@ -111,7 +111,7 @@ public class PlayerResource {
     @Timed
     public ResponseEntity<Player> getPlayer(@PathVariable Long id) {
         log.debug("REST request to get Player : {}", id);
-        Player player = playerRepository.findOne(id);
+        Player player = playerRepository.findOneWithEagerRelationships(id);
         return Optional.ofNullable(player)
             .map(result -> new ResponseEntity<>(
                 result,
