@@ -53,6 +53,10 @@
                   file="config/liquibase/players.csv"
                   separator=";"
                   tableName="player"/>
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/player_positions.csv"
+                  separator=";"
+                  tableName="PLAYER_POSITIONS"/>      
 
             <!-- this only for testcase -->
             <loadData encoding="UTF-8"
@@ -70,6 +74,52 @@
             <loadData encoding="UTF-8"
                   file="config/liquibase/events.csv"
                   separator=";"
-                  tableName="event"/>                   
+                  tableName="event"/> 
+            <!-- content -->         
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/catalogs.csv"
+                  separator=";"
+                  tableName="catalog"/>
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/tags.csv"
+                  separator=";"
+                  tableName="tag"/>
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/articles.csv"
+                  separator=";"
+                  tableName="article"/>
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/article_tags.csv"
+                  separator=";"
+                  tableName="article_tag"/>  
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/article_catalogs.csv"
+                  separator=";"
+                  tableName="article_catalog"/>           
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/comments.csv"
+                  separator=";"
+                  tableName="s_comment"/>
+
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/timeslots.csv"
+                  separator=";"
+                  tableName="timeslot"/>
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/games.csv"
+                  separator=";"
+                  tableName="game"/>
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/squads.csv"
+                  separator=";"
+                  tableName="squad"/>
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/squad_players.csv"
+                  separator=";"
+                  tableName="squad_player"/>
+            <loadData encoding="UTF-8"
+                  file="config/liquibase/result_datas.csv"
+                  separator=";"
+                  tableName="result_data"/>                                                                      
     </changeSet>
 </databaseChangeLog>
