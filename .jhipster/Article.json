@@ -62,6 +62,10 @@
     {
       "fieldName": "openComment",
       "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "sort",
+      "fieldType": "Integer"
     }
   ],
   "changelogDate": "20171031132246",

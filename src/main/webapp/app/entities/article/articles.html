@@ -27,6 +27,7 @@
                     <th jh-sort-by="type"><span>Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="openComment"><span>Open Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sort"><span>Sort</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="association.id"><span>Association</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="club.id"><span>Club</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -43,6 +44,7 @@
                     <td>{{article.type}}</td>
                     <td>{{article.status}}</td>
                     <td>{{article.openComment}}</td>
+                    <td>{{article.sort}}</td>
                     <td>
                         <a ui-sref="association-detail({id:article.association.id})">{{article.association.id}}</a>
                     </td>

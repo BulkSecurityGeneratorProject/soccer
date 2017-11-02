@@ -62,6 +62,9 @@ public class ArticleResourceIntTest {
     private static final Boolean DEFAULT_OPEN_COMMENT = false;
     private static final Boolean UPDATED_OPEN_COMMENT = true;
 
+    private static final Integer DEFAULT_SORT = 1;
+    private static final Integer UPDATED_SORT = 2;
+
     @Inject
     private ArticleRepository articleRepository;
 
@@ -103,7 +106,8 @@ public class ArticleResourceIntTest {
                 .createAt(DEFAULT_CREATE_AT)
                 .type(DEFAULT_TYPE)
                 .status(DEFAULT_STATUS)
-                .openComment(DEFAULT_OPEN_COMMENT);
+                .openComment(DEFAULT_OPEN_COMMENT)
+                .sort(DEFAULT_SORT);
         return article;
     }
 
@@ -136,6 +140,7 @@ public class ArticleResourceIntTest {
         assertThat(testArticle.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testArticle.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testArticle.isOpenComment()).isEqualTo(DEFAULT_OPEN_COMMENT);
+        assertThat(testArticle.getSort()).isEqualTo(DEFAULT_SORT);
     }
 
     @Test
@@ -156,7 +161,8 @@ public class ArticleResourceIntTest {
                 .andExpect(jsonPath("$.[*].createAt").value(hasItem(DEFAULT_CREATE_AT.toString())))
                 .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
                 .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
-                .andExpect(jsonPath("$.[*].openComment").value(hasItem(DEFAULT_OPEN_COMMENT.booleanValue())));
+                .andExpect(jsonPath("$.[*].openComment").value(hasItem(DEFAULT_OPEN_COMMENT.booleanValue())))
+                .andExpect(jsonPath("$.[*].sort").value(hasItem(DEFAULT_SORT)));
     }
 
     @Test
@@ -177,7 +183,8 @@ public class ArticleResourceIntTest {
             .andExpect(jsonPath("$.createAt").value(DEFAULT_CREATE_AT.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
-            .andExpect(jsonPath("$.openComment").value(DEFAULT_OPEN_COMMENT.booleanValue()));
+            .andExpect(jsonPath("$.openComment").value(DEFAULT_OPEN_COMMENT.booleanValue()))
+            .andExpect(jsonPath("$.sort").value(DEFAULT_SORT));
     }
 
     @Test
@@ -205,7 +212,8 @@ public class ArticleResourceIntTest {
                 .createAt(UPDATED_CREATE_AT)
                 .type(UPDATED_TYPE)
                 .status(UPDATED_STATUS)
-                .openComment(UPDATED_OPEN_COMMENT);
+                .openComment(UPDATED_OPEN_COMMENT)
+                .sort(UPDATED_SORT);
 
         restArticleMockMvc.perform(put("/api/articles")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -224,6 +232,7 @@ public class ArticleResourceIntTest {
         assertThat(testArticle.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testArticle.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testArticle.isOpenComment()).isEqualTo(UPDATED_OPEN_COMMENT);
+        assertThat(testArticle.getSort()).isEqualTo(UPDATED_SORT);
     }
 
     @Test

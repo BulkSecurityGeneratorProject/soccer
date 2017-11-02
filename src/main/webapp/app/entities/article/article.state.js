@@ -123,6 +123,7 @@
                                 type: null,
                                 status: null,
                                 openComment: null,
+                                sort: null,
                                 id: null
                             };
                         }

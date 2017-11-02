@@ -48,6 +48,9 @@ public class Article implements Serializable {
     @Column(name = "open_comment")
     private Boolean openComment;
 
+    @Column(name = "sort")
+    private Integer sort;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "article_catalog",
@@ -180,6 +183,19 @@ public class Article implements Serializable {
         this.openComment = openComment;
     }
 
+    public Integer getSort() {
+        return sort;
+    }
+
+    public Article sort(Integer sort) {
+        this.sort = sort;
+        return this;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     public Set<Catalog> getCatalogs() {
         return catalogs;
     }
@@ -288,6 +304,7 @@ public class Article implements Serializable {
             ", type='" + type + "'" +
             ", status='" + status + "'" +
             ", openComment='" + openComment + "'" +
+            ", sort='" + sort + "'" +
             '}';
     }
 }
