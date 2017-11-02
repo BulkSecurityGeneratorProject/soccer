@@ -1,0 +1,11 @@
+id;title;association_id;club_id
+1;联赛;1;null
+2;杯赛;1;null
+3;罚款;1;null
+4;冠军;1;null
+5;降级;1;null
+6;最新;null;1
+7;最热;null;1
+8;队宠;null;1
+9;外援;null;1
+10;土炮;null;1

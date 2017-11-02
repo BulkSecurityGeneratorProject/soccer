@@ -1,0 +1,7 @@
+id;catalog_id;association_id;club_id;summary;content;author;open_comment
+1;1;1;null;新闻中心简介;这是一条可爱的内容正文;Admin;true
+2;2;1;null;简介二;正文二;Admin;true
+3;3;1;null;什么啊;什么啊什么啊;其;true
+4;4;1;null;什么啊什么啊;什么啊什么啊什么啊什么啊;fjf;true
+5;8;null;1;俱乐部新闻;俱乐部的新闻;Dadmin;true
+6;11;null;1;历史;成立于1000年;ClubAdmin;false
