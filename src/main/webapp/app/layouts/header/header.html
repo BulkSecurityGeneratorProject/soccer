@@ -10,7 +10,7 @@
 
     <div class="clubSitesHeading">
         <!-- TO-TRANSLATE -->
-        <h4>Club Sites<div class="icon"></div></h4>
+        <h4>Association Sites<div class="icon"></div></h4>
     </div>
     <ul class="clubList" role="menu">
                 <li>
@@ -59,6 +59,14 @@
                         <span class="name">West Ham</span>
                     </a>
                 </li>
+                <li ng-repeat="association in vm.associations track by association.id">
+                    <a target="_blank" ui-sref="public.association({id:association.id})" role="menuitem" title="{{association.name}}">
+                        <span class="badge-50">
+                            <span class="visuallyHidden">{{association.name}}</span>
+                        </span>
+                        <span class="name">{{association.name}}</span>
+                    </a>    
+                </li>    
     </ul>
 </nav>
 
@@ -238,9 +246,7 @@
             <div class="icn user-w show-m"></div>
             <span class="fantasyUsername"></span>
     </a>
-    <div class="navOption search">
-        <div class="searchBtn headerSearchButton" role="button" tabindex="0"><span class="visuallyHidden">Search</span><div alt="" class="icn search-w"></div></div>
-    </div>
+   
             </section>
             
             <!-- <div class="searchOverlay"></div> -->
