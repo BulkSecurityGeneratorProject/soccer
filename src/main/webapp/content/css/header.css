@@ -435,3 +435,9 @@ img {
 ul.nav > li > a {
     color:#fff;
 }
+table .badge-50 {
+    transform: scale(.6);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: .5rem;
+}
