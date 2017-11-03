@@ -5,15 +5,18 @@
         .module('soccerApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state','DivisionEventTable'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state,DivisionEventTable) {
         var vm = this;
 
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
         vm.register = register;
+        // here always query divistion event 1 as first support division
+        vm.divisionTable = DivisionEventTable.query({id:1});
+
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });

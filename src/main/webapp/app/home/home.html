@@ -1,41 +1,57 @@
 <div ng-cloak>
     <div class="row">
-        <!-- <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div> -->
-        <div class="col-md-8">
-            <h1>Welcome, Java Hipster!</h1>
-            <p class="lead">This is your homepage</p>
-
-            <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true">
-                    You are logged in as user "{{vm.account.login}}".
+        <div class="col-md-4">
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <header>
+                        <center>
+                    <div class="week">Matchweek 11</div>
+                        <div class="competition"><span class="competitionImage1"></span><span class="competitionLabel1">Premier League</span></div>
+                    </center>
+                </header>
                 </div>
+                <table class="jh-table table pl-table">
+                    <thead>
+                        <tr>
+                            <th><span>Rank</span></th>
+                            <th><span>Club</span></th>
+                            <th><span>GP</span></th>
+                            <th><span>GD</span></th>
+                            <th><span>PTS</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="divisionEvent in vm.divisionTable track by divisionEvent[0]"  ng-class="{'gold':$index==0,'silver':$index==1,'cornsilk':$index==2,'last':$last}">
+                            <td class="pos">{{$index+1}}</td>
+                            <!-- <td>{{divisionEvent[0]}}</td> -->
+                            <td>
+                               <a ui-sref="public.club({id:divisionEvent[2]})"><span class="badge-50 ARS"></span><span>{{divisionEvent[1]}}</span> </a>
+                            </td>
+                            <td>
+                                 {{divisionEvent[3]}}
+                            </td>
+                           
+                            <td>
+                                 {{divisionEvent[9]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[10]}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                <div class="alert alert-warning" ng-switch-when="false">
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false">
-                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
-                </div>
+                <a class="pl-view-btn btn btn-default btn-block" href="###">View All Tables<span class="visuallyHidden"> Tables</span><span class="icn arrow-right"></span></a>
             </div>
 
-            <p>
-                If you have any question on JHipster:
-            </p>
 
-            <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank" >follow @java_hipster on Twitter</a></li>
-            </ul>
-
-            <p>
-             <span>If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank">Github</a>!
-            </p>
         </div>
+        <!-- end of sidebar -->
+
+        <div class="col-md-8">
+            Thiis is news
+        </div>
+        <!-- end of main content -->
     </div>
 </div>

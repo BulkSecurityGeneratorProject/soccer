@@ -333,7 +333,7 @@ ui bootstrap tweaks
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
  .gold, .gold a{
- 	font-size: large;
+ 	/*font-size: large;*/
   	color: gold;
  }
  .silver, .silver a{

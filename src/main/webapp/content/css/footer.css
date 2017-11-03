@@ -231,7 +231,7 @@ screen.css:1
 }
 [class*=col-] {
     box-sizing: border-box;
-    width: 100%;
+    /*width: 100%;*/
     float: left;
     padding-left: 3.78788%;
     padding-right: 3.78788%;
