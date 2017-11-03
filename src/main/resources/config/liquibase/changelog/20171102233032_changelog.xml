@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="linpeng (generated)" id="1509665458895-1">
+        <createTable tableName="article">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="articlePK"/>
+            </column>
+            <column name="author" type="VARCHAR(255)"/>
+            <column name="content" type="VARCHAR(255)"/>
+            <column name="create_at" type="date"/>
+            <column name="open_comment" type="BOOLEAN"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="sort" type="INT"/>
+            <column name="status" type="INT"/>
+            <column name="summary" type="VARCHAR(255)"/>
+            <column name="type" type="INT"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="club_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-2">
+        <createTable tableName="article_catalog">
+            <column name="articles_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="catalogs_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-3">
+        <createTable tableName="article_tag">
+            <column name="articles_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tags_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-4">
+        <createTable tableName="association">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="associationPK"/>
+            </column>
+            <column name="create_at" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="status_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-5">
+        <createTable tableName="catalog">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="catalogPK"/>
+            </column>
+            <column name="open_comment" type="BOOLEAN"/>
+            <column name="status" type="INT"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="type" type="INT"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="club_id" type="BIGINT"/>
+            <column name="parent_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-6">
+        <createTable tableName="club">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="clubPK"/>
+            </column>
+            <column name="create_at" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="short_name" type="VARCHAR(255)"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="venue_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-7">
+        <createTable tableName="coach">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="coachPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="status_id" type="BIGINT"/>
+            <column name="team_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-8">
+        <createTable tableName="dict">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="dictPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="dict_kind_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-9">
+        <createTable tableName="dict_kind">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="dict_kindPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-10">
+        <createTable tableName="division">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="divisionPK"/>
+            </column>
+            <column name="create_at" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="ranking_rule_id" type="BIGINT"/>
+            <column name="status_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-11">
+        <createTable tableName="division_event">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="division_eventPK"/>
+            </column>
+            <column name="division_id" type="BIGINT"/>
+            <column name="season_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-12">
+        <createTable tableName="event">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="eventPK"/>
+            </column>
+            <column name="amount" type="DECIMAL(10, 2)"/>
+            <column name="event_sub_type" type="INT"/>
+            <column name="event_time" type="date"/>
+            <column name="event_type" type="INT"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="club_id" type="BIGINT"/>
+            <column name="coach_id" type="BIGINT"/>
+            <column name="division_event_id" type="BIGINT"/>
+            <column name="game_id" type="BIGINT"/>
+            <column name="player_id" type="BIGINT"/>
+            <column name="referee_id" type="BIGINT"/>
+            <column name="target_club_id" type="BIGINT"/>
+            <column name="target_player_id" type="BIGINT"/>
+            <column name="target_team_id" type="BIGINT"/>
+            <column name="team_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-13">
+        <createTable tableName="game">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="gamePK"/>
+            </column>
+            <column name="home_score" type="INT"/>
+            <column name="home_score_half" type="INT"/>
+            <column name="note" type="VARCHAR(255)"/>
+            <column name="road_score" type="INT"/>
+            <column name="road_score_half" type="INT"/>
+            <column name="start_at" type="timestamp"/>
+            <column name="home_team_id" type="BIGINT"/>
+            <column name="road_team_id" type="BIGINT"/>
+            <column name="status_id" type="BIGINT"/>
+            <column name="timeslot_id" type="BIGINT"/>
+            <column name="venue_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-14">
+        <createTable tableName="game_referee">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="game_refereePK"/>
+            </column>
+            <column name="game_id" type="BIGINT"/>
+            <column name="referee_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-15">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-16">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="timestamp"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-17">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-18">
+        <createTable tableName="jhi_persistent_token">
+            <column name="series" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip_address" type="VARCHAR(39)"/>
+            <column name="token_date" type="date"/>
+            <column name="token_value" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-19">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="lang_key" type="VARCHAR(5)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)"/>
+            <column name="reset_date" type="timestamp"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-20">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-21">
+        <createTable tableName="lineup">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="lineupPK"/>
+            </column>
+            <column name="player_number" type="INT"/>
+            <column name="division_event_id" type="BIGINT"/>
+            <column name="player_id" type="BIGINT"/>
+            <column name="team_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-22">
+        <createTable tableName="player">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="playerPK"/>
+            </column>
+            <column name="birth" type="date"/>
+            <column name="height" type="INT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="weight" type="INT"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="status_id" type="BIGINT"/>
+            <column name="team_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-23">
+        <createTable tableName="player_positions">
+            <column name="players_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="positions_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-24">
+        <createTable tableName="ranking_rule">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="ranking_rulePK"/>
+            </column>
+            <column name="draw" type="INT"/>
+            <column name="loss" type="INT"/>
+            <column name="score_again" type="INT"/>
+            <column name="score_for" type="INT"/>
+            <column name="win" type="INT"/>
+            <column name="ranked_on_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-25">
+        <createTable tableName="referee">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="refereePK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="status_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-26">
+        <createTable tableName="result_data">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="result_dataPK"/>
+            </column>
+            <column name="value" type="INT"/>
+            <column name="game_id" type="BIGINT"/>
+            <column name="result_field_id" type="BIGINT"/>
+            <column name="squad_player_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-27">
+        <createTable tableName="result_field">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="result_fieldPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-28">
+        <createTable tableName="s_comment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="s_commentPK"/>
+            </column>
+            <column name="author" type="VARCHAR(255)"/>
+            <column name="content" type="VARCHAR(255)"/>
+            <column name="create_at" type="date"/>
+            <column name="status" type="INT"/>
+            <column name="article_id" type="BIGINT"/>
+            <column name="parent_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-29">
+        <createTable tableName="season">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="seasonPK"/>
+            </column>
+            <column name="end_at" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="start_at" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-30">
+        <createTable tableName="squad">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="squadPK"/>
+            </column>
+            <column name="game_id" type="BIGINT"/>
+            <column name="team_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-31">
+        <createTable tableName="squad_player">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="squad_playerPK"/>
+            </column>
+            <column name="is_substitute" type="BOOLEAN"/>
+            <column name="player_number" type="INT"/>
+            <column name="player_id" type="BIGINT"/>
+            <column name="squad_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-32">
+        <createTable tableName="tag">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="tagPK"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="association_id" type="BIGINT"/>
+            <column name="club_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-33">
+        <createTable tableName="team">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="teamPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="club_id" type="BIGINT"/>
+            <column name="division_event_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-34">
+        <createTable tableName="timeslot">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="timeslotPK"/>
+            </column>
+            <column name="round" type="INT"/>
+            <column name="division_event_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-35">
+        <createTable tableName="venue">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="venuePK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="create_at" type="date"/>
+            <column name="latlng" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="picture" type="VARCHAR(255)"/>
+            <column name="province" type="VARCHAR(255)"/>
+            <column name="short_name" type="VARCHAR(255)"/>
+            <column name="telephone" type="VARCHAR(255)"/>
+            <column name="town" type="VARCHAR(255)"/>
+            <column name="zip" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-36">
+        <addPrimaryKey columnNames="articles_id, catalogs_id" tableName="article_catalog"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-37">
+        <addPrimaryKey columnNames="articles_id, tags_id" tableName="article_tag"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-38">
+        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-39">
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-40">
+        <addPrimaryKey columnNames="players_id, positions_id" tableName="player_positions"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-41">
+        <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-42">
+        <addPrimaryKey columnNames="series" constraintName="jhi_persistent_tokenPK" tableName="jhi_persistent_token"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-43">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-44">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-45">
+        <addForeignKeyConstraint baseColumnNames="club_id" baseTableName="event" constraintName="FK_2ah5fokeqn4j2253r6g669y21" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="club"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-46">
+        <addForeignKeyConstraint baseColumnNames="club_id" baseTableName="tag" constraintName="FK_2igy9mg33vnbbqmwodhtx48vn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="club"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-47">
+        <addForeignKeyConstraint baseColumnNames="players_id" baseTableName="player_positions" constraintName="FK_2nos45fhe70sqyr1nv84feauy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="player"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-48">
+        <addForeignKeyConstraint baseColumnNames="catalogs_id" baseTableName="article_catalog" constraintName="FK_2yf5xkq6myj4i9t68bh6dac7h" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="catalog"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-49">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="game_referee" constraintName="FK_3n2hp53oskbjcmmakh8ji1jee" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-50">
+        <addForeignKeyConstraint baseColumnNames="squad_id" baseTableName="squad_player" constraintName="FK_3yi2pr8h12yxmnvap6k4gx2ss" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="squad"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-51">
+        <addForeignKeyConstraint baseColumnNames="road_team_id" baseTableName="game" constraintName="FK_418yfj5mxmyxxbkfspotv6etq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-52">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="player" constraintName="FK_5q11flfd61t4n9eepixi8ltup" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-53">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="game_referee" constraintName="FK_5qwldt7hmkes2vuv1j3ah9b0i" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-54">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="referee" constraintName="FK_612ks2y4aeejtomlml1b9cy65" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-55">
+        <addForeignKeyConstraint baseColumnNames="coach_id" baseTableName="event" constraintName="FK_7abtakl5i545qgaoja6browru" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="coach"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-56">
+        <addForeignKeyConstraint baseColumnNames="division_id" baseTableName="division_event" constraintName="FK_7b07fl8dms0tokjppnd00kqg0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="division"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-57">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="game" constraintName="FK_7g1unwy4yfe8j6glf8ffaen3g" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-58">
+        <addForeignKeyConstraint baseColumnNames="articles_id" baseTableName="article_tag" constraintName="FK_7n9d8vck39ckwp3m1nv2w77xq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="article"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-59">
+        <addForeignKeyConstraint baseColumnNames="timeslot_id" baseTableName="game" constraintName="FK_7tvh7c983mjiyjc3de8jiy0oy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="timeslot"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-60">
+        <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="catalog" constraintName="FK_7xneexep1rteav8itb1ey30qt" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="catalog"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-61">
+        <addForeignKeyConstraint baseColumnNames="club_id" baseTableName="team" constraintName="FK_8jnj6pdcbhxkay3twre48p2fo" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="club"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-62">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="player" constraintName="FK_8mdwa1dl7dtvmdm011oq637n8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-63">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="coach" constraintName="FK_9m2fl9cqb5lhhr06pee9ftboj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-64">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="squad" constraintName="FK_9ummk8gh2ygqyncxsmuqtkyhy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-65">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="event" constraintName="FK_9vkgt0tvmle8ofrpf4jp8xug4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-66">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="tag" constraintName="FK_b6gncr5huic7sd4dsr9odj3wa" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-67">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="division" constraintName="FK_bds0au1t076eksb0i67ltv4nj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-68">
+        <addForeignKeyConstraint baseColumnNames="squad_player_id" baseTableName="result_data" constraintName="FK_bt2o2blcnmu3lv6swb1jgtdem" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="squad_player"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-69">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_persistent_token" constraintName="FK_c2yetr6vr7nrqhjvi1rl24b3l" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-70">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="referee" constraintName="FK_cqaa3tvh60ttl2lpjwh0ufkh0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-71">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="division" constraintName="FK_cqttgfeyntc4s49y1a9avxmsg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-72">
+        <addForeignKeyConstraint baseColumnNames="target_club_id" baseTableName="event" constraintName="FK_drsm2mnemqehs1jg0tqgo1qyb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="club"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-73">
+        <addForeignKeyConstraint baseColumnNames="player_id" baseTableName="event" constraintName="FK_eeqisq61d29g4hmumy4wwwbkp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="player"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-74">
+        <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="s_comment" constraintName="FK_emqfrcjt958dsfh8e9gbu2p6v" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="s_comment"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-75">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK_evb970jo5bi8aon8s65c0lyyn" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-76">
+        <addForeignKeyConstraint baseColumnNames="season_id" baseTableName="division_event" constraintName="FK_ex29usajbfj9ajthir3egqjls" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="season"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-77">
+        <addForeignKeyConstraint baseColumnNames="dict_kind_id" baseTableName="dict" constraintName="FK_f3m7aqex5xxwa8m2xahfrv835" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict_kind"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-78">
+        <addForeignKeyConstraint baseColumnNames="positions_id" baseTableName="player_positions" constraintName="FK_f8rr2lronp498b1sbsydpejqj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-79">
+        <addForeignKeyConstraint baseColumnNames="venue_id" baseTableName="game" constraintName="FK_f8wkndmtfyp3gt04a7vc101h1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="venue"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-80">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="lineup" constraintName="FK_fde82jnceqnpgi4jwc9bp6elj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-81">
+        <addForeignKeyConstraint baseColumnNames="ranking_rule_id" baseTableName="division" constraintName="FK_fhyddjvk5ku2wmqxd02rw2nbi" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ranking_rule"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-82">
+        <addForeignKeyConstraint baseColumnNames="referee_id" baseTableName="game_referee" constraintName="FK_fl1dioy3x2tda8xesn3fe6c9n" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="referee"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-83">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="coach" constraintName="FK_fuj9cs7tp4gibkfxivrd2ttdg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-84">
+        <addForeignKeyConstraint baseColumnNames="target_team_id" baseTableName="event" constraintName="FK_gekoiso9nw7h3y3nvwhec7cv6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-85">
+        <addForeignKeyConstraint baseColumnNames="result_field_id" baseTableName="result_data" constraintName="FK_gma2iqghxoh6dvmqn2hryj2xx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="result_field"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-86">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="coach" constraintName="FK_gpgpraug4se45bwbck3vqgja7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-87">
+        <addForeignKeyConstraint baseColumnNames="referee_id" baseTableName="event" constraintName="FK_grc3qi6te4vvpmmjduxukg8ns" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="referee"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-88">
+        <addForeignKeyConstraint baseColumnNames="articles_id" baseTableName="article_catalog" constraintName="FK_gu50cl4d5ekn8okv3sixugmgb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="article"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-89">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="result_data" constraintName="FK_h0qghqi1xuyh01ugwymcyfdvu" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-90">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="squad" constraintName="FK_hyrtk8t648mj7j6ppi9rqdkcj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="game"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-91">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK_ik5r332jlvpolfr7e5n7oi42l" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-92">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="timeslot" constraintName="FK_jdvaak0da1hqnc15r0ufjf6t3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-93">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="division" constraintName="FK_jqt90fc6pt6dh7ai0h1qynpgd" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-94">
+        <addForeignKeyConstraint baseColumnNames="club_id" baseTableName="article" constraintName="FK_k2uk5k6mi2kvflp4mbxbbmbyx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="club"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-95">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="event" constraintName="FK_k3skl84rdsipdvcev9ubsrrln" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-96">
+        <addForeignKeyConstraint baseColumnNames="division_event_id" baseTableName="timeslot" constraintName="FK_kw8v1xxqwsvlymtv4iwbrf5fe" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="division_event"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-97">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="team" constraintName="FK_l4gn6mw9ihvv7lmnebbj2mp11" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-98">
+        <addForeignKeyConstraint baseColumnNames="ranked_on_id" baseTableName="ranking_rule" constraintName="FK_l6ebncgx5oc3njoxa16ukuwb4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-99">
+        <addForeignKeyConstraint baseColumnNames="club_id" baseTableName="catalog" constraintName="FK_l7fdbe0rqjfma6ipludpsvofe" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="club"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-100">
+        <addForeignKeyConstraint baseColumnNames="venue_id" baseTableName="club" constraintName="FK_l7pb4r6ars8cyswdiyhop3owa" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="venue"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-101">
+        <addForeignKeyConstraint baseColumnNames="division_event_id" baseTableName="lineup" constraintName="FK_l90au41k88ewcsta0grcxlt5e" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="division_event"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-102">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="club" constraintName="FK_lksuditej44rp3dc99p39397k" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-103">
+        <addForeignKeyConstraint baseColumnNames="tags_id" baseTableName="article_tag" constraintName="FK_lq8e4a2ty5sptn46q2t64lu0n" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="tag"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-104">
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="s_comment" constraintName="FK_lwu882nhyu1endbxcy6w10dfo" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="article"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-105">
+        <addForeignKeyConstraint baseColumnNames="division_event_id" baseTableName="team" constraintName="FK_mdphq598v09fby1ms3vr0oc0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="division_event"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-106">
+        <addForeignKeyConstraint baseColumnNames="target_player_id" baseTableName="event" constraintName="FK_n6njro11xac4jrwqyt5lxigi8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="player"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-107">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="association" constraintName="FK_o8g9i5k9f09se6iqibi4skgdu" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-108">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="article" constraintName="FK_o9f5p2v5dmxwi775vqmrc682" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-109">
+        <addForeignKeyConstraint baseColumnNames="division_event_id" baseTableName="event" constraintName="FK_oppmhlmjchdcfqk1kfirbjbi" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="division_event"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-110">
+        <addForeignKeyConstraint baseColumnNames="player_id" baseTableName="squad_player" constraintName="FK_oshr5b4yvfsbgdbv6hvogv57i" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="player"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-111">
+        <addForeignKeyConstraint baseColumnNames="home_team_id" baseTableName="game" constraintName="FK_p5309hey8stfva4lstkqkl40u" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-112">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK_pg0oaw6mr9pt3ibeihdc1jwof" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-113">
+        <addForeignKeyConstraint baseColumnNames="association_id" baseTableName="catalog" constraintName="FK_pktvfk607kgdndgxp6kso1ifk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="association"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-114">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="player" constraintName="FK_qtlvu014godvko2q8k0lff1w8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-115">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="referee" constraintName="FK_r2afj7xdlxlnutrxca0is0rlt" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-116">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="coach" constraintName="FK_rt3ivjkg073emlobohga762hb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="dict"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-117">
+        <addForeignKeyConstraint baseColumnNames="player_id" baseTableName="lineup" constraintName="FK_s73fastxpi0ethmkuh9fc7idp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="player"/>
+    </changeSet>
+    <changeSet author="linpeng (generated)" id="1509665458895-118">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="event" constraintName="FK_tnixg3kna2wctiyqhck5q7b9a" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+</databaseChangeLog>
