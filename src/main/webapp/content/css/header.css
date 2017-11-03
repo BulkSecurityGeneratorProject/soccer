@@ -1,0 +1,420 @@
+/**Masthead===================*/
+ol li, ul li {
+    list-style-type: none;
+}
+.masthead {
+    position: relative;
+    z-index: 100;
+    min-height: 17rem;
+}
+.masthead .skipTo {
+    padding: 1em;
+    position: absolute;
+    top: -50px;
+    left: 1em;
+    z-index: 1000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0 0 2px 2px;
+    transition: .2s;
+    background: #e90052;
+}
+
+/**Club navigation===========*/
+.clubNavigation {
+    background: #fff;
+    position: relative;
+    padding: .5rem 0 .5rem 17rem;
+    z-index: 300;
+    height:55px;
+}
+.clubNavigation .clubSitesHeading {
+    float: left;
+}
+.clubNavigation h4 {
+    color: #267788;
+    font-size: 1.1rem;
+    line-height: 5rem;
+}
+.clubNavigation .icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .5rem;
+    position: relative;
+    top: -1px;
+}
+.clubNavigation .clubList {
+    max-width: 130rem;
+    margin-left: 7rem;
+    padding-right: 2rem;
+}
+.clubNavigation li {
+    float: left;
+    width: 5%;
+}
+.clubNavigation a {
+    display: table;
+    margin: 0 auto;
+    padding: 0 1rem;
+    border-radius: 100%;
+    position: relative;
+}
+
+.clubNavigation .badge-50 {
+    -webkit-transform: scale(.6);
+    transform: scale(.6);
+    transition: all .1s ease-in-out;
+}
+
+.badge-50.BOU {
+    background-position: -100px -250px;
+}
+
+.badge-50.BOU {
+    background-position: -100px -250px;
+}
+
+.badge-50 {
+    background-image: url("../images/badges-50-sprite.png");
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    display: block;
+    background-position: 0 -700px;
+}
+.tooltipContainer, .visuallyHidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.clubNavigation .name {
+    display: none;
+}
+
+.badge-50.ARS {
+    background-position: 0 -100px;
+}
+.badge-50.BHA {
+    background-position: -200px -200px;
+}
+.badge-50.BUR {
+    background-position: -50px -300px;
+}
+.badge-50.WHU {
+    background-position: -700px -150px;
+}
+
+/**Fixed container===========*/
+.fixedContainer {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: relative;
+}
+.navContainer {
+    min-height: 6rem;
+}
+.masthead .navBar {
+    background: #38003c;
+    line-height: 6rem;
+    color: #fff;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: box-shadow .2s;
+    z-index: 10;
+    position: relative;
+    z-index: 300;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.masthead .menuBtn {
+    display: none;
+    width: auto;
+    background: #38003c;
+    position: relative;
+    padding: 0 2rem;
+    float: right;
+    height: 6rem;
+    border-left: 1px solid #451a49;
+    cursor: pointer;
+}
+.masthead .plLogo {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: .2s;
+}
+.masthead .plLogo img {
+    height: 12rem;
+    max-height: 120px;
+    position: absolute;
+    bottom: 0;
+    left: -1px;
+}
+img {
+    border: 0;
+}
+.icn {
+    background: url("../images/global-sprite.png") no-repeat;
+    display: block;
+}
+
+.masthead .plLogo .mobile {
+    display: none;
+}
+/*.masthead .mainNav {
+    padding-left: 17rem;
+    float: left;
+    width: inherit;
+}*/
+.masthead .pageLinks {
+    float: left;
+}
+.masthead .navOption, .masthead .pageLinks li, .masthead .searchBtn, .masthead a.navLink {
+    position: relative;
+}
+
+.masthead .pageLinks>li {
+    float: left;
+    position: relative;
+}
+.masthead .mainNav .navLink {
+    padding: 0 2.5rem;
+}
+
+.masthead .navLink {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 1.5rem;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.5rem;
+    font-family: PremierSans-Bold,Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 400;
+}
+.masthead .navLink .chevron-down-sm-w {
+    margin-left: .8rem;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.icn.chevron-down-sm-w {
+    width: 10px;
+    height: 6px;
+    background-position: -948px -388px;
+}
+.masthead .dropdown {
+    position: absolute;
+    top: 6rem;
+    left: 50%;
+    background: #e90052;
+    min-width: 100%;
+    border-radius: 0 0 2px 2px;
+    -webkit-transform: scale(0) translateX(-50%);
+    transform: scale(0) translateX(-50%);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    transition: all .1s;
+    visibility: hidden;
+    z-index: 10;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 3px rgba(0,0,0,.1);
+    white-space: nowrap;
+}
+.masthead .dropdown ul {
+    -webkit-column-count: 2;
+    column-count: 2;
+}
+.masthead .dropdown li {
+    display: block;
+    float: none;
+    line-height: normal;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+}
+
+.masthead .navOption, .masthead .pageLinks li, .masthead .searchBtn, .masthead a.navLink {
+    position: relative;
+}
+
+.masthead .dropdown a {
+    display: block;
+    line-height: 1.8;
+    min-width: 9rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.masthead .navOption:before, .masthead .pageLinks li:before, .masthead .searchBtn:before, .masthead a.navLink:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: #e90052;
+    transition: .2s;
+    z-index: -1;
+}
+
+.masthead .navOption, .masthead .pageLinks li, .masthead .searchBtn, .masthead a.navLink {
+    position: relative;
+}
+
+.masthead .pageLinks>li {
+    float: left;
+    position: relative;
+}
+.masthead .navLink.active:before, .masthead .navLink.mobile {
+    display: none;
+}
+
+/*.masthead .navOption {
+    float: right;
+    border-left: 1px solid hsla(0,0%,100%,.1);
+}*/
+.masthead .search {
+    position: relative;
+}
+.masthead .search .searchBtn {
+    height: 6rem;
+    width: 6rem;
+    cursor: pointer;
+}
+
+.masthead .search .searchBtn {
+    transition: all .2s ease;
+}
+
+.searchBar {
+    position: absolute;
+    width: 100%;
+    height: 15rem;
+    top: -15rem;
+    transition: all .4s cubic-bezier(.645,.045,.355,1);
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,.2);
+    z-index: 200;
+}
+.subNav {
+    line-height: 4.2rem;
+    box-shadow: 0 3px 5px rgba(0,0,0,.1);
+    position: relative;
+    background: #fff;
+    z-index: 1;
+    margin-left: 0;
+    margin-right: 0;
+}
+.subNav ul {
+    padding-left: 17rem;
+}
+.subNav li {
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+.subNav a {
+    display: block;
+    color: #76766f;
+    text-decoration: none;
+    padding: .4rem 2rem;
+    font-size: 1.3rem;
+    position: relative;
+    transition: all .2s ease-in-out;
+}
+.subNav a.active:before {
+    height: 4px;
+    background: #e90052;
+}
+.subNav a:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: #76766f;
+    transition: .2s;
+    z-index: -1;
+}
+
+.hide {
+    display: none!important;
+}
+.subNav ul.showMoreEnabled .more {
+    display: list-item;
+}
+
+.subNav ul .more {
+    float: right;
+    position: relative;
+    margin-right: 0;
+    margin-left: 0;
+}
+.subNav ul .more .moreToggle {
+    line-height: 5rem;
+    padding: 0 1.5rem;
+    color: #38003c;
+    display: block;
+    cursor: pointer;
+    color: #76766f;
+    font-size: 1.3rem;
+}
+.subNav ul .more .moreToggle .icn {
+    display: none;
+}
+.subNav ul .more .moreToggle:before {
+    content: "";
+    background: url("/content/images/global-sprite.png") -954px -114px no-repeat;
+    width: 4px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
+    position: relative;
+    top: -1px;
+}
+
+.icn.chevron-down {
+    width: 15px;
+    height: 9px;
+    background-position: -365px -399px;
+}
+.subNav ul .more ul {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 4.2rem;
+    right: 0;
+    background: #e8e8e8;
+    padding-left: 0;
+}
+.subNav ul .more a {
+    padding: 0 2rem;
+}
+
+.subNav ul .more a {
+    white-space: nowrap;
+}
+
+.searchOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(56,0,60,.95);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .4s ease;
+}

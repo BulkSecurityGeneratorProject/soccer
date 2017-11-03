@@ -1,0 +1,277 @@
+.mainFooter {
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 4px solid #e8e8e8;
+    position: relative;
+    z-index: 60;
+    background: #fff;
+}
+
+/**========= Footer Sponsor
+===========*/
+.footerSponsorStrip {
+    background: #fff;
+    display: table;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+}
+
+.footerSponsorStrip ul {
+    display: table;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.footerSponsorStrip li:first-child {
+    border-right: 1px solid #e8e8e8;
+}
+.footerSponsorStrip li:nth-last-child(2) {
+    border-left: 1px solid #e8e8e8;
+}
+
+.footerSponsorStrip li {
+    padding: 0 1.8rem;
+    display: table-cell;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.footerSponsorStrip li a {
+    -ms-flex-item-align: center;
+    align-self: center;
+    text-decoration: none;
+    color: #76766f;
+    text-align: center;
+    display: block;
+    font-size: 1.1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+}
+
+.icn {
+    background: url("../images/global-sprite.png") no-repeat;
+    display: block;
+}
+.footerSponsorStrip .small {
+    display: none;
+}
+
+.icn.sponsor-footer-ea {
+    width: 66px;
+    height: 66px;
+    background-position: -699px -222px;
+}
+.icn.sponsor-footer-ea-sm {
+    width: 46px;
+    height: 46px;
+    background-position: -855px -539px;
+}
+.footerSponsorStrip li .type {
+    margin-top: auto;
+}
+.icn.sponsor-footer-barclays {
+    width: 152px;
+    height: 26px;
+    background-position: -111px -698px;
+}
+.icn.sponsor-footer-cadbury {
+    width: 60px;
+    height: 55px;
+    background-position: -800px -285px;
+}
+.icn.sponsor-footer-carling {
+    width: 111px;
+    height: 50px;
+    background-position: -119px -619px;
+}
+.icn.sponsor-footer-nike {
+    width: 111px;
+    height: 39px;
+    background-position: 0 -698px;
+}
+.icn.sponsor-footer-nike-sm {
+    width: 78px;
+    height: 28px;
+    background-position: -621px -619px;
+}
+.icn.sponsor-footer-tag {
+    width: 156px;
+    height: 17px;
+    background-position: -405px -698px;
+}
+.icn.sponsor-footer-tag-sm {
+    width: 109px;
+    height: 12px;
+    background-position: -150px -408px;
+}
+.icn.sponsor-footer-sporting {
+    width: 117px;
+    height: 33px;
+    background-position: 0 -737px;
+}
+.icn.sponsor-footer-sporting-sm {
+    width: 82px;
+    height: 23px;
+    background-position: -377px -770px;
+}
+.icn.sponsor-footer-topps {
+    width: 80px;
+    height: 44px;
+    background-position: -800px -130px;
+}
+.icn.sponsor-footer-topps-sm {
+    width: 56px;
+    height: 31px;
+    background-position: -903px 0;
+}
+
+/**=============Footer Content
+ ===============**/
+ @media (max-width: 84.375em)
+screen.css:1
+.mainFooter .footerContent {
+    background-image: url("../images/footer-right.svg");
+    background-position: 100% 0;
+}
+
+.mainFooter .footerContent {
+    padding: 7rem 0 5rem;
+    background: #38003c;
+    background-image: url("../images/footer-left.svg"),url("../images/footer-right.svg");
+    background-position: 0 100%,100% 0;
+    background-repeat: no-repeat;
+}
+.mainFooter .footerContent .wrapper {
+    display: table;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.wrapper {
+    /*max-width: 1240px;*/
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.mainFooter .footerCol {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 1rem;
+}
+.mainFooter .subHeader {
+    color: #fff;
+    margin-bottom: 2rem;
+}
+.subHeader {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    position: relative;
+    clear: both;
+}
+.mainFooter .double ul {
+    -webkit-column-count: 2;
+    column-count: 2;
+}
+.mainFooter .footerContent ul li {
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+}
+.mainFooter .footerContent a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: .7rem 0;
+    display: block;
+    padding-right: .2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.mainFooter .footerContent .icn {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .5rem;
+    margin-top: -.1rem;
+}
+.icn.external-sm-ter {
+    width: 10px;
+    height: 9px;
+    background-position: -395px -399px;
+}
+
+
+
+/**============ Footer Corporate
+=============*/
+
+.mainFooter .footerCorporate {
+    padding: 2rem 0;
+    font-size: 1.1rem;
+}
+.wrapper.col-12 {
+    float: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+[class*=col-] {
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+    padding-left: 3.78788%;
+    padding-right: 3.78788%;
+    position: relative;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.mainFooter .footerCorporate li:not(:last-child) {
+    margin-right: 1rem;
+    padding-right: 1rem;
+    border-right: 1px solid #242424;
+}
+
+.mainFooter .footerCorporate li {
+    display: inline-block;
+    vertical-align: middle;
+}
+.mainFooter .footerCorporate li:not(:last-child) {
+    margin-right: 1rem;
+    padding-right: 1rem;
+    border-right: 1px solid #242424;
+}
+.mainFooter .footerCorporate .official {
+    float: right;
+}
+.mainFooter .footerCorporate .official a {
+    transition: .2s;
+}
+.mainFooter .footerCorporate .icn {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1rem;
+    margin-top: -.1rem;
+}
+.mainFooter .footerCorporate a {
+    color: #242424;
+    text-decoration: none;
+}
+.icn.pl-logo-corporate {
+    width: 119px;
+    height: 22px;
+    background-position: -225px -737px;
+}

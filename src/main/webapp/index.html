@@ -17,6 +17,8 @@
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
     <link rel="stylesheet" href="content/css/main.css">
+    <link rel="stylesheet" href="content/css/header.css">
+    <link rel="stylesheet" href="content/css/footer.css">
     <!-- endbuild -->
 </head>
 <body ng-app="soccerApp" ng-strict-di>
@@ -24,14 +26,14 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <page-ribbon></page-ribbon>
+    <div ui-view="header" ng-cloak></div>
     <div ui-view="navbar" ng-cloak></div>
     <div class="container">
         <div class="well" ui-view="content">
             <!-- Angular views -->
         </div>
 
-        <div class="footer" ng-cloak>
-            <p>This is your footer</p>
+        <div class="footer" ui-view="footer" ng-cloak>
         </div>
     </div>
 
@@ -97,6 +99,8 @@
     <script src="app/public/association/public.association.controller.js"></script>
     <script src="app/layouts/navbar/navbar.controller.js"></script>
     <script src="app/layouts/navbar/active-link.directive.js"></script>
+    <script src="app/layouts/header/header.controller.js"></script>
+    <script src="app/layouts/footer/footer.controller.js"></script>
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
