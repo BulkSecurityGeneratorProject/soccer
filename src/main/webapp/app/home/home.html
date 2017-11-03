@@ -50,7 +50,43 @@
         <!-- end of sidebar -->
 
         <div class="col-md-8">
-            Thiis is news
+            <section>
+                <header>
+                    <h3 class="subHeader">Latest Videos</h3>
+                </header>
+                <div>
+                    <ul class="block-list-4">
+                        <li ng-repeat="article in vm.articles track by article.id">
+
+                            <a href="/news/{{article.id}}" class="thumbnail">
+                                <figure>
+                                    <span class="image thumbCrop-latestnews">
+                                        <img class="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="160" height="120">
+                                    </span>
+                                    <figcaption>
+                                            <!-- TO-TRANSLATE ??-->
+                                            <span class="tag">{{article.tags}}</span>
+                                        <span class="title">{{article.summary}}</span>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                                <div class="relatedArticles">
+
+                        <a href="/news/506322" class="relatedArticle club text">
+                            <p>
+                                Vote for your Barclays Manager of the Month for October
+                            </p>
+                        </a>
+
+                                </div>
+                        </li>   
+                    </ul>
+                </div>
+                
+                <a class="btn moreBtn" href="/news">More News<span class="visuallyHidden">: Latest News</span><span class="icn arrow-right"></span></a>
+
+            </section>  
+            
         </div>
         <!-- end of main content -->
     </div>
