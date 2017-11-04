@@ -537,6 +537,7 @@ td.pos {
 
 .block-list-4{
     padding-left: 0px;
+    padding-top: 2rem;
 }
 .block-list-4 > li {
     width: 25%;
@@ -583,12 +584,155 @@ td.pos {
 }
 
 .relatedArticle:focus, .relatedArticle:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 a:hover, a:focus {
     color: #242424;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .pl-section{
     position: relative;
+}
+
+.partnersStrip {
+    margin-bottom: 2rem;
+    padding: 0 4rem;
+}
+.premiumBox {
+    background-color: #f6f6f6;
+    background-image: url("/content/images/premium.jpg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 110px;
+    position: relative;
+    padding: 0 5px;
+}
+.partnersStrip .partnerType {
+    display: none;
+}
+.partnersStrip .mainList {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    padding-top: 2.5rem;
+}
+.partnersStrip .mainList li:first-child {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.partnersStrip .mainList li {
+    float: left;
+    margin-left: 5rem;
+}
+.icn.sponsor-bar-ea {
+    width: 55px;
+    height: 55px;
+    background-position: -800px -539px;
+}
+.icn.sponsor-barclays {
+    width: 120px;
+    height: 21px;
+    background-position: -344px -737px;
+}
+.icn.sponsor-carling {
+    width: 80px;
+    height: 41px;
+    background-position: -800px -340px;
+}
+.icn.sponsor-nike {
+    width: 80px;
+    height: 28px;
+    background-position: -612px -530px;
+}
+.icn.sponsor-tag {
+    width: 137px;
+    height: 15px;
+    background-position: -232px -602px;
+}
+
+.heroArticle {
+    margin-top: -2rem;
+    padding: 2rem 0;
+    position: relative;
+    margin-bottom: 2rem;
+}
+.heroArticle:before {
+    content: "";
+    display: block;
+    width: 90vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -50vw;
+    margin-left: 250px;
+    background: #38003c url("../images/thumb-hero-highlight.svg");
+    background-position: left 50% top;
+    background-position: left 50vw top;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.heroArticle.fantasy:before {
+    background-image: url("../images/thumb-hero-primary.svg");
+}
+.heroArticle.fantasy, .heroArticle.fantasy:before {
+    background-color: #00ff87;
+}
+.heroArticle.fantasy .heroThumb {
+    background: #00ff87;
+}
+
+.heroThumb {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    background: #38003c;
+    position: relative;
+    z-index: 1;
+}
+.heroThumb .image {
+    float: left;
+    /*width: 500px;*/
+    overflow: hidden;
+    position: relative;
+}
+.heroThumb svg {
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    width: 100%;
+    max-width: 70%;
+    fill: #38003c;
+    display: none;
+}
+.heroThumb span {
+    display: block;
+}
+.heroThumb figcaption {
+    margin-left: 60%;
+    padding: 2rem;
+    color: #000;
+}
+.heroThumb .title {
+    font-size: 3.8rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    transition: .2s;
+}
+.heroThumb p {
+    font-size: 1.4rem;
+    /*color: #fff;*/
+}
+
+.up-level{
+    z-index: 1;
+}
+.pl-section .heroThumb figure{
+    padding-bottom: 3rem;
 }
