@@ -50,7 +50,7 @@
         <!-- end of sidebar -->
 
         <div class="col-md-8">
-            <section>
+            <section class="pl-section">
                 <header>
                     <h3 class="subHeader">Latest Videos</h3>
                 </header>
@@ -58,10 +58,10 @@
                     <ul class="block-list-4">
                         <li ng-repeat="article in vm.articles track by article.id">
 
-                            <a href="/news/{{article.id}}" class="thumbnail">
+                            <a href="/news/{{article.id}}" class="pl-thumbnail">
                                 <figure>
                                     <span class="image thumbCrop-latestnews">
-                                        <img class="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="160" height="120">
+                                        <img class="img" src="/content/images/logo-jhipster.png" alt="Generic placeholder image" width="160" height="120">
                                     </span>
                                     <figcaption>
                                             <!-- TO-TRANSLATE ??-->
@@ -83,7 +83,7 @@
                     </ul>
                 </div>
                 
-                <a class="btn moreBtn" href="/news">More News<span class="visuallyHidden">: Latest News</span><span class="icn arrow-right"></span></a>
+                <a class="btn moreBtn" href="/news">More News<span class="visuallyHidden">: Latest News</span><span class="glyphicon glyphicon-arrow-right"></span></a>
 
             </section>  
             

@@ -180,6 +180,7 @@ screen.css:1
 .subHeader {
     font-size: 1.8rem;
     margin-bottom: 1rem;
+    font-weight: bold;
     position: relative;
     clear: both;
 }
