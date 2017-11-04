@@ -2,6 +2,8 @@
     background: none;
     border:none;
     box-shadow:none;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 /**Masthead===================*/
 ol li, ul li {
@@ -736,3 +738,87 @@ a:hover, a:focus {
 .pl-section .heroThumb figure{
     padding-bottom: 3rem;
 }
+
+.articleHeader {
+    /*width: 95%;*/
+    background: #38003c;
+    color: #fff;
+    margin: -2rem 0 2rem;
+    min-height: 200px;
+    z-index: -10;
+    background: url("/content/images/article-shard.svg"),#38003c;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+}
+.articleHeader .articleHeaderContent {
+    padding: 3rem 0 9rem 8rem;
+}
+.articleHeader .newsTag {
+    color: #e90052;
+    margin-bottom: .5rem;
+}
+.articleHeader h5 {
+    font-family: PremierSans-Regular,Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 400;
+}
+.articleHeader .articleTitle {
+    font-size: 4.5rem;
+    padding-bottom: 1rem;
+    line-height: 1.2;
+}
+.articleHeader .articleAuth {
+    color: #e90052;
+}
+.standardArticle .relatedArticles .relatedArticlesText {
+    margin-bottom: 0;
+    border-bottom: 1px dotted #e8e8e8;
+}
+.standardArticle .relatedArticles p {
+    line-height: normal;
+    font-size: 1.2rem;
+    margin: 0 0 1rem;
+    padding-bottom: 1rem;
+    color: #333;
+}
+.standardArticle .relatedArticles .col-3:not(:last-child) {
+    border-right: 1px dotted #e8e8e8;
+}
+.standardArticle .relatedArticles .col-3 {
+    width: 33.3%;
+}
+.relatedArticle {
+    text-decoration: none;
+    color: #76766f;
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    position: relative;
+    transition: all .2s;
+    padding-left: 3.5rem;
+}
+.standardArticle .relatedArticles a {
+    padding-left: 4.5rem;
+    border-bottom: 1px dotted #e8e8e8;
+}
+.standardArticle .relatedArticles .relatedArticle {
+    min-height: 5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 0;
+    padding-right: .5rem;
+}
+.standardArticle .relatedArticles .articleLead {
+    font-family: PremierSans-Bold,Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 400;
+    color: #333;
+    font-size: 1.3rem;
+    line-height: 1;
+    margin: 0;
+    padding: 1rem 0;
+}
+

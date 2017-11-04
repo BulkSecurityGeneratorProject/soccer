@@ -126,7 +126,7 @@
                     <ul class="block-list-4">
                         <li ng-repeat="article in vm.articles track by article.id">
 
-                            <a href="/news/{{article.id}}" class="pl-thumbnail">
+                            <a ui-sref="public.news({id:article.id})" class="pl-thumbnail">
                                 <figure>
                                     <span class="image thumbCrop-latestnews">
                                         <img class="img" src="/content/images/logo-jhipster.png" alt="Generic placeholder image" width="160" height="120">
