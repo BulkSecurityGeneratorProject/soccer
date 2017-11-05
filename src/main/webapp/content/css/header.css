@@ -969,3 +969,9 @@ svg:not(:root) {
     left: auto;
     right: 1rem;
 }
+.player-name{
+    padding-left: 1rem;
+}
+.pl-players table tr td {
+    padding: 0px;
+}

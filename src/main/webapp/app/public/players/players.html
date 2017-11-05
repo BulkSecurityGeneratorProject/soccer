@@ -1,0 +1,51 @@
+<div>
+	<header class="commomHeader">
+		<div class="commomHeaderContent">
+			    
+			    <h1 class="commonTitle">Players</h1>
+		</div>
+	</header>
+	<section>
+        <form name="searchForm" role="form" novalidate ng-submit="vm.query()" class="form-inline">
+                    <select class="form-control" placeholder="Association" id="field_association" name="association" ng-model="vm.association" ng-options="association as association.name for association in vm.associations track by association.id">
+                        <option value=""></option>
+                    </select>
+                    <select class="form-control" placeholder="Club" id="field_club" name="club" ng-model="vm.club" ng-options="club as club.name for club in vm.clubs track by club.id">
+                        <option value=""></option>
+                    </select>
+                    <button type="submit" ng-disabled="searchForm.$invalid || vm.isQuery" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-find"></span>&nbsp;<span>Query</span>
+                </button>
+        </form>
+
+	</section>
+    
+    <section class="pl-players">
+        <table class="jh-table table">
+            <thead>
+                <tr>
+                    <th><span>Player</span></th>
+                    <th><span>Club</span></th>
+                    <th><span>Position</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in vm.players track by player.id">
+                    <td>
+                      <a ui-sref="public.player({id:player.id})">
+                      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="40" height="40"><span class="player-name">{{player.name}}</span>
+                      </a>
+                    </td>
+                    <td>
+                       <a ui-sref="public.club({id:player.club.id})"><span class="badge-50 ARS"></span><span>{{player.club.name}}</span> </a>
+                    </td>
+                    <td>
+                         {{player.positions}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+       
+    </section>
+	
+</div>
