@@ -10,7 +10,7 @@
     function PublicClubsController ($scope, $state,Association,AssociationExt) {
         var vm = this;
         vm.associations = [];
-        vm.association = null;
+        vm.association = {};
         vm.clubs = null;
        
         vm.query = loadClubs;
@@ -27,7 +27,7 @@
             vm.isQuerying = true;
 
             if(vm.association.id!=null){
-                AssociationExt.queryClubs({id:association.id},function(result){
+                AssociationExt.queryClubs({id:vm.association.id},function(result){
                     vm.clubs = result;
                     vm.isQuerying = false;
                 });
