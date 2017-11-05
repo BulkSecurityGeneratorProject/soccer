@@ -26,12 +26,12 @@
         function loadClubs(){
             vm.isQuerying = true;
 
-            //if(vm.association.id!=null){
-                AssociationExt.queryClubs({id:1},function(result){
+            if(vm.association.id!=null){
+                AssociationExt.queryClubs({id:association.id},function(result){
                     vm.clubs = result;
                     vm.isQuerying = false;
                 });
-            //}
+            }
             
         }
     }
