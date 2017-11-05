@@ -1,0 +1,77 @@
+<div>
+	<header class="commomHeader">
+		<div class="commomHeaderContent">
+			    
+			    <h1 class="commonTitle">Tables</h1>
+		</div>
+	</header>
+	<section>
+        <form name="searchForm" role="form" novalidate ng-submit="vm.query()" class="form-inline">
+                    <select class="form-control" placeholder="Division" id="field_division" name="division" ng-model="vm.division" ng-options="division as division.name for division in vm.divisions track by division.id">
+                        <option value=""></option>
+                    </select>
+                    <select class="form-control" placeholder="Season" id="field_season" name="season" ng-model="vm.season" ng-options="season as season.name for season in vm.seasons track by season.id">
+                        <option value=""></option>
+                    </select>
+                   
+                    <button type="submit" ng-disabled="searchForm.$invalid || vm.isQuery" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-find"></span>&nbsp;<span>Query</span>
+                </button>
+        </form>
+
+	</section>
+    <section>
+        <div class="tableLogo">
+            <div class="competitionImage"></div>
+        </div>
+    </section>
+    <section class="pl-table">
+
+        <table class="jh-table table">
+                    <thead>
+                        <tr>
+                            <th><span>Rank</span></th>
+                            <th><span>Club</span></th>
+                            <th><span>Win</span></th>
+                            <th><span>Lose</span></th>
+                            <th><span>Draw</span></th>
+                            <th><span>GS</span></th>
+                            <th><span>GA</span></th>
+                            <th><span>GD</span></th>
+                            <th><span>Points</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="divisionEvent in vm.divisionTable track by divisionEvent[0]"  ng-class="{'tableDark':$index==0,'silver':$index==1,'cornsilk':$index==2,'last':$last}">
+                            <td>{{$index+1}}</td>
+                            <!-- <td>{{divisionEvent[0]}}</td> -->
+                            <td>
+                               <a ui-sref="public.club({id:divisionEvent[2]})"><span class="badge-50 ARS"></span><span>{{divisionEvent[1]}}</span> </a>
+                            </td>
+                            <td>
+                                 {{divisionEvent[4]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[5]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[6]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[7]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[8]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[9]}}
+                            </td>
+                            <td>
+                                 {{divisionEvent[10]}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+    </section>
+	
+</div>

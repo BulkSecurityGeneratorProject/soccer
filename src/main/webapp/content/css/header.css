@@ -822,3 +822,60 @@ a:hover, a:focus {
     padding: 1rem 0;
 }
 
+.commomHeader {
+    background: #38003c;
+    color: #fff;
+    margin: -2rem 0 2rem;
+    min-height: 100px;
+    z-index: -10;
+    background: url("/content/images/article-shard.svg"),#38003c;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+.commomHeader .commomHeaderContent {
+    padding: 1rem 0 5rem 6rem;
+}
+.commomHeader .commonTitle {
+    font-size: 4.5rem;
+    padding-bottom: 1rem;
+    line-height: 1.2;
+}
+.competitionImage {
+    content: "";
+    background: url("/content/images/global-sprite.png") -395px -570px no-repeat;
+    width: 170px;
+    height: 28px;
+    display: block;
+}
+.table table {
+    width: 100%;
+    text-align: center;
+    font-size: 1.4rem;
+    border-collapse: inherit;
+}
+.table th {
+    color: #666;
+    vertical-align: top;
+    font-size: 1.2rem;
+    font-family: PremierSans-Bold,Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: bolder;
+    vertical-align: middle;
+}
+.table td, .table th {
+    padding: .7rem 1rem;
+    font-size: 14px;
+}
+.table a {
+    color: #242424;
+    vertical-align: middle;
+}
+
+.table .tableDark, .table .team:after {
+    background: #e4e4e4;
+}
+.table .tableMid {
+    background: #eee;
+}
+.table .tableBlow {
+    background: red;
+}
