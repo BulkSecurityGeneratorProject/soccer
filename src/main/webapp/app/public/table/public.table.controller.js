@@ -12,16 +12,16 @@
         vm.divisions = [];
         vm.seasons = [];
 
-        vm.division = null;
-        vm.season = null;
+        vm.division = {};
+        vm.season = {};
         vm.divisionTable = [];
         vm.query = loadDivisionEventTable;
 
         loadAll();
 
-        if(vm.division && vm.season){
-            loadDivisionEventTable();
-        }
+        
+        loadDivisionEventTable();
+        
 
         function loadAll () {
            Division.query(function(result) {
@@ -35,13 +35,15 @@
 
         function loadDivisionEventTable(){
             vm.isQuerying = true;
-
+            var divisionId = 1;// default division table
             if(vm.division.id!=null && vm.season.id!=null){
-                DivisionEventTable.query({id:1},function(result){
-                    vm.divisionTable = result;
-                    vm.isQuerying = false;
-                });
+                divisionId = vm.division.id;
             }
+
+            DivisionEventTable.query({id:divisionId},function(result){
+                vm.divisionTable = result;
+                vm.isQuerying = false;
+            });
             
         }
     }

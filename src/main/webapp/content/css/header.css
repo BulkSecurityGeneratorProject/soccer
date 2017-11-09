@@ -975,3 +975,22 @@ svg:not(:root) {
 .pl-players table tr td {
     padding: 0px;
 }
+.searchBtn{
+    vertical-align: middle;
+    background: #e90052;
+    color: #333;
+    text-align: center;
+    padding: 0 2rem;
+    line-height: 3.5rem;
+    border-radius: 2px;
+    border: none;
+}
+
+.searchBtn:focus, .searchBtn:hover{
+    /*background: #e90052;*/
+    color: #fff;
+}
+.searchBtn .glyphicon {
+    padding-left: 3px;
+    top: 3px;
+}
