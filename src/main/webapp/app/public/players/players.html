@@ -7,14 +7,14 @@
 	</header>
 	<section>
         <form name="searchForm" role="form" novalidate ng-submit="vm.query()" class="form-inline">
-                    <select class="form-control" placeholder="Association" id="field_association" name="association" ng-model="vm.association" ng-options="association as association.name for association in vm.associations track by association.id">
+                    <select class="form-control" placeholder="Association" id="field_association" name="association" ng-model="vm.association" ng-options="association as association.name for association in vm.associations track by association.id" ng-change="vm.loadClubs()">
                         <option value=""></option>
                     </select>
                     <select class="form-control" placeholder="Club" id="field_club" name="club" ng-model="vm.club" ng-options="club as club.name for club in vm.clubs track by club.id">
                         <option value=""></option>
                     </select>
-                    <button type="submit" ng-disabled="searchForm.$invalid || vm.isQuery" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-find"></span>&nbsp;<span>Query</span>
+                    <button type="submit" ng-disabled="searchForm.$invalid || vm.isQuery" class="searchBtn">
+                    <span class="glyphicon glyphicon-query"></span>&nbsp;<span>Query</span>
                 </button>
         </form>
 
