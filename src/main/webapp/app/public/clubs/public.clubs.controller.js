@@ -16,6 +16,7 @@
         vm.query = loadClubs;
 
         loadAll();
+        loadClubs();
 
         function loadAll () {
            Association.query(function(result) {
@@ -25,13 +26,15 @@
 
         function loadClubs(){
             vm.isQuerying = true;
-
-            if(vm.association.id!=null){
-                AssociationExt.queryClubs({id:vm.association.id},function(result){
-                    vm.clubs = result;
-                    vm.isQuerying = false;
-                });
+            // default association
+            var associationId = 1;
+            if(vm.association.id != null){
+                associationId = vm.association.id;
             }
+            AssociationExt.queryClubs({id:associationId},function(result){
+                vm.clubs = result;
+                vm.isQuerying = false;
+            });
             
         }
     }
