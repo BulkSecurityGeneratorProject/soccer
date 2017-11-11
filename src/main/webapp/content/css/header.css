@@ -994,3 +994,28 @@ svg:not(:root) {
     padding-left: 3px;
     top: 3px;
 }
+.fixture:focus, .fixture:hover{
+    background: #e90052;
+    color: #fff;
+}
+
+.homeTeam{
+    font-weight: bold;
+    text-align: right;
+}
+.roadTeam{
+    font-weight: bold;
+    text-align: left;
+}
+.gameTime{
+    width: 150px;
+}
+.gameTime time{
+    padding: 4px 6px;
+    background: #76766f;
+    color: #fff;
+}
+.fixture:focus time, .fixture:hover time{
+    background: #fff;
+    color: #e90052;
+}

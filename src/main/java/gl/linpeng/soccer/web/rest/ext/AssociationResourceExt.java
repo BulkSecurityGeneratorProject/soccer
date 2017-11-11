@@ -19,6 +19,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import gl.linpeng.soccer.repository.ext.GameRepositoryExt;
 import gl.linpeng.soccer.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +55,8 @@ public class AssociationResourceExt {
 	private DivisionEventRepository divisionEventRepository;
 	@Inject
 	private GameRepository gameRepository;
+    @Inject
+    private GameRepositoryExt gameRepositoryExt;
 	@Inject
 	private ClubRepository clubRepository;
 	@Inject
@@ -170,4 +173,28 @@ public class AssociationResourceExt {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/associations/"+associationId+"/players");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
+
+
+    @RequestMapping(value = "/associations/{associationId}/fixtures", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Game> getGames(@PathVariable Long associationId,Game game,Pageable pageable) {
+        log.debug("REST request to get Association Games: {}", associationId);
+//        Game example = new Game();
+//        DivisionEvent exampleDivisionEvent = new DivisionEvent();
+//        Association exampleAssociation = new Association();
+//        exampleAssociation.setId(associationId);
+//        Division exampleDivision = new Division();
+//        exampleDivision.setAssociation(exampleAssociation);
+//        exampleDivisionEvent.setDivision(exampleDivision);
+//        Timeslot exampleTimeslot = new Timeslot();
+//        exampleTimeslot.setDivisionEvent(exampleDivisionEvent);
+//        example.setTimeslot(exampleTimeslot);
+        if(game!=null && game.getTimeslot()!=null
+            && game.getTimeslot().getDivisionEvent()!=null
+            && game.getTimeslot().getDivisionEvent().getDivision()!=null
+            && game.getTimeslot().getDivisionEvent().getDivision().getId()!=null){
+            return gameRepositoryExt.findNextGamesByDivision(game.getTimeslot().getDivisionEvent().getDivision().getId(),pageable);
+        }
+        return gameRepositoryExt.findNextGamesByAssociation(associationId,pageable);
+    }
 }

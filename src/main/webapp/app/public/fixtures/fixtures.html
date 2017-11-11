@@ -1,0 +1,58 @@
+<div>
+	<header class="commomHeader">
+		<div class="commomHeaderContent">
+
+			    <h1 class="commonTitle">Fixtures</h1>
+		</div>
+	</header>
+	<section>
+        <form name="searchForm" role="form" novalidate ng-submit="vm.query()" class="form-inline">
+                    <select class="form-control" placeholder="Association" id="field_association" name="association" ng-model="vm.association" ng-options="association as association.name for association in vm.associations track by association.id" ng-change="vm.loadQueryData()">
+                        <option value=""></option>
+                    </select>
+                    <select class="form-control" placeholder="Division" id="field_division" name="division" ng-model="vm.division" ng-options="division as division.division.name for division in vm.divisions track by division.id">
+                        <option value=""></option>
+                    </select>
+                    <select class="form-control" placeholder="Club" id="field_club" name="club" ng-model="vm.club" ng-options="club as club.name for club in vm.clubs track by club.id">
+                        <option value=""></option>
+                    </select>
+
+                    <button type="submit" ng-disabled="searchForm.$invalid || vm.isQuery" class="searchBtn">
+                    <span class="glyphicon glyphicon-search"></span>&nbsp;<span>Query</span>
+                </button>
+        </form>
+
+	</section>
+    <section>
+        <div class="tableLogo">
+            <div class="competitionImage"></div>
+        </div>
+    </section>
+    <section class="pl-table">
+        <table class="jh-table table">
+                    <!-- <thead>
+                        <tr>
+                            <th><span>Rank</span></th>
+                            <th><span>Club</span></th>
+                            <th><span>Win</span></th>
+                            <th><span>Lose</span></th>
+                            <th><span>Draw</span></th>
+                            <th><span>GS</span></th>
+                            <th><span>GA</span></th>
+                            <th><span>GD</span></th>
+                            <th><span>Points</span></th>
+                        </tr>
+                    </thead> -->
+                    <tbody>
+                        <tr ng-repeat="game in vm.games track by game.id" class="fixture">
+                            <td class="gameDivision">{{game.timeslot.divisionEvent.division.name}}</td>
+                            <td class="homeTeam"><a ui-sref="public.club({id:game.homeTeam.club.id})">{{game.homeTeam.name}}</a></td>
+                            <td class="gameTime"><time>{{game.startAt | date:'yyyy-MM-dd HH:mm'}}</time></td>
+                            <td class="roadTeam"><a ui-sref="public.club({id:game.roadTeam.club.id})">{{game.roadTeam.name}}</a></td>
+                            <td class="gameVenue">{{game.venue.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+    </section>
+
+</div>

@@ -2,12 +2,11 @@ package gl.linpeng.soccer.repository.ext;
 
 import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.repository.GameRepository;
-
-import java.util.List;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 /**
  * Game repository ext from Spring Data JPA repository
@@ -61,5 +60,17 @@ public interface GameRepositoryExt extends GameRepository {
 	 */
 	@Query("select g from Game g where (g.homeTeam.id = :teamId or g.roadTeam.id =  :teamId) and datediff(second,now(),g.startAt) < 0 ORDER BY g.startAt DESC ")
 	List<Game> findPassedGamesByTeam(@Param("teamId") Long id, Pageable pageable);
+
+    /**
+     * Find Next games according association id
+     * @param associationId which association
+     * @param pageable page object
+     * @return games
+     */
+    @Query("select g from Game g where (g.timeslot.divisionEvent.division.association.id = :associationId) and datediff(second,now(),g.startAt) > 0 ORDER BY g.startAt ASC ")
+	List<Game> findNextGamesByAssociation(@Param("associationId") Long associationId,Pageable pageable);
+
+    @Query("select g from Game g where (g.timeslot.divisionEvent.division.id = :divisionId) and datediff(second,now(),g.startAt) >0 ORDER BY g.startAt ASC")
+    List<Game> findNextGamesByDivision(@Param("divisionId") Long divisionId,Pageable pageable);
 
 }
