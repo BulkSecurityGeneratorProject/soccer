@@ -177,7 +177,7 @@ public class AssociationResourceExt {
 
     @RequestMapping(value = "/associations/{associationId}/fixtures", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Game> getGames(@PathVariable Long associationId,Game game,Pageable pageable) {
+    public List<Game> getFixtures(@PathVariable Long associationId,Game game,Pageable pageable) {
         log.debug("REST request to get Association Games: {}", associationId);
 //        Game example = new Game();
 //        DivisionEvent exampleDivisionEvent = new DivisionEvent();
@@ -196,5 +196,19 @@ public class AssociationResourceExt {
             return gameRepositoryExt.findNextGamesByDivision(game.getTimeslot().getDivisionEvent().getDivision().getId(),pageable);
         }
         return gameRepositoryExt.findNextGamesByAssociation(associationId,pageable);
+    }
+
+
+    @RequestMapping(value = "/associations/{associationId}/results", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Game> getResults(@PathVariable Long associationId,Game game,Pageable pageable) {
+        log.debug("REST request to get Association Games: {}", associationId);
+        if(game!=null && game.getTimeslot()!=null
+            && game.getTimeslot().getDivisionEvent()!=null
+            && game.getTimeslot().getDivisionEvent().getDivision()!=null
+            && game.getTimeslot().getDivisionEvent().getDivision().getId()!=null){
+            return gameRepositoryExt.findPassedGamesByDivision(game.getTimeslot().getDivisionEvent().getDivision().getId(),pageable);
+        }
+        return gameRepositoryExt.findPassedGamesByAssociation(associationId,pageable);
     }
 }

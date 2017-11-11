@@ -15,7 +15,8 @@
             'queryPlayers':{url: resourceUrl+'/players', method: 'GET', isArray: true},
             'queryDivisionEvents':{url: resourceUrl+'/division-events', method: 'GET', isArray: true},
             'queryGames':{url: resourceUrl+'/games', method: 'GET', isArray: true},
-            'queryAssociationFixtures':{url: resourceUrl+'/fixtures', method: 'GET', isArray: true}
+            'queryAssociationFixtures':{url: resourceUrl+'/fixtures', method: 'GET', isArray: true},
+            'queryAssociationResults':{url: resourceUrl+'/results', method: 'GET', isArray: true}
         });
     }
 })();

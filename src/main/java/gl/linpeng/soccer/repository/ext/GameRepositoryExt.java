@@ -23,7 +23,7 @@ public interface GameRepositoryExt extends GameRepository {
 	 *            recent count
 	 * @return
 	 */
-	@Query("select g from Game g where (g.homeTeam.id = ?#{[0]} or g.roadTeam.id=?#{[0]}) and abs(datediff(day,now(),g.startAt)) <= ?#{[1]} order by g.startAt ASC")
+	@Query("select g from Game g where (g.homeTeam.id = ?#{[0]} or g.roadTeam.id=?#{[0]}) and abs(datediff(day,now(),g.startAt)) <= ?#{[1]} order by g.startAt,g.id ASC")
 	List<Game> findGamesByTeam(Long id, int recent);
 
 	/**
@@ -35,7 +35,7 @@ public interface GameRepositoryExt extends GameRepository {
 	 *            recent count
 	 * @return
 	 */
-	@Query("select g from Game g where (g.homeTeam.club.id = ?#{[0]} or g.roadTeam.club.id=?#{[0]}) and abs(datediff(day,now(),g.startAt)) <= ?#{[1]} order by g.startAt ASC")
+	@Query("select g from Game g where (g.homeTeam.club.id = ?#{[0]} or g.roadTeam.club.id=?#{[0]}) and abs(datediff(day,now(),g.startAt)) <= ?#{[1]} order by g.startAt,g.id ASC")
 	List<Game> findGamesByClub(Long id, int recent);
 
 	/**
@@ -47,7 +47,7 @@ public interface GameRepositoryExt extends GameRepository {
 	 *            接下来的几场比赛
 	 * @return
 	 */
-	@Query("select g from Game g where (g.homeTeam.club.id = :clubId or g.roadTeam.club.id =  :clubId) and datediff(second,now(),g.startAt) > 0 ORDER BY g.startAt ASC ")
+	@Query("select g from Game g where (g.homeTeam.club.id = :clubId or g.roadTeam.club.id =  :clubId) and datediff(second,now(),g.startAt) > 0 ORDER BY g.startAt,g.id ASC ")
 	List<Game> findNextGamesByClub(@Param("clubId") Long id, Pageable page);
 
 	/**
@@ -58,7 +58,7 @@ public interface GameRepositoryExt extends GameRepository {
 	 * @param pageable
 	 * @return
 	 */
-	@Query("select g from Game g where (g.homeTeam.id = :teamId or g.roadTeam.id =  :teamId) and datediff(second,now(),g.startAt) < 0 ORDER BY g.startAt DESC ")
+	@Query("select g from Game g where (g.homeTeam.id = :teamId or g.roadTeam.id =  :teamId) and datediff(second,now(),g.startAt) < 0 ORDER BY g.startAt DESC,g.id ASC ")
 	List<Game> findPassedGamesByTeam(@Param("teamId") Long id, Pageable pageable);
 
     /**
@@ -67,10 +67,16 @@ public interface GameRepositoryExt extends GameRepository {
      * @param pageable page object
      * @return games
      */
-    @Query("select g from Game g where (g.timeslot.divisionEvent.division.association.id = :associationId) and datediff(second,now(),g.startAt) > 0 ORDER BY g.startAt ASC ")
+    @Query("select g from Game g where (g.timeslot.divisionEvent.division.association.id = :associationId) and datediff(second,now(),g.startAt) > 0 ORDER BY g.startAt,g.id ASC")
 	List<Game> findNextGamesByAssociation(@Param("associationId") Long associationId,Pageable pageable);
 
-    @Query("select g from Game g where (g.timeslot.divisionEvent.division.id = :divisionId) and datediff(second,now(),g.startAt) >0 ORDER BY g.startAt ASC")
+    @Query("select g from Game g where (g.timeslot.divisionEvent.division.id = :divisionId) and datediff(second,now(),g.startAt) >0 ORDER BY g.startAt,g.id ASC")
     List<Game> findNextGamesByDivision(@Param("divisionId") Long divisionId,Pageable pageable);
+
+    @Query("select g from Game g where (g.timeslot.divisionEvent.division.association.id = :associationId) and datediff(second,now(),g.startAt) < 0 ORDER BY g.startAt DESC,g.id ASC ")
+    List<Game> findPassedGamesByAssociation(@Param("associationId") Long associationId,Pageable pageable);
+
+    @Query("select g from Game g where (g.timeslot.divisionEvent.division.id = :divisionId) and datediff(second,now(),g.startAt) < 0 ORDER BY g.startAt DESC,g.id ASC")
+    List<Game> findPassedGamesByDivision(@Param("divisionId") Long divisionId,Pageable pageable);
 
 }

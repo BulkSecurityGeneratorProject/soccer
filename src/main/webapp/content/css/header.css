@@ -1010,12 +1010,16 @@ svg:not(:root) {
 .gameTime{
     width: 150px;
 }
-.gameTime time{
+.gameScore{
+    width: 80px;
+    text-align: center;
+}
+.fixture time, .score{
     padding: 4px 6px;
-    background: #76766f;
+    background: #38003c;
     color: #fff;
 }
-.fixture:focus time, .fixture:hover time{
+.fixture:focus time, .fixture:hover time,.fixture:focus .score, .fixture:hover .score{
     background: #fff;
     color: #e90052;
 }

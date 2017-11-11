@@ -2,7 +2,7 @@
 	<header class="commomHeader">
 		<div class="commomHeaderContent">
 
-			    <h1 class="commonTitle">Fixtures</h1>
+			    <h1 class="commonTitle">Result</h1>
 		</div>
 	</header>
 	<section>
@@ -34,7 +34,7 @@
                         <tr ng-repeat="game in vm.games track by game.id" class="fixture">
                             <td class="gameDivision">{{game.timeslot.divisionEvent.division.name}}</td>
                             <td class="homeTeam"><a ui-sref="public.club({id:game.homeTeam.club.id})">{{game.homeTeam.name}}</a></td>
-                            <td class="gameTime"><time>{{game.startAt | date:'yyyy-MM-dd HH:mm'}}</time></td>
+                            <td class="gameScore"><span class="score"><span>{{game.homeScore}}</span><span>:</span><span>{{game.roadScore}}</span></span></td>
                             <td class="roadTeam"><a ui-sref="public.club({id:game.roadTeam.club.id})">{{game.roadTeam.name}}</a></td>
                             <td class="gameVenue">{{game.venue.name}}</td>
                         </tr>
