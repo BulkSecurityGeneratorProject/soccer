@@ -14,14 +14,21 @@ import gl.linpeng.soccer.repository.DivisionRepository;
 import gl.linpeng.soccer.repository.GameRepository;
 import gl.linpeng.soccer.repository.PlayerRepository;
 
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import gl.linpeng.soccer.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +38,7 @@ import com.codahale.metrics.annotation.Timed;
 
 /**
  * REST ext controller for managing Association.
- * 
+ *
  * @author linpeng
  *
  */
@@ -140,23 +147,27 @@ public class AssociationResourceExt {
 	/**
 	 * GET /associations/:id/players : get players by "id" of association.
 	 *
-	 * @param id
+	 * @param associationId
 	 *            the id of the association to retrieve
 	 * @return the ResponseEntity with status 200 (OK) and with body the clubs,
 	 *         or with status 404 (Not Found)
 	 */
-	@RequestMapping(value = "/associations/{id}/players", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/associations/{associationId}/players", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
-	public List<Player> getPlayers(@PathVariable Long id) {
-		log.debug("REST request to get Association Players: {}", id);
+	public ResponseEntity<List<Player>> getPlayers(@PathVariable Long associationId,Player player,Pageable pageable) throws URISyntaxException {
+		log.debug("REST request to get Association Players: {}", associationId);
 		Player example = new Player();
 		Association exampleAssociation = new Association();
-		exampleAssociation.setId(id);
+		exampleAssociation.setId(associationId);
 		Team exampleTeam = new Team();
 		Club exampleClub = new Club();
 		exampleClub.setAssociation(exampleAssociation);
 		exampleTeam.setClub(exampleClub);
 		example.setTeam(exampleTeam);
-		return playerRepository.findAll(Example.of(example));
+		exampleClub.setAssociation(exampleAssociation);
+        example.setTeam(exampleTeam);
+        Page<Player> page = playerRepository.findAll(Example.of(example),pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/associations/"+associationId+"/players");
+		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
 }

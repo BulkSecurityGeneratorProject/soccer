@@ -1,12 +1,13 @@
 <div>
 	<header class="commomHeader">
 		<div class="commomHeaderContent">
-			    
+
 			    <h1 class="commonTitle">Players</h1>
 		</div>
 	</header>
-	<section>
-        <form name="searchForm" role="form" novalidate ng-submit="vm.query()" class="form-inline">
+    <form name="searchForm" role="form" novalidate ng-submit="vm.query()" class="form-inline">
+
+    <section>
                     <select class="form-control" placeholder="Association" id="field_association" name="association" ng-model="vm.association" ng-options="association as association.name for association in vm.associations track by association.id" ng-change="vm.loadClubs()">
                         <option value=""></option>
                     </select>
@@ -16,10 +17,10 @@
                     <button type="submit" ng-disabled="searchForm.$invalid || vm.isQuery" class="searchBtn">
                     <span class="glyphicon glyphicon-query"></span>&nbsp;<span>Query</span>
                 </button>
-        </form>
+
 
 	</section>
-    
+
     <section class="pl-players">
         <table class="jh-table table">
             <thead>
@@ -45,7 +46,11 @@
                 </tr>
             </tbody>
         </table>
-       
+
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
     </section>
-	
+    </form>
 </div>
