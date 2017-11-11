@@ -25,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -177,7 +178,7 @@ public class AssociationResourceExt {
 
     @RequestMapping(value = "/associations/{associationId}/fixtures", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Game> getFixtures(@PathVariable Long associationId,Game game,Pageable pageable) {
+    public ResponseEntity<List<Game>> getFixtures(@PathVariable Long associationId,Game game,Pageable pageable) throws URISyntaxException {
         log.debug("REST request to get Association Games: {}", associationId);
 //        Game example = new Game();
 //        DivisionEvent exampleDivisionEvent = new DivisionEvent();
@@ -189,26 +190,36 @@ public class AssociationResourceExt {
 //        Timeslot exampleTimeslot = new Timeslot();
 //        exampleTimeslot.setDivisionEvent(exampleDivisionEvent);
 //        example.setTimeslot(exampleTimeslot);
+
+        Page<Game> page = null;
         if(game!=null && game.getTimeslot()!=null
             && game.getTimeslot().getDivisionEvent()!=null
             && game.getTimeslot().getDivisionEvent().getDivision()!=null
             && game.getTimeslot().getDivisionEvent().getDivision().getId()!=null){
-            return gameRepositoryExt.findNextGamesByDivision(game.getTimeslot().getDivisionEvent().getDivision().getId(),pageable);
+            page = gameRepositoryExt.findNextGamesByDivision(game.getTimeslot().getDivisionEvent().getDivision().getId(),pageable);
+        }else{
+            page = gameRepositoryExt.findNextGamesByAssociation(associationId,pageable);
         }
-        return gameRepositoryExt.findNextGamesByAssociation(associationId,pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/associations/"+associationId+"/fixtures");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
 
     @RequestMapping(value = "/associations/{associationId}/results", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Game> getResults(@PathVariable Long associationId,Game game,Pageable pageable) {
+    public ResponseEntity<List<Game>> getResults(@PathVariable Long associationId,Game game,Pageable pageable) throws URISyntaxException {
         log.debug("REST request to get Association Games: {}", associationId);
+        Page<Game> page = null;
         if(game!=null && game.getTimeslot()!=null
             && game.getTimeslot().getDivisionEvent()!=null
             && game.getTimeslot().getDivisionEvent().getDivision()!=null
             && game.getTimeslot().getDivisionEvent().getDivision().getId()!=null){
-            return gameRepositoryExt.findPassedGamesByDivision(game.getTimeslot().getDivisionEvent().getDivision().getId(),pageable);
+            page = gameRepositoryExt.findPassedGamesByDivision(game.getTimeslot().getDivisionEvent().getDivision().getId(),pageable);
+        }else{
+            page = gameRepositoryExt.findPassedGamesByAssociation(associationId,pageable);
         }
-        return gameRepositoryExt.findPassedGamesByAssociation(associationId,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/associations/"+associationId+"/results");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

@@ -5,9 +5,9 @@
         .module('soccerApp')
         .controller('PublicFixturesController', PublicFixturesController);
 
-    PublicFixturesController.$inject = ['$scope','$state','Association','Division','Club','AssociationExt'];
+    PublicFixturesController.$inject = ['$scope','$state','ParseLinks','pagingParams', 'paginationConstants','Association','Division','Club','AssociationExt'];
 
-    function PublicFixturesController ($scope, $state,Association,Division,Club,AssociationExt) {
+    function PublicFixturesController ($scope, $state,ParseLinks,pagingParams, paginationConstants,Association,Division,Club,AssociationExt) {
         var vm = this;
         vm.associations = [];
         vm.divisions = [];
@@ -18,8 +18,18 @@
         vm.division = {};
         vm.club = {};
 
+        vm.loadPage = loadPage;
+        vm.predicate = pagingParams.predicate;
+        vm.reverse = pagingParams.ascending;
+        vm.transition = transition;
+        vm.itemsPerPage = paginationConstants.itemsPerPage;
+
         vm.query = loadFixtures;
         vm.loadQueryData = loadQueryData;
+
+        if(pagingParams.id){
+            vm.association.id = pagingParams.id;
+        }
 
         loadAll();
 
@@ -50,16 +60,46 @@
 
         function loadFixtures(){
             vm.isQuerying = true;
-            var associationId = 1;
-            if(vm.association.id != null){
-                associationId = vm.association.id;
+
+            AssociationExt.queryAssociationFixtures({
+                    id:vm.association.id,
+                    page: pagingParams.page - 1,
+                    size: vm.itemsPerPage,
+                    sort: sort()
+                },onSuccess,onError);
+
+            function sort() {
+                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+                if (vm.predicate !== 'id') {
+                    result.push('id');
+                }
+                return result;
+            }
+            function onSuccess(data, headers) {
+                vm.links = ParseLinks.parse(headers('link'));
+                vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
+                vm.games = data;
+                vm.page = pagingParams.page;
+                vm.isQuerying = false;
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
             }
 
-            AssociationExt.queryAssociationFixtures({id:associationId},function(result){
-                vm.games = result;
-                vm.isQuerying = false;
-            });
+        }
 
+        function loadPage (page) {
+            vm.page = page;
+            vm.transition();
+        }
+
+        function transition () {
+            $state.transitionTo($state.$current, {
+                id: $state.params.id,
+                page: vm.page,
+                search: vm.currentSearch
+            });
         }
     }
 })();

@@ -2,6 +2,7 @@ package gl.linpeng.soccer.repository.ext;
 
 import gl.linpeng.soccer.domain.Game;
 import gl.linpeng.soccer.repository.GameRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -68,15 +69,15 @@ public interface GameRepositoryExt extends GameRepository {
      * @return games
      */
     @Query("select g from Game g where (g.timeslot.divisionEvent.division.association.id = :associationId) and datediff(second,now(),g.startAt) > 0 ORDER BY g.startAt,g.id ASC")
-	List<Game> findNextGamesByAssociation(@Param("associationId") Long associationId,Pageable pageable);
+    Page<Game> findNextGamesByAssociation(@Param("associationId") Long associationId,Pageable pageable);
 
     @Query("select g from Game g where (g.timeslot.divisionEvent.division.id = :divisionId) and datediff(second,now(),g.startAt) >0 ORDER BY g.startAt,g.id ASC")
-    List<Game> findNextGamesByDivision(@Param("divisionId") Long divisionId,Pageable pageable);
+    Page<Game> findNextGamesByDivision(@Param("divisionId") Long divisionId, Pageable pageable);
 
     @Query("select g from Game g where (g.timeslot.divisionEvent.division.association.id = :associationId) and datediff(second,now(),g.startAt) < 0 ORDER BY g.startAt DESC,g.id ASC ")
-    List<Game> findPassedGamesByAssociation(@Param("associationId") Long associationId,Pageable pageable);
+    Page<Game> findPassedGamesByAssociation(@Param("associationId") Long associationId,Pageable pageable);
 
     @Query("select g from Game g where (g.timeslot.divisionEvent.division.id = :divisionId) and datediff(second,now(),g.startAt) < 0 ORDER BY g.startAt DESC,g.id ASC")
-    List<Game> findPassedGamesByDivision(@Param("divisionId") Long divisionId,Pageable pageable);
+    Page<Game> findPassedGamesByDivision(@Param("divisionId") Long divisionId,Pageable pageable);
 
 }

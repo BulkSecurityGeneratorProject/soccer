@@ -11,7 +11,7 @@
         $stateProvider
         .state('public.fixtures', {
             parent: 'public',
-            url: '/public/fixtures',
+            url: '/public/fixtures?id&page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
             },
@@ -22,8 +22,29 @@
                     controllerAs: 'vm'
                 }
             },
+            params: {
+                id:'1',
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                },
+                search: null
+            },
             resolve: {
-                
+                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                    return {
+                        id:$stateParams.id,
+                        page: PaginationUtil.parsePage($stateParams.page),
+                        sort: $stateParams.sort,
+                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                        ascending: PaginationUtil.parseAscending($stateParams.sort),
+                        search: $stateParams.search
+                    };
+                }]
             }
         });
     }
