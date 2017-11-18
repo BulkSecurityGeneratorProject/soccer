@@ -49,7 +49,17 @@
                 associationId = vm.association.id;
             }
             AssociationExt.queryDivisionEvents({id:associationId},function(result){
-                vm.divisions = result;
+                
+                //vm.divisions = result;
+                angular.forEach(result,function(data,index){
+                    if(data.season && data.season.endAt){
+                        var endDate = new Date(data.season.endAt);
+                        // only display future division events 
+                        if(endDate.getTime() > new Date().getTime()){
+                             vm.divisions.push(data);  
+                        }
+                    }
+                });
             });
 
 

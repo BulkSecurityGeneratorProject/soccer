@@ -10,7 +10,7 @@
                     <select class="form-control" placeholder="Association" id="field_association" name="association" ng-model="vm.association" ng-options="association as association.name for association in vm.associations track by association.id" ng-change="vm.loadQueryData()">
                         <option value=""></option>
                     </select>
-                    <select class="form-control" placeholder="Division" id="field_division" name="division" ng-model="vm.division" ng-options="division as division.division.name for division in vm.divisions track by division.id">
+                    <select class="form-control" placeholder="Division" id="field_division" name="division" ng-model="vm.division" ng-options="division as division.season.name+'-'+division.division.name  for division in vm.divisions track by division.id">
                         <option value=""></option>
                     </select>
                     <select class="form-control" placeholder="Club" id="field_club" name="club" ng-model="vm.club" ng-options="club as club.name for club in vm.clubs track by club.id">
