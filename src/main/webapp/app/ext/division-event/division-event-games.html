@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                
+
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
             <tbody>
                 <tr ng-repeat="game in vm.games track by game.id">
                     <td><a ui-sref="game-detail({id:game.id})">{{game.id}}</a></td>
-                    <td>{{game.startAt | date:'medium'}}</td>
+                    <td>{{game.startAt | date:'yyyy-MM-dd HH:mm'}}</td>
                     <td>{{game.homeScore}}</td>
                     <td>{{game.roadScore}}</td>
                     <td>{{game.note}}</td>
@@ -69,7 +69,7 @@
                                 <span class="glyphicon glyphicon-edit"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
-                            
+
                         </div>
                     </td>
                 </tr>
