@@ -37,6 +37,7 @@
                             <td class="gameScore"><span class="score"><span>{{game.homeScore}}</span><span>:</span><span>{{game.roadScore}}</span></span></td>
                             <td class="roadTeam"><a ui-sref="public.club({id:game.roadTeam.club.id})">{{game.roadTeam.name}}</a></td>
                             <td class="gameVenue">{{game.venue.name}}</td>
+                            <td class="actions"><a ui-sref="public.result-detail({id:game.id})"><span>Detail</span><span class="glyphicon glyphicon-chevron-right"></span></td>
                         </tr>
                     </tbody>
                 </table>

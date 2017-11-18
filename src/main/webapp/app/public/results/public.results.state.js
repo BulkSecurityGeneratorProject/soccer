@@ -9,6 +9,20 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
+        .state('public.result-detail',{
+            parent:'public',
+            url:'/public/result/{id}',
+            data:{
+                authorities: ['ROLE_USER'],
+            },
+            views:{
+                'content@': {
+                    templateUrl: 'app/public/results/result-detail.html',
+                    controller: 'PublicResultDetailController',
+                    controllerAs: 'vm'
+                }
+            }
+        })
         .state('public.results', {
             parent: 'public',
             url: '/public/results?id&page&sort&search',
