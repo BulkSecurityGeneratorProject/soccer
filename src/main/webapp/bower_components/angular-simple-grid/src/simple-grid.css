@@ -27,7 +27,7 @@ td.sg-multi-select-cell, th.sg-multi-select-cell {
     width: 30px;
 }
 td.sg-actions-cell, th.sg-actions-cell {
-    width: 90px;
+    width: 100px;
 }
 
 .table.simple-grid >tbody > tr.editable > td {
