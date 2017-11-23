@@ -25,7 +25,7 @@ script:
   - ./mvnw test
 #  - gulp test
   - ./mvnw package -Pprod
-  - docker build --rm -t 170147404/soccer src/main/docker/Dockerfile
+  - docker build --rm -t 170147404/soccer src/main/docker
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_HUB_ACCOUNT" -p="$DOCKER_HUB_PASSWORD";
