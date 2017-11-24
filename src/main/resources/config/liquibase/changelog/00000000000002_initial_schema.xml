@@ -20,7 +20,7 @@
                   tableName="result_field"/>
     </changeSet>
     <!-- init data for dev profile -->
-    <changeSet id="00000000000003" author="linpeng" context="dev">
+    <changeSet id="00000000000003" author="linpeng">
     	<loadData encoding="UTF-8"
                   file="config/liquibase/associations.csv"
                   separator=";"
