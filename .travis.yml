@@ -24,7 +24,7 @@ script:
   - ./mvnw clean
   - ./mvnw test
 #  - gulp test
-  - ./mvnw package -Pprod
+  - ./mvnw package -Pprod -Dmaven.test.skip=true
   - cp src/main/docker/* ./
   - docker build --rm -t 170147404/soccer .
 after_success:
