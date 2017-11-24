@@ -26,6 +26,7 @@ script:
 #  - gulp test
   - ./mvnw package -Pprod -Dmaven.test.skip=true
   - cp src/main/docker/* ./
+  - ls -al
   - docker build --rm -t 170147404/soccer .
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
